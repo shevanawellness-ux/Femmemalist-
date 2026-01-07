@@ -472,6 +472,13 @@ document.querySelectorAll('.yt-lite').forEach(div=>{
  };
 });
 </script>
+  <script>
+// Automatically fix all Amazon shopping buttons
+document.querySelectorAll('.shop-buttons a').forEach(a => {
+  a.setAttribute('target', '_blank');         // open in new tab
+  a.setAttribute('rel', 'noopener noreferrer'); // safe and avoids browser blocking
+});
+  </script>
 
 </body>
      </html> };
@@ -481,3 +488,4 @@ document.querySelectorAll('.yt-lite').forEach(div=>{
 </body>
 
 </html>
+
