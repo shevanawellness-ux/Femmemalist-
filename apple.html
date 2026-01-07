@@ -219,4 +219,30 @@ Disclaimer & Disclosure: This page is for educational purposes only and includes
 </p>
 <p style="font-size:10px; color:rgba(0,0,0,0.35); font-style:italic; text-align:center; margin-top:40px; line-height:1.2;">
 © 2026 Femmemalist™. All rights reserved.
+</p>
+</div>
+
+<script>
+document.querySelectorAll('.yt-lite').forEach(div=>{
+ const id=div.dataset.id;
+ const img=document.createElement('img');
+ img.src=`https://i.ytimg.com/vi/${id}/hqdefault.jpg`;
+ div.appendChild(img);
+ div.onclick=()=>{
+  div.innerHTML=`<iframe src="https://www.youtube.com/embed/${id}?autoplay=1"
+   frameborder="0" allowfullscreen style="width:100%;height:100%"></iframe>`;
+ };
+});
+</script>
+<script>
+// Automatically fix all Amazon shopping buttons
+document.querySelectorAll('.shop-buttons a').forEach(a => {
+  a.setAttribute('target', '_blank');         // open in new tab
+  a.setAttribute('rel', 'noopener noreferrer'); // safe and avoids browser blocking
+});
+</script>
+
+</body>
+</html>
+
 
