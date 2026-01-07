@@ -1,0 +1,311 @@
+<!-- PART 1 — OPEN (Not closed) -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daily FEMME</title>
+<style>
+body{margin:0;padding:0;font-family:Inter,sans-serif;background:#fff;}
+#daily-femme-box{max-width:420px;padding:16px;border-left:4px solid #e8b7c8;}
+.df-title{font-family:'Playfair Display',serif;font-size:18px;font-weight:600;margin-bottom:6px;}
+.df-text{font-size:14px;line-height:1.6;}
+.df-link{display:inline-block;margin-top:6px;font-size:13px;color:#C71585;text-decoration:none;}
+.df-link:hover{text-decoration:underline;}
+</style>
+</head>
+<body>
+
+<div id="daily-femme-box">
+  <div class="df-title" id="df-title"></div>
+  <div class="df-text" id="df-text"></div>
+</div>
+
+<script>
+// Part 1 — 10 professional entries (open public URLs)
+const dailyFemmeEntries = [
+{
+title: "Communication builds authority",
+text: "Clear communication helps women be taken seriously in academic and professional spaces.",
+link: "https://www.skillsyouneed.com/ips/communication-skills.html"
+},
+{
+title: "Listening is a leadership skill",
+text: "Active listening improves trust, influence, and decision-making.",
+link: "https://en.wikipedia.org/wiki/Active_listening"
+},
+{
+title: "Confidence grows from preparation",
+text: "Preparation reduces anxiety and improves performance in exams and meetings.",
+link: "https://en.wikipedia.org/wiki/Study_skills"
+},
+{
+title: "Time management equals self-respect",
+text: "Managing time effectively helps women balance education, work, and personal growth.",
+link: "https://en.wikipedia.org/wiki/Time_management"
+},
+{
+title: "Financial literacy is freedom",
+text: "Understanding money basics empowers women to make independent life choices.",
+link: "https://www.investopedia.com/financial-literacy-5114141"
+},
+{
+title: "Goal setting creates direction",
+text: "Clear goals turn effort into measurable progress.",
+link: "https://en.wikipedia.org/wiki/Goal_setting"
+},
+{
+title: "Learn how learning works",
+text: "Understanding how memory and practice work improves study and skill building.",
+link: "https://en.wikipedia.org/wiki/Learning"
+},
+{
+title: "Self-discipline beats motivation",
+text: "Consistency builds success more reliably than temporary motivation.",
+link: "https://en.wikipedia.org/wiki/Self-discipline"
+},
+{
+title: "Critical thinking protects you",
+text: "Strong reasoning skills help avoid misinformation and manipulation.",
+link: "https://en.wikipedia.org/wiki/Critical_thinking"
+},
+{
+title: "Boundaries increase respect",
+text: "Setting boundaries improves mental health and career growth.",
+link: "https://www.psychologytoday.com/us/basics/boundaries"
+}
+];
+
+const startDate = new Date(2024, 0, 1);
+const today = new Date();
+const diffDays = Math.floor((today - startDate)/86400000);
+const index = diffDays % dailyFemmeEntries.length;
+
+document.getElementById("df-title").innerText = dailyFemmeEntries[index].title;
+document.getElementById("df-text").innerHTML =
+  dailyFemmeEntries[index].text +
+  '<br><a class="df-link" href="'+dailyFemmeEntries[index].link+
+  '" target="_blank" rel="noopener">Learn more</a>';
+</script>
+<!-- PART 2 — CONTINUES (Do NOT close HTML) -->
+
+<script>
+// Part 2 — Next 10 entries (unique links, open & legal)
+const dailyFemmeEntriesPart2 = [
+{
+title: "Women’s health starts with awareness",
+text: "Knowing your body helps you detect changes early and seek timely care.",
+link: "https://www.who.int/health-topics/women-s-health"
+},
+{
+title: "Mental health is strength",
+text: "Emotional well-being is essential for confidence, focus, and resilience.",
+link: "https://www.who.int/health-topics/mental-health"
+},
+{
+title: "Sleep affects hormones and mood",
+text: "Good sleep improves mental clarity, skin health, and emotional balance.",
+link: "https://www.nhs.uk/live-well/sleep-and-tiredness/"
+},
+{
+title: "Nutrition fuels feminine health",
+text: "Balanced nutrition supports hormones, energy levels, and immunity.",
+link: "https://www.who.int/news-room/fact-sheets/detail/healthy-diet"
+},
+{
+title: "Physical activity boosts confidence",
+text: "Regular movement improves mood, strength, and long-term health.",
+link: "https://www.cdc.gov/physicalactivity/basics/index.htm"
+},
+{
+title: "Reproductive health knowledge matters",
+text: "Understanding reproductive health helps women make informed life choices.",
+link: "https://www.who.int/health-topics/sexual-health"
+},
+{
+title: "Stress management is a life skill",
+text: "Managing stress protects mental health and improves decision-making.",
+link: "https://www.apa.org/topics/stress"
+},
+{
+title: "Body literacy prevents fear",
+text: "Learning how the body works reduces anxiety and misinformation.",
+link: "https://en.wikipedia.org/wiki/Human_body"
+},
+{
+title: "Health literacy empowers women",
+text: "Understanding health information improves outcomes and confidence.",
+link: "https://en.wikipedia.org/wiki/Health_literacy"
+},
+{
+title: "Preventive care saves lives",
+text: "Regular check-ups help detect issues before they become serious.",
+link: "https://www.cdc.gov/prevention/index.html"
+}
+];
+
+// merge with Part 1 safely
+dailyFemmeEntries.push(...dailyFemmeEntriesPart2);
+</script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Daily FEMME — Part 3</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+body{
+  font-family: -apple-system, BlinkMacSystemFont, "Poppins", sans-serif;
+  background:#ffffff;
+  color:#111;
+  padding:24px;
+}
+.daily{
+  border-left:4px solid #e8b7c8;
+  padding-left:16px;
+}
+.phrase{
+  font-size:20px;
+  font-weight:600;
+  margin-bottom:10px;
+}
+.lines{
+  font-size:15px;
+  line-height:1.6;
+}
+</style>
+</head>
+<body>
+
+<div class="daily">
+  <div class="phrase" id="phrase"></div>
+  <div class="lines" id="lines"></div>
+</div>
+
+<script>
+const entries = [
+"Communication builds bridges.|Effective communication opens doors and strengthens relationships. Read more: <a href='https://www.womenshealth.gov/mental-health/communication-tips' target='_blank'>Women's Health — Communication Tips</a>",
+"Set financial boundaries.|Understanding your financial limits increases independence. Learn more: <a href='https://www.nfcc.org/personal-finance/financial-independence/' target='_blank'>National Foundation for Credit Counseling</a>",
+"Health check daily.|Simple daily health routines prevent big problems. Explore: <a href='https://www.cdc.gov/women/health/index.htm' target='_blank'>CDC Women’s Health</a>",
+"Time management matters.|Prioritize your tasks for stress-free growth. Discover: <a href='https://www.apa.org/topics/time-management' target='_blank'>APA — Time Management</a>",
+"Career vision is power.|Define your career goals clearly. Guide: <a href='https://www.womenatwork.org/career-planning' target='_blank'>Women at Work — Career Planning</a>",
+"Boundaries are freedom.|Healthy limits boost confidence and safety. Advice: <a href='https://www.psychologytoday.com/us/blog/the-new-grief/201812/boundaries-empower-women' target='_blank'>Psychology Today — Boundaries</a>",
+"Body care empowers.|Daily self-care improves energy and focus. Tips: <a href='https://www.womenshealthmag.com/health/a19963106/self-care-routine/' target='_blank'>Women's Health — Self-Care</a>",
+"Learn negotiation skills.|Negotiating increases opportunities and respect. Learn: <a href='https://www.inc.com/guides/2010/06/defining-your-negotiation-style.html' target='_blank'>Inc.com — Negotiation</a>",
+"Stay informed about rights.|Knowledge of your rights protects you. Details: <a href='https://www.unwomen.org/en/what-we-do/leadership-and-political-participation/women-s-legal-rights' target='_blank'>UN Women — Legal Rights</a>",
+"Stress management is key.|Small daily practices reduce stress. Read: <a href='https://www.nimh.nih.gov/health/publications/stress/index.shtml' target='_blank'>NIMH — Stress</a>",
+"Network strategically.|Your connections shape your opportunities. Guide: <a href='https://www.womenable.com/strategic-networking-for-women/' target='_blank'>Womenable — Networking</a>",
+"Sleep for success.|Quality sleep improves performance. Tips: <a href='https://www.sleepfoundation.org/women' target='_blank'>Sleep Foundation — Women</a>",
+"Exercise empowers your mind.|Physical activity strengthens mental health. Learn: <a href='https://www.womenshealth.gov/fitness-exercise' target='_blank'>Women's Health — Fitness</a>",
+"Mentorship matters.|Seek guidance from successful women. Explore: <a href='https://www.mentoring.org/mentoring-women/' target='_blank'>MENTOR — Women Mentoring</a>",
+"Financial literacy is freedom.|Understanding money secures independence. Read: <a href='https://www.consumerfinance.gov/consumer-tools/financial-education/' target='_blank'>CFPB — Financial Education</a>",
+"Assertiveness enhances respect.|Communicate clearly and confidently. Guide: <a href='https://www.skillsyouneed.com/ips/assertiveness.html' target='_blank'>SkillsYouNeed — Assertiveness</a>",
+"Self-defense saves lives.|Learn practical techniques and awareness. Details: <a href='https://www.nw3c.org/self-defense-tips-for-women' target='_blank'>NW3C — Self Defense</a>",
+"Nutrition fuels ambition.|Balanced diet supports brain and body. Tips: <a href='https://www.who.int/health-topics/nutrition' target='_blank'>WHO — Nutrition</a>",
+"Continuous learning is leverage.|Expand knowledge for growth. Explore: <a href='https://www.coursera.org/browse/women' target='_blank'>Coursera — Women Courses</a>",
+"Leadership is practiced daily.|Small decisions build leadership skills. Advice: <a href='https://www.mindtools.com/pages/article/newLDR_41.htm' target='_blank'>MindTools — Leadership</a>",
+"Mindfulness sharpens focus.|Daily mindfulness reduces overwhelm. Guide: <a href='https://www.headspace.com/women-mindfulness' target='_blank'>Headspace — Women Mindfulness</a>",
+"Confidence in the workplace.|Professional confidence elevates career. Read: <a href='https://www.catalyst.org/research/confidence/' target='_blank'>Catalyst — Workplace Confidence</a>",
+"Public speaking skills.|Express yourself clearly and confidently. Tips: <a href='https://www.toastmasters.org/resources/public-speaking-tips' target='_blank'>Toastmasters — Public Speaking</a>",
+"Emotional intelligence matters.|Manage your emotions effectively. Learn: <a href='https://www.psychologytoday.com/us/basics/emotional-intelligence' target='_blank'>Psychology Today — EQ</a>",
+"Digital literacy is power.|Understand technology to thrive. Guide: <a href='https://www.digcomp.org/' target='_blank'>DigComp — Digital Literacy</a>",
+"Community engagement grows influence.|Participate actively in your community. Explore: <a href='https://www.un.org/en/global-issues/women' target='_blank'>UN Women — Global Issues</a>",
+"Creative expression enhances growth.|Arts and creativity boost confidence. Tips: <a href='https://www.womensart.org/' target='_blank'>Women's Art — Creativity</a>",
+"Time for reflection.|Daily journaling improves clarity and decisions. Guide: <a href='https://www.journaltherapy.com/' target='_blank'>Journal Therapy</a>",
+"Personal branding matters.|Shape your image intentionally. Read: <a href='https://www.forbes.com/sites/forbescoachescouncil/2020/01/30/personal-branding-tips-for-women/' target='_blank'>Forbes — Personal Branding</a>",
+"Gratitude boosts resilience.|Daily gratitude improves well-being. Tips: <a href='https://www.psychologytoday.com/us/blog/the-gratitude-project' target='_blank'>Psychology Today — Gratitude</a>"
+];
+
+const today = new Date();
+const start = new Date(today.getFullYear(), 0, 0);
+const day = Math.floor((today - start) / 86400000);
+const index = day % entries.length;
+
+const [phrase, lines] = entries[index].split("|");
+document.getElementById("phrase").innerHTML = phrase;
+document.getElementById("lines").innerHTML = lines;
+</script>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daily FEMME — Part 4</title>
+<style>
+body{
+  font-family: -apple-system, BlinkMacSystemFont, "Poppins", sans-serif;
+  background:#ffffff;
+  color:#111;
+  padding:24px;
+}
+.daily{
+  border-left:4px solid #e8b7c8;
+  padding-left:16px;
+}
+.phrase{
+  font-size:20px;
+  font-weight:600;
+  margin-bottom:10px;
+}
+.lines{
+  font-size:15px;
+  line-height:1.6;
+}
+</style>
+</head>
+<body>
+
+<div class="daily">
+  <div class="phrase" id="phrase"></div>
+  <div class="lines" id="lines"></div>
+</div>
+
+<script>
+const entries = [
+"Every conversation is a chance to shine.|Learn active listening and assertive speaking. Read more: https://www.unwomen.org/en/what-we-do/leadership-and-political-participation",
+"Set your boundaries gracefully.|Communicate your needs clearly. Read more: https://www.psychologytoday.com/us/blog/compassion-matters/202201/setting-boundaries",
+"Financial literacy is freedom.|Start budgeting and saving today. Read more: https://www.investopedia.com/personal-finance-4427761",
+"Small daily learning grows big.|Dedicate 15 minutes to skill-building. Read more: https://www.coursera.org/articles/learning-strategies",
+"Assertiveness opens doors.|Say no respectfully, say yes strategically. Read more: https://www.mindtools.com/pages/article/newLDR_78.htm",
+"Prioritize self-care unapologetically.|Your energy fuels your success. Read more: https://www.healthline.com/health/self-care",
+"Leverage your network.|Connect with mentors and peers. Read more: https://www.forbes.com/sites/forbescoachescouncil/2020/06/08/how-to-build-your-professional-network/",
+"Morning routines set the tone.|Consistency breeds confidence. Read more: https://www.psychologytoday.com/us/blog/mindful-anger/201912/the-power-morning-routine",
+"Protect your digital presence.|Strong passwords and privacy matter. Read more: https://staysafeonline.org/stay-safe-online/secure-your-accounts/",
+"Celebrate your small wins.|Every step forward counts. Read more: https://www.inc.com/john-boitnott/why-you-should-celebrate-small-wins.html",
+"Your mindset is magnetic.|Positive thinking enhances opportunities. Read more: https://www.mindtools.com/pages/article/newLDR_60.htm",
+"Ask for what you deserve.|Negotiation is a feminine power. Read more: https://www.forbes.com/sites/ashleystahl/2020/10/22/how-to-negotiate-salary-as-a-woman/",
+"Learn from criticism.|Filter, adapt, grow. Read more: https://www.psychologytoday.com/us/blog/mindful-anger/201901/the-art-receiving-feedback",
+"Time-block for priorities.|Your schedule shapes your success. Read more: https://www.toggl.com/time-management-tips/",
+"Invest in emotional intelligence.|Empathy fuels leadership. Read more: https://www.hbr.org/2019/01/emotional-intelligence-has-12-elements-which-do-you-need-to-work-on",
+"Dress for your power.|Appearance enhances confidence. Read more: https://www.forbes.com/sites/forbescoachescouncil/2018/07/10/how-to-dress-for-success/",
+"Build resilience daily.|Overcome setbacks with grace. Read more: https://www.psychologytoday.com/us/basics/resilience",
+"Delegate to elevate.|You can't do everything yourself. Read more: https://www.mindtools.com/pages/article/newLDR_66.htm",
+"Master time for flow.|Eliminate distractions strategically. Read more: https://www.lifehack.org/articles/productivity/15-tips-to-manage-your-time.html",
+"Speak with clarity.|Clear communication earns respect. Read more: https://www.skillsyouneed.com/ips/communication-skills.html",
+"Document your achievements.|Track progress for visibility. Read more: https://www.forbes.com/sites/forbescoachescouncil/2020/12/02/the-power-of-documenting-achievements/",
+"Learn negotiation early.|Confidence in conversation matters. Read more: https://www.psychologytoday.com/us/blog/the-right-mindset/201807/negotiation-tips-women",
+"Mind your posture, mind your presence.|Posture influences perception. Read more: https://www.healthline.com/health/fitness-exercise/good-posture",
+"Reading expands vision.|Daily articles sharpen perspective. Read more: https://www.ted.com/talks",
+"Celebrate other women's success.|Lift others to lift yourself. Read more: https://www.unwomen.org/en/news/stories",
+"Break big tasks into micro-goals.|Small steps build momentum. Read more: https://www.mindtools.com/pages/article/newHTE_00.htm",
+"Learn to pivot gracefully.|Adaptability is a competitive edge. Read more: https://hbr.org/2017/10/the-art-of-pivoting",
+"Track habits, track growth.|Consistency is the key. Read more: https://www.nytimes.com/guides/smarterliving/habits",
+"Ask questions fearlessly.|Curiosity unlocks opportunities. Read more: https://www.forbes.com/sites/ashleystahl/2020/10/27/how-to-ask-better-questions/",
+"Protect your personal finances.|Budget, save, and grow. Read more: https://www.sec.gov/investor/alerts/ib_finaid.html"
+];
+
+const today = new Date();
+const start = new Date(today.getFullYear(), 0, 0);
+const day = Math.floor((today - start) / 86400000);
+const index = day % entries.length;
+
+const [phrase, lines] = entries[index].split("|");
+document.getElementById("phrase").innerHTML = phrase;
+document.getElementById("lines").innerHTML = lines;
+</script>
+
+</body>
+</html>
