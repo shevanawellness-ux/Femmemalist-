@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Binge Watching for Baddies</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/paulirish/lite-youtube-embed@latest/src/lite-yt-embed.css">
+
+<style>
+body{margin:0;background:linear-gradient(to bottom,#fff0f5,#ffe6f0);color:#333;font-family:'Inter',sans-serif;line-height:1.7;}
+.container{max-width:950px;padding:20px;margin:auto;}
+h1,h2,h3{font-family:'Playfair Display',serif;}
+h1{font-size:36px;color:#C71585;margin-bottom:28px;text-align:center;}
+h2{font-size:26px;color:#DB7093;margin-top:46px;margin-bottom:20px;}
+.video-title{font-size:16px;font-weight:600;color:#C71585;margin:28px 0 12px;text-align:center;}
+.yt-lite{position:relative;width:100%;aspect-ratio:16/9;background:#000;border-radius:14px;overflow:hidden;cursor:pointer;box-shadow:0 8px 25px rgba(0,0,0,0.12);}
+.video-grid{margin:25px 0; display:flex; justify-content:center;}
+.cta{margin:40px 0 20px;padding:22px;background:#ffe6f0;border-left:6px solid #FF69B4;border-radius:18px;font-family:'Playfair Display',serif;font-size:20px;color:#C71585;font-weight:700;text-align:center;}
+.load-more{display:block;margin:20px auto;padding:15px 25px;background:#ff69b4;color:#fff;font-family:'Playfair Display',serif;font-size:18px;border:none;border-radius:40px;cursor:pointer;}
+.load-more:hover{background:#ff85c0;}
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>Binge Watching for Baddies</h1>
+
+<div class="cta">
+Watch smart. Protect your sleep. Stay glowing.
+</div>
+
+<p>
+Not all binge-watching is unproductive. When done right, it can recharge your mind, inspire confidence, and elevate your lifestyle. The key is <strong>intentional watching</strong>. Instead of endlessly scrolling, choose content like these recommended videos that motivate you, teach you something new, or help you relax without destroying your sleep schedule.
+</p>
+
+<div id="videoContainer"></div>
+
+<button id="loadMoreBtn" class="load-more">Load More Videos</button>
+
+<div class="cta">
+Upgrade your watch time, don’t waste it.
+</div>
+
+<p style="font-size:10px; color:rgba(0,0,0,0.35); font-style:italic; text-align:center; margin-top:40px; line-height:1.2;">
+Disclaimer & Disclosure: This page is for educational purposes only and includes Amazon affiliate links and embedded YouTube videos. All rights for videos belong to their respective creators. Individual results may vary; consult professionals if needed.
+</p>
+<p style="font-size:10px; color:rgba(0,0,0,0.35); font-style:italic; text-align:center; margin-top:10px; line-height:1.2;">
+© 2026 Femmemalist. All rights reserved.
+</p>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/gh/paulirish/lite-youtube-embed@latest/src/lite-yt-embed.js"></script>
+<script>
+// ==================== VIDEO LIST ====================
+// Add your YouTube video IDs here, in order
+const videoIDs = [
+  "lT4zAyLl0mM","Fbfn9pVk-Ng","HOnAb5C6flM","xAGyhkWoDX8","VD8uuuKvAIg","ouvbeb2wSGA","A9Xq3FGjpZA","HX3a2MEwNr8",
+  "7b9THb3cQbg","IAb2QHdNe1A","bMkznpM63cI","uOcKF-aLHyw","aL43l2SFVWQ","GXy-jQTJ4rU","96QsoXd0G3E","XybfOrLL3Qw",
+  "p-7yvEUNkDU","QntKFgERSYw","1tTvLGkEqTU","8BDz5_HWLBA","C3Md15-yw70","Q0xsAZm-7BQ","N9P6gu-5yEM","YArpM7vz9SE",
+  "7e6RSGdvHD8","mSaI8Rluel8","OQIOjug4WC8","4r6Vdjx9RqA","j-IM6qsXSR8","C4QiU9BGMbM","HR61Hwt2qUA","hCU6nic60-Y",
+  "SeaiInbr92k","aa6DHUJIxAs","Ll4Oy7TPGkY","HBWydCNV-fQ","UBjPxQI_M5c","cxm0zdZDLeE","5JvbjrLESPs","dX2YrVlTqGw",
+  "gIOdJ6ybYIM","10fgsxyCgAk","4csTQC3_1r0","3a5evMECj8I","1XQnU4dw-5E","q1vWAnUf0Hk","THC7Gybz7gI","Wvukpbd6qvA",
+  "lX6S_opq6nM","LEGbBjbMkZY","cckEjZSjJRQ","sZNaibKdC5M","POeMJDlZnJY","R6WMqk9h_IM","n24ylez0C4g","m2G7j8J_B34",
+  "GwkLdCiK7yI","Uoh_aNwLJ4A","xk9LV4DoM7Y","IQLpeX7qRWY","SVt7diTpDx4","wFTBa2DA5IQ","ty83W0FmrYA","dYke_pjH-rA",
+  "5U9MBl2cVr0","7wUJlEnXNAk","4bTl3XV55EU","u4T96FEqk9U","ixmOdqmrJkk","VeBX4WjhhXs","uwHUwP1TrhY","pBSu3C8D9s8",
+  "YK3JC1k4rTg","BZQPaWAvyOA","h9vztr60-zs","uXTREehuNFU","kr5nsPpWcIE","r2Al7rG4aag","ZXHrPfWJcCI","NFSXQtDF5tE",
+  "F-lWyYxB2vM","Aa8ng6yeWW4","WVkpBsNAcqw","f9fzHsfLlTw","kKD-bUcnd5E","QTLwzEcwHGg","XvBl4ikQQiM","Agvu-AiQLm0",
+  "nqWZVFFCWAY","y8iOEeZ5JXU","mP6E3NO2AGc","OIjYHKHdgl0","eyXKvOrDoqw","O8WIdjRk10o","ow77v1CM31k","Fhe0advzlzo",
+  "fKXr0wyw1gA","QA59Ld3Vkfc","zUZIZTQN7PU","f3_UX7-TR78","QSKlSLu3rjk","Etv-g2gY68E","H7gnsO4UZmU","rw0wC3Koh1o",
+  "vu_R9z-5BfE","T4xUmHknsNU","z7ajzEJFc_U","wFTBa2DA5IQ","6acFxt9xMlE","pYq5IxnQVKI","wgoC_PmyTrU","dL75GB9iUOU",
+  "gYJSqzI6ugk","Fu2sOVs18UY","3h6IrBA7L90","vDzIhsh-bP0","8T39OBNaNzU","quzmSaDZ2vk","zdKrv1ZsXw0","-3h9DZpFjS8",
+  "WTY64m6gpJA","yStkQTtU2EQ","5CtiouwHOxw","TrWH95GPo2M","qU8M6HOyT6U","DGbWzLcATYc","JSOm7TCwjnw","orqknLgK5Lk",
+  "-8fQhcXYznk","aLyQcy6yIkI","tkm0TNFzIeg","S39zoHnV-ok","xBB_O37bhnE","6GTt10GDWII","UPT6bguxH2s","Gz9bmQze62E",
+  "ZfF2KPazvH4","JoB3wL15edA","yGgl7L3S27Y","4H2gASbDxok","wLLAWiOfukk","nIUYfReOgLU","YvkpYLIfAAw","PE0u7-SX2hs",
+  "v00DUIxRX0c","_l4xZLssfUY","AVO0ifle-OU","qb4JbUjr5tM","Gj9IvRIore8","ERysyFbJH7w","sKren-PKhec","ttK7RyXf8uY",
+  "tq4bpUfVU1I","IT94xC35u6k","ow3hpYJqYEI","m1DBJhxKmiU","HvyjY-hwcWI","EzzHv56zDVc","CQixVs1K-S0","_jlD-HT1KAY",
+  "Bbx0yGCFbpk","gJvr-Bldp_s","cEVAjm_ETtY","uj2vaGHLc_c","V9fLgt6Czpk","jiBL2Cqfcmg","7Y5qHtRVuT4","zdsqEZs05pE",
+  "-TZemBNmmCI","Izw-xaVkO0g","HQzoZfc3GwQ","M5y69v1RbU0","0lQOWQfX3bo","ojS6jbgo2dU","4nLNcAZlvJU","dqS4E0GWGiQ",
+  "3DOB0iBNY-M","6v4OgilckIc","9lVB1-c69Sw","PRAMFqh49b0"
+];
+
+// ==================== BATCH RENDER ====================
+const container = document.getElementById('videoContainer');
+const loadBtn = document.getElementById('loadMoreBtn');
+let currentIndex = 0;
+const batchSize = 30;
+
+function loadVideos() {
+  const end = Math.min(currentIndex + batchSize, videoIDs.length);
+  for(let i=currentIndex; i<end; i++){
+    const divTitle = document.createElement('div');
+    divTitle.className = 'video-title';
+    divTitle.textContent = `Video ${i+1}`;
+    container.appendChild(divTitle);
+
+    const divGrid = document.createElement('div');
+    divGrid.className = 'video-grid yt-lite';
+    divGrid.dataset.id = videoIDs[i];
+
+    const img = document.createElement('img');
+    img.src = `https://i.ytimg.com/vi/${videoIDs[i]}/hqdefault.jpg`;
+    img.style.objectFit='cover';
+    img.style.width='100%';
+    img.style.height='100%';
+    divGrid.appendChild(img);
+
+    divGrid.onclick = () => {
+      divGrid.innerHTML = `<iframe loading="lazy" src="https://www.youtube.com/embed/${videoIDs[i]}?autoplay=1" frameborder="0" allowfullscreen style="width:100%;height:100%;border-radius:14px;"></iframe>`;
+    };
+    container.appendChild(divGrid);
+  }
+  currentIndex = end;
+  if(currentIndex >= videoIDs.length){
+    loadBtn.style.display = 'none';
+  }
+}
+
+// Load initial 100 videos
+currentIndex = 0;
+for(let i=0; i<100 && i<videoIDs.length; i+=batchSize){
+  loadVideos();
+}
+
+// Load more button
+loadBtn.addEventListener('click', loadVideos);
+</script>
+
+</body>
+</html>
