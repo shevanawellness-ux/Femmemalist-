@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title> Audiobooks for you</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/paulirish/lite-youtube-embed@latest/src/lite-yt-embed.css">
+
+<style>
+body{margin:0;background:linear-gradient(to bottom,#fff0f5,#ffe6f0);color:#333;font-family:'Inter',sans-serif;line-height:1.7;}
+.container{max-width:950px;padding:20px;margin:auto;}
+h1,h2,h3{font-family:'Playfair Display',serif;}
+h1{font-size:36px;color:#C71585;margin-bottom:28px;text-align:center;}
+h2{font-size:26px;color:#DB7093;margin-top:46px;margin-bottom:20px;}
+.video-title{font-size:16px;font-weight:600;color:#C71585;margin:28px 0 12px;text-align:center;}
+.yt-lite{position:relative;width:100%;aspect-ratio:16/9;background:#000;border-radius:14px;overflow:hidden;cursor:pointer;box-shadow:0 8px 25px rgba(0,0,0,0.12);}
+.video-grid{margin:25px 0; display:flex; justify-content:center;}
+.cta{margin:40px 0 20px;padding:22px;background:#ffe6f0;border-left:6px solid #FF69B4;border-radius:18px;font-family:'Playfair Display',serif;font-size:20px;color:#C71585;font-weight:700;text-align:center;}
+.load-more{display:block;margin:20px auto;padding:15px 25px;background:#ff69b4;color:#fff;font-family:'Playfair Display',serif;font-size:18px;border:none;border-radius:40px;cursor:pointer;}
+.load-more:hover{background:#ff85c0;}
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1> Audiobooks for you</h1>
+
+<div class="cta">
+These YouTube audiobooks are recommended to inspire, educate, and transform your mindset. Listen, reflect, and grow!
+</div>
+
+<p>
+Transform your free time into a learning experience. Each audiobook here can help you improve your thinking, motivation, and overall perspective on life. Enjoy intentional listening and absorb knowledge that matters.
+</p>
+
+<div id="videoContainer"></div>
+
+<button id="loadMoreBtn" class="load-more">Load More Videos</button>
+
+<div class="cta">
+Upgrade your listening experience, don’t waste your time.
+</div>
+
+<p style="font-size:10px; color:rgba(0,0,0,0.35); font-style:italic; text-align:center; margin-top:40px; line-height:1.2;">
+Disclaimer & Disclosure: This page is for educational purposes only and includes embedded YouTube videos. All rights for videos belong to their respective creators. Individual results may vary; consult professionals if needed.
+</p>
+<p style="font-size:10px; color:rgba(0,0,0,0.35); font-style:italic; text-align:center; margin-top:10px; line-height:1.2;">
+© 2026 Your Name. All rights reserved.
+</p>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/gh/paulirish/lite-youtube-embed@latest/src/lite-yt-embed.js"></script>
+<script>
+// ==================== AUDIOBOOK VIDEO LIST ====================
+const videoIDs = [
+"pLQc_Vtyr-4","56oiVamCc0U","7yCWIWX_8UQ","gHY_9SLJbFI","_i4KqVs_zbQ","7tdw9QqRVyw","WKyC8zi5EDw","gFNtSMMu9tA",
+"szPe17pIgN0","aBZ7ZDLs2Jg","QFks3j_PVDA","mEnjavpe2FM","343ZHaDINmM","wxQq5XjI_tQ","aBz2oh9cYqg","QA59Ld3Vkfc",
+"HrG8yF3cUSI","TI0V04dP4t8","_IgmslQqxjY","fs038kJtcrg","X7rhovBK_eA","EMsYX32bjOY","zs3sothmNPI","teNcGiKoM18",
+"8Z7g_8gRzb0","2DTNfbtnPgo","qJVbk2vljpc","aL43l2SFVWQ","Etz2Kgtev5w","evbHWPSjeeo","-GNCoe9TeNc","Go6fHkWpBiY",
+"0KB2F2lXfx4","RMs6O7s74go","_qWmlAuUSXU","JpjrgjTSp7I","-IfMi4i40xI","OJ1n-brnb4c","TNZ-djoadDI","fiQVsADQ_nQ",
+"N4WxQlxSuGY","Ww-em5gRG1A","xFPF0EQqIvI","fw4bjaje7pM","obbpZyteRys","rQrvwZBqg84","7nsoYTn8mvc","BQEeKmpSSBM",
+"ZFw6D7mBNFY","AK3gRRY_gcA","bXZoZP1SqWM","mautspsaWSQ","7hqzsj8Y0mo","Yda0qX0XSKo","IEP7zeRBnA0","Q3QBIAxVtQ0",
+"arSmHVldUyk","F-0OY98owFE","-x3TpU4lYbw","epqr2LszCUk","CcHbN5oez1g","ekWqlh0mWdc","urPZd_UF-cY","kL1vBbC7vFo",
+"wp7Lz1svVro","jayC8K18YFE","hp1PX70VW1w","sgmiTRcou-I","Iyvnukd3qQY","MNCPQ7QF6i0","IsLZilCVO9U","mWXa5RtVec0",
+"kmASF2SazE0","XQeqOG1Cu2g","SsJDhCPoCsM","oKwIlz-dzx4","HNCgM-yabd4","BNZ-W8Sr5e8","c93ipQq_px4","jXccLa-NlE0",
+"_zhYMbuV4BI","-CCEh0VmUdU","mbXqlZs02Ok","QWvBvDeB7aw","ffNWoefuwPM","Solb9uA-tgQ","Sr6Dfmrc2D4","2PSZbJOIOt8",
+"4SkWme762tA","0BUyxoGYKoI","sH4I9WVgk_g","1qexOPJA76M","wJa5Ch0O4BI","VPH2QSTF5KA","hNMSV9rMPc8","aFRZJ28SxyY",
+"i6bw9jrrMLo","fPQ6ymG_3Xs","YUUIflTSNf8","uwHUwP1TrhY","aTCwcj6oHoM","wxQq5XjI_tQ","Fp1cvVAGcSs","8Z7g_8gRzb0",
+"wF293QPbmvo","epqr2LszCUk","ky-fDA8Dkoc","gVr4sbNGZDU","kfvSCpe9qZQ","vxIXVmQvinI","rIy1lL0fS38","j3C4_BT2szI",
+"pzdzMSxBU-I","QpM1DDK8P34","uFtT5jJ9LBQ","nMAz8PqIUS4","QWvBvDeB7aw","dIgz7DKWx5s","wp7Lz1svVro","BZGnJImTlfw",
+"a0gvy5Ni66w","AVN5l35cEak","zbHDxferJ9Y","iwxFUfCWe4w","JVyyjUhDePc","gZXgWwqrplk","YK3JC1k4rTg","i8GDiihtnOU",
+"BZGnJImTlfw","ANNoL1JJ1wE","k3cdkzp37Qs","GwXQKajxucQ","q_We3__MJpQ","OvzcE3w4Ffk","0JNw9dKFKfY","75Mgi6fD7jM",
+"Lk6EAdsX5A0","478KIty5AkU","VxUHPEqteVI","2yLNVj1IX2g","rLhtcdCfDbU"
+];
+
+// ==================== BATCH RENDER ====================
+const container = document.getElementById('videoContainer');
+const loadBtn = document.getElementById('loadMoreBtn');
+let currentIndex = 0;
+const batchSize = 20;
+
+function loadVideos() {
+  const end = Math.min(currentIndex + batchSize, videoIDs.length);
+  for(let i=currentIndex; i<end; i++){
+    const divTitle = document.createElement('div');
+    divTitle.className = 'video-title';
+    divTitle.textContent = `Audiobook ${i+1}`;
+    container.appendChild(divTitle);
+
+    const divGrid = document.createElement('div');
+    divGrid.className = 'video-grid yt-lite';
+    divGrid.dataset.id = videoIDs[i];
+
+    const img = document.createElement('img');
+    img.src = `https://i.ytimg.com/vi/${videoIDs[i]}/hqdefault.jpg`;
+    img.style.objectFit='cover';
+    img.style.width='100%';
+    img.style.height='100%';
+    divGrid.appendChild(img);
+
+    divGrid.onclick = () => {
+      divGrid.innerHTML = `<iframe loading="lazy" src="https://www.youtube.com/embed/${videoIDs[i]}?autoplay=1" frameborder="0" allowfullscreen style="width:100%;height:100%;border-radius:14px;"></iframe>`;
+    };
+    container.appendChild(divGrid);
+  }
+  currentIndex = end;
+  if(currentIndex >= videoIDs.length){
+    loadBtn.style.display = 'none';
+  }
+}
+
+// Load initial batch
+loadVideos();
+
+// Load more button
+loadBtn.addEventListener('click', loadVideos);
+</script>
+
+</body>
+</html>
