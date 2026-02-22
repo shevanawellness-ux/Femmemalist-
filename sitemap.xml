@@ -1,84 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
-  <url>
-    <loc>https://femmemalist.pages.dev/index.html</loc>
-  </url>
+  <url><loc>https://femmemalist.com/</loc></url>
 
-  <url>
-    <loc>https://femmemalist.pages.dev/faceshapes.html</loc>
-  </url>
+  <url><loc>https://femmemalist.com/faceshapes.html</loc></url>
+  <url><loc>https://femmemalist.com/bodyshapes.html</loc></url>
+  <url><loc>https://femmemalist.com/undertones.html</loc></url>
 
-  <url>
-    <loc>https://femmemalist.pages.dev/bodyshapes.html</loc>
-  </url>
+  <url><loc>https://femmemalist.com/diamond.html</loc></url>
+  <url><loc>https://femmemalist.com/oval.html</loc></url>
+  <url><loc>https://femmemalist.com/round.html</loc></url>
+  <url><loc>https://femmemalist.com/square.html</loc></url>
+  <url><loc>https://femmemalist.com/rectangle.html</loc></url>
+  <url><loc>https://femmemalist.com/oblong.html</loc></url>
+  <url><loc>https://femmemalist.com/heart.html</loc></url>
+  <url><loc>https://femmemalist.com/pear.html</loc></url>
+  <url><loc>https://femmemalist.com/hourglass.html</loc></url>
+  <url><loc>https://femmemalist.com/invertedtriangle.html</loc></url>
+  <url><loc>https://femmemalist.com/apple.html</loc></url>
 
-  <url>
-    <loc>https://femmemalist.pages.dev/undertones.html</loc>
-  </url>
+  <url><loc>https://femmemalist.com/warm.html</loc></url>
+  <url><loc>https://femmemalist.com/cool.html</loc></url>
+  <url><loc>https://femmemalist.com/neutral.html</loc></url>
 
-  <url>
-    <loc>https://femmemalist.pages.dev/diamond.html</loc>
-  </url>
-
-  <url>
-    <loc>https://femmemalist.pages.dev/oval.html</loc>
-  </url>
-
-  <url>
-    <loc>https://femmemalist.pages.dev/round.html</loc>
-  </url>
-
-  <url>
-    <loc>https://femmemalist.pages.dev/square.html</loc>
-  </url>
-
-  <url>
-    <loc>https://femmemalist.pages.dev/rectangle.html</loc>
-  </url>
-
-  <url>
-    <loc>https://femmemalist.pages.dev/oblong.html</loc>
-  </url>
-
-  <url>
-    <loc>https://femmemalist.pages.dev/heart.html</loc>
-  </url>
-
-  <url>
-    <loc>https://femmemalist.pages.dev/pear.html</loc>
-  </url>
-
-  <url>
-    <loc>https://femmemalist.pages.dev/hourglass.html</loc>
-  </url>
-
-  <url>
-    <loc>https://femmemalist.pages.dev/invertedtriangle.html</loc>
-  </url>
-
-  <url>
-    <loc>https://femmemalist.pages.dev/apple.html</loc>
-  </url>
-
-  <url>
-    <loc>https://femmemalist.pages.dev/warm.html</loc>
-  </url>
-
-  <url>
-    <loc>https://femmemalist.pages.dev/cool.html</loc>
-  </url>
-
-  <url>
-    <loc>https://femmemalist.pages.dev/neutral.html</loc>
-  </url>
-
-  <url>
-    <loc>https://femmemalist.pages.dev/dailyfemme.html</loc>
-  </url>
-
-  <url>
-    <loc>https://femmemalist.pages.dev/dailyfemmegrowth.html</loc>
-  </url>
+  <url><loc>https://femmemalist.com/dailyfemme.html</loc></url>
+  <url><loc>https://femmemalist.com/dailyfemmegrowth.html</loc></url>
 
 </urlset>
