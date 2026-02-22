@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://femmemalist.pages.dev/sitemap.xml
+Sitemap: https://femmemalist.com/sitemap.xml
