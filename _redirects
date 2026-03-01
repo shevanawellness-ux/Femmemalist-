@@ -4,5 +4,3 @@ https://www.femmemalist.com/* https://femmemalist.com/:splat 301
 # Force pages.dev to main domain
 https://femmemalist.pages.dev/* https://femmemalist.com/:splat 301
 
-# Fix old app link
-/APP-LINK-URL https://femmemalist.com/ 301
