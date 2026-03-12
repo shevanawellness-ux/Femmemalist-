@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
+  <!-- Homepage -->
   <url><loc>https://femmemalist.com/</loc></url>
 
+  <!-- Core Guides -->
   <url><loc>https://femmemalist.com/faceshapes.html</loc></url>
   <url><loc>https://femmemalist.com/bodyshapes.html</loc></url>
   <url><loc>https://femmemalist.com/undertones.html</loc></url>
 
+  <!-- Face Shapes -->
   <url><loc>https://femmemalist.com/diamond.html</loc></url>
   <url><loc>https://femmemalist.com/oval.html</loc></url>
   <url><loc>https://femmemalist.com/round.html</loc></url>
@@ -14,16 +17,44 @@
   <url><loc>https://femmemalist.com/rectangle.html</loc></url>
   <url><loc>https://femmemalist.com/oblong.html</loc></url>
   <url><loc>https://femmemalist.com/heart.html</loc></url>
+
+  <!-- Body Shapes -->
   <url><loc>https://femmemalist.com/pear.html</loc></url>
   <url><loc>https://femmemalist.com/hourglass.html</loc></url>
   <url><loc>https://femmemalist.com/invertedtriangle.html</loc></url>
   <url><loc>https://femmemalist.com/apple.html</loc></url>
 
+  <!-- Undertone Guides -->
   <url><loc>https://femmemalist.com/warm.html</loc></url>
   <url><loc>https://femmemalist.com/cool.html</loc></url>
   <url><loc>https://femmemalist.com/neutral.html</loc></url>
 
+  <!-- Clothing Guides -->
+  <url><loc>https://femmemalist.com/warmclothes.html</loc></url>
+  <url><loc>https://femmemalist.com/coolclothes.html</loc></url>
+  <url><loc>https://femmemalist.com/neutralclothes.html</loc></url>
+  <url><loc>https://femmemalist.com/oliveclothes.html</loc></url>
+
+  <!-- Lifestyle & Growth -->
   <url><loc>https://femmemalist.com/dailyfemme.html</loc></url>
   <url><loc>https://femmemalist.com/dailyfemmegrowth.html</loc></url>
+  <url><loc>https://femmemalist.com/femmefatale.html</loc></url>
+
+  <!-- Women's Health -->
+  <url><loc>https://femmemalist.com/periods.html</loc></url>
+  <url><loc>https://femmemalist.com/pregnancy.html</loc></url>
+
+  <!-- Beauty -->
+  <url><loc>https://femmemalist.com/signatureshades.html</loc></url>
+
+  <!-- Content Pages -->
+  <url><loc>https://femmemalist.com/audiobooks.html</loc></url>
+  <url><loc>https://femmemalist.com/baddiebinge.html</loc></url>
+
+  <!-- Contact -->
+  <url><loc>https://femmemalist.com/contact.html</loc></url>
+
+  <!-- Error Page (optional but okay) -->
+  <url><loc>https://femmemalist.com/404.html</loc></url>
 
 </urlset>
