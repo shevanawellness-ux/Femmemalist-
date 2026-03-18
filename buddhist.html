@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Daily Buddhist Guidance</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+body {
+  margin:0;
+  padding:0;
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(#fff0f5, #ffe6f0);
+}
+
+.container {
+  max-width:900px;
+  margin:auto;
+  padding:40px 20px;
+}
+
+h1 {
+  font-family: 'Playfair Display', serif;
+  text-align:center;
+  font-size:34px;
+  margin-bottom:10px;
+}
+
+.subtitle {
+  text-align:center;
+  font-size:16px;
+  margin-bottom:30px;
+}
+
+.button-wrap {
+  text-align:center;
+  margin:30px 0;
+}
+
+button {
+  background:#ff4d88;
+  color:white;
+  border:none;
+  padding:14px 28px;
+  font-size:16px;
+  border-radius:30px;
+  cursor:pointer;
+  font-family:'Inter', sans-serif;
+}
+
+#verseOutput {
+  margin-top:30px;
+}
+
+.verse-box {
+  background:white;
+  padding:20px;
+  margin:15px auto;
+  border-radius:18px;
+  box-shadow:0 12px 30px rgba(0,0,0,0.08);
+  font-size:18px;
+  text-align:center;
+  max-width:700px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Daily Buddhist Guidance</h1>
+
+<p class="subtitle">
+Receive two mindful verses daily for peace, compassion, and positive manifestation
+</p>
+
+<div id="verseOutput"></div>
+
+<div class="button-wrap">
+<button onclick="showVerses()">Receive Today's Verses</button>
+</div>
+
+<script>
+
+const verses = [
+"Peace comes from within. Do not seek it without. — Buddha",
+"Thousands of candles can be lighted from a single candle, and the life of the candle will not be shortened. Happiness never decreases by being shared. — Buddha",
+"Do not dwell in the past, do not dream of the future, concentrate the mind on the present moment. — Buddha",
+"Health is the greatest gift, contentment the greatest wealth, faithfulness the best relationship. — Buddha",
+"Holding onto anger is like drinking poison and expecting the other person to die. — Buddha",
+"Your work is to discover your world and then with all your heart give yourself to it. — Buddha",
+"All that we are is the result of what we have thought. The mind is everything. What we think, we become. — Buddha",
+"Hatred does not cease by hatred, but only by love; this is the eternal rule. — Buddha",
+"Let go of attachment and you will find peace. — Buddha",
+"To understand everything is to forgive everything. — Buddha",
+"Just as a solid rock is not shaken by the storm, even so the wise are not affected by praise or blame. — Buddha",
+"Purity or impurity depends on oneself. No one can purify another. — Buddha",
+"Better than a thousand hollow words, is one word that brings peace. — Buddha",
+"Radiate boundless love toward the entire world. — Buddha",
+"Thousands of thoughts come and go. Watch them like clouds in the sky. — Buddha",
+"Just as a mother would protect her only child with her life, even so let one cultivate a boundless love toward all beings. — Buddha",
+"Do not overrate what you have received, nor envy others. — Buddha",
+"Even death is not to be feared by one who has lived wisely. — Buddha",
+"Whatever a monk keeps pursuing with his thinking and pondering, that becomes the inclination of his awareness. — Buddha",
+"An idea that is developed and put into action is more important than an idea that exists only as an idea. — Buddha",
+"Thousands of deeds are meaningless without compassion. — Buddha",
+"The mind is everything. What you think you become. — Buddha",
+"Delight in meditation and solitude. — Buddha",
+"Conquer the angry man by love. — Buddha",
+"Better than a thousand empty words is one word that brings peace. — Buddha",
+"One moment can change a day, one day can change a life, and one life can change the world. — Buddha",
+"All experiences are preceded by mind, led by mind, made by mind. — Buddha",
+"Happiness does not depend on what you have or who you are. It solely relies on what you think. — Buddha",
+"Work out your own salvation. Do not depend on others. — Buddha",
+"Nothing can harm you as much as your own thoughts unguarded. — Buddha",
+"An insincere and evil friend is more to be feared than a wild beast. — Buddha",
+"Peace comes when we let go of our attachments. — Buddha",
+"To keep the body in good health is a duty… otherwise we shall not be able to keep our mind strong and clear. — Buddha",
+"Better than a thousand days of diligent study is one day with a compassionate heart. — Buddha",
+"Whatever words we utter should be chosen with care for people will hear them and be influenced by them for good or ill. — Buddha",
+"The root of suffering is attachment. — Buddha",
+"Do not overvalue what you have received, nor envy others. — Buddha",
+"The trouble is, you think you have time. — Buddha",
+"The way is not in the sky; the way is in the heart. — Buddha","Conquer the mind, not the world. — Buddha",
+"Peace comes from understanding the impermanence of all things. — Buddha",
+"A disciplined mind brings happiness. — Buddha",
+"The mind is everything; what you think, you become. — Buddha",
+"Better than a thousand days of diligent study is one day with a compassionate heart. — Buddha",
+"Purity or impurity depends on oneself; no one can purify another. — Buddha",
+"Holding onto anger is like grasping hot coal with the intent of throwing it at someone else; you are the one who gets burned. — Buddha",
+"Radiate love and compassion toward all beings. — Buddha",
+"Whatever a monk keeps pursuing with his thinking and pondering, that becomes the inclination of his awareness. — Buddha",
+"Let go of craving, and you will find true freedom. — Buddha",
+"Understanding the mind is the key to enlightenment. — Buddha",
+"The path to happiness is through mindfulness and kindness. — Buddha",
+"Do not follow the past, nor dream of the future, concentrate the mind on the present moment. — Buddha",
+"Happiness comes when your work and words are guided by love. — Buddha",
+"Attachment leads to suffering; detachment leads to peace. — Buddha",
+"Nothing can harm you as much as your own unguarded thoughts. — Buddha",
+"A mind unshaken by adversity is stronger than a thousand armies. — Buddha",
+"Compassion is the root of all positive action. — Buddha",
+"The mind is like water; when it is turbulent, it is difficult to see. When it is calm, everything becomes clear. — Buddha",
+"The wise man makes an island of himself that no flood can overwhelm. — Buddha",
+"An insincere and evil friend is more to be feared than a wild beast. — Buddha",
+"Peace comes when we let go of our attachments. — Buddha",
+"To keep the body in good health is a duty; otherwise we shall not be able to keep our mind strong and clear. — Buddha",
+"Better than a thousand days of diligent study is one day with a compassionate heart. — Buddha",
+"Whatever words we utter should be chosen with care, for people will hear them and be influenced by them for good or ill. — Buddha",
+"The root of suffering is attachment. — Buddha",
+"The trouble is, you think you have time. — Buddha",
+"The way is not in the sky; the way is in the heart. — Buddha",
+"Hatred does not cease by hatred, but only by love; this is the eternal law. — Buddha",
+"The tongue like a sharp knife… kills without drawing blood. — Buddha",
+"Peace comes when the mind is freed from desire. — Buddha",
+"A disciplined mind brings clarity and stability. — Buddha",
+"Happiness arises from within, not from external sources. — Buddha",
+"Every morning we are born again. What we do today is what matters most. — Buddha",
+"Let your thoughts be as gentle as a flowing river. — Buddha",
+"Your purpose is to find happiness in yourself and spread it to others. — Buddha",
+"True love is born from understanding and compassion. — Buddha",
+"The wise do not grieve for the living or the dead. — Buddha",
+"The mind is the source of happiness and suffering. — Buddha",
+"A person is not truly wise until he can see the world through another’s eyes. — Buddha",
+"Compassion and tolerance are not a sign of weakness, but a sign of strength. — Buddha",
+"Those who have conquered themselves are greater than those who have conquered the world. — Buddha",
+"Do not let the behavior of others destroy your inner peace. — Buddha",
+"The greatest prayer is patience. — Buddha",
+"Your work is to cultivate your mind with love, compassion, and clarity. — Buddha",
+"Silence the mind, and the soul will speak. — Buddha",
+"By doing good for others, you purify yourself. — Buddha",
+"One who acts with mindfulness creates harmony within and without. — Buddha",
+"Release your attachment to outcomes and focus on right action. — Buddha",
+"Contentment is the greatest wealth. — Buddha",
+"A kind word can transform a mind filled with hate. — Buddha",
+"Mindfulness is the path to freedom. — Buddha",
+"Through meditation, we learn to see things as they truly are. — Buddha",
+"Everything arises and passes away; nothing lasts forever. — Buddha",
+"Clarity comes from stillness. — Buddha",
+"Do not be satisfied with a little kindness; practice it endlessly. — Buddha",
+"Through compassion, one becomes a light in the darkness. — Buddha",
+"True strength is gentle and forgiving. — Buddha",
+"A heart filled with gratitude experiences constant joy. — Buddha",
+"Awareness is the first step toward freedom. — Buddha",
+"The wise find peace even amidst chaos. — Buddha",
+"Seek not for happiness outside; it is already within you. — Buddha",
+"Do not harm any living being; respect life. — Buddha",
+"Even a single thought of kindness can change the world. — Buddha",
+"Attachment brings suffering; letting go brings peace. — Buddha",
+"One who conquers himself is greater than one who conquers a thousand men in battle. — Buddha",
+"The path is long, but each step taken mindfully leads to freedom. — Buddha","Do not chase after pleasure, for it is fleeting; cultivate inner peace. — Buddha",
+"To understand the mind, observe it without judgment. — Buddha",
+"Generosity brings joy; giving without expectation purifies the heart. — Buddha",
+"Patience is the highest meditation. — Buddha",
+"Do not be led by anger, for anger will consume you. — Buddha",
+"A mind free from desire experiences true freedom. — Buddha",
+"Compassion for all living beings is the foundation of wisdom. — Buddha",
+"To know the world, know yourself first. — Buddha",
+"Do not cling to thoughts; let them arise and pass like clouds. — Buddha",
+"Kindness should be practiced in all actions, small or great. — Buddha",
+"Even a few moments of mindfulness can bring clarity. — Buddha",
+"Those who let go of attachment find happiness in simplicity. — Buddha",
+"Every action has consequences; act with care. — Buddha",
+"See the impermanence of life, and you will be free from suffering. — Buddha",
+"Peaceful hearts create peaceful worlds. — Buddha",
+"Be vigilant of your thoughts, for they shape your reality. — Buddha",
+"Do not blame others; take responsibility for your own mind. — Buddha",
+"A heart of love heals all wounds. — Buddha",
+"Through meditation, one sees the truth beyond illusion. — Buddha",
+"True happiness comes from contentment, not accumulation. — Buddha",
+"The wise remain unmoved by praise or criticism. — Buddha",
+"Calmness in adversity is the mark of a true practitioner. — Buddha",
+"Let your actions be guided by compassion, not desire. — Buddha",
+"Mindfulness in daily life leads to liberation. — Buddha",
+"Fear arises from attachment; let go and be free. — Buddha",
+"The one who knows the truth is free from all fear. — Buddha",
+"Every being longs for happiness; cultivate compassion for all. — Buddha",
+"The path to enlightenment is through understanding, not blind faith. — Buddha",
+"Do not harm; do not deceive; walk the path of honesty. — Buddha",
+"Let go of pride and ego; humility brings peace. — Buddha",
+"The mind that is content is rich beyond measure. — Buddha",
+"True wisdom is gentle and patient. — Buddha",
+"Let your life be guided by ethics, mindfulness, and compassion. — Buddha",
+"The wise do not cling to pleasure, nor fear pain. — Buddha",
+"Conquer yourself, and all obstacles will fade. — Buddha",
+"Awareness of impermanence brings appreciation of the present. — Buddha",
+"Compassion without action is empty; act with love. — Buddha",
+"Practice mindfulness in speech, thought, and action. — Buddha",
+"Generosity is the path to purification of mind. — Buddha",
+"The peaceful mind is a powerful mind. — Buddha",
+"Detach from craving, and you will find serenity. — Buddha",
+"Reflect upon your actions, and you will act wisely. — Buddha",
+"The greatest wealth is contentment of the heart. — Buddha",
+"A kind heart attracts the same in return. — Buddha",
+"Do not seek outside yourself for happiness; it lies within. — Buddha",
+"Live simply, speak truthfully, act compassionately. — Buddha",
+"Those who forgive are liberated from suffering. — Buddha",
+"Even a wise man needs practice to tame the mind. — Buddha",
+"Act with mindfulness, and the mind will be clear. — Buddha",
+"Let go of anger, for it darkens the mind. — Buddha",
+"The path of the noble ones is through understanding and virtue. — Buddha",
+"Peace arises from letting go, not from grasping. — Buddha",
+"Conquer desire, and you will conquer suffering. — Buddha",
+"Observe your mind, and you will see all things as they are. — Buddha",
+"Do not seek to harm any being, no matter how small. — Buddha",
+"A heart free from greed is light and joyful. — Buddha",
+"Awareness of now is the door to liberation. — Buddha",
+"One who masters the mind masters the world. — Buddha",
+"Even a single good deed has lasting impact. — Buddha",
+"Do not cling to life, for all things are impermanent. — Buddha",
+"Compassion brings clarity to the mind. — Buddha",
+"The body is mortal, but awareness is eternal. — Buddha",
+"Peace arises when the mind is free of anger. — Buddha",
+"Practice daily mindfulness; it is the key to freedom. — Buddha",
+"Generosity softens the heart and purifies the mind. — Buddha",
+"Detachment is not indifference; it is clarity. — Buddha",
+"The one who controls his mind finds true happiness. — Buddha",
+"Observe without judgment, and wisdom will arise. — Buddha",
+"Let your heart be light, your mind steady, your speech kind. — Buddha",
+"Do not be driven by cravings; they are the source of suffering. — Buddha",
+"Through meditation, one sees the true nature of all things. — Buddha",
+"True love arises from understanding, not possession. — Buddha",
+"Live with awareness, speak with honesty, act with compassion. — Buddha",
+"Release fear through understanding impermanence. — Buddha",
+"Calm mind, compassionate heart, diligent action — the path to freedom. — Buddha",
+"Those who act with mindfulness are never lost. — Buddha",
+"Observe suffering, cultivate compassion, and act wisely. — Buddha",
+"The wise see the world with clarity and kindness. — Buddha",
+"Contentment and mindfulness bring lasting joy. — Buddha",
+"The one who lets go finds the path to liberation. — Buddha",
+"Act with integrity; let your conscience be your guide. — Buddha",
+"Even in darkness, a mindful heart shines brightly. — Buddha",
+"The practice of virtue leads to peace within. — Buddha",
+"Through meditation, one tames the restless mind. — Buddha",
+"Patience and understanding overcome anger. — Buddha",
+"Every thought shapes your destiny; choose wisely. — Buddha",
+"Seek not riches, seek clarity and compassion. — Buddha",
+"Kindness and wisdom are inseparable companions. — Buddha",
+"Observe the body, speech, and mind; see where suffering arises. — Buddha",
+"Detachment brings freedom; mindfulness brings insight. — Buddha",
+"Awareness of cause and effect leads to wise action. — Buddha",
+"Peace and joy arise naturally from compassion. — Buddha",
+"Live simply, act kindly, think wisely. — Buddha",
+"Those who are mindful of others’ suffering are truly awake. — Buddha",
+"The mind is the source of all happiness and suffering. — Buddha",
+"Let go of desire and fear; the mind will find peace. — Buddha",
+"Observe all beings with compassion and equanimity. — Buddha",
+"The wise do not attach to fame or fortune. — Buddha",
+"Even a small act of kindness is never wasted. — Buddha",
+"Through meditation, the mind becomes steady and clear. — Buddha",
+"The one who conquers anger conquers himself. — Buddha",
+"Let your actions be free from selfishness and pride. — Buddha",
+"Through understanding, one transcends suffering. — Buddha",
+"Mindfulness and compassion are the foundation of spiritual growth. — Buddha",
+"Release craving, and you release suffering. — Buddha",
+"The one who knows peace sees beyond illusion. — Buddha",
+"Live mindfully in every breath, every moment. — Buddha",
+"Even the smallest compassionate act benefits countless beings. — Buddha",
+"Through patience, the mind becomes resilient. — Buddha",
+"Contentment and gratitude cultivate lasting happiness. — Buddha",
+"Let the heart remain soft, the mind steady, the actions virtuous. — Buddha",
+"Freedom comes from inner clarity, not external possessions. — Buddha",
+"The one who is mindful in every act walks the noble path. — Buddha",
+"Through meditation, understanding and compassion grow together. — Buddha",
+"Observe without attachment; act without expectation. — Buddha",
+"Those who cultivate wisdom and kindness shine like the sun. — Buddha",
+"Even amidst chaos, a mindful heart remains calm. — Buddha"
+];
+
+function showVerses() {
+
+  const output = document.getElementById("verseOutput");
+
+  const today = new Date().getDate();
+
+  let index1 = today % verses.length;
+  let index2 = (today * 3) % verses.length;
+
+  output.innerHTML = `
+    <div class="verse-box">${verses[index1]}</div>
+    <div class="verse-box">${verses[index2]}</div>
+  `;
+}
+
+</script>
+
+</div>
+
+</body>
+</html>
