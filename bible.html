@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Daily Divine Guidance</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+body {
+  margin:0;
+  padding:0;
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(#fff0f5, #ffe6f0);
+}
+
+.container {
+  max-width:900px;
+  margin:auto;
+  padding:40px 20px;
+}
+
+h1 {
+  font-family: 'Playfair Display', serif;
+  text-align:center;
+  font-size:34px;
+  margin-bottom:10px;
+}
+
+.subtitle {
+  text-align:center;
+  font-size:16px;
+  margin-bottom:30px;
+}
+
+.button-wrap {
+  text-align:center;
+  margin:30px 0;
+}
+
+button {
+  background:#ff4d88;
+  color:white;
+  border:none;
+  padding:14px 28px;
+  font-size:16px;
+  border-radius:30px;
+  cursor:pointer;
+  font-family:'Inter', sans-serif;
+}
+
+#verseOutput {
+  margin-top:30px;
+}
+
+.verse-box {
+  background:white;
+  padding:20px;
+  margin:15px auto;
+  border-radius:18px;
+  box-shadow:0 12px 30px rgba(0,0,0,0.08);
+  font-size:18px;
+  text-align:center;
+  max-width:700px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Daily Divine Guidance</h1>
+
+<p class="subtitle">
+Receive two powerful verses daily for peace, abundance, strength, and divine alignment
+</p>
+
+<div id="verseOutput"></div>
+
+<div class="button-wrap">
+<button onclick="showVerses()">Receive Today's Verses</button>
+</div>
+
+<script>
+
+const verses = [
+
+"Be still, and know that I am God Psalm 46:10",
+"The Lord is my shepherd I shall not want Psalm 23:1",
+"The Lord is my light and my salvation whom shall I fear Psalm 27:1",
+"Delight thyself also in the Lord and he shall give thee the desires of thine heart Psalm 37:4",
+"Cast thy burden upon the Lord and he shall sustain thee Psalm 55:22",
+
+"He healeth the broken in heart and bindeth up their wounds Psalm 147:3",
+"The Lord will give strength unto his people the Lord will bless his people with peace Psalm 29:11",
+"The Lord is nigh unto them that are of a broken heart Psalm 34:18",
+"O taste and see that the Lord is good Psalm 34:8",
+"The righteous cry and the Lord heareth and delivereth them Psalm 34:17",
+
+"Trust in the Lord with all thine heart and lean not unto thine own understanding Proverbs 3:5",
+"In all thy ways acknowledge him and he shall direct thy paths Proverbs 3:6",
+"The blessing of the Lord it maketh rich and he addeth no sorrow Proverbs 10:22",
+"Commit thy works unto the Lord and thy thoughts shall be established Proverbs 16:3",
+"The heart of man deviseth his way but the Lord directeth his steps Proverbs 16:9",
+
+"For I know the thoughts that I think toward you saith the Lord thoughts of peace Jeremiah 29:11",
+"Call unto me and I will answer thee and show thee great and mighty things Jeremiah 33:3",
+"Blessed is the man that trusteth in the Lord Jeremiah 17:7",
+
+"Fear thou not for I am with thee Isaiah 41:10",
+"No weapon that is formed against thee shall prosper Isaiah 54:17",
+"Thou wilt keep him in perfect peace whose mind is stayed on thee Isaiah 26:3",
+
+"The Lord shall fight for you and ye shall hold your peace Exodus 14:14",
+"Stand still and see the salvation of the Lord Exodus 14:13",
+
+"Come unto me all ye that labour and are heavy laden and I will give you rest Matthew 11:28",
+"Ask and it shall be given you seek and ye shall find Matthew 7:7",
+"With God all things are possible Matthew 19:26",
+"Ye are the light of the world Matthew 5:14",
+
+"I can do all things through Christ which strengtheneth me Philippians 4:13",
+"And the peace of God which passeth all understanding shall keep your hearts Philippians 4:7",
+"But my God shall supply all your need Philippians 4:19",
+
+"And we know that all things work together for good to them that love God Romans 8:28",
+
+"My grace is sufficient for thee 2 Corinthians 12:9",
+
+"Now faith is the substance of things hoped for the evidence of things not seen Hebrews 11:1",
+
+"The Lord is good a strong hold in the day of trouble Nahum 1:7",
+
+"The Lord bless thee and keep thee Numbers 6:24",
+"The Lord make his face shine upon thee Numbers 6:25",
+"The Lord lift up his countenance upon thee and give thee peace Numbers 6:26",
+"The eternal God is thy refuge and underneath are the everlasting arms Deuteronomy 33:27",
+"Happy art thou O Israel who is like unto thee O people saved by the Lord Deuteronomy 33:29",
+
+"The Lord is my strength and my song and he is become my salvation Exodus 15:2",
+"And he said My presence shall go with thee and I will give thee rest Exodus 33:14",
+
+"The Lord thy God in the midst of thee is mighty he will save Zephaniah 3:17",
+"He will rejoice over thee with joy he will rest in his love Zephaniah 3:17",
+
+"The Lord is gracious and full of compassion slow to anger and of great mercy Psalm 145:8",
+"The Lord upholdeth all that fall and raiseth up all those that be bowed down Psalm 145:14",
+"The Lord is righteous in all his ways and holy in all his works Psalm 145:17",
+
+"Thy word is a lamp unto my feet and a light unto my path Psalm 119:105",
+"Great peace have they which love thy law and nothing shall offend them Psalm 119:165",
+
+"The Lord taketh pleasure in them that fear him in those that hope in his mercy Psalm 147:11",
+"He sendeth forth his commandment upon earth his word runneth very swiftly Psalm 147:15",
+
+"Bless the Lord O my soul and forget not all his benefits Psalm 103:2",
+"Who forgiveth all thine iniquities who healeth all thy diseases Psalm 103:3",
+"Who redeemeth thy life from destruction who crowneth thee with lovingkindness Psalm 103:4",
+
+"The steps of a good man are ordered by the Lord and he delighteth in his way Psalm 37:23",
+"Though he fall he shall not be utterly cast down for the Lord upholdeth him Psalm 37:24",
+
+"The Lord is my strength and my shield my heart trusted in him Psalm 28:7",
+"The Lord will perfect that which concerneth me Psalm 138:8",
+
+"A good name is rather to be chosen than great riches Proverbs 22:1",
+"He that followeth after righteousness and mercy findeth life righteousness and honour Proverbs 21:21",
+
+"The thoughts of the diligent tend only to plenteousness Proverbs 21:5",
+"The desire accomplished is sweet to the soul Proverbs 13:19",
+
+"Death and life are in the power of the tongue Proverbs 18:21",
+"A wholesome tongue is a tree of life Proverbs 15:4",
+
+"Surely goodness and mercy shall follow me all the days of my life Psalm 23:6",
+"And I will dwell in the house of the Lord for ever Psalm 23:6",
+
+"The Lord is my rock and my fortress and my deliverer Psalm 18:2",
+"He maketh my feet like hinds feet and setteth me upon my high places Psalm 18:33",
+
+"God is our refuge and strength a very present help in trouble Psalm 46:1",
+"Therefore will not we fear though the earth be removed Psalm 46:2",
+
+"Thou art my hiding place thou shalt preserve me from trouble Psalm 32:7",
+"I will instruct thee and teach thee in the way which thou shalt go Psalm 32:8",
+
+"Behold I will do a new thing now it shall spring forth Isaiah 43:19",
+"I even I am he that blotteth out thy transgressions Isaiah 43:25",
+
+"The Lord is my portion saith my soul therefore will I hope in him Lamentations 3:24",
+"It is of the Lords mercies that we are not consumed Lamentations 3:22",
+
+"For the Lord will not cast off forever Lamentations 3:31",
+"But though he cause grief yet will he have compassion Lamentations 3:32",
+"The Lord is good unto them that wait for him to the soul that seeketh him Lamentations 3:25",
+"It is good that a man should both hope and quietly wait for the salvation of the Lord Lamentations 3:26",
+
+"The Lord is my helper and I will not fear what man shall do unto me Hebrews 13:6",
+"Jesus Christ the same yesterday and today and forever Hebrews 13:8",
+
+"Let us therefore come boldly unto the throne of grace Hebrews 4:16",
+"For we walk by faith not by sight 2 Corinthians 5:7",
+
+"For God hath not given us the spirit of fear but of power and of love and of a sound mind 2 Timothy 1:7",
+"Study to shew thyself approved unto God 2 Timothy 2:15",
+
+"Every good gift and every perfect gift is from above James 1:17",
+"Draw nigh to God and he will draw nigh to you James 4:8",
+
+"If any of you lack wisdom let him ask of God James 1:5",
+"Faith without works is dead James 2:26",
+
+"Casting all your care upon him for he careth for you 1 Peter 5:7",
+"But the God of all grace who hath called us unto his eternal glory 1 Peter 5:10",
+
+"Ye are a chosen generation a royal priesthood 1 Peter 2:9",
+"Honour all men love the brotherhood fear God honour the king 1 Peter 2:17",
+
+"Beloved let us love one another for love is of God 1 John 4:7",
+"There is no fear in love but perfect love casteth out fear 1 John 4:18",
+
+"And whatsoever we ask we receive of him because we keep his commandments 1 John 3:22",
+"Greater is he that is in you than he that is in the world 1 John 4:4",
+
+"God is love and he that dwelleth in love dwelleth in God 1 John 4:16",
+"We love him because he first loved us 1 John 4:19",
+
+"Peace be unto you as my Father hath sent me even so send I you John 20:21",
+"And ye shall know the truth and the truth shall make you free John 8:32",
+
+"If ye abide in me and my words abide in you ye shall ask what ye will John 15:7",
+"Herein is my Father glorified that ye bear much fruit John 15:8",
+
+"I am come that they might have life and that they might have it more abundantly John 10:10",
+"My sheep hear my voice and I know them and they follow me John 10:27",
+
+"And I give unto them eternal life and they shall never perish John 10:28",
+"Let not your heart be troubled neither let it be afraid John 14:27",
+
+"I am the way the truth and the life no man cometh unto the Father but by me John 14:6",
+"If ye love me keep my commandments John 14:15",
+
+"And ye shall receive power after that the Holy Ghost is come upon you Acts 1:8",
+"And the Lord added to the church daily such as should be saved Acts 2:47",
+
+"Silver and gold have I none but such as I have give I thee Acts 3:6",
+"Believe on the Lord Jesus Christ and thou shalt be saved Acts 16:31",
+
+"The just shall live by faith Romans 1:17",
+"Being justified by faith we have peace with God Romans 5:1",
+
+"Where sin abounded grace did much more abound Romans 5:20",
+"For the wages of sin is death but the gift of God is eternal life Romans 6:23",
+"There is therefore now no condemnation to them which are in Christ Jesus Romans 8:1",
+"For to be carnally minded is death but to be spiritually minded is life and peace Romans 8:6",
+
+"The Spirit itself beareth witness with our spirit that we are the children of God Romans 8:16",
+"If God be for us who can be against us Romans 8:31",
+
+"In all these things we are more than conquerors through him that loved us Romans 8:37",
+"Nothing shall be able to separate us from the love of God Romans 8:39",
+
+"Be not conformed to this world but be ye transformed by the renewing of your mind Romans 12:2",
+"Rejoice in hope patient in tribulation continuing instant in prayer Romans 12:12",
+
+"Be not overcome of evil but overcome evil with good Romans 12:21",
+"Owe no man any thing but to love one another Romans 13:8",
+
+"The night is far spent the day is at hand Romans 13:12",
+"Put ye on the Lord Jesus Christ Romans 13:14",
+
+"The kingdom of God is not meat and drink but righteousness and peace and joy in the Holy Ghost Romans 14:17",
+"Whatsoever is not of faith is sin Romans 14:23",
+
+"Now the God of hope fill you with all joy and peace in believing Romans 15:13",
+"The grace of our Lord Jesus Christ be with you all Romans 16:20",
+
+"Know ye not that ye are the temple of God 1 Corinthians 3:16",
+"All things are lawful unto me but all things are not expedient 1 Corinthians 6:12",
+
+"Your body is the temple of the Holy Ghost 1 Corinthians 6:19",
+"Be ye steadfast unmovable always abounding in the work of the Lord 1 Corinthians 15:58",
+
+"For we are labourers together with God 1 Corinthians 3:9",
+"Eye hath not seen nor ear heard the things which God hath prepared 1 Corinthians 2:9",
+
+"Let all your things be done with charity 1 Corinthians 16:14",
+"Watch ye stand fast in the faith quit you like men be strong 1 Corinthians 16:13",
+
+"My grace is sufficient for thee for my strength is made perfect in weakness 2 Corinthians 12:9",
+"We having the same spirit of faith 2 Corinthians 4:13",
+
+"Though our outward man perish yet the inward man is renewed day by day 2 Corinthians 4:16",
+"For our light affliction which is but for a moment worketh for us a far more exceeding eternal weight of glory 2 Corinthians 4:17",
+
+"If any man be in Christ he is a new creature old things are passed away 2 Corinthians 5:17",
+"We walk by faith not by sight 2 Corinthians 5:7",
+
+"God loveth a cheerful giver 2 Corinthians 9:7",
+"And God is able to make all grace abound toward you 2 Corinthians 9:8",
+
+"Stand fast therefore in the liberty wherewith Christ hath made us free Galatians 5:1",
+"Walk in the Spirit and ye shall not fulfil the lust of the flesh Galatians 5:16",
+
+"The fruit of the Spirit is love joy peace longsuffering gentleness goodness faith Galatians 5:22",
+"If we live in the Spirit let us also walk in the Spirit Galatians 5:25",
+"Bear ye one another burdens and so fulfil the law of Christ Galatians 6:2",
+"Be not deceived God is not mocked for whatsoever a man soweth that shall he also reap Galatians 6:7",
+
+"And let us not be weary in well doing for in due season we shall reap if we faint not Galatians 6:9",
+"As we have therefore opportunity let us do good unto all men Galatians 6:10",
+
+"Blessed be the God and Father of our Lord Jesus Christ who hath blessed us with all spiritual blessings Ephesians 1:3",
+"According as he hath chosen us in him before the foundation of the world Ephesians 1:4",
+
+"In whom we have redemption through his blood the forgiveness of sins Ephesians 1:7",
+"That Christ may dwell in your hearts by faith Ephesians 3:17",
+
+"Now unto him that is able to do exceeding abundantly above all that we ask or think Ephesians 3:20",
+"Put on the whole armour of God that ye may be able to stand against the wiles of the devil Ephesians 6:11",
+
+"And take the helmet of salvation and the sword of the Spirit which is the word of God Ephesians 6:17",
+"Praying always with all prayer and supplication in the Spirit Ephesians 6:18",
+
+"Being confident of this very thing that he which hath begun a good work in you will perform it Philippians 1:6",
+"Let this mind be in you which was also in Christ Jesus Philippians 2:5",
+
+"Do all things without murmurings and disputings Philippians 2:14",
+"That ye may be blameless and harmless the sons of God Philippians 2:15",
+
+"Rejoice in the Lord alway and again I say rejoice Philippians 4:4",
+"Let your moderation be known unto all men the Lord is at hand Philippians 4:5",
+
+"Be careful for nothing but in every thing by prayer and supplication with thanksgiving let your requests be made known unto God Philippians 4:6",
+"And the peace of God which passeth all understanding shall keep your hearts and minds through Christ Jesus Philippians 4:7",
+
+"Whatsoever things are true whatsoever things are honest whatsoever things are just whatsoever things are pure think on these things Philippians 4:8",
+"Those things which ye have both learned and received do Philippians 4:9",
+
+"I know both how to be abased and I know how to abound Philippians 4:12",
+"I can do all things through Christ which strengtheneth me Philippians 4:13",
+
+"Notwithstanding ye have well done that ye did communicate with my affliction Philippians 4:14",
+"But my God shall supply all your need according to his riches in glory Philippians 4:19",
+
+"To whom God would make known what is the riches of the glory of this mystery Colossians 1:27",
+"As ye have therefore received Christ Jesus the Lord so walk ye in him Colossians 2:6",
+
+"Rooted and built up in him and stablished in the faith Colossians 2:7",
+"Set your affection on things above not on things on the earth Colossians 3:2",
+
+"And let the peace of God rule in your hearts Colossians 3:15",
+"And whatsoever ye do do it heartily as to the Lord Colossians 3:23",
+"For ye serve the Lord Christ Colossians 3:24",
+"Continue in prayer and watch in the same with thanksgiving Colossians 4:2",
+
+"Walk in wisdom toward them that are without redeeming the time Colossians 4:5",
+"Let your speech be always with grace seasoned with salt Colossians 4:6",
+
+"We give thanks to God always for you all making mention of you in our prayers 1 Thessalonians 1:2",
+"For our gospel came not unto you in word only but also in power 1 Thessalonians 1:5",
+
+"For God hath not appointed us to wrath but to obtain salvation 1 Thessalonians 5:9",
+"Rejoice evermore 1 Thessalonians 5:16",
+
+"Pray without ceasing 1 Thessalonians 5:17",
+"In every thing give thanks for this is the will of God 1 Thessalonians 5:18",
+
+"Quench not the Spirit 1 Thessalonians 5:19",
+"Prove all things hold fast that which is good 1 Thessalonians 5:21",
+
+"Abstain from all appearance of evil 1 Thessalonians 5:22",
+"And the very God of peace sanctify you wholly 1 Thessalonians 5:23",
+
+"The Lord is faithful who shall stablish you and keep you from evil 2 Thessalonians 3:3",
+"Now the Lord of peace himself give you peace always by all means 2 Thessalonians 3:16",
+
+"Charge them that are rich in this world that they be not highminded 1 Timothy 6:17",
+"But that they do good that they be rich in good works 1 Timothy 6:18",
+
+"Fight the good fight of faith lay hold on eternal life 1 Timothy 6:12",
+"Keep this commandment without spot unrebukeable 1 Timothy 6:14",
+
+"Godliness with contentment is great gain 1 Timothy 6:6",
+"For the love of money is the root of all evil 1 Timothy 6:10",
+
+"Stir up the gift of God which is in thee 2 Timothy 1:6",
+"For God hath not given us the spirit of fear but of power and of love and of a sound mind 2 Timothy 1:7",
+
+"Hold fast the form of sound words 2 Timothy 1:13",
+"Be strong in the grace that is in Christ Jesus 2 Timothy 2:1",
+
+"Study to shew thyself approved unto God 2 Timothy 2:15",
+"Flee also youthful lusts but follow righteousness faith charity peace 2 Timothy 2:22",
+
+"Preach the word be instant in season out of season 2 Timothy 4:2",
+"I have fought a good fight I have finished my course I have kept the faith 2 Timothy 4:7",
+
+"Henceforth there is laid up for me a crown of righteousness 2 Timothy 4:8",
+"The Lord shall deliver me from every evil work 2 Timothy 4:18",
+"And shall preserve me unto his heavenly kingdom 2 Timothy 4:18",
+"Grace be with you Amen 2 Timothy 4:22",
+
+"In hope of eternal life which God that cannot lie promised before the world began Titus 1:2",
+"But after that the kindness and love of God our Saviour toward man appeared Titus 3:4",
+
+"Not by works of righteousness which we have done but according to his mercy he saved us Titus 3:5",
+"That being justified by his grace we should be made heirs according to the hope of eternal life Titus 3:7",
+
+"I thank my God making mention of thee always in my prayers Philemon 1:4",
+"Hearing of thy love and faith which thou hast toward the Lord Jesus Philemon 1:5",
+
+"Let us therefore fear lest a promise being left us of entering into his rest any of you should seem to come short of it Hebrews 4:1",
+"There remaineth therefore a rest to the people of God Hebrews 4:9",
+
+"For he that is entered into his rest he also hath ceased from his own works Hebrews 4:10",
+"Let us labour therefore to enter into that rest Hebrews 4:11",
+
+"For the word of God is quick and powerful and sharper than any twoedged sword Hebrews 4:12",
+"Neither is there any creature that is not manifest in his sight Hebrews 4:13",
+
+"Seeing then that we have a great high priest that is passed into the heavens Jesus the Son of God Hebrews 4:14",
+"Let us hold fast our profession Hebrews 4:14",
+
+"For we have not an high priest which cannot be touched with the feeling of our infirmities Hebrews 4:15",
+"But was in all points tempted like as we are yet without sin Hebrews 4:15",
+
+"Let us therefore come boldly unto the throne of grace Hebrews 4:16",
+"That we may obtain mercy and find grace to help in time of need Hebrews 4:16",
+
+"And without faith it is impossible to please him Hebrews 11:6",
+"For he that cometh to God must believe that he is Hebrews 11:6",
+
+"And that he is a rewarder of them that diligently seek him Hebrews 11:6",
+"Through faith we understand that the worlds were framed by the word of God Hebrews 11:3",
+
+"Looking unto Jesus the author and finisher of our faith Hebrews 12:2",
+"Let us run with patience the race that is set before us Hebrews 12:1",
+
+"For whom the Lord loveth he chasteneth Hebrews 12:6",
+"Lift up the hands which hang down and the feeble knees Hebrews 12:12",
+
+"Follow peace with all men and holiness Hebrews 12:14",
+"Jesus Christ the same yesterday and today and forever Hebrews 13:8",
+"Be not forgetful to entertain strangers for thereby some have entertained angels unawares Hebrews 13:2",
+"Remember them that are in bonds as bound with them Hebrews 13:3",
+
+"Let your conversation be without covetousness and be content with such things as ye have Hebrews 13:5",
+"For he hath said I will never leave thee nor forsake thee Hebrews 13:5",
+
+"So that we may boldly say The Lord is my helper and I will not fear Hebrews 13:6",
+"Obey them that have the rule over you and submit yourselves Hebrews 13:17",
+
+"Now the God of peace that brought again from the dead our Lord Jesus Hebrews 13:20",
+"Make you perfect in every good work to do his will Hebrews 13:21",
+
+"Pure religion and undefiled before God and the Father is this James 1:27",
+"To visit the fatherless and widows in their affliction James 1:27",
+
+"And to keep himself unspotted from the world James 1:27",
+"But be ye doers of the word and not hearers only James 1:22",
+
+"A double minded man is unstable in all his ways James 1:8",
+"Let the brother of low degree rejoice in that he is exalted James 1:9",
+
+"But the rich in that he is made low James 1:10",
+"Blessed is the man that endureth temptation James 1:12",
+
+"For when he is tried he shall receive the crown of life James 1:12",
+"Let no man say when he is tempted I am tempted of God James 1:13",
+
+"Every man is tempted when he is drawn away of his own lust James 1:14",
+"Then when lust hath conceived it bringeth forth sin James 1:15",
+
+"Do not err my beloved brethren James 1:16",
+"Every good gift and every perfect gift is from above James 1:17",
+
+"Of his own will begat he us with the word of truth James 1:18",
+"Wherefore my beloved brethren let every man be swift to hear slow to speak slow to wrath James 1:19",
+
+"For the wrath of man worketh not the righteousness of God James 1:20",
+"Lay apart all filthiness and superfluity of naughtiness James 1:21",
+
+"And receive with meekness the engrafted word which is able to save your souls James 1:21",
+"But whoso looketh into the perfect law of liberty and continueth therein James 1:25",
+
+"This man shall be blessed in his deed James 1:25",
+"If any man among you seem to be religious and bridleth not his tongue James 1:26",
+
+"This mans religion is vain James 1:26",
+"Faith if it hath not works is dead being alone James 2:17",
+"The Lord shall open unto thee his good treasure the heaven to give the rain unto thy land Deuteronomy 28:12",
+"And to bless all the work of thine hand Deuteronomy 28:12",
+
+"And thou shalt lend unto many nations and thou shalt not borrow Deuteronomy 28:12",
+"And the Lord shall make thee the head and not the tail Deuteronomy 28:13",
+
+"Thou shalt be above only and thou shalt not be beneath Deuteronomy 28:13",
+"The blessing of the Lord it maketh rich and he addeth no sorrow Proverbs 10:22",
+
+"Honour the Lord with thy substance and with the firstfruits of all thine increase Proverbs 3:9",
+"So shall thy barns be filled with plenty and thy presses shall burst out with new wine Proverbs 3:10",
+
+"The liberal soul shall be made fat and he that watereth shall be watered also himself Proverbs 11:25",
+"Wealth and riches shall be in his house and his righteousness endureth forever Psalm 112:3",
+
+"Unto the upright there ariseth light in the darkness he is gracious and full of compassion Psalm 112:4",
+"He hath dispersed he hath given to the poor his righteousness endureth forever Psalm 112:9",
+
+"The Lord shall increase you more and more you and your children Psalm 115:14",
+"Ye are blessed of the Lord which made heaven and earth Psalm 115:15",
+
+"The lines are fallen unto me in pleasant places yea I have a goodly heritage Psalm 16:6",
+"Thou wilt shew me the path of life in thy presence is fullness of joy Psalm 16:11",
+
+"And at thy right hand there are pleasures forevermore Psalm 16:11",
+"Blessed is the man that maketh the Lord his trust Psalm 40:4",
+
+"He brought me up also out of an horrible pit Psalm 40:2",
+"And he hath put a new song in my mouth even praise unto our God Psalm 40:3",
+
+"The Lord will give grace and glory no good thing will he withhold from them that walk uprightly Psalm 84:11",
+"O Lord of hosts blessed is the man that trusteth in thee Psalm 84:12",
+
+"Surely he shall deliver thee from the snare of the fowler Psalm 91:3",
+"He shall cover thee with his feathers and under his wings shalt thou trust Psalm 91:4",
+
+"Thou shalt not be afraid for the terror by night Psalm 91:5",
+"Nor for the arrow that flieth by day Psalm 91:5",
+
+"There shall no evil befall thee neither shall any plague come nigh thy dwelling Psalm 91:10",
+"For he shall give his angels charge over thee to keep thee in all thy ways Psalm 91:11",
+
+"They shall bear thee up in their hands lest thou dash thy foot against a stone Psalm 91:12",
+"Because he hath set his love upon me therefore will I deliver him Psalm 91:14",
+
+"I will set him on high because he hath known my name Psalm 91:14",
+"He shall call upon me and I will answer him Psalm 91:15",
+
+"I will be with him in trouble I will deliver him and honour him Psalm 91:15",
+"With long life will I satisfy him and shew him my salvation Psalm 91:16",
+
+"Give and it shall be given unto you good measure pressed down and shaken together Luke 6:38",
+"And running over shall men give into your bosom Luke 6:38",
+
+"For with the same measure that ye mete withal it shall be measured to you again Luke 6:38",
+"Fear not little flock for it is your Fathers good pleasure to give you the kingdom Luke 12:32",
+
+"Sell that ye have and give alms provide yourselves bags which wax not old Luke 12:33",
+"A treasure in the heavens that faileth not Luke 12:33",
+
+"For where your treasure is there will your heart be also Luke 12:34",
+"Ask and it shall be given you seek and ye shall find knock and it shall be opened unto you Matthew 7:7",
+
+"For every one that asketh receiveth Matthew 7:8",
+"And he that seeketh findeth and to him that knocketh it shall be opened Matthew 7:8",
+"Blessed are the pure in heart for they shall see God Matthew 5:8",
+"Blessed are the meek for they shall inherit the earth Matthew 5:5",
+
+"Blessed are they which do hunger and thirst after righteousness for they shall be filled Matthew 5:6",
+"Blessed are the merciful for they shall obtain mercy Matthew 5:7",
+
+"Blessed are the peacemakers for they shall be called the children of God Matthew 5:9",
+"Rejoice and be exceeding glad for great is your reward in heaven Matthew 5:12",
+
+"Seek ye first the kingdom of God and his righteousness and all these things shall be added unto you Matthew 6:33",
+"Take therefore no thought for the morrow Matthew 6:34",
+
+"Consider the lilies of the field how they grow they toil not neither do they spin Matthew 6:28",
+"Even Solomon in all his glory was not arrayed like one of these Matthew 6:29",
+
+"If God so clothe the grass of the field shall he not much more clothe you Matthew 6:30",
+"Therefore take no thought saying What shall we eat or What shall we drink Matthew 6:31",
+
+"For your heavenly Father knoweth that ye have need of all these things Matthew 6:32",
+"Judge not that ye be not judged Matthew 7:1",
+
+"Give not that which is holy unto the dogs Matthew 7:6",
+"Enter ye in at the strait gate Matthew 7:13",
+
+"Every good tree bringeth forth good fruit Matthew 7:17",
+"A good man out of the good treasure of the heart bringeth forth good things Matthew 12:35",
+
+"According to your faith be it unto you Matthew 9:29",
+"Son be of good cheer thy sins be forgiven thee Matthew 9:2",
+
+"The harvest truly is plenteous but the labourers are few Matthew 9:37",
+"He that findeth his life shall lose it and he that loseth his life for my sake shall find it Matthew 10:39",
+
+"Come unto me all ye that labour and are heavy laden and I will give you rest Matthew 11:28",
+"For my yoke is easy and my burden is light Matthew 11:30",
+
+"To him that hath shall be given and he shall have more abundance Matthew 13:12",
+"The kingdom of heaven is like unto treasure hid in a field Matthew 13:44",
+
+"Again the kingdom of heaven is like unto a merchant man seeking goodly pearls Matthew 13:45",
+"Who when he had found one pearl of great price went and sold all that he had Matthew 13:46",
+
+"If ye have faith as a grain of mustard seed nothing shall be impossible unto you Matthew 17:20",
+"With God all things are possible Matthew 19:26",
+
+"Whosoever exalteth himself shall be abased and he that shall humble himself shall be exalted Matthew 23:12",
+"Watch therefore for ye know not what hour your Lord doth come Matthew 24:42",
+
+"And what I say unto you I say unto all Watch Mark 13:37",
+"Be not afraid only believe Mark 5:36",
+
+"If thou canst believe all things are possible to him that believeth Mark 9:23",
+"Have faith in God Mark 11:22",
+
+"What things soever ye desire when ye pray believe that ye receive them and ye shall have them Mark 11:24",
+"And Jesus looking upon them saith with men it is impossible but not with God Mark 10:27",
+"For with God nothing shall be impossible Luke 1:37",
+"Fear not for behold I bring you good tidings of great joy Luke 2:10",
+
+"Glory to God in the highest and on earth peace good will toward men Luke 2:14",
+"And Jesus increased in wisdom and stature and in favour with God and man Luke 2:52",
+
+"The Spirit of the Lord is upon me because he hath anointed me Luke 4:18",
+"To preach deliverance to the captives and recovering of sight to the blind Luke 4:18",
+
+"Give and it shall be given unto you Luke 6:38",
+"For with the same measure that ye mete it shall be measured to you again Luke 6:38",
+
+"Blessed are ye that weep now for ye shall laugh Luke 6:21",
+"Love your enemies do good and lend hoping for nothing again Luke 6:35",
+
+"And your reward shall be great and ye shall be the children of the Highest Luke 6:35",
+"Judge not and ye shall not be judged condemn not and ye shall not be condemned Luke 6:37",
+
+"Forgive and ye shall be forgiven Luke 6:37",
+"A good man out of the good treasure of his heart bringeth forth that which is good Luke 6:45",
+
+"He that is faithful in that which is least is faithful also in much Luke 16:10",
+"For the Son of man is come to seek and to save that which was lost Luke 19:10",
+
+"Peace be unto you Luke 24:36",
+"And that repentance and remission of sins should be preached in his name Luke 24:47"
+
+];
+
+function showVerses() {
+
+  const output = document.getElementById("verseOutput");
+
+  const today = new Date().getDate();
+
+  let index1 = today % verses.length;
+  let index2 = (today * 3) % verses.length;
+
+  output.innerHTML = `
+    <div class="verse-box">${verses[index1]}</div>
+    <div class="verse-box">${verses[index2]}</div>
+  `;
+}
+
+</script>
+
+</div>
+
+</body>
+</html>
