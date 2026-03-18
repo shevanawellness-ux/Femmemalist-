@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Daily Ancient Wisdom</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+body {
+  margin:0;
+  padding:0;
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(#fff0f5, #ffe6f0);
+}
+
+.container {
+  max-width:900px;
+  margin:auto;
+  padding:40px 20px;
+}
+
+h1 {
+  font-family: 'Playfair Display', serif;
+  text-align:center;
+  font-size:34px;
+  margin-bottom:10px;
+}
+
+.subtitle {
+  text-align:center;
+  font-size:16px;
+  margin-bottom:30px;
+}
+
+.button-wrap {
+  text-align:center;
+  margin:30px 0;
+}
+
+button {
+  background:#ff4d88;
+  color:white;
+  border:none;
+  padding:14px 28px;
+  font-size:16px;
+  border-radius:30px;
+  cursor:pointer;
+  font-family:'Inter', sans-serif;
+}
+
+#verseOutput {
+  margin-top:30px;
+}
+
+.verse-box {
+  background:white;
+  padding:20px;
+  margin:15px auto;
+  border-radius:18px;
+  box-shadow:0 12px 30px rgba(0,0,0,0.08);
+  font-size:18px;
+  text-align:center;
+  max-width:700px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Daily Ancient Wisdom</h1>
+
+<p class="subtitle">
+Receive two powerful quotes daily from the world’s greatest philosophical, spiritual, and esoteric traditions for positivity, mindfulness, and inner growth
+</p>
+
+<div id="verseOutput"></div>
+
+<div class="button-wrap">
+<button onclick="showVerses()">Receive Today's Quotes</button>
+</div>
+
+<script>
+
+const verses = [
+/* Taoism */
+"Nature does not hurry, yet everything is accomplished. — Lao Tzu",
+"A journey of a thousand miles begins with a single step. — Lao Tzu",
+"Knowing others is intelligence; knowing yourself is true wisdom. — Lao Tzu",
+"Be content with what you have; rejoice in the way things are. — Lao Tzu",
+"He who conquers others is strong; he who conquers himself is mighty. — Lao Tzu",
+"Those who know do not speak. Those who speak do not know. — Lao Tzu",
+"Silence is a source of great strength. — Lao Tzu",
+"Care about what other people think and you will always be their prisoner. — Lao Tzu",
+"Mastering others is strength; mastering yourself is true power. — Lao Tzu",
+"Act without striving, work without interfering, taste without savoring. — Tao Te Ching",
+
+/* Confucianism */
+"Respect yourself and others will respect you. — Confucius",
+"It does not matter how slowly you go as long as you do not stop. — Confucius",
+"Real knowledge is to know the extent of one's ignorance. — Confucius",
+"Virtue alone is not enough; one must act with wisdom. — Confucius",
+"When anger rises, think of the consequences. — Confucius",
+"The superior man acts before he speaks, and afterward speaks according to his action. — Confucius",
+"Education breeds confidence. Confidence breeds hope. Hope breeds peace. — Confucius",
+"Choose a job you love, and you will never have to work a day in your life. — Confucius",
+"The cautious seldom err. — Confucius",
+"To be able to practice five things everywhere under heaven constitutes perfect virtue… gravity, generosity, sincerity, diligence, and kindness. — Confucius",
+
+/* Stoicism */
+"Wealth consists not in having great possessions, but in having few wants. — Epictetus",
+"The happiness of your life depends upon the quality of your thoughts. — Marcus Aurelius",
+"You have power over your mind — not outside events. Realize this, and you will find strength. — Marcus Aurelius",
+"Man is affected not by events, but by the view he takes of them. — Epictetus",
+"It is not death that a man should fear, but he should fear never beginning to live. — Marcus Aurelius",
+"If it is not right, do not do it; if it is not true, do not say it. — Marcus Aurelius",
+"The best revenge is not to be like your enemy. — Marcus Aurelius",
+"Begin each day by telling yourself: today I shall be meeting with interference, ingratitude, insolence, disloyalty, ill will, and selfishness. — Marcus Aurelius",
+"No man is free who is not master of himself. — Epictetus",
+"The soul becomes dyed with the color of its thoughts. — Marcus Aurelius",
+
+/* Sikhism */
+"True happiness comes from selfless service and devotion. — Guru Granth Sahib",
+"Those who have no faith in themselves can never have faith in God. — Guru Granth Sahib",
+"Be content with what you have and strive to serve others. — Guru Granth Sahib",
+"Through truthful living one attains liberation. — Guru Granth Sahib",
+"The mind is the source of all happiness and suffering; control it wisely. — Guru Granth Sahib",
+"He who has no faith in himself cannot have faith in God. — Guru Granth Sahib",
+"Devotion brings peace to the heart. — Guru Granth Sahib",
+"Act with humility and all will follow. — Guru Granth Sahib",
+"Patience is a virtue that purifies the soul. — Guru Granth Sahib",
+"Service to others is the path to self-realization. — Guru Granth Sahib",
+
+/* Jainism */
+"Non-violence is the highest duty. — Jainism",
+"One who conquers his own self is greater than one who conquers thousands in battle. — Jainism",
+"Truthfulness is the foundation of all virtues. — Jainism",
+"Respect all living beings, for all have a soul. — Jainism",
+"Control over mind, speech, and body leads to liberation. — Jainism",
+"Attachment leads to sorrow; detachment leads to peace. — Jainism",
+"The wise find happiness in simplicity and self-restraint. — Jainism",
+"Forgive all creatures; this purifies your heart. — Jainism",
+"Humility and compassion bring spiritual growth. — Jainism",
+"Let your actions be free from ego and greed. — Jainism",
+
+/* Emerald Tablets of Thoth */
+"As above, so below; as within, so without. — Emerald Tablets",
+"True wisdom comes from self-knowledge. — Emerald Tablets",
+"Nothing rests; everything moves; everything vibrates. — Emerald Tablets",
+"The path to mastery is through balance and understanding. — Emerald Tablets",
+"All is One, and One is All. — Emerald Tablets",
+"Every cause has an effect; every effect has a cause. — Emerald Tablets",
+"Seek the truth within yourself, not outside. — Emerald Tablets",
+"Knowledge is the bridge between ignorance and illumination. — Emerald Tablets",
+"Patience and persistence unlock the hidden mysteries. — Emerald Tablets",
+"The wise do not seek power for themselves, but for all. — Emerald Tablets"/* Continuation of the verses array from Part 1 */
+,
+"Manifest your reality through disciplined thought and action. — Emerald Tablets",
+"The mind creates; the body manifests. — Emerald Tablets",
+"Focus energy on the highest good and it will materialize. — Emerald Tablets",
+"As within, so without; control your inner world and shape the outer. — Emerald Tablets",
+"All that you desire already exists within your consciousness. — Emerald Tablets",
+"Through knowledge and will, all things become possible. — Emerald Tablets",
+"Change your mind, change your world. — Emerald Tablets",
+"Energy follows attention; direct your focus wisely. — Emerald Tablets",
+"Those who know the secret within, master the world without. — Emerald Tablets",
+"Visualize, believe, act, and the universe responds. — Emerald Tablets",
+
+"Desire rightly, act rightly, and the world aligns with you. — Taoism",
+"Flow like water; embrace adaptability and abundance. — Taoism",
+"The Tao nourishes those who yield, and empties those who resist. — Taoism",
+"Seek harmony within, and harmony manifests without. — Taoism",
+"Align your actions with the universal rhythm and success follows. — Taoism",
+"A calm mind attracts clarity and opportunity. — Taoism",
+"Balance in thought leads to manifestation in reality. — Taoism",
+"Let go of fear, and abundance flows naturally. — Taoism",
+"Happiness is a reflection of inner alignment. — Taoism",
+"Those who act in accordance with Tao are never obstructed. — Taoism",
+
+"Patience and perseverance bring hidden opportunities to light. — Stoicism",
+"You attract what your mind dwells upon; cultivate virtuous focus. — Stoicism",
+"Train your mind to expect goodness, and you create space for it. — Stoicism",
+"A disciplined mind manifests strength, peace, and success. — Stoicism",
+"External events cannot control your destiny; inner alignment does. — Stoicism",
+"The universe responds to those who act with clarity and intention. — Stoicism",
+"Vision, action, and patience are the pillars of manifestation. — Stoicism",
+"Focus on what you can control; release the rest. — Stoicism",
+"Success is the natural outcome of mindful action. — Stoicism",
+"The mind that sees opportunity creates abundance. — Stoicism",
+
+"Act with mindfulness and your intentions bear fruit. — Confucianism",
+"Virtue in thought, speech, and action attracts harmony. — Confucianism",
+"A heart aligned with purpose is a magnet for success. — Confucianism",
+"Integrity in small actions manifests in great outcomes. — Confucianism",
+"Self-cultivation is the path to manifesting true potential. — Confucianism",
+"Balance in life leads to clarity, manifestation, and peace. — Confucianism",
+"Seek knowledge, act wisely, and fortune follows naturally. — Confucianism",
+"Through reflection and discipline, your environment transforms. — Confucianism",
+"The wise prepare their inner world to shape the outer world. — Confucianism",
+"Order within brings order without; focus on your character. — Confucianism",
+
+"Detachment and intention are keys to true manifestation. — Jainism",
+"Act without greed, and abundance flows naturally. — Jainism",
+"Through non-violence, one harmonizes with the universe. — Jainism",
+"Purity of mind attracts clarity, insight, and success. — Jainism",
+"Forgiveness clears the path for spiritual manifestation. — Jainism",
+"Mindful speech and action create reality aligned with wisdom. — Jainism",
+"The one who conquers desire attains peace and abundance. — Jainism",
+"Self-restraint and focus reveal hidden opportunities. — Jainism",
+"The universe supports the disciplined, patient, and wise. — Jainism",
+"Non-attachment does not limit; it amplifies manifestation. — Jainism",
+
+"Meditate, focus, and align; reality unfolds accordingly. — Esoteric Wisdom",
+"Thought is the architect of reality; act consciously. — Esoteric Wisdom",
+"The unseen forces respond to clarity of mind and heart. — Esoteric Wisdom",
+"Align inner vibration with your highest purpose and the world aligns. — Esoteric Wisdom",
+"The secret of manifestation is knowing you are already complete. — Esoteric Wisdom",
+"Energy flows where attention is directed; direct it wisely. — Esoteric Wisdom",
+"Balance, clarity, and intention open doors to abundance. — Esoteric Wisdom",
+"Through inner mastery, one manifests outer mastery. — Esoteric Wisdom",
+"Belief, alignment, and action form the triad of creation. — Esoteric Wisdom",
+"The wise use thought, action, and patience to shape destiny. — Esoteric Wisdom",
+
+/* More manifestation and inner growth quotes */
+"Your inner world shapes your outer reality; choose wisely. — Manifestation Wisdom",
+"Focus on what you want to grow, not what you fear. — Manifestation Wisdom",
+"The universe mirrors your beliefs; maintain clarity and positivity. — Manifestation Wisdom",
+"Manifestation requires alignment of mind, heart, and action. — Manifestation Wisdom",
+"See your goal clearly, feel it, act toward it, and it manifests. — Manifestation Wisdom",
+"Discipline your thoughts and your reality follows. — Manifestation Wisdom",
+"Inner peace attracts outer abundance. — Manifestation Wisdom",
+"Energy flows to intention; set your mind on what you desire. — Manifestation Wisdom",
+"Every thought seeds a corresponding reality; choose seeds wisely. — Manifestation Wisdom",
+"What you focus on expands; master your attention. — Manifestation Wisdom",
+"Gratitude amplifies manifestation and opens new pathways. — Manifestation Wisdom",/* Manifestation Wisdom continuation for Part 4 */
+,
+"Thought is the seed; action brings the harvest. — Emerald Tablets of Thoth",
+"Align your inner self with the universal rhythm and all flows in your favor. — Emerald Tablets of Thoth",
+"All that you seek already exists within; manifest it by knowing yourself. — Emerald Tablets of Thoth",
+"Energy follows focus; direct your attention to what you wish to create. — Emerald Tablets of Thoth",
+"Concentration of mind is the key to material and spiritual manifestation. — Emerald Tablets of Thoth",
+"Visualize clearly, act consistently, and the universe will respond. — Ancient Egyptian Wisdom",
+"The gods favor those whose heart, mind, and deeds are aligned. — Ancient Egyptian Wisdom",
+"Through meditation and ritual, the unseen energies align with your will. — Ancient Egyptian Wisdom",
+"The soul that controls thought controls destiny. — Ancient Egyptian Wisdom",
+"Purity of intention draws abundance and guidance. — Ancient Egyptian Wisdom",
+
+"Act in harmony with Ma’at and you create balance in life and manifestation. — Ancient Egyptian Wisdom",
+"The mind shapes reality; the disciplined mind shapes prosperity. — Ancient Egyptian Wisdom",
+"Harmony within leads to harmony without; attract what you resonate. — Ancient Egyptian Wisdom",
+"Focus, discipline, and visualization are the pillars of manifestation. — Ancient Egyptian Wisdom",
+"Every thought carried with certainty brings corresponding outcomes. — Ancient Egyptian Wisdom",
+
+"Justice and integrity create alignment with cosmic law. — Hammurabi Code",
+"The righteous mind attracts fortune; the unjust mind repels it. — Hammurabi Code",
+"Through wisdom and fairness, one shapes both inner and outer worlds. — Hammurabi Code",
+"Align your actions with cosmic principles; opportunities will appear. — Mesopotamian Wisdom",
+"Order within produces order without; discipline attracts abundance. — Mesopotamian Wisdom",
+
+"You have power over your mind, not over events; mastery within brings results. — Marcus Aurelius",
+"The mind that sees opportunity creates abundance. — Stoicism",
+"Act with virtue and clarity; the universe will respond. — Seneca",
+"Visualize, act, and persist; manifestation is born from thought and effort. — Roman Philosophy",
+"A calm, disciplined mind attracts clarity and opportunity. — Marcus Aurelius",
+"Thoughts held with conviction become reality. — Marcus Aurelius",
+"Focus on your highest ideals; the world adjusts to your alignment. — Stoic Manifestation Wisdom",
+"Discipline, patience, and clarity are keys to successful manifestation. — Roman Stoicism",
+"Energy flows where intention goes; direct it wisely. — Roman Hermetic Wisdom",
+"Align inner vision with action and abundance follows naturally. — Stoic Hermetic Wisdom",
+
+"Belief, alignment, and action form the triad of creation. — Hermetic Teachings",
+"The universe responds to the clarity of your mind and heart. — Hermetic Wisdom",
+"Through inner mastery, one manifests outer mastery. — Hermetic Wisdom",
+"Thought is the architect of reality; act consciously. — Hermetic Wisdom",
+"Visualization, focus, and persistence reveal hidden opportunities. — Hermetic Wisdom",
+"Energy moves where attention flows; train your mind with care. — Hermetic Wisdom",
+"The wise attract that which they truly understand and embody. — Hermetic Wisdom",
+"Intent, clarity, and action are the secret keys to manifestation. — Hermetic Wisdom",
+"Align your will with universal principles; results are inevitable. — Hermetic Teachings",
+"True power is harmonizing thought, emotion, and action. — Hermetic Wisdom",
+
+"Inner alignment produces outer results; control your perceptions. — Esoteric Manifestation Wisdom",
+"Your mind shapes your world; maintain clarity and purpose. — Esoteric Manifestation Wisdom",
+"Desire rightly, act rightly, and reality bends to your intention. — Esoteric Manifestation Wisdom",
+"Focus on what you want to grow, not what you fear. — Esoteric Manifestation Wisdom",
+"The universe mirrors your inner state; cultivate peace, clarity, and abundance. — Esoteric Manifestation Wisdom",
+"Gratitude amplifies manifestation and opens hidden pathways. — Manifestation Wisdom",
+"Every thought seeds a corresponding reality; choose wisely. — Manifestation Wisdom",
+"Manifestation requires alignment of mind, heart, and deliberate action. — Manifestation Wisdom",
+"Through visualization, patience, and persistence, all things are possible. — Manifestation Wisdom",
+"What you dwell upon expands; master your attention. — Manifestation Wisdom"/* Manifestation Wisdom Part 5: Gnostic, Egyptian, Chinese, Yogic, and Esoteric Sources */
+,
+"Know the hidden within, and the universe will reveal its mysteries. — Gnostic Gospels",
+"Faith in the unseen guides action in the seen; align both. — Gnostic Teachings",
+"The Kingdom is within; focus there and all manifests. — Gospel of Thomas",
+"Light comes from understanding the inner self; manifest accordingly. — Gnostic Wisdom",
+"Desire rightly and act with knowledge; the cosmos responds. — Gnostic Wisdom",
+"Every creation begins in thought and vision; form carefully. — Ancient Gnostic Texts",
+"Awareness of the inner world shapes the outer world. — Gnostic Manifestation Wisdom",
+"Seek the source within; it flows outward into reality. — Gnostic Teachings",
+"Through knowledge of self, one manifests abundance and alignment. — Gnostic Wisdom",
+"The mind is the lamp; the soul guides its flame. — Gnostic Esoteric Wisdom",
+
+"Align with cosmic law; act in balance and your will manifests. — Hammurabi Code",
+"The righteous mind attracts fortune; the unrighteous repels it. — Hammurabi Code",
+"Integrity in thought and action opens pathways to abundance. — Mesopotamian Wisdom",
+"The universe honors order and justice; manifest through alignment. — Mesopotamian Wisdom",
+"Those who respect cosmic principles shape both inner and outer worlds. — Mesopotamian Manifestation",
+
+"Flow with Tao and all things come to you naturally. — Lao Tzu, Tao Te Ching",
+"Energy that flows without resistance nourishes your goals. — Taoism",
+"Inner alignment with Tao is the secret to effortless manifestation. — Taoist Wisdom",
+"Balance your Qi and the universe mirrors your inner state. — Taoist Manifestation",
+"Harmony in thought and action attracts abundance. — Taoist Esoteric Wisdom",
+"Those who yield to the Tao find opportunity everywhere. — Taoist Wisdom",
+"Manifestation arises from wu-wei — action without struggle. — Taoism",
+"Focus your mind, align your heart, and let nature assist you. — Taoist Manifestation",
+
+"Through meditation, the mind visualizes reality into being. — Yogic Teachings",
+"Control prana and direct energy; manifestation follows naturally. — Tantric Wisdom",
+"Focus thought, emotion, and breath; reality aligns with intention. — Yogic Manifestation",
+"Inner silence and clarity magnify creative power. — Yogic Esoteric Wisdom",
+"The yogi sees desire, aligns intention, and manifests without struggle. — Tantric Manifestation",
+"Mindful action rooted in spiritual insight creates tangible results. — Yogic Wisdom",
+"Visualization and disciplined energy bring inner and outer abundance. — Yogic Manifestation",
+"The practitioner harmonizes self with universe to manifest goals. — Tantra and Yoga",
+
+"Thought is a seed; clarity and focus are water and sun. — Ancient Esoteric Wisdom",
+"Energy follows attention; direct it with precision and patience. — Hermetic Manifestation",
+"The inner world shapes the outer; cultivate mental and spiritual alignment. — Hermetic Wisdom",
+"Alignment with universal principles creates effortless manifestation. — Esoteric Teachings",
+"Intent, clarity, and action open doors to abundance and opportunity. — Hermetic Manifestation",
+"The soul attracts according to the energy it radiates. — Esoteric Wisdom",
+"By understanding cosmic law, one can co-create with the universe. — Ancient Wisdom",
+"Patience, focus, and consistent action bring hidden opportunities to light. — Ancient Manifestation Wisdom",
+"Manifestation is the art of harmonizing thought, emotion, and energy. — Esoteric Teachings",
+"The wise do not impose, but they align; and reality flows to their alignment. — Ancient Wisdom",,
+"By harmonizing thought and emotion, you draw the world to your intention. — Hermetic Wisdom",
+"Patience and clarity amplify the power of manifestation. — Ancient Egyptian Teachings",
+"The disciplined mind is the architect of reality. — Stoicism",
+"Every action aligned with purpose brings abundance. — Stoic Manifestation Wisdom",
+"Inner vision shapes the outer world; focus and act deliberately. — Hermetic Wisdom",
+"Energy directed with intention transforms potential into reality. — Hermetic Teachings",
+"Through meditation, visualization, and aligned action, the universe responds. — Yogic Wisdom",
+"Desire, when purified and focused, manifests effortlessly. — Tantric Teachings",
+"Control over mind, body, and prana ensures manifestation success. — Yogic Wisdom",
+"Those who know the hidden laws of the cosmos co-create reality consciously. — Gnostic Wisdom",
+
+"Align yourself with cosmic rhythm and watch abundance flow. — Ancient Egyptian Wisdom",
+"Through knowledge and will, you can shape your life. — Emerald Tablets of Thoth",
+"Faith and clarity in action attract the unseen into manifestation. — Gnostic Teachings",
+"The universe mirrors inner balance; cultivate harmony within. — Hermetic Wisdom",
+"Through visualization and persistent focus, all things are possible. — Yogic Manifestation",
+"Manifestation is the art of aligning thought, emotion, and universal law. — Esoteric Wisdom",
+"Energy flows to the mind that holds clear and unwavering intent. — Hermetic Wisdom",
+"The wise manifest without struggle; they act in alignment with the cosmos. — Ancient Wisdom",
+"Abundance follows clarity of purpose and disciplined action. — Stoic Manifestation",
+"Through reflection and inner alignment, hidden opportunities appear. — Taoist Wisdom",
+
+"Let intention guide action, and the universe will conspire to support you. — Gnostic Wisdom",
+"The soul that sees clearly shapes the world in alignment with its vision. — Hermetic Teachings",
+"Through focus and inner balance, your reality takes form. — Ancient Egyptian Teachings",
+"The mind that is still attracts insight, abundance, and alignment. — Yogic Wisdom",
+"Manifestation flows naturally when desire is aligned with higher purpose. — Tantric Wisdom",
+"Thoughts held with conviction become reality; act with awareness. — Hermetic Wisdom",
+"The inner world creates the outer world; discipline and focus are essential. — Esoteric Teachings",
+"Align your will with universal principles; results are inevitable. — Hermetic Wisdom",
+"Energy follows directed attention; choose your thoughts carefully. — Hermetic Manifestation",
+"Those who master themselves co-create reality effortlessly. — Ancient Wisdom",
+
+"By understanding cosmic law, one can manifest without struggle. — Ancient Wisdom",
+"The disciplined mind and aligned heart form the foundation of manifestation. — Esoteric Teachings",
+"Visualization, clarity, and action open hidden doors to abundance. — Hermetic Wisdom",
+"Inner alignment produces outer results; control your perceptions. — Stoic Manifestation",
+"Intent, clarity, and consistent action attract all that is desired. — Hermetic Wisdom",
+"Abundance is drawn to those who harmonize thought, feeling, and action. — Ancient Wisdom",
+"The universe supports those who act with knowledge, faith, and alignment. — Hermetic Teachings",
+"Manifestation requires focus, patience, and inner clarity. — Ancient Esoteric Wisdom",
+"Through inner mastery, one can influence outer reality consciously. — Hermetic Wisdom",
+"The soul that is attuned to universal law attracts guidance, abundance, and opportunity. — Ancient Wisdom"
+
+];
+
+function showVerses() {
+
+  const output = document.getElementById("verseOutput");
+
+  const today = new Date().getDate();
+
+  let index1 = today % verses.length;
+  let index2 = (today * 3) % verses.length;
+
+  output.innerHTML = `
+    <div class="verse-box">${verses[index1]}</div>
+    <div class="verse-box">${verses[index2]}</div>
+  `;
+}
+
+</script>
+
+</div>
+
+</body>
+</html>
