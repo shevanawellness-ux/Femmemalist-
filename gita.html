@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Daily Divine Guidance</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+body {
+  margin:0;
+  padding:0;
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(#fff0f5, #ffe6f0);
+}
+
+.container {
+  max-width:900px;
+  margin:auto;
+  padding:40px 20px;
+}
+
+h1 {
+  font-family: 'Playfair Display', serif;
+  text-align:center;
+  font-size:34px;
+  margin-bottom:10px;
+}
+
+.subtitle {
+  text-align:center;
+  font-size:16px;
+  margin-bottom:30px;
+}
+
+.button-wrap {
+  text-align:center;
+  margin:30px 0;
+}
+
+button {
+  background:#ff4d88;
+  color:white;
+  border:none;
+  padding:14px 28px;
+  font-size:16px;
+  border-radius:30px;
+  cursor:pointer;
+  font-family:'Inter', sans-serif;
+}
+
+#verseOutput {
+  margin-top:30px;
+}
+
+.verse-box {
+  background:white;
+  padding:20px;
+  margin:15px auto;
+  border-radius:18px;
+  box-shadow:0 12px 30px rgba(0,0,0,0.08);
+  font-size:18px;
+  text-align:center;
+  max-width:700px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Daily Divine Guidance</h1>
+
+<p class="subtitle">
+Receive two powerful verses daily for peace abundance strength and divine alignment
+</p>
+
+<div id="verseOutput"></div>
+
+<div class="button-wrap">
+<button onclick="showVerses()">Receive Today's Verses</button>
+</div>
+
+<script>
+
+const verses = [
+
+"You have the right to perform your duty but you are not entitled to the fruits of your actions Bhagavad Gita 2 47",
+"Be steady in your duty abandoning attachment to success and failure Bhagavad Gita 2 48",
+"True yoga is balance and calmness in all situations Bhagavad Gita 2 48",
+
+"The soul is never born nor does it die Bhagavad Gita 2 20",
+"Weapons cannot cut the soul fire cannot burn it Bhagavad Gita 2 23",
+"The soul is eternal unchanging and indestructible Bhagavad Gita 2 24",
+
+"Just as a person puts on new clothes discarding old ones the soul accepts new bodies Bhagavad Gita 2 22",
+"As the body passes from childhood to youth to old age the soul passes into another body Bhagavad Gita 2 13",
+
+"When a person dwells on desires attachment arises from it Bhagavad Gita 2 62",
+"From anger comes confusion from confusion loss of memory Bhagavad Gita 2 63",
+
+"Whenever righteousness declines and unrighteousness rises I manifest Bhagavad Gita 4 7",
+"I appear to protect the good and destroy evil Bhagavad Gita 4 8",
+
+"One who understands the divine nature of my actions is not reborn Bhagavad Gita 4 9",
+"Such a soul comes to me after leaving the body Bhagavad Gita 4 9",
+
+"A faithful person who is dedicated gains knowledge Bhagavad Gita 4 39",
+"Knowledge destroys ignorance and brings clarity Bhagavad Gita 4 42",
+
+"Lift yourself by your own mind do not degrade yourself Bhagavad Gita 6 5",
+"The mind can be your best friend or your worst enemy Bhagavad Gita 6 5",
+
+"Wherever the restless mind wanders bring it back under control Bhagavad Gita 6 26",
+"With practice the mind becomes steady Bhagavad Gita 6 26",
+
+"The yogi who is devoted with faith is considered the highest Bhagavad Gita 6 47",
+"Through devotion one truly understands the divine Bhagavad Gita 18 55",
+
+"Surrender completely and you will be freed from all sorrow Bhagavad Gita 18 66",
+"Do not fear I will liberate you Bhagavad Gita 18 66",
+
+"Fix your mind on the divine be devoted and offer your actions Bhagavad Gita 18 65",
+"You will surely attain peace and fulfillment Bhagavad Gita 18 65","Those who are free from desire anger and fear attain peace Bhagavad Gita 2 56",
+"A person who is not disturbed by desires achieves true peace Bhagavad Gita 2 70",
+"When all desires are abandoned the soul becomes steady and fulfilled Bhagavad Gita 2 55",
+
+"One who controls the senses and remains unattached attains inner peace Bhagavad Gita 2 64",
+"Peace comes to those who are free from attachment and ego Bhagavad Gita 2 71",
+
+"The disciplined mind brings happiness and clarity Bhagavad Gita 6 27",
+"A calm mind leads to deep joy and connection with the divine Bhagavad Gita 6 28",
+
+"One who sees the divine in all beings and all beings in the divine is truly wise Bhagavad Gita 6 29",
+"The wise see all beings equally with compassion and balance Bhagavad Gita 5 18",
+
+"A person who performs actions without attachment remains unaffected Bhagavad Gita 5 10",
+"Freedom comes to those who dedicate all actions to the divine Bhagavad Gita 3 30",
+
+"Those who act only for results feel stress and dissatisfaction Bhagavad Gita 2 49",
+"Let go of results and you will find peace in action Bhagavad Gita 2 48",
+
+"The one who is content within finds lasting happiness Bhagavad Gita 5 24",
+"True joy comes from inner peace not external success Bhagavad Gita 5 21",
+
+"The person who has faith and self control gains wisdom Bhagavad Gita 4 39",
+"Without faith there is no peace or happiness Bhagavad Gita 4 40",
+
+"Actions performed with a pure heart bring positive results Bhagavad Gita 17 20",
+"Giving without expectation creates true abundance Bhagavad Gita 17 20",
+
+"The divine provides for those who are devoted and sincere Bhagavad Gita 9 22",
+"To those who trust deeply guidance and support are always given Bhagavad Gita 10 10",
+
+"I am the source of everything all energy flows from me Bhagavad Gita 10 8",
+"Understanding this brings peace and clarity Bhagavad Gita 10 8",
+
+"Even the most imperfect person becomes righteous through devotion Bhagavad Gita 9 30",
+"Soon they find peace and transformation Bhagavad Gita 9 31",
+
+"Where there is faith there is strength and success Bhagavad Gita 17 3",
+"As a person believes so they become Bhagavad Gita 17 3",
+
+"The one who works with dedication reaches perfection Bhagavad Gita 18 46",
+"Success comes from aligning action with purpose Bhagavad Gita 18 46",
+
+"Detach from outcomes and focus on effort Bhagavad Gita 2 47",
+"This brings freedom confidence and growth Bhagavad Gita 2 47",
+
+"In calmness there is power and clarity Bhagavad Gita 2 48",
+"A balanced mind leads to success and peace Bhagavad Gita 2 48","The one who remains calm in all situations finds true strength Bhagavad Gita 2 56",
+"A steady mind brings peace even in difficult times Bhagavad Gita 2 57",
+
+"Detach from results and focus on your actions Bhagavad Gita 2 47",
+"This brings confidence clarity and freedom Bhagavad Gita 2 47",
+
+"The person who is satisfied within experiences true happiness Bhagavad Gita 5 24",
+"Inner peace is the foundation of a successful life Bhagavad Gita 5 21",
+
+"A disciplined mind leads to focus success and growth Bhagavad Gita 6 5",
+"Control over the mind creates powerful transformation Bhagavad Gita 6 6",
+
+"Practice brings stability and control over thoughts Bhagavad Gita 6 26",
+"A focused mind creates clear direction in life Bhagavad Gita 6 25",
+
+"Those who act with sincerity and faith achieve their goals Bhagavad Gita 17 3",
+"Faith gives strength and direction to every action Bhagavad Gita 17 3",
+
+"The divine supports those who stay devoted and consistent Bhagavad Gita 9 22",
+"Trust brings protection guidance and stability Bhagavad Gita 9 22",
+
+"The one who works without ego attains true success Bhagavad Gita 3 19",
+"Let go of pride and focus on purpose Bhagavad Gita 3 30",
+
+"A peaceful mind attracts clarity success and abundance Bhagavad Gita 6 27",
+"Calmness allows better decisions and stronger outcomes Bhagavad Gita 6 28",
+"One who performs duty without attachment attains true peace Bhagavad Gita 3 19",
+"Actions done with dedication and surrender lead to freedom Bhagavad Gita 3 30",
+
+"The one who is content within finds lasting happiness Bhagavad Gita 5 24",
+"Inner joy is greater than external success Bhagavad Gita 5 21",
+
+"The disciplined mind brings strength clarity and stability Bhagavad Gita 6 7",
+"A peaceful mind leads to deep happiness Bhagavad Gita 6 27",
+
+"Through practice and detachment the mind can be controlled Bhagavad Gita 6 35",
+"A controlled mind becomes your greatest support Bhagavad Gita 6 6",
+
+"Those who are devoted with faith are guided and protected Bhagavad Gita 9 22",
+"The divine provides what is needed and preserves what is gained Bhagavad Gita 9 22",
+
+"I am the source of all creation everything flows from me Bhagavad Gita 10 8",
+"Understanding this brings confidence and clarity Bhagavad Gita 10 8",
+
+"Fix your mind on the divine and you will find peace Bhagavad Gita 12 8",
+"Devotion leads to strength and fulfillment Bhagavad Gita 12 6",
+
+"The one who is free from hatred and ego is dear to the divine Bhagavad Gita 12 13",
+"Compassion and calmness create a powerful life Bhagavad Gita 12 13",
+
+"The person who remains steady in all situations becomes unshakable Bhagavad Gita 2 57",
+"Balance in success and failure leads to true strength Bhagavad Gita 2 38",
+
+"Let go of fear anger and attachment and you will find freedom Bhagavad Gita 2 56",
+"Peace comes when desires are under control Bhagavad Gita 2 71",
+
+"The one who acts with sincerity receives true results Bhagavad Gita 17 28",
+"Faith transforms effort into success Bhagavad Gita 17 3",
+
+"The divine resides in the heart of every being Bhagavad Gita 18 61",
+"Trusting this brings guidance and protection Bhagavad Gita 18 61",
+
+"Surrender fully and you will be freed from all suffering Bhagavad Gita 18 66",
+"Do not fear you are always supported Bhagavad Gita 18 66"
+
+];
+
+function showVerses() {
+
+  const output = document.getElementById("verseOutput");
+
+  const today = new Date().getDate();
+
+  let index1 = today % verses.length;
+  let index2 = (today * 3) % verses.length;
+
+  output.innerHTML = `
+    <div class="verse-box">${verses[index1]}</div>
+    <div class="verse-box">${verses[index2]}</div>
+  `;
+}
+
+</script>
+
+</div>
+
+</body>
+</html>
