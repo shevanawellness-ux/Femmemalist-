@@ -15,129 +15,140 @@
 
 <style>
 body {
-margin:0;
-background:linear-gradient(to bottom,#fff0f5,#ffe6f0);
-color:#333;
-font-family:'Inter',sans-serif;
-line-height:1.7;
+  margin:0;
+  background:linear-gradient(to bottom,#fff0f5,#ffe6f0);
+  color:#333;
+  font-family:'Inter',sans-serif;
+  line-height:1.7;
 }
 
 .container {
-max-width:950px;
-padding:20px;
-margin:auto;
+  max-width:950px;
+  padding:20px;
+  margin:auto;
 }
 
 h1,h2 {
-font-family:'Playfair Display',serif;
+  font-family:'Playfair Display',serif;
 }
 
 h1 {
-font-size:36px;
-color:#C71585;
-margin-bottom:28px;
-text-align:center;
+  font-size:36px;
+  color:#C71585;
+  margin-bottom:28px;
+  text-align:center;
 }
 
 h2 {
-font-size:26px;
-color:#DB7093;
-margin-top:46px;
+  font-size:26px;
+  color:#DB7093;
+  margin-top:46px;
 }
 
 p {
-font-size:16px;
-margin:16px 0;
+  font-size:16px;
+  margin:16px 0;
+}
+
+.image-block {
+  text-align:center;
+  margin:32px 0;
+}
+
+.image-block img {
+  max-width:100%;
+  border-radius:18px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.08);
 }
 
 .face-box {
-background:#ffe6f0;
-border-left:6px solid #FF69B4;
-border-radius:18px;
-padding:24px;
-margin:28px 0;
-font-family:'Playfair Display',serif;
-box-shadow:0 10px 30px rgba(0,0,0,0.12);
-transition: all 0.3s ease;
+  background:#ffe6f0;
+  border-left:6px solid #FF69B4;
+  border-radius:18px;
+  padding:24px;
+  margin:28px 0;
+  font-family:'Playfair Display',serif;
+  box-shadow:0 10px 30px rgba(0,0,0,0.12);
+  transition: all 0.3s ease;
 }
 
 .face-box:hover {
-box-shadow:0 12px 36px rgba(0,0,0,0.18);
+  box-shadow:0 12px 36px rgba(0,0,0,0.18);
 }
 
 .face-box h3 {
-font-size:22px;
-color:#C71585;
-margin-bottom:12px;
+  font-size:22px;
+  color:#C71585;
+  margin-bottom:12px;
 }
 
 .face-box p {
-font-size:16px;
-margin-bottom:16px;
-color:#555;
+  font-size:16px;
+  margin-bottom:16px;
+  color:#555;
 }
 
 .face-box .btn {
-display:inline-block;
-padding:14px 28px;
-border-radius:40px;
-font-family:'Playfair Display',serif;
-font-size:18px;
-font-weight:700;
-background:linear-gradient(135deg,#ff5fa2,#ff87c2);
-color:#fff;
-text-decoration:none;
-box-shadow:0 6px 20px rgba(0,0,0,0.15);
-transition: all 0.3s ease;
+  display:inline-block;
+  padding:14px 28px;
+  border-radius:40px;
+  font-family:'Playfair Display',serif;
+  font-size:18px;
+  font-weight:700;
+  background:linear-gradient(135deg,#ff5fa2,#ff87c2);
+  color:#fff;
+  text-decoration:none;
+  box-shadow:0 6px 20px rgba(0,0,0,0.15);
+  transition: all 0.3s ease;
 }
 
 .face-box .btn:hover {
-transform: translateY(-4px);
-box-shadow:0 10px 30px rgba(0,0,0,0.2);
+  transform: translateY(-4px);
+  box-shadow:0 10px 30px rgba(0,0,0,0.2);
 }
 
 .app-box {
-background:#f9f0f5;
-border-left:6px solid #FF69B4;
-border-radius:18px;
-padding:24px;
-margin:28px 0;
-font-family:'Playfair Display',serif;
-text-align:center;
-box-shadow:0 10px 30px rgba(0,0,0,0.1);
+  background:#f9f0f5;
+  border-left:6px solid #FF69B4;
+  border-radius:18px;
+  padding:24px;
+  margin:28px 0;
+  font-family:'Playfair Display',serif;
+  text-align:center;
+  box-shadow:0 10px 30px rgba(0,0,0,0.1);
 }
 
 .app-box p {
-font-size:16px;
-color:#666;
-margin-bottom:20px;
+  font-size:16px;
+  color:#666;
+  margin-bottom:20px;
 }
 
 .app-box a {
-display:inline-block;
-padding:18px 36px;
-border-radius:50px;
-font-family:'Playfair Display',serif;
-font-size:20px;
-font-weight:700;
-background:linear-gradient(135deg,#ff5fa2,#ff87c2);
-color:#fff;
-text-decoration:none;
-box-shadow:0 12px 30px rgba(0,0,0,0.2);
-transition: all 0.3s ease;
+  display:inline-block;
+  padding:18px 36px;
+  border-radius:50px;
+  font-family:'Playfair Display',serif;
+  font-size:20px;
+  font-weight:700;
+  background:linear-gradient(135deg,#ff5fa2,#ff87c2);
+  color:#fff;
+  text-decoration:none;
+  box-shadow:0 12px 30px rgba(0,0,0,0.2);
+  transition: all 0.3s ease;
 }
 
 .app-box a:hover {
-transform: translateY(-5px);
-box-shadow:0 14px 36px rgba(0,0,0,0.25);
+  transform: translateY(-5px);
+  box-shadow:0 14px 36px rgba(0,0,0,0.25);
 }
 
 .disclaimer {
-font-size:10px;
-font-style:italic;
-color:#000;
-opacity:0.35;
-margin-top:60px;
+  font-size:10px;
+  font-style:italic;
+  color:#000;
+  opacity:0.35;
+  margin-top:60px;
 }
 
 </style>
@@ -151,14 +162,19 @@ margin-top:60px;
 <p style="text-align:center; font-size:18px; color:#555; margin-bottom:32px;">
 Explore daily guidance and spiritual insight from sacred texts and ancient teachings. Click a topic below to view two powerful verses for today.
 </p>
+
+<!-- Corrected Image Block -->
 <div class="image-block">
   <img src="https://res.cloudinary.com/dtabpv9y2/image/upload/v1773835545/1773835334041_wlyir5.jpg" alt="Ancient Wisdom Illustration">
 </div>
+
+<!-- App Box Section -->
 <div class="app-box">
 <p>Coming soon! For a complete experience and personalized daily wisdom, download the <strong>Femmemalist app</strong>.</p>
 <a href="#" target="_blank">Download Femmemalist App</a>
 </div>
 
+<!-- Topics -->
 <div class="face-box">
 <h3>Biblical Wisdom</h3>
 <p>Timeless guidance from the Holy Bible to inspire faith, hope, and daily reflection.</p>
@@ -183,8 +199,7 @@ Explore daily guidance and spiritual insight from sacred texts and ancient teach
 <a href="ancientwisdom.html" class="btn">View Today’s Ancient Wisdom</a>
 </div>
 
-
-
+<!-- Disclaimer -->
 <div class="disclaimer">
 All content on this platform, including daily verses and teachings from religious and ancient texts, is shared with the utmost respect and is intended solely for <strong>inspiration, positive reflection, and personal upliftment</strong>. This material is presented in a neutral and inclusive manner, with no intent to promote any religion, doctrine, or belief system. By using this site, you acknowledge that the content is purely for <strong>educational, motivational, and enlightening purposes</strong> and is provided in good faith for general guidance, reflection, and positivity.
 </div>
