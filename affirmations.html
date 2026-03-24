@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Affirmation Space - Femmemalist</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+
+<style>
+body{
+margin:0;
+background:linear-gradient(to bottom,#fff0f5,#ffe6f0);
+font-family:'Inter',sans-serif;
+color:#333;
+}
+
+.container{
+max-width:900px;
+margin:auto;
+padding:20px;
+}
+
+h1{
+font-family:'Playfair Display',serif;
+color:#C71585;
+text-align:center;
+font-size:34px;
+}
+
+.intro{
+text-align:center;
+margin-bottom:30px;
+line-height:1.6;
+font-size:15px;
+}
+
+/* CARD */
+.card{
+background:#fff;
+border-radius:18px;
+padding:20px;
+margin-bottom:20px;
+box-shadow:0 6px 18px rgba(0,0,0,0.05);
+text-align:center;
+}
+
+.card h2{
+font-family:'Playfair Display',serif;
+color:#C71585;
+}
+
+/* VIDEO BOX */
+.video-box{
+width:200px;
+aspect-ratio:9/16;
+margin:10px auto;
+border-radius:16px;
+overflow:hidden;
+background:black;
+}
+
+.video-box video{
+width:100%;
+height:100%;
+object-fit:cover;
+}
+
+/* FULLSCREEN */
+.fullscreen-wrapper{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:black;
+z-index:999;
+display:none;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+}
+
+.fullscreen-wrapper video{
+width:100%;
+height:100%;
+object-fit:contain;
+}
+
+/* CONTROLS */
+.full-controls{
+position:absolute;
+bottom:30px;
+display:flex;
+gap:10px;
+}
+
+.btn{
+padding:10px 18px;
+border:none;
+border-radius:30px;
+background:linear-gradient(135deg,#ff5fa2,#ff87c2);
+color:white;
+font-family:'Playfair Display',serif;
+cursor:pointer;
+}
+
+/* FOOTER */
+.footer{
+text-align:center;
+margin-top:50px;
+}
+
+.footer p{
+font-size:11px;
+color:rgba(0,0,0,0.5);
+font-style:italic;
+line-height:1.5;
+}
+
+.footer a{
+display:block;
+margin-top:10px;
+font-size:12px;
+color:#C71585;
+text-decoration:none;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Your Affirmation Space</h1>
+
+<p class="intro">
+Affirmations rewire your mind  and your mind shapes your reality.<br><br>
+Come here every day. Stay consistent. Watch your life shift.<br><br>
+Tap play when you're ready ✨
+</p>
+
+<!-- CARD 1 -->
+<div class="card">
+<h2>Morning Affirmations</h2>
+
+<div class="video-box">
+<video id="video1" muted preload="metadata">
+<source src="https://res.cloudinary.com/dtabpv9y2/video/upload/f_mp4,vc_h264,fl_progressive,q_auto/v1774252534/InShot_20260323_131701460-compressed_ywglch.mp4">
+</video>
+</div>
+
+<button class="btn" onclick="openVideo('video1')">Play</button>
+</div>
+
+<!-- CARD 2 -->
+<div class="card">
+<h2>You Are Enough</h2>
+
+<div class="video-box">
+<video id="video2" muted preload="metadata">
+<source src="https://res.cloudinary.com/dtabpv9y2/video/upload/f_mp4,vc_h264,fl_progressive,q_auto/v1774270943/InShot_20260323_180908992-compressed_c4yjhj.mp4">
+</video>
+</div>
+
+<button class="btn" onclick="openVideo('video2')">Play</button>
+</div>
+
+<!-- CARD 3 -->
+<div class="card">
+<h2>Lucky Girl Syndrome</h2>
+
+<div class="video-box">
+<video id="video3" muted preload="metadata">
+<source src="https://res.cloudinary.com/dtabpv9y2/video/upload/f_mp4,vc_h264,fl_progressive,q_auto/v1774357818/InShot_20260324_180912867-compressed_zan3lu.mp4">
+</video>
+</div>
+
+<button class="btn" onclick="openVideo('video3')">Play</button>
+</div>
+
+<!-- FULLSCREEN PLAYER -->
+<div id="fullscreen" class="fullscreen-wrapper">
+<video id="mainVideo" playsinline></video>
+
+<div class="full-controls">
+<button class="btn" onclick="startVideo()">Start</button>
+<button class="btn" onclick="stopVideo()">Stop</button>
+<button class="btn" onclick="closeVideo()">Back</button>
+</div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+<p>
+Disclaimer: This content is for relaxation and general well-being only and does not replace professional advice.
+<br><br>
+© 2026 Femmemalist™. All rights reserved.
+</p>
+
+<a href="contact.html">Contact Us</a>
+</div>
+
+</div>
+
+<script>
+
+let mainVideo = document.getElementById("mainVideo");
+let fullscreen = document.getElementById("fullscreen");
+
+function openVideo(id){
+let src = document.getElementById(id).querySelector("source").src;
+
+mainVideo.src = src;
+mainVideo.currentTime = 0;
+mainVideo.pause();
+
+fullscreen.style.display = "flex";
+}
+
+function startVideo(){
+mainVideo.play();
+}
+
+function stopVideo(){
+mainVideo.pause();
+}
+
+function closeVideo(){
+mainVideo.pause();
+mainVideo.currentTime = 0;
+fullscreen.style.display = "none";
+}
+
+</script>
+
+</body>
+  </html>
