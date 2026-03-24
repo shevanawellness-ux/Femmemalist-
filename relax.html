@@ -27,12 +27,10 @@ font-family:'Playfair Display',serif;
 color:#C71585;
 text-align:center;
 font-size:34px;
-margin-bottom:10px;
 }
 
 .intro{
 text-align:center;
-font-size:16px;
 margin-bottom:30px;
 line-height:1.6;
 }
@@ -41,8 +39,8 @@ line-height:1.6;
 .card{
 background:#fff;
 border-radius:18px;
-padding:22px;
-margin-bottom:18px;
+padding:20px;
+margin-bottom:20px;
 box-shadow:0 6px 18px rgba(0,0,0,0.05);
 text-align:center;
 }
@@ -50,81 +48,71 @@ text-align:center;
 .card h2{
 font-family:'Playfair Display',serif;
 color:#C71585;
-margin-bottom:10px;
-font-size:22px;
 }
 
-.card p{
-font-size:14px;
-margin-bottom:15px;
+/* VIDEO BOX (VERTICAL) */
+.video-box{
+width:200px;
+aspect-ratio:9/16;
+margin:10px auto;
+border-radius:16px;
+overflow:hidden;
+background:black;
 }
 
-/* BUTTON */
+.video-box video{
+width:100%;
+height:100%;
+object-fit:cover;
+}
+
+/* FULLSCREEN */
+.fullscreen-wrapper{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:black;
+z-index:999;
+display:none;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+}
+
+.fullscreen-wrapper video{
+width:100%;
+height:100%;
+object-fit:contain;
+}
+
+/* CONTROLS */
+.full-controls{
+position:absolute;
+bottom:30px;
+display:flex;
+gap:10px;
+}
+
 .btn{
-padding:12px 25px;
+padding:10px 18px;
 border:none;
 border-radius:30px;
 background:linear-gradient(135deg,#ff5fa2,#ff87c2);
 color:white;
 font-family:'Playfair Display',serif;
 cursor:pointer;
-transition:0.2s;
 }
 
-.btn:hover{
-transform:scale(1.05);
-}
-
-/* MODAL */
-.modal{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-display:none;
-justify-content:center;
-align-items:center;
-background:rgba(0,0,0,0.5);
-z-index:999;
-}
-
-/* MODAL BOX */
-.modal-content{
-background:#000;
-width:90%;
-max-width:420px;
-border-radius:20px;
-overflow:hidden;
-padding:15px;
-text-align:center;
-}
-
-/* VIDEO */
-video{
-width:100%;
-max-height:70vh;
-object-fit:contain;
-border-radius:12px;
-background:black;
-}
-
-/* BUTTONS */
-.modal-buttons{
-margin-top:12px;
-display:flex;
-justify-content:center;
-gap:10px;
-flex-wrap:wrap;
-}
-
+/* FOOTER */
 .footer{
 text-align:center;
-font-size:10px;
 margin-top:40px;
+font-size:11px;
 opacity:0.6;
 font-style:italic;
-line-height:1.3;
+line-height:1.4;
 }
 </style>
 </head>
@@ -136,53 +124,76 @@ line-height:1.3;
 <h1>Your Safe Space</h1>
 
 <p class="intro">
-You don’t have to hold everything together.  
+You don’t have to hold everything together.<br><br>
 This space is here for you… whenever you need to slow down, breathe, and feel safe again.
 </p>
 
 <!-- 1 -->
 <div class="card">
 <h2>Calm Breathing</h2>
-<p>
-Slow down your breath…  
-Gently return to yourself and feel grounded again.
-</p>
-<button class="btn" onclick="openModal('https://res.cloudinary.com/dtabpv9y2/video/upload/v1774071805/InShot_20260320_181048607_dj792j.mp4')">Start</button>
+
+<div class="video-box">
+<video id="video1" muted preload="metadata">
+<source src="https://res.cloudinary.com/dtabpv9y2/video/upload/f_mp4,vc_h264,fl_progressive,q_auto/v1774071805/InShot_20260320_181048607_dj792j.mp4">
+</video>
+</div>
+
+<button class="btn" onclick="openVideo('video1')">Play</button>
 </div>
 
 <!-- 2 -->
 <div class="card">
 <h2>Grounding</h2>
-<p>
-Release anxiety and come back to the present moment…  
-Feel safe in your body again.
-</p>
-<button class="btn" onclick="openModal('https://res.cloudinary.com/dtabpv9y2/video/upload/v1774071982/InShot_20260320_183620662_a5nunc.mp4')">Start</button>
+
+<div class="video-box">
+<video id="video2" muted preload="metadata">
+<source src="https://res.cloudinary.com/dtabpv9y2/video/upload/f_mp4,vc_h264,fl_progressive,q_auto/v1774071982/InShot_20260320_183620662_a5nunc.mp4">
+</video>
+</div>
+
+<button class="btn" onclick="openVideo('video2')">Play</button>
 </div>
 
 <!-- 3 -->
 <div class="card">
 <h2>Nervous System Reset</h2>
-<p>
-Let your body soften…  
-Gently calm your nervous system and feel at ease.
-</p>
-<button class="btn" onclick="openModal('https://res.cloudinary.com/dtabpv9y2/video/upload/v1774101410/InShot_20260321_190311657-compressed_yhd9di.mp4')">Start</button>
+
+<div class="video-box">
+<video id="video3" muted preload="metadata">
+<source src="https://res.cloudinary.com/dtabpv9y2/video/upload/f_mp4,vc_h264,fl_progressive,q_auto/v1774101410/InShot_20260321_190311657-compressed_yhd9di.mp4">
+</video>
+</div>
+
+<button class="btn" onclick="openVideo('video3')">Play</button>
 </div>
 
 <!-- 4 -->
 <div class="card">
 <h2>Deep Relaxation</h2>
-<p>
-Let go of everything…  
-Allow your body and mind to fully rest.
-</p>
-<button class="btn" onclick="openModal('https://res.cloudinary.com/dtabpv9y2/video/upload/v1774094598/InShot_20260321_125221683-compressed_hb4d5s.mp4')">Start</button>
+
+<div class="video-box">
+<video id="video4" muted preload="metadata">
+<source src="https://res.cloudinary.com/dtabpv9y2/video/upload/f_mp4,vc_h264,fl_progressive,q_auto/v1774094598/InShot_20260321_125221683-compressed_hb4d5s.mp4">
+</video>
 </div>
 
-<!-- DISCLAIMER -->
+<button class="btn" onclick="openVideo('video4')">Play</button>
+</div>
+
+<!-- FULLSCREEN PLAYER -->
+<div id="fullscreen" class="fullscreen-wrapper">
+<video id="mainVideo" playsinline></video>
+
+<div class="full-controls">
+<button class="btn" onclick="startVideo()">Start</button>
+<button class="btn" onclick="stopVideo()">Stop</button>
+<button class="btn" onclick="closeVideo()">Back</button>
+</div>
+</div>
+
+<!-- FOOTER -->
 <div class="footer">
-Disclaimer: This content is for relaxation and general well-being only and does not replace professional medical or psychological advice. If you are in distress or need support, please consult a qualified professional. This content does not promote any religion or belief system and is intended solely for relaxation purposes.
+Disclaimer: This content is for relaxation and general well-being only and does not replace professional advice.
 <br><br>
 © 2026 Femmemalist™. All rights reserved.
 <br><br>
@@ -191,58 +202,36 @@ Disclaimer: This content is for relaxation and general well-being only and does 
 
 </div>
 
-<!-- MODAL -->
-<div id="modal" class="modal">
-<div class="modal-content">
-
-<video id="videoPlayer" playsinline controls preload="metadata"></video>
-
-<div class="modal-buttons">
-<button class="btn" onclick="playVideo()">Start</button>
-<button class="btn" onclick="pauseVideo()">Stop</button>
-<button class="btn" onclick="closeModal()">Back</button>
-</div>
-
-</div>
-</div>
-
 <script>
 
-let video=document.getElementById("videoPlayer");
+let mainVideo = document.getElementById("mainVideo");
+let fullscreen = document.getElementById("fullscreen");
 
-function openModal(src){
-video.src=src;
-video.load();
+function openVideo(id){
+let src = document.getElementById(id).querySelector("source").src;
 
-// Force first frame as thumbnail
-video.currentTime = 0.1;
+mainVideo.src = src;
+mainVideo.currentTime = 0;
+mainVideo.pause();
 
-// fallback for mobile rendering
-video.muted = true;
-video.play().then(()=>{
-video.pause();
-video.currentTime = 0;
-});
-
-document.getElementById("modal").style.display="flex";
+fullscreen.style.display = "flex";
 }
 
-function closeModal(){
-video.pause();
-video.currentTime=0;
-document.getElementById("modal").style.display="none";
+function startVideo(){
+mainVideo.play();
 }
 
-function playVideo(){
-video.muted = false;
-video.play();
+function stopVideo(){
+mainVideo.pause();
 }
 
-function pauseVideo(){
-video.pause();
+function closeVideo(){
+mainVideo.pause();
+mainVideo.currentTime = 0;
+fullscreen.style.display = "none";
 }
 
 </script>
 
 </body>
-  </html>
+</html>
