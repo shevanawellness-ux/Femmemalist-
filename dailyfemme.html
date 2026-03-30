@@ -3,31 +3,41 @@
 <head>
 <meta charset="UTF-8">
 <title>Daily FEMME</title>
-  <link rel="canonical" href="https://femmemalist.com/dailyfemme.html">
-<meta name="robots" content="index, follow">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <style>
 body{
-  font-family: -apple-system, BlinkMacSystemFont, "Poppins", sans-serif;
+  font-family:-apple-system,BlinkMacSystemFont,"Poppins",sans-serif;
   background:#ffffff;
   color:#111;
-  padding:24px;
+  padding:12px;
 }
+
+/* 180px SAFE */
 .daily{
   border-left:4px solid #e8b7c8;
-  padding-left:16px;
+  padding-left:10px;
+  max-width:180px;
 }
+
 .phrase{
-  font-size:20px;
+  font-size:13px;
   font-weight:600;
-  margin-bottom:10px;
+  margin-bottom:6px;
 }
+
 .lines{
-  font-size:15px;
-  line-height:1.6;
+  font-size:12px;
+  line-height:1.4;
+}
+
+.checkWrap{
+  margin-top:8px;
+  font-size:12px;
 }
 </style>
 </head>
+
 <body>
 
 <div class="daily">
@@ -35,190 +45,669 @@ body{
   <div class="lines" id="lines"></div>
 </div>
 
-<script>
-const entries = [
-"Frame your face first.|Round: Vertical framing<br>Oval: Balanced framing<br>Square: Soft curves<br>Heart: Volume near jaw<br>Long: Width at sides",
-"Upgrade one habit today.|Small improvement<br>Visible discipline<br>Quiet growth",
-"Let metal match your skin.|Warm: Gold<br>Cool: Silver<br>Neutral: Mixed metals<br>Olive: Brushed gold<br>Deep: Antique gold",
-"Balance your upper half.|Apple: Open sleeves<br>Pear: Puff sleeves<br>Hourglass: Fitted sleeves<br>Rectangle: Layered sleeves<br>Inverted Triangle: Slim sleeves",
-"Confidence begins with posture.|Stand tall<br>Relax shoulders<br>Breathe slowly",
-"Choose earrings that sculpt.|Round: Long drops<br>Oval: Any shape<br>Square: Curves<br>Heart: Teardrops<br>Long: Studs",
-"Let blush lift, not drag.|Round: Upward sweep<br>Oval: Soft blend<br>Square: High placement<br>Heart: Outer cheeks<br>Long: Horizontal sweep",
-"One piece, one purpose.|Apple: Wrap dress<br>Pear: Fit & flare<br>Hourglass: Body-skimming<br>Rectangle: Belted shift<br>Inverted Triangle: A-line",
-"Speak gently, firmly.|Clear voice<br>No rushing<br>No apology",
-"Let fabric work for you.|Apple: Straight fits<br>Pear: Flared bottoms<br>Hourglass: Tailored<br>Rectangle: Wide-leg<br>Inverted Triangle: Flowing",
-"Your bag should echo your undertone.|Warm: Camel<br>Cool: Black<br>Neutral: Taupe<br>Olive: Chocolate<br>Deep: Burgundy",
-"Remove what drains you.|Low-value habits<br>Negative loops<br>Unnecessary guilt",
-"Guide the gaze.|Apple: Long pendants<br>Pear: Chokers<br>Hourglass: Medium chains<br>Rectangle: Layered chains<br>Inverted Triangle: Minimal jewelry",
-"Texture creates illusion.|Apple: Drapey<br>Pear: Structured tops<br>Hourglass: Stretch blends<br>Rectangle: Ribbed<br>Inverted Triangle: Fluid",
-"Act like the woman you admire.|Choose maturity<br>Choose composure<br>Choose grace",
-"Hair parting is a silent tool.|Round: Deep side<br>Oval: Middle<br>Square: Soft side<br>Heart: Side with volume<br>Long: Middle layers",
-"Structure changes everything.|Apple: Open blazer<br>Pear: Cropped jacket<br>Hourglass: Tailored blazer<br>Rectangle: Boxy jacket<br>Inverted Triangle: Longline",
-"Discipline is self-respect.|Show up<br>Follow through<br>Rest intentionally",
-"Scarves frame your glow.|Warm: Peach<br>Cool: Icy blue<br>Neutral: Soft rose<br>Olive: Muted green<br>Deep: Wine",
-"Cling or flow—choose.|Apple: Relaxed<br>Pear: Fitted<br>Hourglass: Snug<br>Rectangle: Boxy<br>Inverted Triangle: Draped",
-"Your presence enters before words.|Calm energy<br>Soft confidence<br>Grounded aura",
-"Hair accessories affect harmony.|Warm: Tortoiseshell<br>Cool: Silver<br>Neutral: Pearl<br>Olive: Matte metal<br>Deep: Velvet",
-"Money follows clarity.|Define goals<br>Track spending<br>Value time",
-"Contour with intention.|Round: Under cheekbones<br>Oval: Minimal<br>Square: Soften jaw<br>Heart: Temples<br>Long: Shorten length",
-"Choose your spotlight.|Apple: Neckline<br>Pear: Upper body<br>Hourglass: Waist<br>Rectangle: Shoulders<br>Inverted Triangle: Lower body",
-"Motivation comes after action.|Start imperfectly<br>Gain momentum<br>Build belief",
-"Shoes ground your outfit.|Warm: Nude beige<br>Cool: Black<br>Neutral: Grey<br>Olive: Espresso<br>Deep: Dark plum",
-"Depth creates drama.|Apple: Deep V<br>Pear: Moderate depth<br>Hourglass: Sweetheart<br>Rectangle: Scoop<br>Inverted Triangle: Shallow",
-"Your worth is non-negotiable.|Set boundaries<br>Honor needs<br>Protect energy",
-"Eyebrows balance the face.|Round: Soft arch<br>Oval: Natural<br>Square: Rounded<br>Heart: Gentle curve<br>Long: Flat brow",
-"One color, strong impact.|Apple: Dark mono<br>Pear: Light top<br>Hourglass: Balanced<br>Rectangle: Any shade<br>Inverted Triangle: Dark top",
-"Visualize before you act.|See success<br>Feel calm<br>Then move",
-"Hair length creates illusion.|Round: Below shoulders<br>Oval: Any length<br>Square: Past jaw<br>Heart: Collarbone<br>Long: Short layers",
-"Belts define polish.|Warm: Tan leather<br>Cool: Black leather<br>Neutral: Taupe<br>Olive: Olive brown<br>Deep: Dark chocolate",
-"Spend like your future self.|Intentional purchases<br>Long-term value<br>No regret",
-"Buttons are styling tools.|Apple: Open top<br>Pear: Buttoned<br>Hourglass: Half-open<br>Rectangle: Playful<br>Inverted Triangle: Open neck",
-"Presence is built in details.|Warm accents<br>Cool accents<br>Neutral calm<br>Olive grounded<br>Deep bold",
-"Lip shape changes proportions.|Round: Defined cupid’s bow<br>Oval: Balanced<br>Square: Soft edges<br>Heart: Fuller lower lip<br>Long: Wider shape",
-"You attract what you tolerate.|Raise standards<br>Enforce limits<br>Trust yourself",
-"Rings draw subtle attention.|Warm: Gold bands<br>Cool: Silver<br>Neutral: Mixed<br>Olive: Hammered<br>Deep: Bold stones",
-"Where it ends defines you.|Apple: Midi<br>Pear: Above knee<br>Hourglass: Slit midi<br>Rectangle: Mini<br>Inverted Triangle: Flare midi",
-"Repetition builds confidence.|Daily practice<br>Daily effort<br>Daily growth",
-"Hair color placement sculpts.|Round: Dark roots<br>Oval: Balanced<br>Square: Soft blends<br>Heart: Light ends<br>Long: Side highlights",
-"Edit before you step out.|Remove excess<br>Keep harmony<br>Choose ease",
-"Vertical or horizontal?|Apple: Vertical<br>Pear: Vertical top<br>Hourglass: Balanced<br>Rectangle: Horizontal<br>Inverted Triangle: Vertical bottom",
-"Confidence grows in silence.|Less explanation<br>More consistency<br>Inner certainty",
-"Shoes and bag must converse.|Warm with warm<br>Cool with cool<br>Neutral with neutral<br>Olive with earth<br>Deep with depth",
-"High or low changes focus.|Apple: Low neck<br>Pear: High neck<br>Hourglass: Medium<br>Rectangle: High<br>Inverted Triangle: Open",
-"Manifest through alignment.|Thoughts align<br>Actions align<br>Results follow",
-"Every accessory adds weight.|Warm: Balanced glow<br>Cool: Sharp balance<br>Neutral: Even<br>Olive: Light<br>Deep: Intentional",
-"Your undertone is your signature.|Warm: Radiate warmth<br>Cool: Radiate clarity<br>Neutral: Radiate balance<br>Olive: Radiate depth<br>Deep: Radiate power",
-"Speak abundance aloud.|Money flows easily<br>Opportunities expand<br>I receive calmly",
-"Confidence is keeping promises to yourself.|Start small<br>Finish strong<br>Repeat daily",
-"Money loves direction.|Plan income<br>Plan savings<br>Plan growth",
-"Detach from comparison.|Focus inward<br>Progress quietly<br>Celebrate privately",
-"Elegance is emotional control.|Respond slowly<br>Detach calmly<br>Stay composed",
-"Your mindset is your currency.|Invest in learning<br>Protect optimism<br>Multiply belief",
-"Self-perfection is consistency.|Gentle discipline<br>Steady rhythm<br>Sustainable growth",
-"Speak wealth, not worry.|I have enough<br>I grow steadily<br>I attract more",
-"Confidence is comfort with yourself.|No performance<br>No approval<br>Just presence",
-"You are becoming her.|Calm mind<br>Clear direction<br>Abundant future"
-  ,
+<script>const entries = [
 
-"Have you repeated powerful affirmations today? Explore it in our affirmations page.",
-"Have you built a positive mindset today? Explore it in our affirmations page.",
-"Have you spoken abundance into your life today? Explore it in our affirmations page.",
-"Have you reinforced your confidence today? Explore it in our affirmations page.",
-"Have you trained your thoughts to stay positive today? Explore it in our affirmations page.",
+"Explore if gold suits your skin tone. Check our undertone page.",
+"Explore if silver suits your skin tone. Check our undertone page.",
+"Explore if rose gold flatters your complexion. Check our undertone page.",
+"Explore if copper tones enhance your skin. Check our undertone page.",
+"Explore if bronze jewelry suits your undertone. Check our undertone page.",
 
-"Have you written your goals clearly today? Explore it in our journal page.",
-"Have you reflected on your progress today? Explore it in our journal page.",
-"Have you written about your feelings today? Explore it in our journal page.",
-"Have you tracked your personal growth today? Explore it in our journal page.",
-"Have you journaled about your future self today? Explore it in our journal page.",
+"Explore if warm colors suit your skin. Check our undertone page.",
+"Explore if cool colors suit your skin. Check our undertone page.",
+"Explore if neutral shades balance your tone. Check our undertone page.",
+"Explore if olive tones match your complexion. Check our undertone page.",
+"Explore if earthy tones enhance your appearance. Check our undertone page.",
 
-"Have you structured your day intentionally today? Explore it in our daily planner page.",
-"Have you broken your tasks into small steps today? Explore it in our daily planner page.",
-"Have you created a focused plan today? Explore it in our daily planner page.",
-"Have you reviewed your priorities today? Explore it in our daily planner page.",
-"Have you planned your next move clearly today? Explore it in our daily planner page.",
 
-"Have you slowed your breathing today? Explore it in our relaxation page.",
-"Have you released stress from your body today? Explore it in our relaxation page.",
-"Have you calmed your nervous system today? Explore it in our relaxation page.",
-"Have you taken a deep pause today? Explore it in our relaxation page.",
-"Have you allowed yourself to relax fully today? Explore it in our relaxation page.",
+"Explore if straight hair suits your face shape. Check our face shape page.",
+"Explore if soft curls frame your face. Check our face shape page.",
+"Explore if layered hair enhances your features. Check our face shape page.",
+"Explore if short hair highlights your face. Check our face shape page.",
+"Explore if long hair elongates your face. Check our face shape page.",
 
-"Have you reduced mental clutter today? Explore it in our relaxation page.",
-"Have you calmed your thoughts today? Explore it in our relaxation page.",
-"Have you let go of tension today? Explore it in our relaxation page.",
-"Have you eased your mind today? Explore it in our relaxation page.",
-"Have you given yourself emotional space today? Explore it in our relaxation page.",
+"Explore if curtain bangs soften your face. Check our face shape page.",
+"Explore if side bangs suit your face shape. Check our face shape page.",
+"Explore if blunt bangs match your features. Check our face shape page.",
+"Explore if wispy bangs suit your look. Check our face shape page.",
 
-"Have you grounded yourself in reality today? Explore it in our relaxation page.",
-"Have you focused on your senses today? Explore it in our relaxation page.",
-"Have you stayed present in the moment today? Explore it in our relaxation page.",
-"Have you centered your energy today? Explore it in our relaxation page.",
-"Have you returned your focus inward today? Explore it in our relaxation page.",
+"Explore if high blush placement lifts your face. Check our face shape page.",
+"Explore if low blush placement softens your face. Check our face shape page.",
+"Explore if horizontal blush changes your look. Check our face shape page.",
 
-"Have you watched an educational video today? Explore it in our baddie binge page.",
-"Have you improved your mindset through videos today? Explore it in our baddie binge page.",
-"Have you consumed valuable content today? Explore it in our baddie binge page.",
-"Have you explored self-growth videos today? Explore it in our baddie binge page.",
-"Have you learned something new visually today? Explore it in our baddie binge page.",
+"Explore if soft contour suits your face. Check our face shape page.",
+"Explore if sharp contour defines your face. Check our face shape page.",
+"Explore if nose contour changes your appearance. Check our face shape page.",
 
-"Have you listened to a meaningful audiobook today? Explore it in our audiobook page.",
-"Have you absorbed knowledge through listening today? Explore it in our audiobook page.",
-"Have you expanded your thinking today? Explore it in our audiobook page.",
-"Have you spent time learning through audio today? Explore it in our audiobook page.",
-"Have you invested in your growth today? Explore it in our audiobook page.",
+"Explore if thick brows suit your face. Check our face shape page.",
+"Explore if thin brows flatter your features. Check our face shape page.",
+"Explore if arched brows lift your face. Check our face shape page.",
 
-"Have you taken care of your emotional health today? Explore it in our relaxation page.",
-"Have you checked your inner state today? Explore it in our relaxation page.",
-"Have you supported your mental well-being today? Explore it in our relaxation page.",
-"Have you created calm within yourself today? Explore it in our relaxation page.",
-"Have you protected your peace today? Explore it in our relaxation page.",
+"Explore if wing eyeliner enhances your eyes. Check our face shape page.",
+"Explore if soft eye makeup suits your features. Check our face shape page.",
+"Explore if bold eye makeup matches your face. Check our face shape page.",
 
-"Have you visualized your future today? Explore it in our affirmations page.",
-"Have you imagined your ideal life today? Explore it in our affirmations page.",
-"Have you aligned your thoughts with success today? Explore it in our affirmations page.",
-"Have you built belief in yourself today? Explore it in our affirmations page.",
-"Have you strengthened your mindset today? Explore it in our affirmations page.",
+"Explore if hoop earrings suit your face shape. Check our face shape page.",
+"Explore if drop earrings elongate your face. Check our face shape page.",
+"Explore if studs suit your features. Check our face shape page.",
 
-"Have you written what you are grateful for today? Explore it in our journal page.",
-"Have you captured a moment from your day today? Explore it in our journal page.",
-"Have you reflected on your actions today? Explore it in our journal page.",
-"Have you written freely without judgment today? Explore it in our journal page.",
-"Have you explored your thoughts deeply today? Explore it in our journal page.",
 
-"Have you planned your next day today? Explore it in our daily planner page.",
-"Have you set clear intentions today? Explore it in our daily planner page.",
-"Have you mapped your priorities today? Explore it in our daily planner page.",
-"Have you created a direction for your day today? Explore it in our daily planner page.",
-"Have you organized your time wisely today? Explore it in our daily planner page.",
+"Explore if V-neck suits your body shape. Check our body styling page.",
+"Explore if round neck softens your upper body. Check our body styling page.",
+"Explore if square neckline enhances your shoulders. Check our body styling page.",
+"Explore if halter neck suits your proportions. Check our body styling page.",
+"Explore if off-shoulder suits your structure. Check our body styling page.",
 
-"Have you practiced slow breathing today? Explore it in our relaxation page.",
-"Have you relaxed your muscles today? Explore it in our relaxation page.",
-"Have you slowed your heart rate today? Explore it in our relaxation page.",
-"Have you reduced your stress response today? Explore it in our relaxation page.",
-"Have you calmed your body today? Explore it in our relaxation page.",
+"Explore if fitted tops define your body. Check our body styling page.",
+"Explore if oversized tops balance your frame. Check our body styling page.",
+"Explore if crop tops highlight your waist. Check our body styling page.",
+"Explore if peplum tops create curves. Check our body styling page.",
 
-"Have you reduced overthinking today? Explore it in our relaxation page.",
-"Have you quieted your inner noise today? Explore it in our relaxation page.",
-"Have you paused your racing thoughts today? Explore it in our relaxation page.",
-"Have you softened your mental pressure today? Explore it in our relaxation page.",
-"Have you eased your mind today? Explore it in our relaxation page.",
+"Explore if A-line skirts balance your hips. Check our body styling page.",
+"Explore if pencil skirts define your shape. Check our body styling page.",
+"Explore if maxi skirts elongate your frame. Check our body styling page.",
 
-"Have you focused on the present moment today? Explore it in our relaxation page.",
-"Have you noticed your surroundings today? Explore it in our relaxation page.",
-"Have you stayed grounded in reality today? Explore it in our relaxation page.",
-"Have you centered yourself today? Explore it in our relaxation page.",
-"Have you brought awareness to your breath today? Explore it in our relaxation page.",
+"Explore if high-waist pants define your waist. Check our body styling page.",
+"Explore if wide-leg pants suit your proportions. Check our body styling page.",
+"Explore if straight pants balance your body. Check our body styling page.",
 
-"Have you explored a motivational video today? Explore it in our baddie binge page.",
-"Have you improved your thinking through content today? Explore it in our baddie binge page.",
-"Have you consumed uplifting content today? Explore it in our baddie binge page.",
-"Have you watched something valuable today? Explore it in our baddie binge page.",
-"Have you learned visually today? Explore it in our baddie binge page.",
+"Explore if wrap dresses suit your body. Check our body styling page.",
+"Explore if bodycon dresses flatter your figure. Check our body styling page.",
+"Explore if A-line dresses balance your proportions. Check our body styling page.",
 
-"Have you listened to growth-focused audio today? Explore it in our audiobook page.",
-"Have you learned through listening today? Explore it in our audiobook page.",
-"Have you developed your mindset through audio today? Explore it in our audiobook page.",
-"Have you explored new ideas today? Explore it in our audiobook page.",
-"Have you grown mentally today? Explore it in our audiobook page.",
+"Explore if belts improve your proportions. Check our body styling page.",
+"Explore if thin belts suit your waist. Check our body styling page.",
+"Explore if thick belts enhance your look. Check our body styling page.",
 
-"Have you taken time to relax today? Explore it in our relaxation page.",
-"Have you slowed down your pace today? Explore it in our relaxation page.",
-"Have you given yourself rest today? Explore it in our relaxation page.",
-"Have you paused intentionally today? Explore it in our relaxation page.",
-"Have you restored your energy today? Explore it in our relaxation page."
-];
+"Explore if structured blazers suit your body. Check our body styling page.",
+"Explore if longline jackets elongate your frame. Check our body styling page.",
+"Explore if oversized jackets suit your body. Check our body styling page.",
 
+"Explore if innerwear supports your body shape. Check our body styling page.",
+"Explore if the right fit improves your outfit. Check our body styling page.",
+
+"Explore if bags suit your body proportions. Check our body styling page.",
+"Explore if shoes balance your body shape. Check our body styling page.",
+
+
+"Explore if layered necklaces suit your neckline. Check our accessories page.",
+"Explore if chokers suit your neck. Check our accessories page.",
+"Explore if long chains elongate your torso. Check our accessories page.",
+
+"Explore if statement jewelry enhances your look. Check our accessories page.",
+"Explore if minimal jewelry suits your style. Check our accessories page.",
+
+"Explore if handbags balance your outfit. Check our accessories page.",
+"Explore if bold accessories enhance your styling. Check our accessories page.",
+
+
+"Explore relaxation techniques to calm your mind. Check our wellness page.",
+"Explore grounding exercises to feel stable. Check our wellness page.",
+"Explore breathing exercises for calmness. Check our wellness page.",
+"Explore nervous system calming techniques. Check our wellness page.",
+"Explore self-awareness practices today. Check our wellness page.",
+
+
+"Explore inspiring messages from soul guide. Check our wellness page.",
+"Explore spiritual guidance for clarity. Check our wellness page.",
+
+
+"Explore affirmations to build confidence. Check our affirmations page.",
+"Explore positive self-talk today. Check our affirmations page.",
+"Explore calming affirmations. Check our affirmations page.",
+
+
+"Explore your journal and write your thoughts. Check our journal page.",
+"Explore writing your emotions today. Check our journal page.",
+"Explore reflecting on your day. Check our journal page.",
+
+
+"Explore your daily planner and organize your day. Check our planner page.",
+"Explore setting priorities today. Check our planner page.",
+"Explore planning your next steps. Check our planner page.",
+
+
+"Explore inspiring videos today. Check our baddie binge page.",
+"Explore learning through videos. Check our baddie binge page.",
+
+"Explore audiobooks and listen deeply. Check our audiobook page.",
+"Explore gaining knowledge through audio. Check our audiobook page.",
+
+
+"Explore pregnancy awareness today. Check our pregnancy page.",
+"Explore learning about your period. Check our period page.",
+"Explore big sister advice for guidance. Check our advice page.",
+"Explore if V-neck suits your body. Check our Body Styling page.",
+"Explore if round neck softens your upper body. Check our Body Styling page.",
+"Explore if square neckline defines your shoulders. Check our Body Styling page.",
+"Explore if sweetheart neckline enhances your chest. Check our Body Styling page.",
+"Explore if halter neck highlights your shoulders. Check our Body Styling page.",
+"Explore if off-shoulder suits your collarbone. Check our Body Styling page.",
+"Explore if high neck suits your proportions. Check our Body Styling page.",
+"Explore if boat neck widens your upper body. Check our Body Styling page.",
+"Explore if scoop neck balances your body. Check our Body Styling page.",
+"Explore if asymmetrical neckline suits your style. Check our Body Styling page.",
+
+
+"Explore if fitted tops define your body. Check our Body Styling page.",
+"Explore if oversized tops balance your proportions. Check our Body Styling page.",
+"Explore if crop tops highlight your waist. Check our Body Styling page.",
+"Explore if peplum tops create curves. Check our Body Styling page.",
+"Explore if wrap tops flatter your torso. Check our Body Styling page.",
+"Explore if corset tops define your shape. Check our Body Styling page.",
+"Explore if tube tops suit your upper body. Check our Body Styling page.",
+"Explore if off-shoulder tops balance your frame. Check our Body Styling page.",
+"Explore if structured tops sharpen your look. Check our Body Styling page.",
+"Explore if flowy tops soften your appearance. Check our Body Styling page.",
+
+
+"Explore if high-waist pants define your waist. Check our Body Styling page.",
+"Explore if low-waist pants suit your torso. Check our Body Styling page.",
+"Explore if wide-leg pants suit your proportions. Check our Body Styling page.",
+"Explore if straight pants balance your body. Check our Body Styling page.",
+"Explore if flared pants enhance your silhouette. Check our Body Styling page.",
+"Explore if skinny pants suit your legs. Check our Body Styling page.",
+"Explore if cargo pants match your body type. Check our Body Styling page.",
+"Explore if palazzo pants flatter your frame. Check our Body Styling page.",
+"Explore if paperbag pants define your waist. Check our Body Styling page.",
+"Explore if cropped pants suit your height. Check our Body Styling page.",
+
+
+"Explore if A-line skirts suit your hips. Check our Body Styling page.",
+"Explore if pencil skirts define your silhouette. Check our Body Styling page.",
+"Explore if pleated skirts add volume. Check our Body Styling page.",
+"Explore if mermaid skirts highlight your curves. Check our Body Styling page.",
+"Explore if mini skirts suit your proportions. Check our Body Styling page.",
+"Explore if midi skirts balance your height. Check our Body Styling page.",
+"Explore if maxi skirts elongate your body. Check our Body Styling page.",
+"Explore if wrap skirts flatter your waist. Check our Body Styling page.",
+"Explore if slit skirts enhance your look. Check our Body Styling page.",
+"Explore if tiered skirts add movement. Check our Body Styling page.",
+
+
+"Explore if wrap dresses suit your body. Check our Body Styling page.",
+"Explore if bodycon dresses flatter your shape. Check our Body Styling page.",
+"Explore if A-line dresses balance your body. Check our Body Styling page.",
+"Explore if maxi dresses suit your height. Check our Body Styling page.",
+"Explore if fit-and-flare dresses define your waist. Check our Body Styling page.",
+"Explore if empire waist dresses suit your structure. Check our Body Styling page.",
+"Explore if corset dresses enhance your figure. Check our Body Styling page.",
+"Explore if halter dresses flatter your shoulders. Check our Body Styling page.",
+"Explore if backless dresses suit your proportions. Check our Body Styling page.",
+"Explore if layered dresses add dimension. Check our Body Styling page.",
+
+
+"Explore if cropped jackets suit your body. Check our Body Styling page.",
+"Explore if longline blazers elongate your frame. Check our Body Styling page.",
+"Explore if oversized jackets suit your proportions. Check our Body Styling page.",
+"Explore if structured blazers enhance your look. Check our Body Styling page.",
+"Explore if layering outerwear suits your body. Check our Body Styling page.",
+
+
+"Explore if belts define your waist. Check our Body Styling page.",
+"Explore if thin belts suit your proportions. Check our Body Styling page.",
+"Explore if thick belts enhance your look. Check our Body Styling page.",
+"Explore if large bags suit your frame. Check our Body Styling page.",
+"Explore if mini bags match your proportions. Check our Body Styling page.",
+"Explore if heels elongate your legs. Check our Body Styling page.",
+"Explore if flats balance your outfit. Check our Body Styling page.",
+"Explore if sneakers suit your body proportions. Check our Body Styling page.",
+"Explore if straight hair sharpens your face. Check our Face Shape page.",
+"Explore if wavy hair softens your features. Check our Face Shape page.",
+"Explore if curls add volume to your face. Check our Face Shape page.",
+"Explore if layered hair adds movement. Check our Face Shape page.",
+"Explore if short hair suits your face structure. Check our Face Shape page.",
+"Explore if long hair elongates your face. Check our Face Shape page.",
+"Explore if shoulder-length hair balances your face. Check our Face Shape page.",
+"Explore if tied hairstyles highlight your face. Check our Face Shape page.",
+"Explore if half-up hairstyles suit your proportions. Check our Face Shape page.",
+
+
+"Explore if curtain bangs soften your face. Check our Face Shape page.",
+"Explore if side bangs suit your face shape. Check our Face Shape page.",
+"Explore if blunt bangs match your features. Check our Face Shape page.",
+"Explore if wispy bangs suit your look. Check our Face Shape page.",
+"Explore if baby bangs suit your face. Check our Face Shape page.",
+
+
+"Explore if jet black hair suits your face. Check our Face Shape page.",
+"Explore if dark brown hair flatters your features. Check our Face Shape page.",
+"Explore if light brown suits your look. Check our Face Shape page.",
+"Explore if ash tones match your face. Check our Face Shape page.",
+"Explore if caramel highlights enhance your face. Check our Face Shape page.",
+"Explore if blonde tones suit your complexion. Check our Face Shape page.",
+"Explore if balayage enhances your features. Check our Face Shape page.",
+
+
+"Explore if high blush placement lifts your face. Check our Face Shape page.",
+"Explore if low blush placement suits your structure. Check our Face Shape page.",
+"Explore if horizontal blush widens your face. Check our Face Shape page.",
+"Explore if diagonal blush sculpts your face. Check our Face Shape page.",
+"Explore if blush on apples softens your look. Check our Face Shape page.",
+"Explore if under-eye blush gives a youthful look. Check our Face Shape page.",
+"Explore if temple blush lifts your face. Check our Face Shape page.",
+
+
+"Explore if soft contour suits your face. Check our Face Shape page.",
+"Explore if sharp contour defines your features. Check our Face Shape page.",
+"Explore if nose contour enhances your look. Check our Face Shape page.",
+"Explore if jaw contour sharpens your face. Check our Face Shape page.",
+"Explore if forehead contour balances your face. Check our Face Shape page.",
+
+
+"Explore if thick brows suit your face. Check our Face Shape page.",
+"Explore if thin brows flatter your features. Check our Face Shape page.",
+"Explore if arched brows lift your face. Check our Face Shape page.",
+"Explore if straight brows soften your look. Check our Face Shape page.",
+"Explore if natural brows suit you best. Check our Face Shape page.",
+
+
+"Explore if wing eyeliner enhances your eyes. Check our Face Shape page.",
+"Explore if soft eyeliner suits your eyes. Check our Face Shape page.",
+"Explore if bold eye makeup matches your features. Check our Face Shape page.",
+"Explore if nude eye looks soften your face. Check our Face Shape page.",
+"Explore if smoky eyes add intensity. Check our Face Shape page.",
+"Explore if inner corner highlight brightens your eyes. Check our Face Shape page.",
+"Explore if fox eyeliner suits your eye shape. Check our Face Shape page.",
+
+
+"Explore if hoop earrings suit your face. Check our Face Shape page.",
+"Explore if stud earrings match your features. Check our Face Shape page.",
+"Explore if drop earrings elongate your face. Check our Face Shape page.",
+"Explore if chandelier earrings suit your structure. Check our Face Shape page.",
+"Explore if long earrings balance your face shape. Check our Face Shape page.",
+"Explore if small earrings suit your proportions. Check our Face Shape page.",
+"Explore if gold suits your skin tone. Check our Undertone page.",
+"Explore if silver suits your undertone. Check our Undertone page.",
+"Explore if rose gold flatters your skin. Check our Undertone page.",
+"Explore if copper jewelry suits your tone. Check our Undertone page.",
+"Explore if bronze tones enhance your look. Check our Undertone page.",
+"Explore if mixed metals suit your overall style. Check our Undertone page.",
+
+
+"Explore if mustard suits your skin. Check our Undertone page.",
+"Explore if coral enhances your complexion. Check our Undertone page.",
+"Explore if peach tones suit your face. Check our Undertone page.",
+"Explore if warm red flatters your look. Check our Undertone page.",
+"Explore if burnt orange suits your skin. Check our Undertone page.",
+"Explore if terracotta enhances your tone. Check our Undertone page.",
+"Explore if olive green suits your complexion. Check our Undertone page.",
+"Explore if warm beige matches your skin. Check our Undertone page.",
+"Explore if caramel tones suit your look. Check our Undertone page.",
+"Explore if chocolate brown flatters your skin. Check our Undertone page.",
+
+
+"Explore if icy blue suits your skin. Check our Undertone page.",
+"Explore if lavender enhances your complexion. Check our Undertone page.",
+"Explore if cool pink suits your face. Check our Undertone page.",
+"Explore if berry tones flatter your look. Check our Undertone page.",
+"Explore if plum shades suit your skin. Check our Undertone page.",
+"Explore if cool red enhances your tone. Check our Undertone page.",
+"Explore if navy blue suits your complexion. Check our Undertone page.",
+"Explore if charcoal grey matches your undertone. Check our Undertone page.",
+"Explore if cool beige suits your look. Check our Undertone page.",
+"Explore if silver-grey enhances your appearance. Check our Undertone page.",
+
+
+"Explore if beige suits your skin tone. Check our Undertone page.",
+"Explore if taupe enhances your look. Check our Undertone page.",
+"Explore if soft pink suits your complexion. Check our Undertone page.",
+"Explore if muted tones match your undertone. Check our Undertone page.",
+"Explore if dusty colors flatter your skin. Check our Undertone page.",
+"Explore if off-white suits your face. Check our Undertone page.",
+"Explore if grey tones balance your look. Check our Undertone page.",
+"Explore if soft browns enhance your appearance. Check our Undertone page.",
+
+
+"Explore if earthy green suits your skin. Check our Undertone page.",
+"Explore if moss green enhances your complexion. Check our Undertone page.",
+"Explore if muted gold suits your tone. Check our Undertone page.",
+"Explore if deep brown flatters your skin. Check our Undertone page.",
+"Explore if khaki suits your undertone. Check our Undertone page.",
+"Explore if olive shades enhance your look. Check our Undertone page.",
+"Explore if muted orange suits your complexion. Check our Undertone page.",
+"Explore if deep teal flatters your tone. Check our Undertone page.",
+
+
+"Explore if white brightens your face. Check our Undertone page.",
+"Explore if black enhances your overall look. Check our Undertone page.",
+"Explore if pastel colors soften your appearance. Check our Undertone page.",
+"Explore if bold colors overpower your look. Check our Undertone page.",
+"Explore if muted tones balance your features. Check our Undertone page.",
+"Explore if bright colors enhance your skin. Check our Undertone page.",
+"Explore relaxation techniques and calm your mind. Check our Wellness page.",
+"Explore ways to slow down your thoughts. Check our Wellness page.",
+"Explore how to release tension from your body. Check our Wellness page.",
+"Explore calming practices for inner peace. Check our Wellness page.",
+"Explore how to unwind after a stressful day. Check our Wellness page.",
+
+
+"Explore breathing exercises and observe your breath. Check our Wellness page.",
+"Explore deep breathing for calmness. Check our Wellness page.",
+"Explore slow inhale and exhale patterns. Check our Wellness page.",
+"Explore how breathing affects your emotions. Check our Wellness page.",
+"Explore mindful breathing and stay present. Check our Wellness page.",
+
+
+"Explore grounding techniques to feel stable. Check our Wellness page.",
+"Explore how to reconnect with the present moment. Check our Wellness page.",
+"Explore grounding through your senses. Check our Wellness page.",
+"Explore how to reduce overthinking through grounding. Check our Wellness page.",
+"Explore feeling safe in your body. Check our Wellness page.",
+
+
+"Explore how your nervous system reacts to stress. Check our Wellness page.",
+"Explore calming your nervous system naturally. Check our Wellness page.",
+"Explore how to shift from stress to calm. Check our Wellness page.",
+"Explore how your body responds to anxiety. Check our Wellness page.",
+"Explore ways to regulate your emotions. Check our Wellness page.",
+
+
+"Explore ways to reduce anxiety gently. Check our Wellness page.",
+"Explore calming your thoughts during stress. Check our Wellness page.",
+"Explore how to feel safe in overwhelming moments. Check our Wellness page.",
+"Explore techniques to slow down anxiety. Check our Wellness page.",
+"Explore small habits that reduce stress daily. Check our Wellness page.",
+
+
+"Explore how you are feeling today. Check our Wellness page.",
+"Explore what your body is trying to tell you. Check our Wellness page.",
+"Explore your emotional state without judgment. Check our Wellness page.",
+"Explore listening to yourself deeply. Check our Wellness page.",
+"Explore creating space for your thoughts. Check our Wellness page.",
+
+
+"Explore inspiring messages for inner strength. Check our Soul Guide page.",
+"Explore meaningful quotes for guidance. Check our Soul Guide page.",
+"Explore spiritual calmness and reflection. Check our Soul Guide page.",
+"Explore wisdom from sacred texts. Check our Soul Guide page.",
+"Explore deeper meaning and purpose today. Check our Soul Guide page.",
+
+
+"Explore one small act of self-care today. Check our Wellness page.",
+"Explore taking a break for your mind. Check our Wellness page.",
+"Explore caring for your emotional health. Check our Wellness page.",
+"Explore doing something that comforts you. Check our Wellness page.",
+"Explore giving yourself rest without guilt. Check our Wellness page.",
+"Explore your Journal page and write your thoughts today.",
+"Explore journaling and write 3 honest lines. Check our Journal page.",
+"Explore expressing your emotions freely. Check our Journal page.",
+"Explore writing what you felt today. Check our Journal page.",
+"Explore reflecting on your day. Check our Journal page.",
+"Explore writing what made you happy today. Check our Journal page.",
+"Explore writing what challenged you today. Check our Journal page.",
+"Explore gratitude journaling today. Check our Journal page.",
+"Explore writing without overthinking. Check our Journal page.",
+"Explore understanding yourself better through journaling. Check our Journal page.",
+
+
+"Explore your Daily Planner and plan your day.",
+"Explore setting your top 3 priorities. Check our Daily Planner page.",
+"Explore organizing your tasks clearly. Check our Daily Planner page.",
+"Explore planning your next step. Check our Daily Planner page.",
+"Explore creating a simple routine today. Check our Daily Planner page.",
+"Explore structuring your time wisely. Check our Daily Planner page.",
+"Explore reviewing your goals today. Check our Daily Planner page.",
+"Explore building discipline through planning. Check our Daily Planner page.",
+"Explore managing your time better. Check our Daily Planner page.",
+"Explore staying focused using your planner. Check our Daily Planner page.",
+
+
+"Explore affirmations and repeat positive thoughts. Check our Affirmations page.",
+"Explore speaking kindly to yourself today. Check our Affirmations page.",
+"Explore building confidence through affirmations. Check our Affirmations page.",
+"Explore calming affirmations for your mind. Check our Affirmations page.",
+"Explore self-love affirmations today. Check our Affirmations page.",
+"Explore repeating powerful beliefs. Check our Affirmations page.",
+"Explore strengthening your mindset. Check our Affirmations page.",
+"Explore trusting yourself more. Check our Affirmations page.",
+"Explore letting go of negative thoughts. Check our Affirmations page.",
+"Explore feeling confident within yourself. Check our Affirmations page.",
+
+
+"Explore Baddie Binge videos and learn something new.",
+"Explore useful videos for self-growth. Check our Baddie Binge page.",
+"Explore educational videos today. Check our Baddie Binge page.",
+"Explore watching something that improves you. Check our Baddie Binge page.",
+"Explore gaining knowledge through videos. Check our Baddie Binge page.",
+
+
+"Explore Audiobooks and listen mindfully.",
+"Explore one audiobook and reflect. Check our Audiobook page.",
+"Explore learning through listening. Check our Audiobook page.",
+"Explore improving your mindset with audio. Check our Audiobook page.",
+"Explore deep listening without distraction. Check our Audiobook page.",
+
+
+"Explore pregnancy awareness and learn about your body. Check our Pregnancy page.",
+"Explore understanding pregnancy basics. Check our Pregnancy page.",
+"Explore how your body changes during pregnancy. Check our Pregnancy page.",
+"Explore learning safely about pregnancy. Check our Pregnancy page.",
+"Explore women's health knowledge. Check our Pregnancy page.",
+
+
+"Explore period awareness and understand your cycle. Check our Period page.",
+"Explore learning about menstrual health. Check our Period page.",
+"Explore tracking your cycle knowledge. Check our Period page.",
+"Explore understanding your body better. Check our Period page.",
+"Explore self-care during periods. Check our Period page.",
+
+
+"Explore Big Sister Advice for guidance. Check our Advice page.",
+"Explore learning life advice. Check our Advice page.",
+"Explore understanding real-life situations. Check our Advice page.",
+"Explore growing through guidance. Check our Advice page.",
+"Explore emotional support through advice. Check our Advice page.",
+"Explore if V-neck suits your body shape.",
+"Explore if round neck softens your upper body.",
+"Explore if square neckline defines your shoulders.",
+"Explore if sweetheart neckline enhances your chest.",
+"Explore if halter neck highlights your shoulders.",
+"Explore if off-shoulder suits your collarbone.",
+"Explore if high neck feels elegant on you.",
+"Explore if boat neck widens your shoulders.",
+"Explore if scoop neck balances your proportions.",
+"Explore if asymmetrical neckline suits your style.",
+
+"Explore if fitted tops define your body shape.",
+"Explore if oversized tops balance your frame.",
+"Explore if crop tops highlight your waist.",
+"Explore if peplum tops create curves.",
+"Explore if wrap tops flatter your torso.",
+"Explore if structured tops sharpen your look.",
+"Explore if flowy tops soften your appearance.",
+"Explore if longline tops elongate your body.",
+"Explore if tucked-in tops define your waist.",
+"Explore if layered tops add depth to your outfit.",
+
+"Explore if A-line skirts balance your hips.",
+"Explore if pencil skirts define your silhouette.",
+"Explore if pleated skirts add volume.",
+"Explore if mermaid skirts highlight your curves.",
+"Explore if mini skirts suit your proportions.",
+"Explore if midi skirts balance your height.",
+"Explore if maxi skirts elongate your frame.",
+"Explore if wrap skirts flatter your waist.",
+"Explore if slit skirts add elegance.",
+"Explore if tiered skirts add movement.",
+
+"Explore if high-waist pants define your waist.",
+"Explore if low-waist pants suit your torso.",
+"Explore if wide-leg pants add elegance.",
+"Explore if straight pants balance your shape.",
+"Explore if flared pants enhance your proportions.",
+"Explore if skinny pants suit your legs.",
+"Explore if cargo pants match your style.",
+"Explore if paperbag waist pants define your waist.",
+"Explore if cropped pants suit your height.",
+"Explore if palazzo pants flow well on you.",
+
+"Explore if wrap dresses shape your body.",
+"Explore if bodycon dresses suit your confidence.",
+"Explore if A-line dresses flatter your figure.",
+"Explore if maxi dresses suit your height.",
+"Explore if fit-and-flare dresses enhance your waist.",
+"Explore if slip dresses flow well on you.",
+"Explore if structured dresses sharpen your look.",
+"Explore if layered dresses add dimension.",
+"Explore if ruched dresses enhance curves.",
+"Explore if shirt dresses balance your frame.",
+
+"Explore if thin belts define your waist subtly.",
+"Explore if thick belts enhance your outfit.",
+"Explore if statement belts elevate your look.",
+
+"Explore if cropped jackets suit your proportions.",
+"Explore if longline blazers elongate your body.",
+"Explore if oversized blazers match your vibe.",
+
+"Explore if straight hair sharpens your features.",
+"Explore if soft curls frame your face.",
+"Explore if waves soften your appearance.",
+
+"Explore if curtain bangs soften your face.",
+"Explore if side bangs suit your face shape.",
+
+"Explore if high blush placement lifts your face.",
+"Explore if soft contour looks natural on you.",
+"Explore if arched brows lift your face.",
+"Explore if wing eyeliner enhances your eyes.",
+
+"Explore if gold jewelry suits your skin tone.",
+"Explore if silver jewelry suits your undertone.",
+
+"Explore coral tones on your skin.",
+"Explore olive green on your skin.",
+"Explore navy on your complexion.",
+"Explore pastel colors on your appearance.",
+
+"Explore your journal and write your thoughts.",
+"Explore journaling and write 3 honest lines.",
+
+"Explore your daily planner and set goals.",
+"Explore setting 3 priorities today.",
+
+"Explore positive self-talk today.",
+"Explore calming affirmations today.",
+
+"Explore the relaxation section and calm your mind.",
+"Explore breathing exercises and observe your body.",
+"Explore mindfulness exercises today.",
+
+"Explore pregnancy awareness in our app.",
+"Explore period awareness in our app.",
+"Explore big sister advice in our app.",
+
+"Explore body binge videos in our app.",
+"Explore audiobooks in our app."
+
+];/* DATE SYSTEM */
 const today = new Date();
+const todayKey = today.toISOString().slice(0,10);
 const start = new Date(today.getFullYear(), 0, 0);
 const day = Math.floor((today - start) / 86400000);
+
+/* TASK */
 const index = day % entries.length;
+const task = entries[index];
 
-const [phrase, lines] = entries[index].split("|");
-document.getElementById("phrase").innerHTML = phrase;
-document.getElementById("lines").innerHTML = lines;
-</script>
+/* DISPLAY */
+document.getElementById("phrase").innerText = "Today's Glow ✨";
+document.getElementById("lines").innerText = task;
 
-</body>
+/* UI */
+const wrapper = document.createElement("div");
+wrapper.className = "checkWrap";
 
-</html>
+const checkbox = document.createElement("input");
+checkbox.type = "checkbox";
+
+const label = document.createElement("label");
+label.innerText = "Mark Complete";
+
+wrapper.appendChild(checkbox);
+wrapper.appendChild(label);
+document.querySelector(".daily").appendChild(wrapper);
+
+/* STORAGE KEYS */
+const doneKey = "done_" + todayKey;
+const streakKey = "streak_count";
+const lastDateKey = "last_done_date";
+
+/* LOAD STATE */
+let streak = parseInt(localStorage.getItem(streakKey)) || 0;
+let lastDate = localStorage.getItem(lastDateKey);
+
+/* IF ALREADY DONE TODAY */
+if(localStorage.getItem(doneKey) === "true"){
+  checkbox.checked = true;
+  checkbox.disabled = true;
+  label.innerText = "Completed ✔";
+  label.style.color = "#4CAF50";
+}
+
+/* FUNCTION: CHECK IF YESTERDAY */
+function isYesterday(dateStr){
+  const d = new Date(dateStr);
+  const yest = new Date();
+  yest.setDate(yest.getDate() - 1);
+
+  return d.toDateString() === yest.toDateString();
+}
+
+/* EVENT */
+checkbox.addEventListener("change", function(){
+
+  if(!checkbox.checked) return;
+
+  if(localStorage.getItem(doneKey) === "true"){
+    checkbox.checked = true;
+    checkbox.disabled = true;
+    return;
+  }
+
+  /* ✅ SAVE TODAY */
+  localStorage.setItem(doneKey,"true");
+
+  /* ✅ STREAK LOGIC */
+  if(lastDate){
+    if(isYesterday(lastDate)){
+      streak += 1; // continue streak
+    } else if(lastDate === todayKey){
+      // same day → do nothing
+    } else {
+      streak = 1; // reset streak
+    }
+  } else {
+    streak = 1;
+  }
+
+  localStorage.setItem(streakKey, streak);
+  localStorage.setItem(lastDateKey, todayKey);
+
+  /* ✅ UI UPDATE */
+  checkbox.disabled = true;
+  label.innerText = "Completed ✔";
+  label.style.color = "#4CAF50";
+
+  /* ✅ APP INVENTOR SYNC */
+  setTimeout(()=>{
+
+    const message =
+      "TASK_DONE|" + index + "|" + encodeURIComponent(task) + "|" + todayKey + "|" + streak;
+
+    const notification =
+      "SHOW_NOTIFICATION|Streak Updated 🔥|Current streak: " + streak;
+
+    if(window.AppInventor && window.AppInventor.setWebViewString){
+      window.AppInventor.setWebViewString(message);
+
+      setTimeout(()=>{
+        window.AppInventor.setWebViewString(notification);
+      },500);
+    }
+
+  },500);
+
+});
+  </script>
