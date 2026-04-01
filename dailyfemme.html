@@ -660,7 +660,7 @@ checkbox.addEventListener("change", function(){
 
   if(!checkbox.checked) return;
 
-  if(localStorage.getItem(doneKey) === "true"){
+  if(localStorage.getItem(doneKey) === "true" || window.completedFromApp){
     checkbox.checked = true;
     checkbox.disabled = true;
     return;
