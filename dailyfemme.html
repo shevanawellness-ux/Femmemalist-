@@ -639,7 +639,7 @@ let streak = parseInt(localStorage.getItem(streakKey)) || 0;
 let lastDate = localStorage.getItem(lastDateKey);
 
 /* IF ALREADY DONE TODAY */
-if(localStorage.getItem(doneKey) === "true"){
+if(localStorage.getItem(doneKey) === "true" || window.completedFromApp){
   checkbox.checked = true;
   checkbox.disabled = true;
   label.innerText = "Completed ✔";
