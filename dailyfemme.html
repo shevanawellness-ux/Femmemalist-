@@ -658,9 +658,8 @@ function isYesterday(dateStr){
 /* EVENT */
 checkbox.addEventListener("change", function(){
 
-  if(!checkbox.checked) return;
-
-  if(localStorage.getItem(doneKey) === "true" || window.completedFromApp){
+  // 🚫 HARD BLOCK (prevents multiple clicks)
+  if(localStorage.getItem(doneKey) === "true"){
     checkbox.checked = true;
     checkbox.disabled = true;
     return;
