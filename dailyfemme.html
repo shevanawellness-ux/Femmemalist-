@@ -728,23 +728,25 @@ checkbox.addEventListener("change", function(){
   label.style.color = "#4CAF50";
 
   /* ✅ APP INVENTOR SYNC */
-  setTimeout(()=>{
+  /* ✅ APP INVENTOR SYNC */
+setTimeout(()=>{
 
-    const message =
-      "TASK_DONE|" + index + "|" + encodeURIComponent(task) + "|" + todayKey + "|" + streak;
+  const message =
+    "TASK_DONE|" + index + "|" + encodeURIComponent(task) + "|" + todayKey + "|" + streak;
 
-    const notification =
-      "SHOW_NOTIFICATION|Streak Updated 🔥|Current streak: " + streak;
+  const notification =
+    "SHOW_NOTIFICATION|Streak Updated 🔥|Current streak: " + streak;
 
-    if(window.AppInventor && window.AppInventor.setWebViewString){
-      sendToApp(message);
+  if(window.AppInventor && window.AppInventor.setWebViewString){
+    
+    window.AppInventor.setWebViewString(message);
 
-      setTimeout(()=>{
-        window.AppInventor.setWebViewString(notification);
-      },500);
-    }
+    setTimeout(()=>{
+      window.AppInventor.setWebViewString(notification);
+    },500);
+  }
 
-  },500);
+},500);
 
 });
   </script>
