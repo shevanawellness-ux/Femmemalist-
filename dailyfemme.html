@@ -36,6 +36,13 @@ body{
   font-size:12px;
 }
 </style>
+  <script>
+function sendToApp(msg){
+  if(window.AppInventor){
+    window.AppInventor.setWebViewString(msg);
+  }
+}
+  </script>
 </head>
 
 <body>
@@ -730,7 +737,7 @@ checkbox.addEventListener("change", function(){
       "SHOW_NOTIFICATION|Streak Updated 🔥|Current streak: " + streak;
 
     if(window.AppInventor && window.AppInventor.setWebViewString){
-      window.AppInventor.setWebViewString(message);
+      sendToApp(message);
 
       setTimeout(()=>{
         window.AppInventor.setWebViewString(notification);
