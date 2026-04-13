@@ -36,13 +36,7 @@ body{
   font-size:12px;
 }
 </style>
-  <script>
-function sendToApp(msg){
-  if(window.AppInventor){
-    window.AppInventor.setWebViewString(msg);
-  }
-}
-  </script>
+  
 </head>
 
 <body>
@@ -653,100 +647,5 @@ const task = entries[index];
 document.getElementById("phrase").innerText = "Today's Glow ✨";
 document.getElementById("lines").innerText = task;
 
-/* UI */
-const wrapper = document.createElement("div");
-wrapper.className = "checkWrap";
 
-const checkbox = document.createElement("input");
-checkbox.type = "checkbox";
-
-const label = document.createElement("label");
-label.innerText = "Mark Complete";
-
-wrapper.appendChild(checkbox);
-wrapper.appendChild(label);
-document.querySelector(".daily").appendChild(wrapper);
-
-/* STORAGE KEYS */
-const doneKey = "done_" + todayKey;
-const streakKey = "streak_count";
-const lastDateKey = "last_done_date";
-
-/* LOAD STATE */
-let streak = parseInt(localStorage.getItem(streakKey)) || 0;
-let lastDate = localStorage.getItem(lastDateKey);
-
-/* IF ALREADY DONE TODAY */
-if(localStorage.getItem(doneKey) === "true" || window.completedFromApp){
-  checkbox.checked = true;
-  checkbox.disabled = true;
-  label.innerText = "Completed ✔";
-  label.style.color = "#4CAF50";
-}
-
-/* FUNCTION: CHECK IF YESTERDAY */
-function isYesterday(dateStr){
-  const d = new Date(dateStr);
-  const yest = new Date();
-  yest.setDate(yest.getDate() - 1);
-
-  return d.toDateString() === yest.toDateString();
-}
-
-/* EVENT */
-checkbox.addEventListener("change", function(){
-
-  // 🚫 HARD BLOCK (prevents multiple clicks)
-  if(localStorage.getItem(doneKey) === "true"){
-    checkbox.checked = true;
-    checkbox.disabled = true;
-    return;
-  }
-
-  /* ✅ SAVE TODAY */
-  localStorage.setItem(doneKey,"true");
-
-  /* ✅ STREAK LOGIC */
-  if(lastDate){
-    if(isYesterday(lastDate)){
-      streak += 1; // continue streak
-    } else if(lastDate === todayKey){
-      // same day → do nothing
-    } else {
-      streak = 1; // reset streak
-    }
-  } else {
-    streak = 1;
-  }
-
-  localStorage.setItem(streakKey, streak);
-  localStorage.setItem(lastDateKey, todayKey);
-
-  /* ✅ UI UPDATE */
-  checkbox.disabled = true;
-  label.innerText = "Completed ✔";
-  label.style.color = "#4CAF50";
-
-  /* ✅ APP INVENTOR SYNC */
-  /* ✅ APP INVENTOR SYNC */
-setTimeout(()=>{
-
-  const message =
-    "TASK_DONE|" + index + "|" + encodeURIComponent(task) + "|" + todayKey + "|" + streak;
-
-  const notification =
-    "SHOW_NOTIFICATION|Streak Updated 🔥|Current streak: " + streak;
-
-  if(window.AppInventor && window.AppInventor.setWebViewString){
-    
-    window.AppInventor.setWebViewString(message);
-
-    setTimeout(()=>{
-      window.AppInventor.setWebViewString(notification);
-    },500);
-  }
-
-},500);
-
-});
   </script>
