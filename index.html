@@ -1,22 +1,21 @@
-      <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>FEMMEMALIST — The Ultimate Premium Glow-Up Experience</title>
-
+<title>Femmemalist — Premium Glow System</title>
 <link rel="canonical" href="https://femmemalist.com/">
 <meta name="robots" content="index, follow">
 
-<meta name="description" content="Femmemalist is your exclusive premium guide to personalized beauty, styling, and feminine growth. Discover your body shape, face shape, undertones, and glow-up path.">
+<meta name="description" content="Femmemalist premium glow system for body shape, face shape, undertones and feminine styling intelligence.">
 
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 
 <style>
 
 /* =========================
-   BASE LUXURY FOUNDATION
+   BASE LUXURY BACKGROUND
 ========================= */
 body{
   margin:0;
@@ -29,7 +28,7 @@ body{
     linear-gradient(180deg, #fff0f5 0%, #ffe6f0 50%, #ffe0ec 100%);
 }
 
-/* soft glow overlay */
+/* glow overlay */
 body::before{
   content:"";
   position:fixed;
@@ -38,6 +37,24 @@ body::before{
     radial-gradient(circle at top, rgba(255,105,180,0.18), transparent 55%),
     radial-gradient(circle at bottom, rgba(199,21,133,0.10), transparent 60%);
   pointer-events:none;
+}
+
+/* =========================
+   MAIN CONTAINER
+========================= */
+.container{
+  max-width:960px;
+  margin:auto;
+  padding:22px;
+
+  background: rgba(255,255,255,0.14);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  border-radius:22px;
+  border:1px solid rgba(255,255,255,0.35);
+
+  box-shadow:0 25px 70px rgba(255,105,180,0.12);
 }
 
 /* =========================
@@ -50,87 +67,85 @@ h1, h2{
 h1{
   font-size:38px;
   text-align:center;
-  margin-bottom:10px;
-
-  background: linear-gradient(90deg, #C71585, #FF69B4, #ff8fbf);
+  background: linear-gradient(90deg,#C71585,#FF69B4,#ff8fbf);
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
 }
 
-/* =========================
-   CONTAINER (FIXED GLASS SYSTEM)
-========================= */
-.container{
-  max-width:950px;
-  margin:auto;
-  padding:22px;
+h2{
+  font-size:26px;
+  color:#d81b60;
+  margin-top:40px;
+}
 
-  background: rgba(255,255,255,0.14);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-
-  border-radius:22px;
-  border:1px solid rgba(255,255,255,0.35);
-
-  box-shadow:0 25px 70px rgba(255,105,180,0.10);
+p{
+  font-size:16px;
+  color:#444;
 }
 
 /* =========================
-   IMAGE BLOCK FIX
+   IMAGE BLOCK
 ========================= */
-.main-image{
+.image-block{
+  margin:25px 0;
+}
+
+.image-block img{
   width:100%;
   border-radius:22px;
-  margin:20px 0;
-
   border:1px solid rgba(255,255,255,0.4);
 
-  box-shadow:
-    0 20px 60px rgba(255,105,180,0.18),
-    inset 0 1px 0 rgba(255,255,255,0.4);
-
+  box-shadow:0 20px 60px rgba(255,105,180,0.18);
   transition:0.4s ease;
 }
 
-.main-image:hover{
+.image-block img:hover{
   transform:translateY(-4px) scale(1.01);
 }
 
 /* =========================
-   SECTION BOX FIX (THIS WAS MISSING)
+   SECTION BOX (IMPORTANT FIX)
 ========================= */
 .section-box{
   background: rgba(255,255,255,0.16);
   backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
 
   border:1px solid rgba(255,255,255,0.35);
   border-radius:20px;
 
-  padding:22px;
-  margin:22px 0;
+  padding:20px;
+  margin:20px 0;
 
-  box-shadow:0 18px 50px rgba(255,105,180,0.12);
+  box-shadow:0 18px 50px rgba(255,105,180,0.10);
 
-  transition:0.35s ease;
+  transition:0.3s ease;
 }
 
 .section-box:hover{
   transform:translateY(-3px);
-  box-shadow:0 25px 65px rgba(255,105,180,0.18);
-}
-
-.section-box h2{
-  font-family:'Playfair Display',serif;
-  color:#C71585;
 }
 
 /* =========================
-   CTA BUTTON FIX
+   CTA BOXES (BUTTON FIX HERE)
 ========================= */
-.section-box a{
+.cta-box{
+  background: rgba(255,255,255,0.16);
+  border-radius:20px;
+  padding:20px;
+  margin:20px 0;
+
+  border:1px solid rgba(255,255,255,0.35);
+  box-shadow:0 18px 50px rgba(255,105,180,0.10);
+}
+
+/* BUTTON FIX (THIS WAS BREAKING EARLIER) */
+.section-box a,
+.cta-box a,
+.app-cta a{
   display:inline-block;
   margin-top:12px;
-  padding:12px 26px;
+  padding:12px 24px;
 
   border-radius:50px;
   text-decoration:none;
@@ -141,39 +156,76 @@ h1{
   background:linear-gradient(135deg,#ff5fa2,#ff87c2);
   color:#fff;
 
-  box-shadow:0 12px 30px rgba(255,105,180,0.25);
+  box-shadow:0 10px 30px rgba(255,105,180,0.25);
 
   transition:0.3s ease;
 }
 
-.section-box a:hover{
+.section-box a:hover,
+.cta-box a:hover,
+.app-cta a:hover{
   transform:translateY(-2px);
   box-shadow:0 18px 40px rgba(255,105,180,0.35);
 }
 
 /* =========================
-   MOBILE FIX
+   APP CTA BLOCK
+========================= */
+.app-cta{
+  background: rgba(255,255,255,0.18);
+  border-radius:22px;
+  padding:22px;
+  margin:25px 0;
+
+  text-align:center;
+  border:1px solid rgba(199,21,133,0.25);
+
+  font-family:'Playfair Display',serif;
+  color:#C71585;
+}
+
+/* =========================
+   MOBILE OPTIMIZATION (FIXED)
 ========================= */
 @media (max-width:768px){
-
-  h1{ font-size:28px; }
 
   .container{
     padding:16px;
     border-radius:18px;
   }
 
-  .section-box{
-    padding:16px;
+  h1{
+    font-size:28px;
   }
 
-  .main-image{
+  h2{
+    font-size:20px;
+  }
+
+  p{
+    font-size:15px;
+  }
+
+  .section-box,
+  .cta-box,
+  .app-cta{
+    padding:16px;
+    border-radius:18px;
+  }
+
+  .image-block img{
     border-radius:18px;
   }
 }
 
 </style>
 
+</head>
+
+<body>
+
+<div class="container">
+<!-- YOUR CONTENT STARTS HERE -->
 </head>
 
 <body>
