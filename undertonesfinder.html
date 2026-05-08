@@ -2,67 +2,219 @@
 <head><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Skin Undertone Test | Find Your Cool, Warm, Neutral or Olive Undertone</title><meta name="description" content="Take this practical skin undertone test to discover whether your undertone is cool, warm, neutral, or olive. Learn how to identify undertones using real visual clues."><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet"><style>
 
+body<style>
+
+/* =========================
+   BASE LUXURY BACKGROUND
+========================= */
 body{
-margin:0;
-font-family:'Inter',sans-serif;
-background:linear-gradient(to bottom,#fff0f5,#ffe6f0);
-color:#333;
-line-height:1.7;
+  margin:0;
+  font-family:'Inter',sans-serif;
+  line-height:1.75;
+  color:#2b2b2b;
+
+  background:
+    radial-gradient(circle at top, #fff0f5, transparent 60%),
+    linear-gradient(180deg, #fff0f5 0%, #ffe6f0 50%, #ffe0ec 100%);
 }
 
+/* soft luxury glow overlay */
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  background:
+    radial-gradient(circle at top, rgba(255,105,180,0.16), transparent 55%),
+    radial-gradient(circle at bottom, rgba(199,21,133,0.08), transparent 60%);
+  pointer-events:none;
+}
+
+/* =========================
+   CONTAINER (EDITORIAL GLASS SHEET)
+========================= */
 .container{
-max-width:950px;
-margin:auto;
-padding:24px;
+  max-width:960px;
+  margin:auto;
+  padding:24px;
+
+  background: rgba(255,255,255,0.14);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  border:1px solid rgba(255,255,255,0.35);
+  border-radius:24px;
+
+  box-shadow:0 25px 70px rgba(255,105,180,0.12);
+}
+
+/* =========================
+   TYPOGRAPHY (LUXURY EDITORIAL)
+========================= */
+h1, h2{
+  font-family:'Playfair Display',serif;
 }
 
 h1{
-font-family:'Playfair Display',serif;
-color:#C71585;
-font-size:36px;
-text-align:center;
-margin-bottom:30px;
+  font-size:38px;
+  text-align:center;
+  margin-bottom:30px;
+
+  background: linear-gradient(90deg, #C71585, #FF69B4, #ff8fbf);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+
+  letter-spacing:0.4px;
 }
 
+h2{
+  font-size:24px;
+  color:#d81b60;
+  margin-top:42px;
+}
+
+p{
+  font-size:16px;
+  color:#444;
+}
+
+/* =========================
+   HERO IMAGE (LUXURY FOCUS)
+========================= */
 .main-image{
-width:100%;
-border-radius:20px;
-margin-bottom:30px;
-box-shadow:0 10px 30px rgba(0,0,0,0.12);
+  width:100%;
+  border-radius:24px;
+  margin-bottom:30px;
+
+  border:1px solid rgba(255,255,255,0.4);
+
+  box-shadow:
+    0 25px 70px rgba(255,105,180,0.18),
+    inset 0 1px 0 rgba(255,255,255,0.4);
+
+  transition:0.4s ease;
 }
 
+.main-image:hover{
+  transform:translateY(-4px) scale(1.01);
+}
+
+/* =========================
+   SECTION CARDS (CLEAN LUXURY BLOCKS)
+========================= */
 .section-box{
-background:white;
-border-radius:26px;
-padding:28px;
-margin-bottom:32px;
-box-shadow:0 14px 42px rgba(0,0,0,0.08);
+  background: rgba(255,255,255,0.16);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  border:1px solid rgba(255,255,255,0.35);
+  border-radius:22px;
+
+  padding:26px;
+  margin-bottom:28px;
+
+  box-shadow:0 18px 50px rgba(255,105,180,0.10);
+
+  transition:0.3s ease;
+}
+
+.section-box:hover{
+  transform:translateY(-3px);
+  box-shadow:0 25px 65px rgba(255,105,180,0.16);
 }
 
 .section-box h2{
-font-family:'Playfair Display',serif;
-color:#C71585;
-margin-bottom:12px;
-font-size:26px;
+  font-family:'Playfair Display',serif;
+  color:#C71585;
 }
 
-.section-box p{
-margin-bottom:16px;
+/* =========================
+   LISTS (CLEAN STRUCTURE)
+========================= */
+p, .section-box p{
+  margin-bottom:14px;
 }
 
-.quiz-question{
-margin-bottom:22px;
+/* =========================
+   NOTES (SOFT ACCENT CARD)
+========================= */
+.note{
+  background: rgba(255,240,245,0.7);
+  border:1px solid rgba(255,105,180,0.25);
+  border-radius:14px;
+  padding:14px;
+  margin-top:12px;
+
+  backdrop-filter: blur(8px);
 }
 
+/* =========================
+   RESULTS BLOCK (SUBTLE EMPHASIS)
+========================= */
 .result{
-margin-bottom:16px;
+  padding:10px 0;
 }
 
+/* =========================
+   LINKS (OPTIONAL CLEAN LOOK)
+========================= */
+a{
+  color:#C71585;
+  text-decoration:none;
+  transition:0.25s ease;
+}
+
+a:hover{
+  opacity:0.8;
+}
+
+/* =========================
+   FOOTER TEXT
+========================= */
 .disclaimer{
-font-size:10px;
-text-align:center;
-opacity:0.6;
-margin-top:40px;
+  font-size:10px;
+  text-align:center;
+  opacity:0.6;
+  margin-top:40px;
+  line-height:1.2;
+}
+
+/* =========================
+   MICRO INTERACTION RESET
+========================= */
+*{
+  -webkit-tap-highlight-color:transparent;
+}
+
+/* =========================
+   MOBILE LUXURY OPTIMIZATION
+========================= */
+@media (max-width:768px){
+
+  .container{
+    padding:16px;
+    border-radius:18px;
+  }
+
+  h1{
+    font-size:28px;
+  }
+
+  h2{
+    font-size:20px;
+  }
+
+  .section-box{
+    padding:18px;
+    border-radius:18px;
+  }
+
+  .main-image{
+    border-radius:18px;
+  }
+
+  p{
+    font-size:15px;
+  }
 }
 
 </style><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8481828238423040"
