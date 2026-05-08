@@ -1,18 +1,18 @@
-<!DOCTYPE html>
+      <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>FEMMEMALIST — The Ultimate Premium Glow-Up Experience</title>
+
 <link rel="canonical" href="https://femmemalist.com/">
 <meta name="robots" content="index, follow">
 
-<meta name="description" content="Femmemalist is your exclusive, premium guide to personalized beauty, styling, and femme growth. Discover your body shape, face shape, and undertones to unlock radiant confidence and elegance." />
-<meta name="keywords" content="Femmemalist, premium glow-up, body shape guide, face shape guide, undertones, femme growth, beauty, style, confidence" />
-<meta name="author" content="Femmemalist" />
+<meta name="description" content="Femmemalist is your exclusive premium guide to personalized beauty, styling, and feminine growth. Discover your body shape, face shape, undertones, and glow-up path.">
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400&display=swap" rel="stylesheet">
-  <meta name="msvalidate.01" content="8ED71FF318943F66C27096EA6785A6BD" />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
 <style>
 
 /* =========================
@@ -29,7 +29,7 @@ body{
     linear-gradient(180deg, #fff0f5 0%, #ffe6f0 50%, #ffe0ec 100%);
 }
 
-/* soft glow overlay (premium depth) */
+/* soft glow overlay */
 body::before{
   content:"";
   position:fixed;
@@ -41,7 +41,24 @@ body::before{
 }
 
 /* =========================
-   CONTAINER (EDITORIAL GLASS SHEET)
+   TYPOGRAPHY
+========================= */
+h1, h2{
+  font-family:'Playfair Display',serif;
+}
+
+h1{
+  font-size:38px;
+  text-align:center;
+  margin-bottom:10px;
+
+  background: linear-gradient(90deg, #C71585, #FF69B4, #ff8fbf);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+
+/* =========================
+   CONTAINER (FIXED GLASS SYSTEM)
 ========================= */
 .container{
   max-width:950px;
@@ -59,44 +76,12 @@ body::before{
 }
 
 /* =========================
-   TYPOGRAPHY (LUXURY EDITORIAL)
+   IMAGE BLOCK FIX
 ========================= */
-h1, h2{
-  font-family:'Playfair Display',serif;
-}
-
-h1{
-  font-size:38px;
-  text-align:center;
-
-  background: linear-gradient(90deg, #C71585, #FF69B4, #ff8fbf);
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-
-  letter-spacing:0.4px;
-}
-
-h2{
-  font-size:26px;
-  color:#d81b60;
-  margin-top:45px;
-}
-
-p{
-  font-size:16px;
-  color:#444;
-}
-
-/* =========================
-   HERO IMAGE (LUXURY FOCUS CARD)
-========================= */
-.image-block{
-  margin:28px 0;
-}
-
-.image-block img{
+.main-image{
   width:100%;
   border-radius:22px;
+  margin:20px 0;
 
   border:1px solid rgba(255,255,255,0.4);
 
@@ -104,19 +89,17 @@ p{
     0 20px 60px rgba(255,105,180,0.18),
     inset 0 1px 0 rgba(255,255,255,0.4);
 
-  transform:translateY(0);
-  transition:0.5s ease;
+  transition:0.4s ease;
 }
 
-/* subtle hover depth (NOT animation spam) */
-.image-block img:hover{
+.main-image:hover{
   transform:translateY(-4px) scale(1.01);
 }
 
 /* =========================
-   CTA BOXES (TURN INTO LUXURY CARDS)
+   SECTION BOX FIX (THIS WAS MISSING)
 ========================= */
-.cta-box{
+.section-box{
   background: rgba(255,255,255,0.16);
   backdrop-filter: blur(14px);
 
@@ -131,29 +114,29 @@ p{
   transition:0.35s ease;
 }
 
-.cta-box:hover{
+.section-box:hover{
   transform:translateY(-3px);
   box-shadow:0 25px 65px rgba(255,105,180,0.18);
 }
 
-.cta-box h3{
+.section-box h2{
   font-family:'Playfair Display',serif;
   color:#C71585;
-  font-size:20px;
 }
 
-/* CTA BUTTONS (MORE LUXURY, LESS HEAVY) */
-.cta-box a,
-.app-cta a{
+/* =========================
+   CTA BUTTON FIX
+========================= */
+.section-box a{
   display:inline-block;
-  margin-top:14px;
+  margin-top:12px;
   padding:12px 26px;
 
   border-radius:50px;
   text-decoration:none;
 
   font-family:'Playfair Display',serif;
-  font-weight:700;
+  font-weight:600;
 
   background:linear-gradient(135deg,#ff5fa2,#ff87c2);
   color:#fff;
@@ -163,89 +146,36 @@ p{
   transition:0.3s ease;
 }
 
-.cta-box a:hover,
-.app-cta a:hover{
+.section-box a:hover{
   transform:translateY(-2px);
   box-shadow:0 18px 40px rgba(255,105,180,0.35);
 }
 
 /* =========================
-   APP CTA (GLASS FEATURE BLOCK)
-========================= */
-.app-cta{
-  background: rgba(255,255,255,0.18);
-  backdrop-filter: blur(16px);
-
-  border:1px solid rgba(199,21,133,0.25);
-  border-radius:22px;
-
-  padding:22px;
-  margin:28px 0;
-
-  text-align:center;
-
-  font-family:'Playfair Display',serif;
-  color:#C71585;
-
-  box-shadow:0 20px 55px rgba(255,105,180,0.15);
-}
-
-/* =========================
-   SOCIAL ICON BAR (CLEAN LUXURY SPACING)
-========================= */
-.container > div[style*="display:flex"] a{
-  transition:0.3s ease;
-  opacity:0.85;
-}
-
-.container > div[style*="display:flex"] a:hover{
-  transform:translateY(-3px) scale(1.05);
-  opacity:1;
-}
-
-/* =========================
-   MICRO INTERACTION (SUBTLE ONLY)
-========================= */
-*{
-  -webkit-tap-highlight-color:transparent;
-}
-
-a{
-  transition:0.25s ease;
-}
-
-/* =========================
-   MOBILE LUXURY FIX (IMPORTANT)
+   MOBILE FIX
 ========================= */
 @media (max-width:768px){
 
   h1{ font-size:28px; }
-  h2{ font-size:20px; }
 
   .container{
     padding:16px;
     border-radius:18px;
   }
 
-  .cta-box,
-  .app-cta{
+  .section-box{
     padding:16px;
-    border-radius:18px;
   }
 
-  .image-block img{
+  .main-image{
     border-radius:18px;
-  }
-
-  p{
-    font-size:15px;
   }
 }
 
-                              </style>
-  
+</style>
 
 </head>
+
 <body>
 
 <div class="container">
@@ -254,9 +184,10 @@ a{
 
 <img 
 src="https://res.cloudinary.com/dtabpv9y2/image/upload/v1774511755/1774511556547_qx5e3t.jpg" 
-alt="Femmemalist Glow-Up Journey" 
 class="main-image" 
-loading="lazy">
+alt="Femmemalist Glow Up">
+
+<!-- READY FOR YOUR CONTENT BELOW -->
 
 <p style="text-align:center;font-size:18px;color:#555;max-width:800px;margin:0 auto 32px auto;">
 Femmemalist is a refined guide to feminine beauty, personal growth, and intentional living. It helps women understand their natural features, elevate their style, nurture meaningful relationships, and cultivate a confident, elegant lifestyle. Every insight is designed to help you grow gracefully, embrace your unique femininity, and live with clarity, strength, and quiet luxury.This is not trend advice it is intentional, structural and tailored to your true wholesome goals. 
