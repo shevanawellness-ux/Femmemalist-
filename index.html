@@ -14,97 +14,235 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400&display=swap" rel="stylesheet">
   <meta name="msvalidate.01" content="8ED71FF318943F66C27096EA6785A6BD" />
 <style>
-  
-body {
-  margin: 0;
-  background: linear-gradient(to bottom, #fff0f5, #ffe6f0);
-  font-family: 'Inter', sans-serif;
-  color: #333;
-  line-height: 1.7;
+
+/* =========================
+   BASE LUXURY FOUNDATION
+========================= */
+body{
+  margin:0;
+  font-family:'Inter',sans-serif;
+  line-height:1.7;
+  color:#2b2b2b;
+
+  background:
+    radial-gradient(circle at top, #fff0f5, transparent 60%),
+    linear-gradient(180deg, #fff0f5 0%, #ffe6f0 50%, #ffe0ec 100%);
 }
-.container {
-  max-width: 950px;
-  padding: 24px;
-  margin: auto;}
-h1 {
-  font-family: 'Playfair Display', serif;
-  font-size: 38px;
-  font-weight: 700;
-  letter-spacing: 2px;
-  margin-top: 10px;
-  color: #C71585;
-  text-align: center;
-  margin-bottom: 24px;
+
+/* soft glow overlay (premium depth) */
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  background:
+    radial-gradient(circle at top, rgba(255,105,180,0.18), transparent 55%),
+    radial-gradient(circle at bottom, rgba(199,21,133,0.10), transparent 60%);
+  pointer-events:none;
 }
-.main-image {
-  width: 95%;
-  max-width: 800px;
-  display: block;
-  margin: 20px auto 36px auto;
-  border-radius: 22px;
-  box-shadow: 0 18px 48px rgba(0,0,0,0.14);
+
+/* =========================
+   CONTAINER (EDITORIAL GLASS SHEET)
+========================= */
+.container{
+  max-width:950px;
+  margin:auto;
+  padding:22px;
+
+  background: rgba(255,255,255,0.14);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  border-radius:22px;
+  border:1px solid rgba(255,255,255,0.35);
+
+  box-shadow:0 25px 70px rgba(255,105,180,0.10);
 }
-.section-box {
-  background: #fff;
-  border-radius: 26px;
-  padding: 28px 24px;
-  margin: 32px 0;
-  box-shadow: 0 14px 42px rgba(0,0,0,0.08);
+
+/* =========================
+   TYPOGRAPHY (LUXURY EDITORIAL)
+========================= */
+h1, h2{
+  font-family:'Playfair Display',serif;
 }
-.section-box h2 {
-  font-family: 'Playfair Display', serif;
-  font-size: 26px;
-  color: #C71585;
-  margin-bottom: 14px;
+
+h1{
+  font-size:38px;
+  text-align:center;
+
+  background: linear-gradient(90deg, #C71585, #FF69B4, #ff8fbf);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+
+  letter-spacing:0.4px;
 }
-.section-box p {
-  font-size: 16px;
-  color: #555;
-  margin-bottom: 20px;
+
+h2{
+  font-size:26px;
+  color:#d81b60;
+  margin-top:45px;
 }
-.section-box a {
-  display: inline-block;
-  padding: 14px 32px;
-  font-family: 'Playfair Display', serif;
-  font-size: 17px;
-  font-weight: 700;
-  background: linear-gradient(135deg,#ff5fa2,#ff87c2);
-  color: #fff;
-  text-decoration: none;
-  border-radius: 36px;
-  transition: 0.3s ease;
+
+p{
+  font-size:16px;
+  color:#444;
 }
-.section-box a:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 32px rgba(255,95,162,0.26);
+
+/* =========================
+   HERO IMAGE (LUXURY FOCUS CARD)
+========================= */
+.image-block{
+  margin:28px 0;
 }
-.disclaimer {
-  font-size: 9px;
-  color: rgba(0,0,0,0.42);
-  font-style: italic;
-  text-align: center;
-  margin: 50px 0 10px 0;
-  line-height: 1.3;
+
+.image-block img{
+  width:100%;
+  border-radius:22px;
+
+  border:1px solid rgba(255,255,255,0.4);
+
+  box-shadow:
+    0 20px 60px rgba(255,105,180,0.18),
+    inset 0 1px 0 rgba(255,255,255,0.4);
+
+  transform:translateY(0);
+  transition:0.5s ease;
 }
-  /* Mobile Fix for Proper Center Alignment */
-@media screen and (max-width: 768px) {
-  h1 {
-    text-align: center !important;
-    margin-left: auto !important;
-    margin-right: auto !important;
-    display: block;
-    width: 100%;
+
+/* subtle hover depth (NOT animation spam) */
+.image-block img:hover{
+  transform:translateY(-4px) scale(1.01);
+}
+
+/* =========================
+   CTA BOXES (TURN INTO LUXURY CARDS)
+========================= */
+.cta-box{
+  background: rgba(255,255,255,0.16);
+  backdrop-filter: blur(14px);
+
+  border:1px solid rgba(255,255,255,0.35);
+  border-radius:20px;
+
+  padding:22px;
+  margin:22px 0;
+
+  box-shadow:0 18px 50px rgba(255,105,180,0.12);
+
+  transition:0.35s ease;
+}
+
+.cta-box:hover{
+  transform:translateY(-3px);
+  box-shadow:0 25px 65px rgba(255,105,180,0.18);
+}
+
+.cta-box h3{
+  font-family:'Playfair Display',serif;
+  color:#C71585;
+  font-size:20px;
+}
+
+/* CTA BUTTONS (MORE LUXURY, LESS HEAVY) */
+.cta-box a,
+.app-cta a{
+  display:inline-block;
+  margin-top:14px;
+  padding:12px 26px;
+
+  border-radius:50px;
+  text-decoration:none;
+
+  font-family:'Playfair Display',serif;
+  font-weight:700;
+
+  background:linear-gradient(135deg,#ff5fa2,#ff87c2);
+  color:#fff;
+
+  box-shadow:0 12px 30px rgba(255,105,180,0.25);
+
+  transition:0.3s ease;
+}
+
+.cta-box a:hover,
+.app-cta a:hover{
+  transform:translateY(-2px);
+  box-shadow:0 18px 40px rgba(255,105,180,0.35);
+}
+
+/* =========================
+   APP CTA (GLASS FEATURE BLOCK)
+========================= */
+.app-cta{
+  background: rgba(255,255,255,0.18);
+  backdrop-filter: blur(16px);
+
+  border:1px solid rgba(199,21,133,0.25);
+  border-radius:22px;
+
+  padding:22px;
+  margin:28px 0;
+
+  text-align:center;
+
+  font-family:'Playfair Display',serif;
+  color:#C71585;
+
+  box-shadow:0 20px 55px rgba(255,105,180,0.15);
+}
+
+/* =========================
+   SOCIAL ICON BAR (CLEAN LUXURY SPACING)
+========================= */
+.container > div[style*="display:flex"] a{
+  transition:0.3s ease;
+  opacity:0.85;
+}
+
+.container > div[style*="display:flex"] a:hover{
+  transform:translateY(-3px) scale(1.05);
+  opacity:1;
+}
+
+/* =========================
+   MICRO INTERACTION (SUBTLE ONLY)
+========================= */
+*{
+  -webkit-tap-highlight-color:transparent;
+}
+
+a{
+  transition:0.25s ease;
+}
+
+/* =========================
+   MOBILE LUXURY FIX (IMPORTANT)
+========================= */
+@media (max-width:768px){
+
+  h1{ font-size:28px; }
+  h2{ font-size:20px; }
+
+  .container{
+    padding:16px;
+    border-radius:18px;
+  }
+
+  .cta-box,
+  .app-cta{
+    padding:16px;
+    border-radius:18px;
+  }
+
+  .image-block img{
+    border-radius:18px;
+  }
+
+  p{
+    font-size:15px;
   }
 }
-  /* Force Perfect Center Alignment for FEMMEMALIST Heading */
-h1 {
-  display: block;
-  width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-  text-align: center;
-}
-</style>
+
+                              </style>
   
 
 </head>
