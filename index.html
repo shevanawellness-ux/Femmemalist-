@@ -20,7 +20,7 @@
 body{
   margin:0;
   font-family:'Inter',sans-serif;
-  line-height:1.7;
+  line-height:1.75;
   color:#2b2b2b;
 
   background:
@@ -34,22 +34,22 @@ body::before{
   position:fixed;
   inset:0;
   background:
-    radial-gradient(circle at top, rgba(255,105,180,0.18), transparent 55%),
+    radial-gradient(circle at top, rgba(255,105,180,0.20), transparent 55%),
     radial-gradient(circle at bottom, rgba(199,21,133,0.10), transparent 60%);
   pointer-events:none;
 }
 
 /* =========================
-   MAIN CONTAINER
+   CONTAINER
 ========================= */
 .container{
-  max-width:960px;
+  max-width:980px;
   margin:auto;
   padding:22px;
 
   background: rgba(255,255,255,0.14);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
 
   border-radius:22px;
   border:1px solid rgba(255,255,255,0.35);
@@ -75,36 +75,34 @@ h1{
 h2{
   font-size:26px;
   color:#d81b60;
-  margin-top:40px;
-}
-
-p{
-  font-size:16px;
-  color:#444;
+  margin-top:30px;
 }
 
 /* =========================
-   IMAGE BLOCK
+   HERO IMAGE (PINK GLOW POP FIX)
 ========================= */
-.image-block{
-  margin:25px 0;
-}
-
-.image-block img{
+img{
   width:100%;
   border-radius:22px;
-  border:1px solid rgba(255,255,255,0.4);
 
-  box-shadow:0 20px 60px rgba(255,105,180,0.18);
+  border:2px solid rgba(255,105,180,0.25);
+
+  box-shadow:
+    0 25px 60px rgba(255,105,180,0.20),
+    0 0 0 6px rgba(255,182,193,0.12);
+
   transition:0.4s ease;
 }
 
-.image-block img:hover{
+img:hover{
   transform:translateY(-4px) scale(1.01);
+  box-shadow:
+    0 30px 80px rgba(255,105,180,0.25),
+    0 0 0 8px rgba(255,182,193,0.18);
 }
 
 /* =========================
-   SECTION BOX (IMPORTANT FIX)
+   SECTION BOX (UPGRADED GLASS CARD)
 ========================= */
 .section-box{
   background: rgba(255,255,255,0.16);
@@ -114,62 +112,70 @@ p{
   border:1px solid rgba(255,255,255,0.35);
   border-radius:20px;
 
-  padding:20px;
+  padding:22px;
   margin:20px 0;
 
-  box-shadow:0 18px 50px rgba(255,105,180,0.10);
+  box-shadow:0 18px 50px rgba(255,105,180,0.12);
 
-  transition:0.3s ease;
+  transition:0.35s ease;
 }
 
 .section-box:hover{
   transform:translateY(-3px);
+  box-shadow:0 25px 70px rgba(255,105,180,0.18);
 }
 
 /* =========================
-   CTA BOXES (BUTTON FIX HERE)
+   BUTTON STYLE (COOL UNDERTONE INSPIRED + LUXURY)
 ========================= */
-.cta-box{
-  background: rgba(255,255,255,0.16);
-  border-radius:20px;
-  padding:20px;
-  margin:20px 0;
-
-  border:1px solid rgba(255,255,255,0.35);
-  box-shadow:0 18px 50px rgba(255,105,180,0.10);
-}
-
-/* BUTTON FIX (THIS WAS BREAKING EARLIER) */
 .section-box a,
-.cta-box a,
 .app-cta a{
   display:inline-block;
-  margin-top:12px;
-  padding:12px 24px;
+  margin-top:14px;
+  padding:12px 26px;
 
   border-radius:50px;
   text-decoration:none;
 
   font-family:'Playfair Display',serif;
-  font-weight:600;
+  font-weight:700;
 
   background:linear-gradient(135deg,#ff5fa2,#ff87c2);
   color:#fff;
 
-  box-shadow:0 10px 30px rgba(255,105,180,0.25);
+  box-shadow:0 12px 30px rgba(255,105,180,0.25);
 
-  transition:0.3s ease;
+  position:relative;
+  overflow:hidden;
+
+  transition:0.35s ease;
+}
+
+/* shine effect */
+.section-box a::before,
+.app-cta a::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:-130%;
+  width:130%;
+  height:100%;
+  background:linear-gradient(120deg,transparent,rgba(255,255,255,0.4),transparent);
+  transition:0.6s;
+}
+
+.section-box a:hover::before,
+.app-cta a:hover::before{
+  left:130%;
 }
 
 .section-box a:hover,
-.cta-box a:hover,
 .app-cta a:hover{
-  transform:translateY(-2px);
-  box-shadow:0 18px 40px rgba(255,105,180,0.35);
+  transform:translateY(-3px);
 }
 
 /* =========================
-   APP CTA BLOCK
+   APP CTA
 ========================= */
 .app-cta{
   background: rgba(255,255,255,0.18);
@@ -182,10 +188,28 @@ p{
 
   font-family:'Playfair Display',serif;
   color:#C71585;
+
+  box-shadow:0 20px 55px rgba(255,105,180,0.15);
 }
 
 /* =========================
-   MOBILE OPTIMIZATION (FIXED)
+   SOCIAL BAR
+========================= */
+.social{
+  display:flex;
+  justify-content:center;
+  gap:16px;
+  margin:30px 0;
+}
+
+.social img{
+  width:30px;
+  border:none;
+  box-shadow:none;
+}
+
+/* =========================
+   MOBILE OPTIMIZATION (PHONE PERFECT)
 ========================= */
 @media (max-width:768px){
 
@@ -194,38 +218,19 @@ p{
     border-radius:18px;
   }
 
-  h1{
-    font-size:28px;
-  }
+  h1{ font-size:28px; }
+  h2{ font-size:20px; }
 
-  h2{
-    font-size:20px;
-  }
-
-  p{
-    font-size:15px;
-  }
-
-  .section-box,
-  .cta-box,
-  .app-cta{
+  .section-box{
     padding:16px;
-    border-radius:18px;
   }
 
-  .image-block img{
+  img{
     border-radius:18px;
   }
 }
 
 </style>
-
-</head>
-
-<body>
-
-<div class="container">
-<!-- YOUR CONTENT STARTS HERE -->
 </head>
 
 <body>
