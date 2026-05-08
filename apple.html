@@ -17,6 +17,10 @@
 <META NAME="AUTHOR" CONTENT="Femmemalist">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter:wght@300;400&display=swap" rel="stylesheet">
 
+
+   
+  
+
 <style>
 body{
   margin:0;
@@ -47,10 +51,11 @@ body::before{
   backdrop-filter: blur(10px);
 
   border-radius:20px;
+  box-sizing:border-box;
 }
 
 /* =========================
-   HEADINGS (LUXURY GLASS TEXT)
+   HEADINGS
 ========================= */
 h1{
   font-size:40px;
@@ -71,228 +76,6 @@ h2{
   color:#DB7093;
   margin-top:55px;
   font-family:'Playfair Display',serif;
-
-  text-shadow:0 8px 20px rgba(255,105,180,0.10);
-}
-
-h3{
-  font-size:18px;
-  color:#C71585;
-  margin:15px 0 5px;
-  font-family:'Playfair Display',serif;
-}
-
-h1,h2,h3{
-  letter-spacing:0.3px;
-}
-
-/* =========================
-   TEXT (SOFT LUXURY READABILITY)
-========================= */
-p{
-  font-size:16px;
-  margin:18px 0;
-  letter-spacing:0.1px;
-}
-
-/* =========================
-   IMAGE (GLASS FRAME)
-========================= */
-.image-block img{
-  width:100%;
-  border-radius:18px;
-  margin:25px 0;
-
-  border:1px solid rgba(255,255,255,0.35);
-  box-shadow:0 15px 40px rgba(255,105,180,0.15);
-
-  background: rgba(255,255,255,0.12);
-  backdrop-filter: blur(6px);
-}
-
-/* =========================
-   VIDEO (FROSTED GLASS CARD)
-========================= */
-.yt-lite{
-  position:relative;
-  width:100%;
-  aspect-ratio:16/9;
-  border-radius:16px;
-  overflow:hidden;
-  cursor:pointer;
-
-  background: rgba(255,255,255,0.10);
-  backdrop-filter: blur(12px);
-
-  border:1px solid rgba(255,255,255,0.25);
-  box-shadow:0 15px 35px rgba(255,105,180,0.18);
-}
-
-.yt-lite img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-}
-
-/* =========================
-   CTA (ULTRA GLASS BREATHING)
-========================= */
-.cta{
-  margin-top:35px;
-  padding:22px;
-
-  font-family:'Playfair Display',serif;
-  font-size:20px;
-  color:#C71585;
-  font-weight:700;
-  text-align:center;
-
-  border-radius:20px;
-
-  background: rgba(255,255,255,0.18);
-  backdrop-filter: blur(14px);
-
-  border:1px solid rgba(255,255,255,0.35);
-
-  position:relative;
-  z-index:1;
-
-  box-shadow:0 0 30px rgba(255,105,180,0.25);
-
-  animation:ctaPulse 3.8s ease-in-out infinite;
-}
-
-/* breathing luxury glow */
-@keyframes ctaPulse{
-  0%{
-    transform:scale(1);
-    box-shadow:0 0 18px rgba(255,105,180,0.18);
-  }
-  50%{
-    transform:scale(1.01);
-    box-shadow:0 0 45px rgba(255,105,180,0.45);
-  }
-  100%{
-    transform:scale(1);
-    box-shadow:0 0 18px rgba(255,105,180,0.18);
-  }
-}
-
-/* =========================
-   SHOP BUTTONS (GLASS LUXURY)
-========================= */
-.shop-buttons{
-  display:flex;
-  gap:20px;
-  margin-top:20px;
-  flex-wrap:wrap;
-}
-
-.shop-buttons a{
-  position:relative;
-  overflow:hidden;
-
-  flex:1;
-  padding:16px;
-  border-radius:50px;
-
-  font-family:'Playfair Display',serif;
-  font-size:18px;
-  font-weight:700;
-
-  text-decoration:none;
-  text-align:center;
-
-  color:#fff;
-
-  background: rgba(255,105,180,0.35);
-  backdrop-filter: blur(12px);
-
-  border:1px solid rgba(255,255,255,0.25);
-
-  box-shadow:0 12px 30px rgba(255,105,180,0.25);
-
-  transition:0.35s ease;
-}
-
-.shop-buttons a:hover{
-  transform:translateY(-3px) scale(1.03);
-  box-shadow:0 18px 40px rgba(255,105,180,0.35);
-}
-
-/* shine reflection */
-.shop-buttons a::before{
-  content:"";
-  position:absolute;
-  top:0;
-  left:-130%;
-  width:130%;
-  height:100%;
-  background:linear-gradient(120deg, transparent, rgba(255,255,255,0.45), transparent);
-  transition:0.6s;
-}
-
-.shop-buttons a:hover::before{
-  left:130%;
-}
-
-/* =========================
-<style>
-body{
-  margin:0;
-  background:linear-gradient(to bottom, #fff0f5, #ffe6f0);
-  color:#333;
-  font-family:'Inter',sans-serif;
-  line-height:1.7;
-}
-
-/* subtle luxury depth layer */
-body::before{
-  content:"";
-  position:fixed;
-  inset:0;
-  background:radial-gradient(circle at top, rgba(255,105,180,0.12), transparent 60%);
-  pointer-events:none;
-}
-
-/* =========================
-   CONTAINER (GLASS FEEL BASE)
-========================= */
-.container{
-  max-width:950px;
-  padding:20px;
-  margin:auto;
-
-  background: rgba(255,255,255,0.10);
-  backdrop-filter: blur(10px);
-
-  border-radius:20px;
-}
-
-/* =========================
-   HEADINGS (LUXURY GLASS TEXT)
-========================= */
-h1{
-  font-size:40px;
-  margin-bottom:25px;
-  text-align:center;
-  letter-spacing:0.3px;
-  font-family:'Playfair Display',serif;
-
-  background: linear-gradient(90deg, #C71585, #FF69B4);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-
-  text-shadow:0 10px 25px rgba(255,105,180,0.15);
-}
-
-h2{
-  font-size:26px;
-  color:#DB7093;
-  margin-top:55px;
-  font-family:'Playfair Display',serif;
-
-  text-shadow:0 8px 20px rgba(255,105,180,0.10);
 }
 
 h3{
@@ -316,7 +99,7 @@ p{
 }
 
 /* =========================
-   IMAGE (GLASS FRAME)
+   IMAGE
 ========================= */
 .image-block img{
   width:100%;
@@ -328,10 +111,11 @@ p{
 
   background: rgba(255,255,255,0.12);
   backdrop-filter: blur(6px);
+  box-sizing:border-box;
 }
 
 /* =========================
-   VIDEO (FROSTED GLASS CARD)
+   VIDEO
 ========================= */
 .yt-lite{
   position:relative;
@@ -346,16 +130,11 @@ p{
 
   border:1px solid rgba(255,255,255,0.25);
   box-shadow:0 15px 35px rgba(255,105,180,0.18);
-}
-
-.yt-lite img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
+  box-sizing:border-box;
 }
 
 /* =========================
-   CTA (ULTRA GLASS BREATHING)
+   CTA
 ========================= */
 .cta{
   margin-top:35px;
@@ -383,28 +162,20 @@ p{
 }
 
 @keyframes ctaPulse{
-  0%{
-    transform:scale(1);
-    box-shadow:0 0 18px rgba(255,105,180,0.18);
-  }
-  50%{
-    transform:scale(1.01);
-    box-shadow:0 0 45px rgba(255,105,180,0.45);
-  }
-  100%{
-    transform:scale(1);
-    box-shadow:0 0 18px rgba(255,105,180,0.18);
-  }
+  0%{transform:scale(1);box-shadow:0 0 18px rgba(255,105,180,0.18);}
+  50%{transform:scale(1.01);box-shadow:0 0 45px rgba(255,105,180,0.45);}
+  100%{transform:scale(1);box-shadow:0 0 18px rgba(255,105,180,0.18);}
 }
 
 /* =========================
-   SHOP BUTTONS (GLASS LUXURY)
+   SHOP BUTTONS (FIXED ALIGNMENT)
 ========================= */
 .shop-buttons{
   display:flex;
   gap:20px;
   margin-top:20px;
   flex-wrap:wrap;
+  width:100%;
 }
 
 .shop-buttons a{
@@ -412,6 +183,7 @@ p{
   overflow:hidden;
 
   flex:1;
+  min-width:0;
   padding:16px;
   border-radius:50px;
 
@@ -432,6 +204,8 @@ p{
   box-shadow:0 12px 30px rgba(255,105,180,0.25);
 
   transition:0.35s ease;
+
+  box-sizing:border-box;
 }
 
 .shop-buttons a:hover{
@@ -439,7 +213,7 @@ p{
   box-shadow:0 18px 40px rgba(255,105,180,0.35);
 }
 
-/* shine effect */
+/* shine */
 .shop-buttons a::before{
   content:"";
   position:absolute;
@@ -456,7 +230,7 @@ p{
 }
 
 /* =========================
-   FADE ANIMATION
+   FADE
 ========================= */
 .fade-in{
   opacity:0;
@@ -465,10 +239,7 @@ p{
 }
 
 @keyframes fadeInUp{
-  to{
-    opacity:1;
-    transform:translateY(0);
-  }
+  to{opacity:1;transform:translateY(0);}
 }
 
 /* =========================
@@ -486,7 +257,7 @@ p{
 .hidden{display:none;}
 
 /* =========================
-   MOBILE LUXURY BOOST
+   MOBILE (FULL FIX + LUXURY BOOST)
 ========================= */
 @media (max-width: 768px){
 
@@ -494,63 +265,33 @@ p{
     background:linear-gradient(to bottom, #ffe6f0, #ffd1e6);
   }
 
-  body::before{
-    background:radial-gradient(circle at top, rgba(255,105,180,0.20), transparent 55%);
-  }
-
   .container{
     padding:16px;
     border-radius:16px;
-    background: rgba(255,255,255,0.14);
-    backdrop-filter: blur(8px);
   }
 
-  h1{ font-size:32px; }
-  h2{ font-size:22px; }
-  h3{ font-size:16px; }
+  h1{font-size:32px;}
+  h2{font-size:22px;}
+  h3{font-size:16px;}
 
   .cta{
     font-size:18px;
     padding:18px;
-    box-shadow:0 0 35px rgba(255,105,180,0.35);
-    animation:ctaPulseMobile 3.2s ease-in-out infinite;
   }
 
-  @keyframes ctaPulseMobile{
-    0%{
-      transform:scale(1);
-      box-shadow:0 0 20px rgba(255,105,180,0.25);
-    }
-    50%{
-      transform:scale(1.02);
-      box-shadow:0 0 55px rgba(255,105,180,0.55);
-    }
-    100%{
-      transform:scale(1);
-      box-shadow:0 0 20px rgba(255,105,180,0.25);
-    }
-  }
-
+  /* IMPORTANT FIX */
   .shop-buttons{
     flex-direction:column;
+    align-items:stretch;
     gap:14px;
   }
 
   .shop-buttons a{
     width:100%;
+    display:block;
     font-size:17px;
     padding:15px;
     border-radius:40px;
-    box-shadow:0 14px 35px rgba(255,105,180,0.35);
-  }
-
-  .image-block img{
-    border:1px solid rgba(255,105,180,0.35);
-    box-shadow:0 18px 45px rgba(255,105,180,0.18);
-  }
-
-  .yt-lite{
-    box-shadow:0 18px 45px rgba(255,105,180,0.20);
   }
 
   p{
@@ -558,7 +299,7 @@ p{
     margin:16px 0;
   }
 }
-    </style>
+</style>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8481828238423040"
      crossorigin="anonymous"></script>
 </head>
