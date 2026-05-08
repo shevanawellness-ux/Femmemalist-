@@ -1,19 +1,23 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>SKIN UNDERTONES GUIDE — FEMMEMALIST</title>
-    <link rel="canonical" href="https://femmemalist.com/undertones.html">
+
+<link rel="canonical" href="https://femmemalist.com/undertones.html">
 <meta name="robots" content="index, follow">
-<meta name="description" content="Discover your skin undertone and unlock the secret to your ultimate glow-up with Femmemalist. A luxurious, complete, and persuasive guide for your feminine transformation.">
-<meta name="keywords" content="skin undertone guide, warm undertone, cool undertone, neutral undertone, Femmemalist app, glow-up guide, makeup tips, styling">
+
+<meta name="description" content="Discover your skin undertone and unlock your ultimate glow-up with Femmemalist.">
+<meta name="keywords" content="skin undertone, warm undertone, cool undertone, neutral undertone, makeup, styling">
 <meta name="author" content="Femmemalist">
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 
-
-    <style>
+<style>
 
 /* =========================
    BASE LUXURY FOUNDATION
@@ -29,7 +33,6 @@ body{
     linear-gradient(180deg, #fff0f5 0%, #ffe6f0 50%, #ffe0ec 100%);
 }
 
-/* soft glow overlay (premium depth) */
 body::before{
   content:"";
   position:fixed;
@@ -41,10 +44,10 @@ body::before{
 }
 
 /* =========================
-   CONTAINER (EDITORIAL GLASS SHEET)
+   SINGLE CONTAINER ONLY
 ========================= */
 .container{
-  max-width:950px;
+  max-width:960px;
   margin:auto;
   padding:22px;
 
@@ -59,7 +62,7 @@ body::before{
 }
 
 /* =========================
-   TYPOGRAPHY (LUXURY EDITORIAL)
+   TYPOGRAPHY
 ========================= */
 h1, h2{
   font-family:'Playfair Display',serif;
@@ -69,17 +72,15 @@ h1{
   font-size:38px;
   text-align:center;
 
-  background: linear-gradient(90deg, #C71585, #FF69B4, #ff8fbf);
+  background: linear-gradient(90deg,#C71585,#FF69B4,#ff8fbf);
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
-
-  letter-spacing:0.4px;
 }
 
 h2{
   font-size:26px;
   color:#d81b60;
-  margin-top:45px;
+  margin-top:40px;
 }
 
 p{
@@ -88,33 +89,28 @@ p{
 }
 
 /* =========================
-   HERO IMAGE (LUXURY FOCUS CARD)
+   IMAGE GLOW STYLE
 ========================= */
-.image-block{
-  margin:28px 0;
-}
-
 .image-block img{
   width:100%;
   border-radius:22px;
+  margin:20px 0;
 
-  border:1px solid rgba(255,255,255,0.4);
+  border:2px solid rgba(255,105,180,0.35);
 
   box-shadow:
-    0 20px 60px rgba(255,105,180,0.18),
-    inset 0 1px 0 rgba(255,255,255,0.4);
+    0 20px 60px rgba(255,105,180,0.20),
+    0 0 25px rgba(255,105,180,0.15);
 
-  transform:translateY(0);
-  transition:0.5s ease;
+  transition:0.4s ease;
 }
 
-/* subtle hover depth (NOT animation spam) */
 .image-block img:hover{
-  transform:translateY(-4px) scale(1.01);
+  transform:scale(1.01);
 }
 
 /* =========================
-   CTA BOXES (TURN INTO LUXURY CARDS)
+   SECTION CARDS
 ========================= */
 .cta-box{
   background: rgba(255,255,255,0.16);
@@ -124,25 +120,20 @@ p{
   border-radius:20px;
 
   padding:22px;
-  margin:22px 0;
+  margin:20px 0;
 
   box-shadow:0 18px 50px rgba(255,105,180,0.12);
 
-  transition:0.35s ease;
+  transition:0.3s ease;
 }
 
 .cta-box:hover{
   transform:translateY(-3px);
-  box-shadow:0 25px 65px rgba(255,105,180,0.18);
 }
 
-.cta-box h3{
-  font-family:'Playfair Display',serif;
-  color:#C71585;
-  font-size:20px;
-}
-
-/* CTA BUTTONS (MORE LUXURY, LESS HEAVY) */
+/* =========================
+   BUTTON WITH SHINE EFFECT
+========================= */
 .cta-box a,
 .app-cta a{
   display:inline-block;
@@ -155,34 +146,50 @@ p{
   font-family:'Playfair Display',serif;
   font-weight:700;
 
-  background:linear-gradient(135deg,#ff5fa2,#ff87c2);
   color:#fff;
+  background:linear-gradient(135deg,#ff5fa2,#ff87c2);
 
   box-shadow:0 12px 30px rgba(255,105,180,0.25);
 
-  transition:0.3s ease;
+  position:relative;
+  overflow:hidden;
+}
+
+/* shine */
+.cta-box a::before,
+.app-cta a::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:-130%;
+  width:130%;
+  height:100%;
+  background:linear-gradient(120deg, transparent, rgba(255,255,255,0.5), transparent);
+  transition:0.6s;
+}
+
+.cta-box a:hover::before,
+.app-cta a:hover::before{
+  left:130%;
 }
 
 .cta-box a:hover,
 .app-cta a:hover{
   transform:translateY(-2px);
-  box-shadow:0 18px 40px rgba(255,105,180,0.35);
 }
 
 /* =========================
-   APP CTA (GLASS FEATURE BLOCK)
+   APP CTA BLOCK
 ========================= */
 .app-cta{
   background: rgba(255,255,255,0.18);
-  backdrop-filter: blur(16px);
-
-  border:1px solid rgba(199,21,133,0.25);
   border-radius:22px;
 
   padding:22px;
   margin:28px 0;
 
   text-align:center;
+  border:1px solid rgba(199,21,133,0.25);
 
   font-family:'Playfair Display',serif;
   color:#C71585;
@@ -191,41 +198,19 @@ p{
 }
 
 /* =========================
-   SOCIAL ICON BAR (CLEAN LUXURY SPACING)
-========================= */
-.container > div[style*="display:flex"] a{
-  transition:0.3s ease;
-  opacity:0.85;
-}
-
-.container > div[style*="display:flex"] a:hover{
-  transform:translateY(-3px) scale(1.05);
-  opacity:1;
-}
-
-/* =========================
-   MICRO INTERACTION (SUBTLE ONLY)
-========================= */
-*{
-  -webkit-tap-highlight-color:transparent;
-}
-
-a{
-  transition:0.25s ease;
-}
-
-/* =========================
-   MOBILE LUXURY FIX (IMPORTANT)
+   MOBILE OPTIMIZATION
 ========================= */
 @media (max-width:768px){
-
-  h1{ font-size:28px; }
-  h2{ font-size:20px; }
 
   .container{
     padding:16px;
     border-radius:18px;
   }
+
+  h1{ font-size:28px; }
+  h2{ font-size:20px; }
+
+  p{ font-size:15px; }
 
   .cta-box,
   .app-cta{
@@ -236,19 +221,16 @@ a{
   .image-block img{
     border-radius:18px;
   }
-
-  p{
-    font-size:15px;
-  }
 }
 
-    </style>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8481828238423040"
-     crossorigin="anonymous"></script>
+</style>
+
 </head>
 
 <body>
+
 <div class="container">
+
 
 <h1>SKIN UNDERTONES GUIDE- FEMMEMALIST</h1>
 
