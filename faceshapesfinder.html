@@ -1,158 +1,228 @@
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!DOCTYPE html><html lang="en">
+<head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Body Shape Finder | Detailed Measurement Guide</title><meta name="description" content="A detailed body shape finder with accurate measurements and questions to determine whether your body shape is hourglass, pear, apple, rectangle, or inverted triangle."><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet"><style>
 
-<title>Find Your Face Shape | Femmemalist Guide</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
-
-<style>
+     <style>
 
 /* =========================
-   DARK LUXURY BASE
+   BASE LUXURY BACKGROUND
 ========================= */
 body{
   margin:0;
   font-family:'Inter',sans-serif;
+  line-height:1.75;
+  color:#2b2b2b;
+
   background:
-    radial-gradient(circle at top, #1a0010 0%, #0b0007 60%, #050003 100%);
-  color:#f5f5f5;
-  overflow-x:hidden;
+    radial-gradient(circle at top, #fff0f5, transparent 60%),
+    linear-gradient(180deg, #fff0f5 0%, #ffe6f0 50%, #ffe0ec 100%);
 }
 
-/* soft pink ambient glow */
+/* soft luxury glow overlay */
 body::before{
   content:"";
   position:fixed;
   inset:0;
   background:
-    radial-gradient(circle at 20% 10%, rgba(255,105,180,0.25), transparent 40%),
-    radial-gradient(circle at 80% 20%, rgba(199,21,133,0.18), transparent 45%),
-    radial-gradient(circle at bottom, rgba(255,182,193,0.12), transparent 50%);
+    radial-gradient(circle at top, rgba(255,105,180,0.16), transparent 55%),
+    radial-gradient(circle at bottom, rgba(199,21,133,0.08), transparent 60%);
   pointer-events:none;
-}
-
-/* floating light animation */
-body::after{
-  content:"";
-  position:fixed;
-  inset:0;
-  background: radial-gradient(circle, rgba(255,255,255,0.04) 1px, transparent 1px);
-  background-size:60px 60px;
-  animation: floatGrid 12s linear infinite;
-  pointer-events:none;
-  opacity:0.25;
-}
-
-@keyframes floatGrid{
-  from{transform:translateY(0px);}
-  to{transform:translateY(-40px);}
 }
 
 /* =========================
-   CONTAINER (GLASS LUXURY SHEET)
+   CONTAINER (EDITORIAL GLASS SHEET)
 ========================= */
 .container{
   max-width:960px;
   margin:auto;
-  padding:26px;
+  padding:24px;
 
-  background: rgba(255,255,255,0.06);
-  border:1px solid rgba(255,255,255,0.12);
-  border-radius:26px;
+  background: rgba(255,255,255,0.14);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
 
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
+  border:1px solid rgba(255,255,255,0.35);
+  border-radius:24px;
 
-  box-shadow:
-    0 0 60px rgba(255,105,180,0.08),
-    inset 0 0 40px rgba(255,255,255,0.03);
+  box-shadow:0 25px 70px rgba(255,105,180,0.12);
 }
 
 /* =========================
-   HEADER TITLE STYLE
+   TYPOGRAPHY (LUXURY EDITORIAL)
 ========================= */
-h1{
+h1, h2{
   font-family:'Playfair Display',serif;
-  text-align:center;
-  font-size:42px;
+}
 
-  background: linear-gradient(90deg,#ff4fa3,#ff9ad5,#ff6fb1);
+h1{
+  font-size:38px;
+  text-align:center;
+  margin-bottom:30px;
+
+  background: linear-gradient(90deg, #C71585, #FF69B4, #ff8fbf);
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
 
-  letter-spacing:1px;
-
-  animation: glowPulse 3s ease-in-out infinite;
+  letter-spacing:0.4px;
 }
 
-@keyframes glowPulse{
-  0%,100%{
-    text-shadow:0 0 10px rgba(255,105,180,0.2);
-  }
-  50%{
-    text-shadow:0 0 25px rgba(255,105,180,0.5);
-  }
+h2{
+  font-size:24px;
+  color:#d81b60;
+  margin-top:42px;
+}
+
+p{
+  font-size:16px;
+  color:#444;
 }
 
 /* =========================
-   HERO IMAGE STYLE (IMPORTANT FIX INCLUDED)
+   HERO IMAGE (LUXURY FOCUS)
 ========================= */
 .main-image{
   width:100%;
-  display:block;
   border-radius:24px;
-  margin:20px 0 30px 0;
+  margin-bottom:30px;
 
-  border:1px solid rgba(255,105,180,0.25);
+  border:1px solid rgba(255,255,255,0.4);
 
   box-shadow:
-    0 20px 60px rgba(255,0,150,0.25),
-    0 0 40px rgba(255,105,180,0.15);
+    0 25px 70px rgba(255,105,180,0.18),
+    inset 0 1px 0 rgba(255,255,255,0.4);
 
   transition:0.4s ease;
 }
 
 .main-image:hover{
-  transform:scale(1.02);
+  transform:translateY(-4px) scale(1.01);
 }
 
 /* =========================
-   SECTION GLASS CARD (PREVIEW ONLY)
+   SECTION CARDS (CLEAN LUXURY BLOCKS)
 ========================= */
 .section-box{
-  background: rgba(255,255,255,0.06);
-  border:1px solid rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.16);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  border:1px solid rgba(255,255,255,0.35);
   border-radius:22px;
 
-  padding:22px;
-  margin-bottom:22px;
+  padding:26px;
+  margin-bottom:28px;
 
-  backdrop-filter: blur(14px);
+  box-shadow:0 18px 50px rgba(255,105,180,0.10);
 
-  box-shadow:0 0 40px rgba(255,105,180,0.08);
+  transition:0.3s ease;
+}
+
+.section-box:hover{
+  transform:translateY(-3px);
+  box-shadow:0 25px 65px rgba(255,105,180,0.16);
+}
+
+.section-box h2{
+  font-family:'Playfair Display',serif;
+  color:#C71585;
 }
 
 /* =========================
-   MOBILE
+   LISTS (CLEAN STRUCTURE)
+========================= */
+p, .section-box p{
+  margin-bottom:14px;
+}
+
+/* =========================
+   NOTES (SOFT ACCENT CARD)
+========================= */
+.note{
+  background: rgba(255,240,245,0.7);
+  border:1px solid rgba(255,105,180,0.25);
+  border-radius:14px;
+  padding:14px;
+  margin-top:12px;
+
+  backdrop-filter: blur(8px);
+}
+
+/* =========================
+   RESULTS BLOCK (SUBTLE EMPHASIS)
+========================= */
+.result{
+  padding:10px 0;
+}
+
+/* =========================
+   LINKS (OPTIONAL CLEAN LOOK)
+========================= */
+a{
+  color:#C71585;
+  text-decoration:none;
+  transition:0.25s ease;
+}
+
+a:hover{
+  opacity:0.8;
+}
+
+/* =========================
+   FOOTER TEXT
+========================= */
+.disclaimer{
+  font-size:10px;
+  text-align:center;
+  opacity:0.6;
+  margin-top:40px;
+  line-height:1.2;
+}
+
+/* =========================
+   MICRO INTERACTION RESET
+========================= */
+*{
+  -webkit-tap-highlight-color:transparent;
+}
+
+/* =========================
+   MOBILE LUXURY OPTIMIZATION
 ========================= */
 @media (max-width:768px){
-  h1{font-size:30px;}
-  .container{padding:18px;}
-  .section-box{padding:16px;}
+
+  .container{
+    padding:16px;
+    border-radius:18px;
+  }
+
+  h1{
+    font-size:28px;
+  }
+
+  h2{
+    font-size:20px;
+  }
+
+  .section-box{
+    padding:18px;
+    border-radius:18px;
+  }
+
+  .main-image{
+    border-radius:18px;
+  }
+
+  p{
+    font-size:15px;
+  }
 }
 
 </style>
-</head>
-
-<body>
-
-<div class="container">
-
-
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8481828238423040"
+     crossorigin="anonymous"></script></head><body></p>
+          <div class="container">
 
 <h1>FIND YOUR FACE SHAPE</h1>
 
