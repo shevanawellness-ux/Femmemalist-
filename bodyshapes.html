@@ -200,15 +200,13 @@ img:hover{
   width:20px;
   height:20px;
 
-  opacity:0.75;
+  opacity:0.85;
 
-  /* refined pastel pink tone (less muddy, more premium) */
+  /* SAFE pastel tint (no over-filtering, prevents invisibility) */
   filter:
-    grayscale(100%)
-    brightness(1.8)
-    sepia(1)
-    hue-rotate(300deg)
-    saturate(0.4);
+    brightness(1.1)
+    saturate(1.1)
+    drop-shadow(0 2px 3px rgba(255,105,180,0.18));
 
   transition:0.35s ease;
 }
@@ -216,31 +214,31 @@ img:hover{
 .social a:hover img{
   opacity:1;
 
-  filter:
-    grayscale(0%)
-    brightness(1.05)
-    saturate(1.05);
+  transform:translateY(-2px) scale(1.08);
 
-  transform:translateY(-2px) scale(1.05);
+  filter:
+    brightness(1.2)
+    saturate(1.2)
+    drop-shadow(0 4px 8px rgba(255,105,180,0.28));
 }
 
 
-/* DISCLAIMER — SOFT DUSTY PINK (VISIBLE BUT SUBTLE) */
+/* DISCLAIMER — SOFT DUSTY PINK (VISIBLE BUT LUXURY LIGHT) */
 .disclaimer{
   font-size:9px;
 
-  color:rgba(188, 135, 155, 0.6); /* softer dusty rose */
+  color:rgba(188, 135, 155, 0.52); /* softer dusty rose */
 
   text-align:center;
-  line-height:1.5;
+  line-height:1.55;
 
   max-width:600px;
-  margin:50px auto 8px auto;
+  margin:45px auto 10px auto;
 
-  opacity:0.9;
+  opacity:0.88;
 
-  letter-spacing:0.35px;
-  }
+  letter-spacing:0.3px;
+}
 </style>
 
 </head>
@@ -296,27 +294,27 @@ For a <strong>complete personalized experience</strong> and to discover your exa
 <div class="social">
 
   <a href="https://www.instagram.com/femmemalist/" target="_blank">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram">
+    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/instagram.svg" alt="Instagram">
   </a>
 
   <a href="https://www.youtube.com/@femmemalist?sub_confirmation=1" target="_blank">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/YouTube_social_white_squircle_%282017%29.svg" alt="YouTube">
+    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/youtube.svg" alt="YouTube">
   </a>
 
   <a href="https://t.me/femmemalist" target="_blank">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Telegram">
+    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/telegram.svg" alt="Telegram">
   </a>
 
   <a href="https://whatsapp.com/channel/0029VbCx8lXFHWqAjoh7vN2G" target="_blank">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/whatsapp.svg" alt="WhatsApp">
   </a>
 
   <a href="https://www.pinterest.com/FEMMEMALIST/" target="_blank">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Pinterest-logo.png" alt="Pinterest">
+    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/pinterest.svg" alt="Pinterest">
   </a>
 
   <a href="https://www.facebook.com/Femmemalist" target="_blank">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/1/1b/Facebook_icon.svg" alt="Facebook">
+    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/facebook.svg" alt="Facebook">
   </a>
 
 </div>
