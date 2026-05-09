@@ -1,25 +1,26 @@
-  <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>FACE SHAPE GUIDE - FEMMEMALIST</title>
+<title>Femmemalist — Face Shape Guide</title>
 
 <link rel="canonical" href="https://femmemalist.com/faceshapes.html">
 <meta name="robots" content="index, follow">
 
-<meta name="description" content="Discover your face shape and learn how to style, enhance, and glow up like never before with Femmemalist.">
-<meta name="keywords" content="face shape guide, styling, makeup, hairstyles, Femmemalist">
-<meta name="author" content="Femmemalist">
+<meta name="description" content="Discover your face shape and unlock your feminine glow with Femmemalist.">
 
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 
 <style>
 
-/* =========================
-   BASE LUXURY BACKGROUND
-========================= */
+/* BASE */
+*{
+  box-sizing:border-box;
+  -webkit-tap-highlight-color:transparent;
+}
+
 body{
   margin:0;
   font-family:'Inter',sans-serif;
@@ -31,25 +32,14 @@ body{
     linear-gradient(180deg, #fff0f5 0%, #ffe6f0 50%, #ffe0ec 100%);
 }
 
-body::before{
-  content:"";
-  position:fixed;
-  inset:0;
-  background:
-    radial-gradient(circle at top, rgba(255,105,180,0.18), transparent 55%),
-    radial-gradient(circle at bottom, rgba(199,21,133,0.10), transparent 60%);
-  pointer-events:none;
-}
-
-/* =========================
-   SINGLE CONTAINER ONLY
-========================= */
+/* CONTAINER */
 .container{
   max-width:960px;
   margin:auto;
   padding:22px;
 
-  background: rgba(255,255,255,0.14);
+  background: rgba(255,255,255,0.55); /* fallback */
+
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
 
@@ -57,28 +47,27 @@ body::before{
   border:1px solid rgba(255,255,255,0.35);
 
   box-shadow:0 25px 70px rgba(255,105,180,0.12);
+
+  position:relative;
+  z-index:1;
 }
 
-/* =========================
-   TYPOGRAPHY
-========================= */
+/* TYPOGRAPHY */
 h1, h2{
   font-family:'Playfair Display',serif;
 }
 
 h1{
-  font-size:38px;
+  font-size:36px;
   text-align:center;
-
   background: linear-gradient(90deg,#C71585,#FF69B4,#ff8fbf);
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
 }
 
 h2{
-  font-size:26px;
+  font-size:24px;
   color:#d81b60;
-  margin-top:40px;
 }
 
 p{
@@ -86,9 +75,7 @@ p{
   color:#444;
 }
 
-/* =========================
-   IMAGE WITH PINK GLOW BORDER
-========================= */
+/* IMAGE */
 img{
   width:100%;
   border-radius:22px;
@@ -107,12 +94,12 @@ img:hover{
   transform:scale(1.01);
 }
 
-/* =========================
-   SECTION CARDS (LUXURY GLASS)
-========================= */
-.section-box{
-  background: rgba(255,255,255,0.16);
+/* CTA BOX */
+.cta-box{
+  background: rgba(255,255,255,0.45);
+
   backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
 
   border:1px solid rgba(255,255,255,0.35);
   border-radius:20px;
@@ -125,36 +112,37 @@ img:hover{
   transition:0.3s ease;
 }
 
-.section-box:hover{
+.cta-box:hover{
   transform:translateY(-3px);
   box-shadow:0 25px 65px rgba(255,105,180,0.18);
 }
 
-/* =========================
-   BUTTON (SHINE EFFECT)
-========================= */
-.section-box a{
+/* BUTTON */
+.cta-box a,
+.app-cta a{
   display:inline-block;
   margin-top:12px;
-  padding:12px 24px;
+  padding:12px 26px;
 
   border-radius:50px;
   text-decoration:none;
 
   font-family:'Playfair Display',serif;
-  font-weight:600;
+  font-weight:700;
 
-  color:#fff;
   background:linear-gradient(135deg,#ff5fa2,#ff87c2);
+  color:#fff;
 
-  box-shadow:0 12px 30px rgba(255,105,180,0.25);
+  box-shadow:0 12px 30px rgba(255,105,180,0.35);
 
   position:relative;
   overflow:hidden;
+
+  transition:0.35s ease;
 }
 
-/* shine */
-.section-box a::before{
+.cta-box a::before,
+.app-cta a::before{
   content:"";
   position:absolute;
   top:0;
@@ -165,53 +153,51 @@ img:hover{
   transition:0.6s;
 }
 
-.section-box a:hover::before{
+.cta-box a:hover::before,
+.app-cta a:hover::before{
   left:130%;
 }
 
-.section-box a:hover{
-  transform:translateY(-2px);
+.cta-box a:hover,
+.app-cta a:hover{
+  transform:translateY(-3px);
+  box-shadow:0 20px 45px rgba(255,105,180,0.45);
 }
 
-/* =========================
-   APP CTA
-========================= */
+/* APP CTA */
 .app-cta{
-  background: rgba(255,255,255,0.18);
+  background: rgba(255,255,255,0.45);
+
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
   border-radius:22px;
 
   padding:22px;
-  margin:28px 0;
+  margin:25px 0;
 
   text-align:center;
+
   border:1px solid rgba(199,21,133,0.25);
 
   font-family:'Playfair Display',serif;
   color:#C71585;
+
+  box-shadow:0 20px 55px rgba(255,105,180,0.15);
 }
 
-/* =========================
-   MOBILE OPTIMIZATION
-========================= */
+/* DISCLAIMER */
+.disclaimer{
+  font-size:12px;
+  color:#444;
+  margin-top:30px;
+}
+
+/* MOBILE */
 @media (max-width:768px){
-
-  .container{
-    padding:16px;
-    border-radius:18px;
-  }
-
   h1{ font-size:28px; }
   h2{ font-size:20px; }
-  p{ font-size:15px; }
-
-  .section-box,
-  .app-cta{
-    padding:16px;
-  }
-
-  img{
-    border-radius:18px;
-  }
+  .container{ padding:16px; }
 }
 
 </style>
@@ -222,54 +208,50 @@ img:hover{
 
 <div class="container">
 
+<h1>Femmemalist — Discover Your Face Shape</h1>
 
-  
+<img src="https://res.cloudinary.com/dtabpv9y2/image/upload/v1767617946/1000006546_ikzklc.jpg" alt="Face Shape Guide">
 
-<h1>FACE SHAPE GUIDE -FEMMEMALIST</h1>
-
-<div class="image-block">
-<img src="https://res.cloudinary.com/dtabpv9y2/image/upload/v1767617946/1000006546_ikzklc.jpg" alt="Face Shapes">
+<div class="app-cta">
+For a <strong>complete personalized experience</strong> and to discover your exact face shape, download the <strong>Femmemalist App</strong>.
+<br>
+<a href="#">Download Femmemalist App</a>
 </div>
 
-<p style="text-align:center; font-size:18px; color:#555; margin-bottom:32px;">
-Discover your unique face shape and unlock the secret to your ultimate glow-up. Femmemalist provides a luxurious, complete, and curated guide to styling, confidence, and feminine transformation for women who truly desire to shine.
-</p>
+<p>Your face shape defines how your features align and how styling enhances your natural beauty.</p>
 
-<div class="app-box">
-<p>For a complete experience and to find your face shape  <strong>download the Femmemalist app</strong>. Your premium glow-up journey awaits.</p>
-<a href="#" target="_blank">Download Femmemalist App</a>
+<p>Understanding it allows you to refine your look with precision — from hairstyles to accessories and makeup.</p>
+
+<div class="cta-box">
+<h2>Oval Face</h2>
+<p>Balanced proportions with soft curves. Enhance your natural symmetry effortlessly.</p>
+<a href="oval.html">Explore Oval</a>
 </div>
 
-<div class="face-box">
-<h3>Oval Face</h3>
-<p>Soft curves and balanced proportions ,learn how to accentuate natural symmetry and radiate effortless elegance.</p>
-<a href="oval.html" class="btn">Explore Oval</a>
+<div class="cta-box">
+<h2>Round Face</h2>
+<p>Create definition and elongation while preserving your soft, youthful charm.</p>
+<a href="round.html">Explore Round</a>
 </div>
 
-<div class="face-box">
-  <h3>Round Face</h3>
-  <p>Create a subtle elongation and sculpted definition while keeping your youthful charm. Master techniques that elevate your look.</p>
-  <a href="round.html" class="btn">Explore Round</a>
+<div class="cta-box">
+<h2>Square Face</h2>
+<p>Soften strong angles and highlight feminine balance with refined styling.</p>
+<a href="square.html">Explore Square</a>
 </div>
 
-<div class="face-box">
-<h3>Square Face</h3>
-<p>Soften strong angles and enhance femininity. Strategic highlights, hairstyle guidance, and accessory tips create a flawless balance.</p>
-<a href="square.html" class="btn">Explore Square</a>
+<div class="cta-box">
+<h2>Heart Face</h2>
+<p>Balance a wider forehead with a delicate chin for a harmonious look.</p>
+<a href="heart.html">Explore Heart</a>
 </div>
 
-<div class="face-box">
-<h3>Heart Face</h3>
-<p>Bring harmony to a broad forehead and delicate chin. Refine your appearance to radiate soft, captivating charm.</p>
-<a href="heart.html" class="btn">Explore Heart</a>
+<div class="cta-box">
+<h2>Oblong / Rectangular Face</h2>
+<p>Shorten visual length and create elegant proportion in your appearance.</p>
+<a href="oblong.html">Explore Oblong</a>
 </div>
 
-<div class="face-box">
-<h3>Oblong/Rectangular Face</h3>
-<p>Visually shorten elongated features and balance proportions for a chic, graceful, and photogenic finish.</p>
-<a href="oblong.html" class="btn">Explore Oblong</a>
-</div>
-<!-- ===== FEMME SOCIAL BAR ===== -->
 <div style="display:flex; justify-content:center; gap:16px; margin:30px 0 10px 0;">
 
   <a href="https://www.instagram.com/femmemalist/" target="_blank">
@@ -299,18 +281,15 @@ Discover your unique face shape and unlock the secret to your ultimate glow-up. 
 </div>
 <div class="disclaimer">
 Disclaimer & Disclosure: All content provided on this platform is for general informational and educational purposes only and should not be considered medical, psychological, financial, or professional advice; any actions taken based on the information, styling suggestions, health references, fitness ideas, product recommendations, or external resources are done voluntarily and at your own discretion and risk, and you are encouraged to consult a qualified professional before making health, skincare, haircare, fitness, dietary, or lifestyle changes. This platform is not affiliated, associated, endorsed by, or officially connected with any third-party websites, brands, creators, YouTube channels, audiobooks, or external resources referenced, including but not limited to publicly available materials accessed via standard linking or embedding features; all trademarks, content, and intellectual property remain with their respective owners, and embedded or linked materials are provided solely for supplementary reference and convenience. If any content owner prefers that their material not be referenced, it will be removed promptly upon request. Product suggestions and affiliate links, including shopping recommendations, are optional convenience references, and any purchasing decisions, product use, reactions, damages, or outcomes are solely the responsibility of the user. By accessing this website, you acknowledge that you assume full responsibility for your choices and release this platform from liability arising from reliance on any information or third-party content provided.
-</div>
 <p style="font-size:10px; color:rgba(0,0,0,0.35); font-style:italic; text-align:center; margin-top:40px; line-height:1.2;">
 © 2026 Femmemalist™. All rights reserved.
 </p>
-    <p><a href="contact.html">Contact Us</a></p>
+  <p><a href="contact.html">Contact Us</a></p>
+
 </div>
 </body>
 
 </html>
-
-
-
 
 
 
