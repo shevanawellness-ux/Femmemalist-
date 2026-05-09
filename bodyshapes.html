@@ -4,20 +4,18 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Femmemalist — Premium Glow System</title>
+<title>Femmemalist — Body Shape Guide</title>
 
-<link rel="canonical" href="https://femmemalist.com/">
+<link rel="canonical" href="https://femmemalist.com/bodyshapes.html">
 <meta name="robots" content="index, follow">
 
-<meta name="description" content="Femmemalist premium glow system for body shape, face shape, undertones and feminine styling intelligence.">
+<meta name="description" content="Discover your body shape and unlock your feminine glow with Femmemalist.">
 
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 
 <style>
 
-/* =========================
-   BASE LUXURY BACKGROUND
-========================= */
+/* BASE */
 body{
   margin:0;
   font-family:'Inter',sans-serif;
@@ -29,20 +27,7 @@ body{
     linear-gradient(180deg, #fff0f5 0%, #ffe6f0 50%, #ffe0ec 100%);
 }
 
-/* glow overlay */
-body::before{
-  content:"";
-  position:fixed;
-  inset:0;
-  background:
-    radial-gradient(circle at top, rgba(255,105,180,0.18), transparent 55%),
-    radial-gradient(circle at bottom, rgba(199,21,133,0.10), transparent 60%);
-  pointer-events:none;
-}
-
-/* =========================
-   SINGLE MAIN CONTAINER ONLY
-========================= */
+/* CONTAINER */
 .container{
   max-width:960px;
   margin:auto;
@@ -50,7 +35,6 @@ body::before{
 
   background: rgba(255,255,255,0.14);
   backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
 
   border-radius:22px;
   border:1px solid rgba(255,255,255,0.35);
@@ -58,26 +42,22 @@ body::before{
   box-shadow:0 25px 70px rgba(255,105,180,0.12);
 }
 
-/* =========================
-   TYPOGRAPHY
-========================= */
+/* TYPOGRAPHY */
 h1, h2{
   font-family:'Playfair Display',serif;
 }
 
 h1{
-  font-size:38px;
+  font-size:36px;
   text-align:center;
-
   background: linear-gradient(90deg,#C71585,#FF69B4,#ff8fbf);
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
 }
 
 h2{
-  font-size:26px;
+  font-size:24px;
   color:#d81b60;
-  margin-top:40px;
 }
 
 p{
@@ -85,9 +65,7 @@ p{
   color:#444;
 }
 
-/* =========================
-   HERO IMAGE WITH PINK GLOW BORDER
-========================= */
+/* IMAGE */
 img{
   width:100%;
   border-radius:22px;
@@ -106,10 +84,8 @@ img:hover{
   transform:scale(1.01);
 }
 
-/* =========================
-   SECTION BOX (PREMIUM GLASS CARD)
-========================= */
-.section-box{
+/* CTA BOX */
+.cta-box{
   background: rgba(255,255,255,0.16);
   backdrop-filter: blur(14px);
 
@@ -124,37 +100,37 @@ img:hover{
   transition:0.3s ease;
 }
 
-.section-box:hover{
+.cta-box:hover{
   transform:translateY(-3px);
+  box-shadow:0 25px 65px rgba(255,105,180,0.18);
 }
 
-/* =========================
-   BUTTON STYLE (SHINE EFFECT)
-========================= */
-.section-box a,
-.app-cta a,
-.cta-box a{
+/* PREMIUM BUTTON (FIXED GLOW + SHINE) */
+.cta-box a,
+.app-cta a{
   display:inline-block;
   margin-top:12px;
-  padding:12px 24px;
+  padding:12px 26px;
 
   border-radius:50px;
   text-decoration:none;
 
   font-family:'Playfair Display',serif;
-  font-weight:600;
+  font-weight:700;
 
   background:linear-gradient(135deg,#ff5fa2,#ff87c2);
   color:#fff;
 
-  box-shadow:0 12px 30px rgba(255,105,180,0.25);
+  box-shadow:0 12px 30px rgba(255,105,180,0.35);
 
   position:relative;
   overflow:hidden;
+
+  transition:0.35s ease;
 }
 
-/* shine */
-.section-box a::before,
+/* SHINE EFFECT */
+.cta-box a::before,
 .app-cta a::before{
   content:"";
   position:absolute;
@@ -162,23 +138,29 @@ img:hover{
   left:-130%;
   width:130%;
   height:100%;
-  background:linear-gradient(120deg, transparent, rgba(255,255,255,0.5), transparent);
+
+  background:linear-gradient(
+    120deg,
+    transparent,
+    rgba(255,255,255,0.5),
+    transparent
+  );
+
   transition:0.6s;
 }
 
-.section-box a:hover::before,
+.cta-box a:hover::before,
 .app-cta a:hover::before{
   left:130%;
 }
 
-.section-box a:hover,
+.cta-box a:hover,
 .app-cta a:hover{
-  transform:translateY(-2px);
+  transform:translateY(-3px);
+  box-shadow:0 20px 45px rgba(255,105,180,0.45);
 }
 
-/* =========================
-   APP CTA BLOCK
-========================= */
+/* APP CTA */
 .app-cta{
   background: rgba(255,255,255,0.18);
   border-radius:22px;
@@ -187,36 +169,20 @@ img:hover{
   margin:25px 0;
 
   text-align:center;
+
   border:1px solid rgba(199,21,133,0.25);
 
   font-family:'Playfair Display',serif;
   color:#C71585;
+
+  box-shadow:0 20px 55px rgba(255,105,180,0.15);
 }
 
-/* =========================
-   MOBILE OPTIMIZATION
-========================= */
+/* MOBILE */
 @media (max-width:768px){
-
-  .container{
-    padding:16px;
-    border-radius:18px;
-  }
-
   h1{ font-size:28px; }
   h2{ font-size:20px; }
-
-  p{ font-size:15px; }
-
-  .section-box,
-  .app-cta{
-    padding:16px;
-    border-radius:18px;
-  }
-
-  img{
-    border-radius:18px;
-  }
+  .container{ padding:16px; }
 }
 
 </style>
@@ -226,56 +192,51 @@ img:hover{
 <body>
 
 <div class="container">
-  
 
 <h1>Femmemalist — Discover Your Body Shape</h1>
 
-<div class="image-block">
-  <img loading="lazy" src="https://res.cloudinary.com/dtabpv9y2/image/upload/v1767617946/1000006547_czun7b.jpg" alt="Femmemalist Body Shape Guide">
-</div>
+<img src="https://res.cloudinary.com/dtabpv9y2/image/upload/v1767617946/1000006547_czun7b.jpg" alt="Body Shape Guide">
 
-<!-- App CTA Section -->
 <div class="app-cta">
-  For a <strong>complete personalized experience</strong> and to discover your exact body shape with interactive insights, download the <strong>Femmemalist App</strong> today. Elevate your style, confidence, and glow-up like never before.
-  <br>
-  <a href="#">Download Femmemalist App</a>
+For a <strong>complete personalized experience</strong> and to discover your exact body shape, download the <strong>Femmemalist App</strong>.
+<br>
+<a href="#">Download Femmemalist App</a>
 </div>
 
-<p>Every woman’s body is unique, and unlocking your true form is the first step to effortless confidence and a premium glow-up. Femmemalist’s guide reveals the natural elegance of your silhouette, helping you dress, style, and present yourself in a way that commands attention -softly, luxuriously, intentionally.</p>
+<p>Every woman’s body is unique, and unlocking your true form is the first step to effortless confidence and a premium glow-up.</p>
 
-<p>Explore your body type to discover subtle strategies that elevate your presence. With clarity, precision, and feminine intuition, you can shape your lifestyle and style around your authentic form. Your beauty, poise, and glow deserve the finesse of Femmemalist.</p>
-
-<!-- CTA Boxes for Body Types -->
-<div class="cta-box">
-  <h3>Hourglass Shape</h3>
-  <p>Celebrate curves in perfect proportion. Find tips to highlight your balanced silhouette.</p>
-  <a href="hourglass.html">Explore Hourglass</a>
-</div>
+<p>Explore your body type to discover subtle strategies that elevate your presence and refine your personal style.</p>
 
 <div class="cta-box">
-  <h3>Apple Shape</h3>
-  <p>Embrace elegance from your upper body down. Discover flattering styles and balance.</p>
-  <a href="apple.html">Explore Apple</a>
+<h2>Hourglass Shape</h2>
+<p>Celebrate curves in perfect proportion and highlight your naturally balanced silhouette.</p>
+<a href="hourglass.html">Explore Hourglass</a>
 </div>
 
 <div class="cta-box">
-  <h3>Pear Shape</h3>
-  <p>Enhance your lower curves gracefully. Learn how to harmonize top and bottom halves.</p>
-  <a href="pear.html">Explore Pear</a>
+<h2>Apple Shape</h2>
+<p>Embrace upper-body elegance while creating visual balance through thoughtful styling.</p>
+<a href="apple.html">Explore Apple</a>
 </div>
 
 <div class="cta-box">
-  <h3>Rectangle Shape</h3>
-  <p>Transform linear lines into a soft, structured silhouette. Unlock the secrets of proportion.</p>
-  <a href="rectangle.html">Explore Rectangle</a>
+<h2>Pear Shape</h2>
+<p>Enhance your lower curves gracefully and create harmony in your overall look.</p>
+<a href="pear.html">Explore Pear</a>
 </div>
 
 <div class="cta-box">
-  <h3>Inverted Triangle</h3>
-  <p>Balance broader shoulders with gentle lower-body styling. Achieve effortless harmony.</p>
-  <a href="invertedtriangle.html">Explore Inverted Triangle</a>
+<h2>Rectangle Shape</h2>
+<p>Create soft curves and structure with strategic styling techniques.</p>
+<a href="rectangle.html">Explore Rectangle</a>
 </div>
-<!-- ===== FEMME SOCIAL BAR ===== -->
+
+<div class="cta-box">
+<h2>Inverted Triangle</h2>
+<p>Balance broader shoulders with refined lower-body styling.</p>
+<a href="invertedtriangle.html">Explore Inverted Triangle</a>
+</div>
+
 <div style="display:flex; justify-content:center; gap:16px; margin:30px 0 10px 0;">
 
   <a href="https://www.instagram.com/femmemalist/" target="_blank">
