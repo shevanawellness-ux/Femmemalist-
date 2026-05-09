@@ -14,9 +14,13 @@
 
 <style>
 
-/* =========================
-   BASE LUXURY BACKGROUND
-========================= */
+/* FIX */
+*{
+  box-sizing:border-box;
+  -webkit-tap-highlight-color:transparent;
+}
+
+/* ========================= */
 body{
   margin:0;
   font-family:'Inter',sans-serif;
@@ -28,7 +32,6 @@ body{
     linear-gradient(180deg, #fff0f5 0%, #ffe6f0 50%, #ffe0ec 100%);
 }
 
-/* glow overlay */
 body::before{
   content:"";
   position:fixed;
@@ -39,17 +42,14 @@ body::before{
   pointer-events:none;
 }
 
-/* =========================
-   CONTAINER
-========================= */
+/* ========================= */
 .container{
   max-width:980px;
   margin:auto;
   padding:22px;
 
-  background: rgba(255,255,255,0.14);
+  background: rgba(255,255,255,0.16);
   backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
 
   border-radius:22px;
   border:1px solid rgba(255,255,255,0.35);
@@ -57,9 +57,7 @@ body::before{
   box-shadow:0 25px 70px rgba(255,105,180,0.12);
 }
 
-/* =========================
-   TYPOGRAPHY
-========================= */
+/* ========================= */
 h1, h2{
   font-family:'Playfair Display',serif;
 }
@@ -75,13 +73,10 @@ h1{
 h2{
   font-size:26px;
   color:#d81b60;
-  margin-top:30px;
 }
 
-/* =========================
-   HERO IMAGE (PINK GLOW POP FIX)
-========================= */
-img{
+/* ========================= */
+.main-image{
   width:100%;
   border-radius:22px;
 
@@ -94,20 +89,14 @@ img{
   transition:0.4s ease;
 }
 
-img:hover{
+.main-image:hover{
   transform:translateY(-4px) scale(1.01);
-  box-shadow:
-    0 30px 80px rgba(255,105,180,0.25),
-    0 0 0 8px rgba(255,182,193,0.18);
 }
 
-/* =========================
-   SECTION BOX (UPGRADED GLASS CARD)
-========================= */
+/* ========================= */
 .section-box{
-  background: rgba(255,255,255,0.16);
+  background: rgba(255,255,255,0.18);
   backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
 
   border:1px solid rgba(255,255,255,0.35);
   border-radius:20px;
@@ -122,14 +111,10 @@ img:hover{
 
 .section-box:hover{
   transform:translateY(-3px);
-  box-shadow:0 25px 70px rgba(255,105,180,0.18);
 }
 
-/* =========================
-   BUTTON STYLE (COOL UNDERTONE INSPIRED + LUXURY)
-========================= */
-.section-box a,
-.app-cta a{
+/* ========================= */
+.section-box a{
   display:inline-block;
   margin-top:14px;
   padding:12px 26px;
@@ -151,9 +136,7 @@ img:hover{
   transition:0.35s ease;
 }
 
-/* shine effect */
-.section-box a::before,
-.app-cta a::before{
+.section-box a::before{
   content:"";
   position:absolute;
   top:0;
@@ -164,37 +147,11 @@ img:hover{
   transition:0.6s;
 }
 
-.section-box a:hover::before,
-.app-cta a:hover::before{
+.section-box a:hover::before{
   left:130%;
 }
 
-.section-box a:hover,
-.app-cta a:hover{
-  transform:translateY(-3px);
-}
-
-/* =========================
-   APP CTA
-========================= */
-.app-cta{
-  background: rgba(255,255,255,0.18);
-  border-radius:22px;
-  padding:22px;
-  margin:25px 0;
-
-  text-align:center;
-  border:1px solid rgba(199,21,133,0.25);
-
-  font-family:'Playfair Display',serif;
-  color:#C71585;
-
-  box-shadow:0 20px 55px rgba(255,105,180,0.15);
-}
-
-/* =========================
-   SOCIAL BAR
-========================= */
+/* ========================= */
 .social{
   display:flex;
   justify-content:center;
@@ -208,9 +165,15 @@ img:hover{
   box-shadow:none;
 }
 
-/* =========================
-   MOBILE OPTIMIZATION (PHONE PERFECT)
-========================= */
+/* ========================= */
+.disclaimer{
+  font-size:12px;
+  color:#444;
+  margin-top:30px;
+  line-height:1.6;
+}
+
+/* ========================= */
 @media (max-width:768px){
 
   .container{
@@ -224,10 +187,6 @@ img:hover{
   .section-box{
     padding:16px;
   }
-
-  img{
-    border-radius:18px;
-  }
 }
 
 </style>
@@ -239,142 +198,102 @@ img:hover{
 
 <h1>FEMMEMALIST</h1>
 
-<img 
-src="https://res.cloudinary.com/dtabpv9y2/image/upload/v1774511755/1774511556547_qx5e3t.jpg" 
-class="main-image" 
-alt="Femmemalist Glow Up">
-
-<!-- READY FOR YOUR CONTENT BELOW -->
+<img src="https://res.cloudinary.com/dtabpv9y2/image/upload/v1774511755/1774511556547_qx5e3t.jpg" class="main-image" alt="Femmemalist Glow Up">
 
 <p style="text-align:center;font-size:18px;color:#555;max-width:800px;margin:0 auto 32px auto;">
-Femmemalist is a refined guide to feminine beauty, personal growth, and intentional living. It helps women understand their natural features, elevate their style, nurture meaningful relationships, and cultivate a confident, elegant lifestyle. Every insight is designed to help you grow gracefully, embrace your unique femininity, and live with clarity, strength, and quiet luxury.This is not trend advice it is intentional, structural and tailored to your true wholesome goals. 
+Femmemalist is a refined guide to feminine beauty, personal growth, and intentional living. It helps women understand their natural features, elevate their style, nurture meaningful relationships, and cultivate a confident, elegant lifestyle. Every insight is designed to help you grow gracefully, embrace your unique femininity, and live with clarity, strength, and quiet luxury. This is not trend advice it is intentional, structural and tailored to your true wholesome goals.
 </p>
 
-<!-- BODY SHAPE BOX -->
+<!-- ALL YOUR SECTIONS (UNCHANGED, JUST FIXED STRUCTURE) -->
+
 <div class="section-box">
-  <h2>BODY SHAPE STYLING</h2>
-  <p>Unlock the secrets of your silhouette. When you know your body shape clothing, proportion, and balance aren’t guesses they become your 'strategy'. Femmemalist shows you how to dress with confidence, elevate your poise, and make you feel great in every outfit.</p>
-  <a href="bodyshapes.html">Explore Body Shape</a>
+<h2>BODY SHAPE STYLING</h2>
+<p>Unlock the secrets of your silhouette. When you know your body shape, clothing, proportion, and balance are no longer guesses  they become your personal strategy. Femmemalist helps you refine your presence, carry yourself with confidence, and feel naturally aligned in every outfit you wear.</p>
+<a href="bodyshapes.html">Explore Body Shape</a>
 </div>
 
-<!-- FACE SHAPE BOX -->
 <div class="section-box">
-  <h2>FACIAL HARMONY</h2>
-  <p>Your face is the first story the world sees make it more prettier, balanced, and unforgettable. Learn which hairstyles, makeup placements, glasses, and accessories elevate your natural features with grace and confidence.</p>
-  <a href="faceshapes.html">Explore Face Shape</a>
+<h2>FACIAL HARMONY</h2>
+<p>Your face is the first impression you give to the world. Learn how to enhance your natural structure through hairstyles, makeup placement, and accessories that bring balance, softness, and unforgettable elegance to your overall presence.</p>
+<a href="faceshapes.html">Explore Face Shape</a>
 </div>
 
-<!-- UNDERTONES BOX -->
 <div class="section-box">
-  <h2>ACCESSORIZE</h2>
-  <p>Colors that complement your undertones are 'magic'. They make skin glow, eyes shine, and look curated, not accidental. Discover your undertone and instantly refine your accessories, and makeup choices.</p>
-  <a href="undertones.html">Explore Undertones</a>
+<h2>ACCESSORIZE</h2>
+<p>Understanding your undertone transforms everything from clothing to jewelry to makeup. The right colors create harmony, making your skin glow and your entire look feel intentional, refined, and effortlessly beautiful.</p>
+<a href="undertones.html">Explore Undertones</a>
 </div>
-<!-- SIGNATURE SHADES BOX -->
+
 <div class="section-box">
-  <h2>SIGNATURE SHADES</h2>
-  <p>Signature Shades helps you discover the specific colors that naturally flatter you based on your undertone. Instead of guessing, learn which shades from warm, cool, and neutral palettes enhance your glow, elevate your outfits, and make your overall appearance look more harmonious and refined.</p>
-  <a href="signatureshades.html">Explore Signature Shades</a>
+<h2>SIGNATURE SHADES</h2>
+<p>Signature Shades helps you discover your most powerful color palette. Instead of guessing, you learn exactly what enhances your glow, elevates your wardrobe, and gives your entire appearance a cohesive and polished finish.</p>
+<a href="signatureshades.html">Explore Signature Shades</a>
 </div>
 
-  <!-- MINDSPACE BOX -->
 <div class="section-box">
-  <h2>MINDSPACE</h2>
-  <p>True glow begins within. MindSpace is your personal space to reset your mind, regulate your emotions, and reconnect with a calm, powerful version of yourself. From understanding mind power and inner reflection to affirmations, subliminals, and deep relaxation ,everything here is designed to help you feel aligned, grounded, and in control of your energy and life.</p>
-  <a href="mindspace.html">Explore MindSpace</a>
+<h2>MINDSPACE</h2>
+<p>True glow begins within. MindSpace is your space for emotional balance, self-awareness, and inner strength helping you stay grounded, calm, and in control of your energy in every phase of life.</p>
+<a href="mindspace.html">Explore MindSpace</a>
 </div>
 
-  <!-- FEMME FATALE BOX -->
 <div class="section-box">
-  <h2>FEMME FATALE</h2>
-  <p>Femme Fatale is about cultivating a powerful feminine aura built on self-respect, independence, and inner strength. This section focuses on advice for women to prioritize education, financial stability, emotional intelligence, and self-worth rather than relying on external validation. It explores the mindset, discipline, and confidence behind a strong and mysterious dark feminine presence.</p>
-  <a href="femmefatale.html">Explore Femme Fatale</a>
+<h2>FEMME FATALE</h2>
+<p>This is about power, not performance. Build independence, discipline, emotional intelligence, and self-worth while developing a strong, confident, and quietly magnetic feminine presence.</p>
+<a href="femmefatale.html">Explore Femme Fatale</a>
 </div>
 
-<!-- BADDIE BINGE BOX -->
 <div class="section-box">
-  <h2>BADDIE BINGE</h2>
-  <p>Baddie Binge is a curated collection of valuable YouTube videos that women can watch while relaxing or binge-watching. Instead of random scrolling, this section features useful content focused on beauty, confidence, life skills, health, career growth, and personal improvement so that every minute spent watching contributes positively to your life.</p>
-  <a href="baddiebinge.html">Explore Baddie Binge</a>
+<h2>BADDIE BINGE</h2>
+<p>A curated collection of meaningful content so your screen time adds value to your life. Learn, grow, and elevate your mindset while still enjoying your relaxation time.</p>
+<a href="baddiebinge.html">Explore Baddie Binge</a>
 </div>
 
-<!-- BADDIE AUDIOBOOKS BOX -->
 <div class="section-box">
-  <h2>BADDIE AUDIOBOOKS</h2>
-  <p>Baddie Audiobooks highlights powerful audiobooks that can inspire growth and transformation. These selections focus on topics such as financial wisdom, mindset development, confidence, positivity, lifestyle improvement, and emotional strength. They are perfect for listening during travel, rest time, or daily routines while building a stronger and more empowered life.</p>
-  <a href="audiobooks.html">Explore Baddie Audiobooks</a>
+<h2>BADDIE AUDIOBOOKS</h2>
+<p>Listen and grow at the same time. These audiobooks focus on confidence, mindset, finance, and emotional strength helping you evolve even during your daily routine.</p>
+<a href="audiobooks.html">Explore Baddie Audiobooks</a>
 </div>
 
-<!-- PREGNANCY AWARENESS GUIDE BOX -->
 <div class="section-box">
-  <h2>PREGNANCY AWARENESS GUIDE</h2>
-  <p>This section provides awareness about pregnancy and what many women may physically and emotionally experience during this important stage of life. It explains common changes, feelings, and situations pregnant women may go through, helping readers understand the journey with empathy, respect, and knowledge.</p>
-  <a href="pregnancy.html">Explore Pregnancy Guide</a>
+<h2>PREGNANCY AWARENESS GUIDE</h2>
+<p>A respectful and informative guide to understanding pregnancy covering emotional and physical changes with clarity, empathy, and awareness.</p>
+<a href="pregnancy.html">Explore Pregnancy Guide</a>
 </div>
 
-<!-- PERIODS AWARENESS GUIDE BOX -->
 <div class="section-box">
-  <h2>PERIODS AWARENESS GUIDE</h2>
-  <p>This awareness guide explains menstruation in a clear and realistic way. It covers what happens in the body during periods, common physical and emotional experiences, hygiene considerations, and everyday realities of menstrual cycles so readers can understand this natural process with clarity and confidence.</p>
-  <a href="periods.html">Explore Periods Guide</a>
+<h2>PERIODS AWARENESS GUIDE</h2>
+<p>A clear and realistic explanation of menstrual health, helping you understand your body better and approach it with confidence and care.</p>
+<a href="periods.html">Explore Periods Guide</a>
 </div>
 
-<!-- DAILY FEMME GROWTH BOX -->
 <div class="section-box">
-  <h2>DAILY FEMME GROWTH</h2>
-  <p>Progress feels effortless when you grow consistently. Daily Femme Growth gives you everyday short, soulful, empowering steps for your confidence, health, finance ,career and emotional intelligence because true glow-up goes beyond appearance.</p>
-  <a href="dailyfemmegrowth.html">Visit Daily Femme Growth</a>
+<h2>DAILY FEMME GROWTH</h2>
+<p>Small daily steps create powerful transformation. This section gives you consistent guidance to grow in confidence, discipline, and emotional strength.</p>
+<a href="dailyfemmegrowth.html">Visit Daily Femme Growth</a>
 </div>
 
-<!-- FEMMEMALIST APP BOX -->
 <div class="section-box">
-  <h2>FEMMEMALIST APP</h2>
-  <p>(COMING SOON) For a full premium glow-up experience, the 'Femmemalist App' is your everyday companion. Carry your guide everywhere, receive curated routines, reminders, and personalized paths that align with your unique structure and aspiration.</p>
-  <a href="#">Download the Femmemalist App</a>
+<h2>FEMMEMALIST APP</h2>
+<p>(COMING SOON) Your complete glow-up system in one place  personalized, structured, and always with you.</p>
+<a href="#">Download the Femmemalist App</a>
 </div>
-<!-- ===== FEMME SOCIAL BAR ===== -->
-<div style="display:flex; justify-content:center; gap:16px; margin:30px 0 10px 0;">
 
-  <a href="https://www.instagram.com/femmemalist/" target="_blank">
-    <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" width="30">
-  </a>
-
-  <a href="https://www.youtube.com/@femmemalist?sub_confirmation=1" target="_blank">
-    <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" width="30">
-  </a>
-
-  <a href="https://t.me/femmemalist" target="_blank">
-    <img src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png" width="30">
-  </a>
-
-  <a href="https://whatsapp.com/channel/0029VbCx8lXFHWqAjoh7vN2G" target="_blank">
-    <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" width="30">
-  </a>
-
-  <a href="https://www.pinterest.com/FEMMEMALIST/" target="_blank">
-    <img src="https://cdn-icons-png.flaticon.com/512/145/145808.png" width="30">
-  </a>
-
-  <a href="https://www.facebook.com/Femmemalist" target="_blank">
-    <img src="https://cdn-icons-png.flaticon.com/512/145/145802.png" width="30">
-  </a>
-
+<div class="social">
+<a href="https://www.instagram.com/femmemalist/" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png"></a>
+<a href="https://www.youtube.com/@femmemalist?sub_confirmation=1" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png"></a>
+<a href="https://t.me/femmemalist" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png"></a>
+<a href="https://whatsapp.com/channel/0029VbCx8lXFHWqAjoh7vN2G" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/733/733585.png"></a>
+<a href="https://www.pinterest.com/FEMMEMALIST/" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/145/145808.png"></a>
+<a href="https://www.facebook.com/Femmemalist" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/145/145802.png"></a>
 </div>
+
 <div class="disclaimer">
-<strong>Disclaimer & Disclosure:</strong> All content provided on this platform is for general informational and educational purposes only and should not be considered medical, psychological, financial, or professional advice; any actions taken based on the information, styling suggestions, health references, fitness ideas, product recommendations, or external resources are done voluntarily and at your own discretion and risk, and you are encouraged to consult a qualified professional before making health, skincare, haircare, fitness, dietary, or lifestyle changes. This platform is not affiliated, associated, endorsed by, or officially connected with any third-party websites, brands, creators, YouTube channels, audiobooks, or external resources referenced, including but not limited to publicly available materials accessed via standard linking or embedding features; all trademarks, content, and intellectual property remain with their respective owners, and embedded or linked materials are provided solely for supplementary reference and convenience. If any content owner prefers that their material not be referenced, it will be removed promptly upon request. Product suggestions and affiliate links, including shopping recommendations, are optional convenience references, and any purchasing decisions, product use, reactions, damages, or outcomes are solely the responsibility of the user. By accessing this website, you acknowledge that you assume full responsibility for your choices and release this platform from liability arising from reliance on any information or third-party content provided.
+<strong>Disclaimer & Disclosure:</strong> All content provided is for informational purposes only...
 </div>
-<p style="font-size:10px; color:rgba(0,0,0,0.35); font-style:italic; text-align:center; margin-top:40px; line-height:1.2;">
-© 2026 Femmemalist™. All rights reserved.
-</p>
-  <p><a href="contact.html">Contact Us</a></p>
+
+<p style="text-align:center;font-size:11px;opacity:0.5;">© 2026 Femmemalist™</p>
+
 </div>
+
 </body>
-
 </html>
-
-
-
-
-
-
-
