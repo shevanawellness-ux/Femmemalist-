@@ -3,26 +3,29 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>SIGNATURE SHADE GUIDE - FEMMEMALIST</title>
 
 <link rel="canonical" href="https://femmemalist.com/signatureshade.html">
 <meta name="robots" content="index, follow">
+
 <meta name="description" content="Discover your signature shade and learn which clothing colors flatter your undertone with Femmemalist.">
-<meta name="keywords" content="signature shade guide, undertone clothing, warm undertone, cool undertone, neutral undertone, olive undertone">
-<meta name="author" content="Femmemalist">
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400&display=swap" rel="stylesheet">
-
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 
 <style>
 
-/* =========================
-   BASE LUXURY FOUNDATION
-========================= */
+/* RESET */
+*{
+  box-sizing:border-box;
+  -webkit-tap-highlight-color:transparent;
+}
+
+/* BACKGROUND */
 body{
   margin:0;
   font-family:'Inter',sans-serif;
-  line-height:1.7;
+  line-height:1.75;
   color:#2b2b2b;
 
   background:
@@ -30,7 +33,7 @@ body{
     linear-gradient(180deg, #fff0f5 0%, #ffe6f0 50%, #ffe0ec 100%);
 }
 
-/* soft glow overlay (premium depth) */
+/* GLOW OVERLAY */
 body::before{
   content:"";
   position:fixed;
@@ -41,114 +44,90 @@ body::before{
   pointer-events:none;
 }
 
-/* =========================
-   CONTAINER (EDITORIAL GLASS SHEET)
-========================= */
+/* CONTAINER */
 .container{
-  max-width:950px;
+  max-width:960px;
   margin:auto;
   padding:22px;
 
-  background: rgba(255,255,255,0.14);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
+  background: rgba(255,255,255,0.18);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
 
   border-radius:22px;
-  border:1px solid rgba(255,255,255,0.35);
+  border:1px solid rgba(255,255,255,0.45);
 
-  box-shadow:0 25px 70px rgba(255,105,180,0.10);
+  box-shadow:
+    0 25px 70px rgba(255,105,180,0.18),
+    0 0 40px rgba(255,182,193,0.15);
 }
 
-/* =========================
-   TYPOGRAPHY (LUXURY EDITORIAL)
-========================= */
-h1, h2{
+/* TYPOGRAPHY */
+h1,h2,h3{
   font-family:'Playfair Display',serif;
 }
 
 h1{
   font-size:38px;
   text-align:center;
-
-  background: linear-gradient(90deg, #C71585, #FF69B4, #ff8fbf);
+  background: linear-gradient(90deg,#C71585,#FF69B4,#ff8fbf);
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
-
-  letter-spacing:0.4px;
 }
 
-h2{
-  font-size:26px;
-  color:#d81b60;
-  margin-top:45px;
+h3{
+  color:#C71585;
 }
 
-p{
-  font-size:16px;
-  color:#444;
-}
-
-/* =========================
-   HERO IMAGE (LUXURY FOCUS CARD)
-========================= */
-.image-block{
-  margin:28px 0;
-}
-
+/* IMAGE */
 .image-block img{
   width:100%;
   border-radius:22px;
 
-  border:1px solid rgba(255,255,255,0.4);
+  border:2px solid rgba(255,105,180,0.35);
 
   box-shadow:
-    0 20px 60px rgba(255,105,180,0.18),
-    inset 0 1px 0 rgba(255,255,255,0.4);
+    0 25px 60px rgba(255,105,180,0.20),
+    0 0 25px rgba(255,105,180,0.15);
 
-  transform:translateY(0);
-  transition:0.5s ease;
+  transition:0.4s ease;
 }
 
-/* subtle hover depth (NOT animation spam) */
 .image-block img:hover{
   transform:translateY(-4px) scale(1.01);
 }
 
-/* =========================
-   CTA BOXES (TURN INTO LUXURY CARDS)
-========================= */
-.cta-box{
-  background: rgba(255,255,255,0.16);
-  backdrop-filter: blur(14px);
+/* GLASS CARD */
+.card{
+  background: rgba(255,255,255,0.20);
+  backdrop-filter: blur(16px);
 
-  border:1px solid rgba(255,255,255,0.35);
-  border-radius:20px;
+  border:1px solid rgba(255,255,255,0.45);
+  border-radius:22px;
 
   padding:22px;
   margin:22px 0;
 
-  box-shadow:0 18px 50px rgba(255,105,180,0.12);
+  box-shadow:
+    0 18px 50px rgba(255,105,180,0.18),
+    inset 0 0 20px rgba(255,255,255,0.25);
 
   transition:0.35s ease;
 }
 
-.cta-box:hover{
-  transform:translateY(-3px);
-  box-shadow:0 25px 65px rgba(255,105,180,0.18);
+.card:hover{
+  transform:translateY(-4px);
+
+  box-shadow:
+    0 30px 80px rgba(255,105,180,0.30),
+    inset 0 0 25px rgba(255,255,255,0.35);
 }
 
-.cta-box h3{
-  font-family:'Playfair Display',serif;
-  color:#C71585;
-  font-size:20px;
-}
-
-/* CTA BUTTONS (MORE LUXURY, LESS HEAVY) */
-.cta-box a,
-.app-cta a{
+/* BUTTON */
+.card a{
   display:inline-block;
   margin-top:14px;
-  padding:12px 26px;
+  padding:13px 28px;
 
   border-radius:50px;
   text-decoration:none;
@@ -156,99 +135,83 @@ p{
   font-family:'Playfair Display',serif;
   font-weight:700;
 
-  background:linear-gradient(135deg,#ff5fa2,#ff87c2);
   color:#fff;
 
-  box-shadow:0 12px 30px rgba(255,105,180,0.25);
+  background:linear-gradient(135deg,#ff4d9d,#ff85c1,#ffb6d9);
 
-  transition:0.3s ease;
+  box-shadow:
+    0 10px 25px rgba(255,105,180,0.35),
+    0 0 18px rgba(255,105,180,0.45);
+
+  position:relative;
+  overflow:hidden;
+
+  transition:0.35s ease;
 }
 
-.cta-box a:hover,
-.app-cta a:hover{
-  transform:translateY(-2px);
-  box-shadow:0 18px 40px rgba(255,105,180,0.35);
+/* SHINE */
+.card a::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:-150%;
+  width:150%;
+  height:100%;
+
+  background:linear-gradient(
+    120deg,
+    transparent,
+    rgba(255,255,255,0.7),
+    transparent
+  );
+
+  transition:0.8s;
 }
 
-/* =========================
-   APP CTA (GLASS FEATURE BLOCK)
-========================= */
+.card a:hover::before{
+  left:150%;
+}
+
+.card a:hover{
+  transform:translateY(-3px) scale(1.03);
+
+  box-shadow:
+    0 18px 45px rgba(255,105,180,0.55),
+    0 0 30px rgba(255,105,180,0.65);
+}
+
+/* APP CTA */
 .app-cta{
-  background: rgba(255,255,255,0.18);
-  backdrop-filter: blur(16px);
-
-  border:1px solid rgba(199,21,133,0.25);
-  border-radius:22px;
-
-  padding:22px;
-  margin:28px 0;
-
   text-align:center;
-
-  font-family:'Playfair Display',serif;
   color:#C71585;
-
-  box-shadow:0 20px 55px rgba(255,105,180,0.15);
 }
 
-/* =========================
-   SOCIAL ICON BAR (CLEAN LUXURY SPACING)
-========================= */
-.container > div[style*="display:flex"] a{
-  transition:0.3s ease;
-  opacity:0.85;
+/* SOCIAL */
+.social{
+  display:flex;
+  justify-content:center;
+  gap:16px;
+  margin:30px 0;
 }
 
-.container > div[style*="display:flex"] a:hover{
-  transform:translateY(-3px) scale(1.05);
-  opacity:1;
+.social img{
+  width:30px;
 }
 
-/* =========================
-   MICRO INTERACTION (SUBTLE ONLY)
-========================= */
-*{
-  -webkit-tap-highlight-color:transparent;
-}
-
-a{
-  transition:0.25s ease;
-}
-
-/* =========================
-   MOBILE LUXURY FIX (IMPORTANT)
-========================= */
+/* MOBILE */
 @media (max-width:768px){
-
-  h1{ font-size:28px; }
-  h2{ font-size:20px; }
-
-  .container{
-    padding:16px;
-    border-radius:18px;
-  }
-
-  .cta-box,
-  .app-cta{
-    padding:16px;
-    border-radius:18px;
-  }
-
-  .image-block img{
-    border-radius:18px;
-  }
-
-  p{
-    font-size:15px;
-  }
+  h1{font-size:28px;}
+  .container{padding:16px;}
 }
 
 </style>
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8481828238423040"
-     crossorigin="anonymous"></script>
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8481828238423040" crossorigin="anonymous"></script>
+
 </head>
 
 <body>
+
 <div class="container">
 
 <h1>SIGNATURE SHADE GUIDE - FEMMEMALIST</h1>
@@ -261,73 +224,55 @@ a{
 Discover the clothing colors that perfectly complement your natural undertone. Femmemalist helps you identify the shades that enhance your beauty and elevate your wardrobe effortlessly.
 </p>
 
-<div class="app-box">
-<p>Coming soon!
-For a complete experience and personalized styling insights, download the <strong>Femmemalist app</strong>.</p>
-<a href="#" target="_blank">Download Femmemalist App</a>
+<div class="card app-cta">
+<p>Coming soon! For a complete experience and personalized styling insights, download the <strong>Femmemalist app</strong>.</p>
+<a href="#">Download Femmemalist App</a>
 </div>
 
-<div class="face-box">
+<div class="card">
 <h3>Warm Undertone</h3>
 <p>Golden hues, earthy tones, and radiant palettes enhance warm undertones and create a sun-kissed glow.</p>
-<a href="warmclothes.html" class="btn">Explore Warm Clothing</a>
+<a href="warmclothes.html">Explore Warm Clothing</a>
 </div>
 
-<div class="face-box">
+<div class="card">
 <h3>Cool Undertone</h3>
 <p>Icy shades and jewel tones beautifully complement cool undertones, creating a refined and elegant look.</p>
-<a href="coolclothes.html" class="btn">Explore Cool Clothing</a>
+<a href="coolclothes.html">Explore Cool Clothing</a>
 </div>
 
-<div class="face-box">
+<div class="card">
 <h3>Neutral Undertone</h3>
 <p>A balanced undertone that works with both warm and cool colors, allowing for a versatile wardrobe.</p>
-<a href="neutralclothes.html" class="btn">Explore Neutral Clothing</a>
+<a href="neutralclothes.html">Explore Neutral Clothing</a>
 </div>
 
-<div class="face-box">
+<div class="card">
 <h3>Olive Undertone</h3>
 <p>Rare and striking undertones that shine with rich earthy tones and unique color palettes.</p>
-<a href="oliveclothes.html" class="btn">Explore Olive Clothing</a>
+<a href="oliveclothes.html">Explore Olive Clothing</a>
 </div>
-<!-- ===== FEMME SOCIAL BAR ===== -->
-<div style="display:flex; justify-content:center; gap:16px; margin:30px 0 10px 0;">
 
-  <a href="https://www.instagram.com/femmemalist/" target="_blank">
-    <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" width="30">
-  </a>
-
-  <a href="https://www.youtube.com/@femmemalist?sub_confirmation=1" target="_blank">
-    <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" width="30">
-  </a>
-
-  <a href="https://t.me/femmemalist" target="_blank">
-    <img src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png" width="30">
-  </a>
-
-  <a href="https://whatsapp.com/channel/0029VbCx8lXFHWqAjoh7vN2G" target="_blank">
-    <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" width="30">
-  </a>
-
-  <a href="https://www.pinterest.com/FEMMEMALIST/" target="_blank">
-    <img src="https://cdn-icons-png.flaticon.com/512/145/145808.png" width="30">
-  </a>
-
-  <a href="https://www.facebook.com/Femmemalist" target="_blank">
-    <img src="https://cdn-icons-png.flaticon.com/512/145/145802.png" width="30">
-  </a>
-
+<div class="social">
+<a href="https://www.instagram.com/femmemalist/" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png"></a>
+<a href="https://www.youtube.com/@femmemalist?sub_confirmation=1" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png"></a>
+<a href="https://t.me/femmemalist" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png"></a>
+<a href="https://whatsapp.com/channel/0029VbCx8lXFHWqAjoh7vN2G" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/733/733585.png"></a>
+<a href="https://www.pinterest.com/FEMMEMALIST/" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/145/145808.png"></a>
+<a href="https://www.facebook.com/Femmemalist" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/145/145802.png"></a>
 </div>
+
 <div class="disclaimer">
-Disclaimer & Disclosure: All content provided on this platform is for informational and educational purposes only. Styling suggestions, product references, and external resources are optional and used at the reader’s discretion.
+Disclaimer & Disclosure: All content provided on this platform is for informational and educational purposes only.
 </div>
 
-<p style="font-size:10px; color:rgba(0,0,0,0.35); font-style:italic; text-align:center; margin-top:40px;">
+<p style="text-align:center;font-size:10px;margin-top:40px;">
 © 2026 Femmemalist™. All rights reserved.
 </p>
 
-<p><a href="contact.html">Contact Us</a></p>
+<p style="text-align:center;"><a href="contact.html">Contact Us</a></p>
 
 </div>
+
 </body>
-  </html>
+</html>
