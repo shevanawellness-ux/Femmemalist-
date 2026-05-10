@@ -800,42 +800,34 @@ For scalp microneedling, both derma rollers and derma stamps are used to stimula
 <p>Rotate shoes regularly, clean insoles weekly, air shoes after use, polish leather footwear, and gently wash mesh shoes. Wearing socks helps maintain hygiene and prevents odor.</p>
 
 
-  <script>
-document.querySelectorAll('.yt-lite').forEach(div=>{
+<script>
+document.querySelectorAll('.yt-lite').forEach(div => {
   const id = div.dataset.id;
+
   const img = document.createElement('img');
   img.src = `https://i.ytimg.com/vi/${id}/hqdefault.jpg`;
   div.appendChild(img);
+
   div.onclick = () => {
     div.innerHTML = `<iframe src="https://www.youtube.com/embed/${id}?autoplay=1"
       frameborder="0" allowfullscreen style="width:100%;height:100%"></iframe>`;
   };
 });
+</script>
 
-
-<div class="container">
-
-
-</div>
 <div class="disclaimer">
-Disclaimer & Disclosure: All content provided on this platform is for general informational and educational purposes only and should not be considered medical, psychological, financial, or professional advice; any actions taken based on the information, styling suggestions, health references, fitness ideas, product recommendations, or external resources are done voluntarily and at your own discretion and risk, and you are encouraged to consult a qualified professional before making health, skincare, haircare, fitness, dietary, or lifestyle changes. This platform is not affiliated, associated, endorsed by, or officially connected with any third-party websites, brands, creators, YouTube channels, audiobooks, or external resources referenced, including but not limited to publicly available materials accessed via standard linking or embedding features; all trademarks, content, and intellectual property remain with their respective owners, and embedded or linked materials are provided solely for supplementary reference and convenience. If any content owner prefers that their material not be referenced, it will be removed promptly upon request. Product suggestions and affiliate links, including shopping recommendations, are optional convenience references, and any purchasing decisions, product use, reactions, damages, or outcomes are solely the responsibility of the user. By accessing this website, you acknowledge that you assume full responsibility for your choices and release this platform from liability arising from reliance on any information or third-party content provided.
+Disclaimer & Disclosure: All content provided on this platform is for general informational and educational purposes only and should not be considered medical, psychological, financial, or professional advice; any actions taken based on the information, styling suggestions, health references, fitness ideas, product recommendations, or external resources are done voluntarily and at your own discretion and risk, and you are encouraged to consult a qualified professional before making health, skincare, haircare, fitness, dietary, or lifestyle changes. This platform is not affiliated, associated, endorsed by, or officially connected with any third-party websites, brands, creators, YouTube channels, or external resources. All trademarks belong to their respective owners. Product links are optional and for convenience only. By using this site, you accept full responsibility for your decisions.
 </div>
-<p style="font-size:10px; color:rgba(0,0,0,0.35); font-style:italic; text-align:center; margin-top:40px; line-height:1.2;">
+
+<p style="font-size:10px; color:rgba(0,0,0,0.35); font-style:italic; text-align:center; margin-top:40px;">
 © 2026 Femmemalist™. All rights reserved.
 </p>
- <p><a href="contact.html">Contact Us</a></p>
 
-document.querySelectorAll('.yt-lite').forEach(div=>{
- const id=div.dataset.id;
- const img=document.createElement('img');
- img.src=`https://i.ytimg.com/vi/${id}/hqdefault.jpg`;
- div.appendChild(img);
- div.onclick=()=>{
-  div.innerHTML=`<iframe src="https://www.youtube.com/embed/${id}?autoplay=1"
-   frameborder="0" allowfullscreen style="width:100%;height:100%"></iframe>`;
- };
-});
+<p style="text-align:center;">
+  <a href="contact.html">Contact Us</a>
+</p>
 
+<script>
 document.addEventListener("DOMContentLoaded", function () {
 
   document.querySelectorAll("a[href*='amazon.']").forEach(function(link) {
@@ -848,9 +840,9 @@ document.addEventListener("DOMContentLoaded", function () {
       const url = this.href;
 
       if (/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
-        window.location.href = url;  // Force mobile redirect
+        window.location.href = url;
       } else {
-        window.open(url, "_blank");  // Desktop new tab
+        window.open(url, "_blank");
       }
     });
 
@@ -858,5 +850,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
 });
 </script>
+
 </body>
 </html>
