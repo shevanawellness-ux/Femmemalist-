@@ -796,43 +796,67 @@ For scalp microneedling, both derma rollers and derma stamps are used to stimula
 <h2>3. Footwear Hygiene & Maintenance</h2>
 <p>Rotate shoes regularly, clean insoles weekly, air shoes after use, polish leather footwear, and gently wash mesh shoes. Wearing socks helps maintain hygiene and prevents odor.</p>
 
-
-<script>
-document.querySelectorAll('.yt-lite').forEach(div => {
-  const id = div.dataset.id;
-
-  const img = document.createElement('img');
-  img.src = `https://i.ytimg.com/vi/${id}/hqdefault.jpg`;
-  div.appendChild(img);
-
-  div.onclick = () => {
-    div.innerHTML = `<iframe src="https://www.youtube.com/embed/${id}?autoplay=1"
-      frameborder="0" allowfullscreen style="width:100%;height:100%"></iframe>`;
-  };
-});
-</script>
-
-<div class="disclaimer">
-Disclaimer & Disclosure: All content provided on this platform is for general informational and educational purposes only and should not be considered medical, psychological, financial, or professional advice; any actions taken based on the information, styling suggestions, health references, fitness ideas, product recommendations, or external resources are done voluntarily and at your own discretion and risk, and you are encouraged to consult a qualified professional before making health, skincare, haircare, fitness, dietary, or lifestyle changes. This platform is not affiliated, associated, endorsed by, or officially connected with any third-party websites, brands, creators, YouTube channels, or external resources. All trademarks belong to their respective owners. Product links are optional and for convenience only. By using this site, you accept full responsibility for your decisions.
-</div>
-
-<p style="font-size:10px; color:rgba(0,0,0,0.35); font-style:italic; text-align:center; margin-top:40px;">
-© 2026 Femmemalist™. All rights reserved.
-</p>
-
-<p style="text-align:center;">
-  <a href="contact.html">Contact Us</a>
-</p>
-
 <script>
 document.addEventListener("DOMContentLoaded", function () {
 
-  document.querySelectorAll("a[href*='amazon.']").forEach(function(link) {
+  // =========================
+  // FIXED YOUTUBE LAZY LOAD
+  // =========================
+  document.querySelectorAll('.yt-lite').forEach(function (div) {
+
+    if (div.dataset.loaded === "true") return; // prevent double init
+    div.dataset.loaded = "true";
+
+    const id = div.dataset.id;
+    if (!id) return;
+
+    // ensure proper styling safety
+    div.style.position = "relative";
+    div.style.overflow = "hidden";
+
+    // thumbnail
+    const img = document.createElement('img');
+    img.src = `https://i.ytimg.com/vi/${id}/hqdefault.jpg`;
+    img.loading = "lazy";
+    img.style.width = "100%";
+    img.style.height = "100%";
+    img.style.objectFit = "cover";
+    img.style.display = "block";
+
+    div.innerHTML = "";
+    div.appendChild(img);
+
+    // click to load iframe
+    div.addEventListener("click", function () {
+
+      const iframe = document.createElement("iframe");
+      iframe.src = `https://www.youtube.com/embed/${id}?autoplay=1&rel=0`;
+      iframe.frameBorder = "0";
+      iframe.allow =
+        "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+      iframe.allowFullscreen = true;
+
+      iframe.style.position = "absolute";
+      iframe.style.top = "0";
+      iframe.style.left = "0";
+      iframe.style.width = "100%";
+      iframe.style.height = "100%";
+
+      div.innerHTML = "";
+      div.appendChild(iframe);
+    });
+
+  });
+
+  // =========================
+  // AMAZON LINK FIX
+  // =========================
+  document.querySelectorAll("a[href*='amazon.']").forEach(function (link) {
 
     link.setAttribute("target", "_blank");
     link.setAttribute("rel", "noopener noreferrer");
 
-    link.addEventListener("click", function(e) {
+    link.addEventListener("click", function (e) {
       e.preventDefault();
       const url = this.href;
 
@@ -847,6 +871,21 @@ document.addEventListener("DOMContentLoaded", function () {
 
 });
 </script>
+
+<!-- =========================
+     DISCLAIMER (UNCHANGED)
+========================= -->
+<div class="disclaimer">
+Disclaimer & Disclosure: All content provided on this platform is for general informational and educational purposes only and should not be considered medical, psychological, financial, or professional advice; any actions taken based on the information, styling suggestions, health references, fitness ideas, product recommendations, or external resources are done voluntarily and at your own discretion and risk, and you are encouraged to consult a qualified professional before making health, skincare, haircare, fitness, dietary, or lifestyle changes. This platform is not affiliated, associated, endorsed by, or officially connected with any third-party websites, brands, creators, YouTube channels, or external resources. All trademarks belong to their respective owners. Product links are optional and for convenience only. By using this site, you accept full responsibility for your decisions.
+</div>
+
+<p style="font-size:10px; color:rgba(0,0,0,0.35); font-style:italic; text-align:center; margin-top:40px;">
+© 2026 Femmemalist™. All rights reserved.
+</p>
+
+<p style="text-align:center;">
+  <a href="contact.html">Contact Us</a>
+</p>
 
 </body>
 </html>
