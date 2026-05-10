@@ -289,6 +289,11 @@ p{
 
   letter-spacing:0.3px;
 }
+  lite-youtube:hover {
+  transform: scale(1.01);
+  transition: 0.3s ease;
+  box-shadow: 0 20px 50px rgba(255,105,180,0.35);
+  }
   </style>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8481828238423040"
      crossorigin="anonymous"></script>
@@ -800,38 +805,39 @@ For scalp microneedling, both derma rollers and derma stamps are used to stimula
 document.addEventListener("DOMContentLoaded", function () {
 
   // =========================
-  // FIXED YOUTUBE LAZY LOAD
+  // FIX FOR <lite-youtube videoid="">
   // =========================
-  document.querySelectorAll('.yt-lite').forEach(function (div) {
+  document.querySelectorAll("lite-youtube").forEach(function (el) {
 
-    if (div.dataset.loaded === "true") return; // prevent double init
-    div.dataset.loaded = "true";
-
-    const id = div.dataset.id;
+    const id = el.getAttribute("videoid");
     if (!id) return;
 
-    // ensure proper styling safety
-    div.style.position = "relative";
-    div.style.overflow = "hidden";
+    // styling fix (rounded + glow restored)
+    el.style.display = "block";
+    el.style.position = "relative";
+    el.style.cursor = "pointer";
+    el.style.borderRadius = "16px";
+    el.style.overflow = "hidden";
+    el.style.aspectRatio = "16/9";
+    el.style.boxShadow = "0 15px 35px rgba(255,105,180,0.25)";
+    el.style.border = "1px solid rgba(255,255,255,0.25)";
 
     // thumbnail
-    const img = document.createElement('img');
+    const img = document.createElement("img");
     img.src = `https://i.ytimg.com/vi/${id}/hqdefault.jpg`;
-    img.loading = "lazy";
     img.style.width = "100%";
     img.style.height = "100%";
     img.style.objectFit = "cover";
     img.style.display = "block";
 
-    div.innerHTML = "";
-    div.appendChild(img);
+    el.innerHTML = "";
+    el.appendChild(img);
 
-    // click to load iframe
-    div.addEventListener("click", function () {
+    // click to play
+    el.addEventListener("click", function () {
 
       const iframe = document.createElement("iframe");
       iframe.src = `https://www.youtube.com/embed/${id}?autoplay=1&rel=0`;
-      iframe.frameBorder = "0";
       iframe.allow =
         "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
       iframe.allowFullscreen = true;
@@ -841,15 +847,16 @@ document.addEventListener("DOMContentLoaded", function () {
       iframe.style.left = "0";
       iframe.style.width = "100%";
       iframe.style.height = "100%";
+      iframe.style.border = "0";
 
-      div.innerHTML = "";
-      div.appendChild(iframe);
+      el.innerHTML = "";
+      el.appendChild(iframe);
     });
 
   });
 
   // =========================
-  // AMAZON LINK FIX
+  // AMAZON FIX (UNCHANGED LOGIC)
   // =========================
   document.querySelectorAll("a[href*='amazon.']").forEach(function (link) {
 
