@@ -245,6 +245,77 @@ h2{
 
   letter-spacing:0.35px;
 }
+/* =========================
+   FEMMEMALIST SCROLL STRIP (FINAL HORIZONTAL)
+========================= */
+
+.scroll-container{
+  overflow:hidden;
+  width:100%;
+  margin:35px 0 45px 0;
+
+  position:relative;
+
+  /* soft luxury fade edges */
+  mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent);
+}
+
+.scroll-track{
+  display:flex;
+  gap:20px;
+  width:max-content;
+
+  animation:scroll 34s linear infinite;
+}
+
+/* ✨ HORIZONTAL LUXURY CARDS */
+.scroll-track img{
+  width:260px;
+  aspect-ratio:16 / 10;
+
+  object-fit:cover;
+
+  border-radius:20px;
+
+  flex-shrink:0;
+
+  border:1px solid rgba(255,255,255,0.35);
+
+  box-shadow:
+    0 18px 45px rgba(255,105,180,0.18),
+    0 0 0 4px rgba(255,182,193,0.08);
+
+  transition:all 0.4s ease;
+}
+
+/* ✨ HOVER GLOW */
+.scroll-track img:hover{
+  transform:translateY(-4px) scale(1.05);
+
+  box-shadow:
+    0 25px 65px rgba(255,105,180,0.28),
+    0 0 25px rgba(255,182,193,0.45);
+}
+
+/* seamless loop */
+@keyframes scroll{
+  from{ transform:translateX(0); }
+  to{ transform:translateX(-50%); }
+}
+
+/* pause on hover */
+.scroll-container:hover .scroll-track{
+  animation-play-state:paused;
+}
+.section-box{
+  text-align: center;
+}
+
+.section-box a{
+  display: inline-block;
+  margin: 14px auto 0 auto;
+}
 </style>
 </head>
 
@@ -257,11 +328,35 @@ h2{
 <img src="https://res.cloudinary.com/dtabpv9y2/image/upload/v1774511755/1774511556547_qx5e3t.jpg" class="main-image" alt="Femmemalist Glow Up">
 
 <p style="text-align:center;font-size:18px;color:#555;max-width:800px;margin:0 auto 32px auto;">
-Femmemalist is a refined guide to feminine beauty, personal growth, and intentional living. It helps women understand their natural features, elevate their style, nurture meaningful relationships, and cultivate a confident, elegant lifestyle. Every insight is designed to help you grow gracefully, embrace your unique femininity, and live with clarity, strength, and quiet luxury. This is not trend advice it is intentional, structural and tailored to your true wholesome goals.
+There is a version of you that already knows she is meant for more, even if her current life does not fully reflect it yet. In quiet moments, she feels it in the mirror, in the way she dresses, in how she carries herself, and in how she experiences her own body. Femmemalist exists for that becoming. It honors beauty and styling as much as it honors depth, helping you understand <b>face shape</b>, <b>body shape</b>, <b>undertones</b>, <b>accessories</b>, and <b>personal style</b> so you feel confident in how you appear, while also guiding you into <b>body cycles</b>, <b>self-awareness</b>, <b>emotions</b>, <b>financial independence</b>, <b>growth</b>, and <b>recognition</b> in a grounded and meaningful way. This is where outer presentation and inner alignment come together, where what you see in the mirror starts matching how you feel inside, until slowly you become the woman who feels put together, aware, and in control of her own life.
 </p>
+<!-- PREMIUM SCROLL STRIP -->
+
+</div>
+<div class="scroll-container">
+  <div class="scroll-track">
+
+    <!-- ORIGINAL 7 -->
+<img src="https://res.cloudinary.com/dtabpv9y2/image/upload/v1778755912/1778754845512_ovqxsa.jpg" alt="">
+<img src="https://res.cloudinary.com/dtabpv9y2/image/upload/v1778755912/1778754864553_rghefq.jpg" alt="">
+<img src="https://res.cloudinary.com/dtabpv9y2/image/upload/v1778755912/1778754833633_p3q1oz.jpg" alt="">
+<img src="https://res.cloudinary.com/dtabpv9y2/image/upload/v1778755911/1778755176938_okbyaa.jpg" alt="">
+<img src="https://res.cloudinary.com/dtabpv9y2/image/upload/v1778755912/1778754840537_gmtlx3.jpg" alt="">
+<img src="https://res.cloudinary.com/dtabpv9y2/image/upload/v1778755911/1778754872502_lcgex5.jpg" alt="">
+<img src="https://res.cloudinary.com/dtabpv9y2/image/upload/v1778755911/1778754869316_ljyvwm.jpg" alt="">
+<!-- DUPLICATE SAME 7 -->
+<img src="https://res.cloudinary.com/dtabpv9y2/image/upload/v1778755912/1778754845512_ovqxsa.jpg" alt="">
+<img src="https://res.cloudinary.com/dtabpv9y2/image/upload/v1778755911/1778754869316_ljyvwm.jpg" alt="">
+<img src="https://res.cloudinary.com/dtabpv9y2/image/upload/v1778755912/1778754864553_rghefq.jpg" alt="">
+<img src="https://res.cloudinary.com/dtabpv9y2/image/upload/v1778755912/1778754833633_p3q1oz.jpg" alt="">
+<img src="https://res.cloudinary.com/dtabpv9y2/image/upload/v1778755911/1778755176938_okbyaa.jpg" alt="">
+<img src="https://res.cloudinary.com/dtabpv9y2/image/upload/v1778755912/1778754840537_gmtlx3.jpg" alt="">
+<img src="https://res.cloudinary.com/dtabpv9y2/image/upload/v1778755911/1778754872502_lcgex5.jpg" alt="">
+  </div>
+</div>
 
 <!-- ALL YOUR SECTIONS (UNCHANGED, JUST FIXED STRUCTURE) -->
-
+<div class="container">
 <div class="section-box">
 <h2>BODY SHAPE STYLING</h2>
 <p>Unlock the secrets of your silhouette. When you know your body shape, clothing, proportion, and balance are no longer guesses  they become your personal strategy. Femmemalist helps you refine your presence, carry yourself with confidence, and feel naturally aligned in every outfit you wear.</p>
