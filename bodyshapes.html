@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Femmemalist — Body Shape Guide</title>
+<title>Femmemalist - Body Shape Guide</title>
 
 <link rel="canonical" href="https://femmemalist.com/bodyshapes.html">
 <meta name="robots" content="index, follow">
@@ -239,6 +239,76 @@ img:hover{
 
   letter-spacing:0.3px;
 }
+/* =========================
+   FEMMEMALIST SCROLL STRIP (FINAL HORIZONTAL)
+========================= */
+
+.scroll-container{
+  overflow:hidden;
+  width:100%;
+  margin:35px 0 45px 0;
+
+  position:relative;
+
+  /* soft luxury fade edges */
+  mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent);
+}
+
+.scroll-track{
+  display:flex;
+  gap:20px;
+  width:max-content;
+
+  animation:scroll 34s linear infinite;
+}
+
+/* ✨ HORIZONTAL LUXURY CARDS */
+.scroll-track img{
+  width:260px;
+  aspect-ratio:16 / 10;
+
+  object-fit:cover;
+
+  border-radius:20px;
+
+  flex-shrink:0;
+
+  border:1px solid rgba(255,255,255,0.35);
+
+  box-shadow:
+    0 18px 45px rgba(255,105,180,0.18),
+    0 0 0 4px rgba(255,182,193,0.08);
+
+  transition:all 0.4s ease;
+}
+
+/* ✨ HOVER GLOW */
+.scroll-track img:hover{
+  transform:translateY(-4px) scale(1.05);
+
+  box-shadow:
+    0 25px 65px rgba(255,105,180,0.28),
+    0 0 25px rgba(255,182,193,0.45);
+}
+
+/* seamless loop */
+@keyframes scroll{
+  from{ transform:translateX(0); }
+  to{ transform:translateX(-50%); }
+}
+
+/* pause on hover */
+.scroll-container:hover .scroll-track{
+  animation-play-state:paused;
+}
+.section-box{
+  text-align: center;
+}
+
+.section-box a{
+  display: inline-block;
+  margin: 14px auto 0 auto;
 </style>
 
 </head>
@@ -247,9 +317,27 @@ img:hover{
 
 <div class="container">
 
-<h1>Femmemalist — Discover Your Body Shape</h1>
+<h1>Femmemalist - Discover Your Body Shape</h1>
 
-<img src="https://res.cloudinary.com/dtabpv9y2/image/upload/v1767617946/1000006547_czun7b.jpg" alt="Body Shape Guide">
+<div class="scroll-container">
+  <div class="scroll-track">
+
+    <!-- ORIGINAL 5 -->
+    <img src="https://res.cloudinary.com/dtabpv9y2/image/upload/v1778760109/1778759823820_x1r7ke.jpg" alt="">
+    <img src="https://res.cloudinary.com/dtabpv9y2/image/upload/v1778760109/1778759809084_g36kul.jpg" alt="">
+    <img src="https://res.cloudinary.com/dtabpv9y2/image/upload/v1778760109/1778759818641_jrrznd.jpg" alt="">
+    <img src="https://res.cloudinary.com/dtabpv9y2/image/upload/v1778760109/1778759799822_kslsit.jpg" alt="">
+    <img src="https://res.cloudinary.com/dtabpv9y2/image/upload/v1778760110/1778759790352_rqiofa.jpg" alt="">
+
+    <!-- DUPLICATE SAME 5 (FOR SMOOTH LOOP) -->
+    <img src="https://res.cloudinary.com/dtabpv9y2/image/upload/v1778760109/1778759823820_x1r7ke.jpg" alt="">
+    <img src="https://res.cloudinary.com/dtabpv9y2/image/upload/v1778760109/1778759809084_g36kul.jpg" alt="">
+    <img src="https://res.cloudinary.com/dtabpv9y2/image/upload/v1778760109/1778759818641_jrrznd.jpg" alt="">
+    <img src="https://res.cloudinary.com/dtabpv9y2/image/upload/v1778760109/1778759799822_kslsit.jpg" alt="">
+    <img src="https://res.cloudinary.com/dtabpv9y2/image/upload/v1778760110/1778759790352_rqiofa.jpg" alt="">
+
+  </div>
+</div>
 
 <div class="app-cta">
 For a <strong>complete personalized experience</strong> and to discover your exact body shape, download the <strong>Femmemalist App</strong>.
@@ -257,12 +345,13 @@ For a <strong>complete personalized experience</strong> and to discover your exa
 <a href="#">Download Femmemalist App</a>
 </div>
 
+</div>
 <p>There are moments when you look in the mirror and feel like something is missing, even when everything seems fine.</p>
 
 <p>This is not about changing who you are. It is about finally understanding your body in a way that makes everything fall into place.</p>
 
 <p>Explore your body type and discover what truly works for you, so confidence feels natural, not forced.</p>
-
+<div class="container">
 <div class="cta-box">
 <h2>Hourglass Shape</h2>
 <p>Your natural balance is your strength. Learn how to enhance your shape without overpowering it.</p>
