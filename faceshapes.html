@@ -249,7 +249,77 @@ img:hover{
   h2{ font-size:20px; }
   .container{ padding:16px; }
 }
+/* =========================
+   FEMMEMALIST SCROLL STRIP (FINAL HORIZONTAL)
+========================= */
 
+.scroll-container{
+  overflow:hidden;
+  width:100%;
+  margin:35px 0 45px 0;
+
+  position:relative;
+
+  /* soft luxury fade edges */
+  mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent);
+}
+
+.scroll-track{
+  display:flex;
+  gap:20px;
+  width:max-content;
+
+  animation:scroll 34s linear infinite;
+}
+
+/* ✨ HORIZONTAL LUXURY CARDS */
+.scroll-track img{
+  width:260px;
+  aspect-ratio:16 / 10;
+
+  object-fit:cover;
+
+  border-radius:20px;
+
+  flex-shrink:0;
+
+  border:1px solid rgba(255,255,255,0.35);
+
+  box-shadow:
+    0 18px 45px rgba(255,105,180,0.18),
+    0 0 0 4px rgba(255,182,193,0.08);
+
+  transition:all 0.4s ease;
+}
+
+/* ✨ HOVER GLOW */
+.scroll-track img:hover{
+  transform:translateY(-4px) scale(1.05);
+
+  box-shadow:
+    0 25px 65px rgba(255,105,180,0.28),
+    0 0 25px rgba(255,182,193,0.45);
+}
+
+/* seamless loop */
+@keyframes scroll{
+  from{ transform:translateX(0); }
+  to{ transform:translateX(-50%); }
+}
+
+/* pause on hover */
+.scroll-container:hover .scroll-track{
+  animation-play-state:paused;
+}
+.section-box{
+  text-align: center;
+}
+
+.section-box a{
+  display: inline-block;
+  margin: 14px auto 0 auto;
+}
 </style>
 
 </head>
@@ -260,7 +330,26 @@ img:hover{
 
 <h1>Femmemalist — Discover Your Face Shape</h1>
 
-<img src="https://res.cloudinary.com/dtabpv9y2/image/upload/v1767617946/1000006546_ikzklc.jpg" alt="Face Shape Guide">
+<div class="scroll-container">
+  <div class="scroll-track">
+
+<img src="https://res.cloudinary.com/dtabpv9y2/image/upload/v1779011066/1778916751783_piigov.jpg" alt="">
+<img src="https://res.cloudinary.com/dtabpv9y2/image/upload/v1779011065/1778916769942_duwemu.jpg" alt="">
+<img src="https://res.cloudinary.com/dtabpv9y2/image/upload/v1779011065/1778916794208_fzecj5.jpg" alt="">
+<img src="https://res.cloudinary.com/dtabpv9y2/image/upload/v1779011065/1778916774761_ghp2zj.jpg" alt="">
+<img src="https://res.cloudinary.com/dtabpv9y2/image/upload/v1779011064/1778916780031_obersk.jpg" alt="">
+<img src="https://res.cloudinary.com/dtabpv9y2/image/upload/v1779011063/1778916787859_v8ryfr.jpg" alt="">
+
+<!-- DUPLICATE SAME 6 -->
+<img src="https://res.cloudinary.com/dtabpv9y2/image/upload/v1779011066/1778916751783_piigov.jpg" alt="">
+<img src="https://res.cloudinary.com/dtabpv9y2/image/upload/v1779011065/1778916769942_duwemu.jpg" alt="">
+<img src="https://res.cloudinary.com/dtabpv9y2/image/upload/v1779011065/1778916794208_fzecj5.jpg" alt="">
+<img src="https://res.cloudinary.com/dtabpv9y2/image/upload/v1779011065/1778916774761_ghp2zj.jpg" alt="">
+<img src="https://res.cloudinary.com/dtabpv9y2/image/upload/v1779011064/1778916780031_obersk.jpg" alt="">
+<img src="https://res.cloudinary.com/dtabpv9y2/image/upload/v1779011063/1778916787859_v8ryfr.jpg" alt="">
+
+  </div>
+</div>
 
 <div class="app-cta">
 For a <strong>complete personalized experience</strong> and to discover your exact face shape, download the <strong>Femmemalist App</strong>.
