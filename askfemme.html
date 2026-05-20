@@ -1,0 +1,1781 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ASK FEMME</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+
+body{
+  margin:0;
+  font-family:'Inter',sans-serif;
+  background:linear-gradient(to bottom, #fff0f5, #ffe6f0);
+  overflow-x:hidden;
+}
+
+/* =========================
+   FLOATING IMAGE BUTTON
+========================= */
+#askBtn{
+  position:fixed;
+  bottom:22px;
+  right:22px;
+  width:70px;
+  height:70px;
+  z-index:9999;
+  cursor:pointer;
+  border-radius:50%;
+  overflow:hidden;
+
+  animation:floatSway 4s ease-in-out infinite;
+  filter: drop-shadow(0 10px 25px rgba(255,105,180,0.35));
+}
+
+/* image inside button */
+#askBtn img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  border-radius:50%;
+  transition:0.3s ease;
+}
+
+/* hover effect */
+#askBtn:hover img{
+  transform:scale(1.08);
+  filter:brightness(1.1);
+}
+
+/* floating + sway motion */
+@keyframes floatSway{
+  0%   { transform: translateY(0px) rotate(0deg); }
+  25%  { transform: translateY(-6px) rotate(1deg); }
+  50%  { transform: translateY(0px) rotate(0deg); }
+  75%  { transform: translateY(6px) rotate(-1deg); }
+  100% { transform: translateY(0px) rotate(0deg); }
+}
+
+/* =========================
+   OVERLAY
+========================= */
+#overlay{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.35);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  z-index:9998;
+}
+
+/* =========================
+   GLASS MODAL
+========================= */
+#modal{
+  width:92%;
+  max-width:420px;
+  border-radius:24px;
+  padding:18px;
+
+  background:rgba(255,255,255,0.15);
+  backdrop-filter:blur(18px);
+  border:1px solid rgba(255,255,255,0.3);
+  box-shadow:0 25px 60px rgba(255,105,180,0.25);
+}
+
+/* title */
+#title{
+  font-family:'Playfair Display',serif;
+  font-size:20px;
+  color:#C71585;
+  margin-bottom:12px;
+}
+
+/* input row */
+.row{
+  display:flex;
+  gap:10px;
+}
+
+#input{
+  flex:1;
+  padding:12px;
+  border-radius:14px;
+  border:1px solid rgba(255,255,255,0.4);
+  outline:none;
+  font-size:14px;
+  background:rgba(255,255,255,0.35);
+}
+
+#go{
+  padding:12px 16px;
+  border-radius:14px;
+  border:none;
+  background:rgba(199,21,133,0.85);
+  color:white;
+  font-weight:600;
+  cursor:pointer;
+}
+
+/* suggestion grid */
+#suggestions{
+  margin-top:15px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+}
+
+.sugg{
+  padding:10px;
+  border-radius:14px;
+  background:rgba(255,105,180,0.22);
+  border:1px solid rgba(255,255,255,0.25);
+  color:#C71585;
+  font-size:13px;
+  text-align:center;
+  cursor:pointer;
+  backdrop-filter:blur(10px);
+  transition:0.25s ease;
+}
+
+.sugg:hover{
+  transform:scale(1.04);
+  background:rgba(255,105,180,0.35);
+}
+
+/* back */
+#back{
+  margin-top:12px;
+  width:100%;
+  padding:10px;
+  border-radius:14px;
+  border:1px solid rgba(255,255,255,0.3);
+  background:rgba(255,255,255,0.25);
+  color:#C71585;
+  font-weight:600;
+  cursor:pointer;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- FLOATING ASK FEMME IMAGE BUTTON -->
+<div id="askBtn">
+  <img src="YOUR_CLOUDINARY_IMAGE_LINK_HERE" alt="Ask Femme">
+</div>
+
+<!-- OVERLAY -->
+<div id="overlay">
+  <div id="modal">
+
+    <div id="title">What’s on your mind?</div>
+
+    <div class="row">
+      <input id="input" type="text" placeholder="Type your question..." />
+      <button id="go">Go</button>
+    </div>
+
+    <div id="suggestions"></div>
+
+    <button id="back">Back</button>
+
+  </div>
+</div><script>
+const FEMME_SYSTEM = {
+
+bodyShapes: {
+page: "bodyshapes.html",
+finder: "bodyshapesfinder.html",
+keywords: [
+"body type confusion",
+"what is my body shape",
+"female body shapes guide",
+"how to identify body shape",
+"body proportions meaning",
+"how to measure bust waist hips",
+"am I curvy or straight body",
+"body shape calculator female",
+"fashion for body type women",
+"how to dress according to body shape",
+"why clothes don't fit properly",
+"body silhouette guide",
+"female figure types explained",
+"how to know your body type at home",
+"mirror test body shape",
+"styling according to figure"
+]
+},
+
+bodyFinder: {
+page: "bodyshapesfinder.html",
+keywords: [
+"i don't know my body shape",
+"help me find my body type",
+"confused about body shape",
+"which body type am i",
+"not sure if pear or apple",
+"am I rectangle or hourglass",
+"body shape test help",
+"quick body type check",
+"identify my figure type",
+"body shape quiz for beginners",
+"no idea about body shape",
+"what suits my body type"
+]
+},hourglass: {
+page: "hourglass.html",
+keywords: [
+"hourglass body shape",
+"curvy waist body type",
+"small waist big hips and bust",
+"balanced shoulders and hips",
+"how to style hourglass figure",
+"dress for hourglass body",
+"best jeans for hourglass body",
+"tight waist curvy body",
+"celebrity hourglass figure",
+"how to enhance curves naturally",
+"hourglass fashion guide",
+"what is perfect body shape",
+"how to maintain curves",
+"how to look elegant curvy body",
+"hourglass outfit ideas",
+"waist definition styling",
+"fitted dresses for hourglass body",
+"best tops for curvy waist",
+"what not to wear hourglass body",
+"hourglass body mistakes"
+]
+},pear: {
+page: "pear.html",
+keywords: [
+"pear body shape",
+"wide hips narrow shoulders",
+"lower body heavier than upper body",
+"how to dress pear shaped body",
+"outfits for wide hips",
+"how to balance hips and shoulders",
+"pear shaped outfit ideas",
+"slimming lower body fashion",
+"what jeans suit pear body",
+"tops for pear shaped body",
+"celebrity pear body shape",
+"how to hide hip width",
+"how to reduce hip focus visually",
+"pear body fashion tips",
+"dresses for pear figure",
+"best skirts for pear shape",
+"how to look proportional pear body",
+"what not to wear pear body shape",
+"pear shape styling mistakes"
+]
+},apple: {
+page: "apple.html",
+keywords: [
+"apple body shape",
+"big stomach body type",
+"no defined waist body",
+"upper body heavier than lower body",
+"how to dress apple shape",
+"how to hide belly fat fashion",
+"apple body outfit ideas",
+"dresses for apple body shape",
+"what tops suit apple body",
+"how to create waist illusion",
+"apple body styling guide",
+"best jeans for apple shape",
+"celebrity apple body type",
+"how to look slimmer upper body",
+"what not to wear apple body",
+"apple body confidence styling",
+"loose vs fitted apple body fashion"
+]
+},rectangle: {
+page: "rectangle.html",
+keywords: [
+"rectangle body shape",
+"straight body type female",
+"no curves body shape",
+"athletic body women fashion",
+"how to create curves rectangle body",
+"rectangle body styling tips",
+"best dresses for straight body",
+"how to look curvy rectangle shape",
+"waist illusion styling",
+"boxy body type fashion",
+"rectangle body outfit ideas",
+"what jeans suit rectangle body",
+"celebrity rectangle figure",
+"how to soften straight body shape",
+"clothes for no waist body",
+"fashion hacks for rectangle body",
+"how to add curves with clothes",
+"best tops for rectangle body"
+]
+},invertedTriangle: {
+page: "invertedtriangle.html",
+keywords: [
+"inverted triangle body shape",
+"broad shoulders narrow hips",
+"upper body heavier than lower body",
+"how to balance shoulders and hips",
+"inverted triangle fashion tips",
+"what jeans suit broad shoulders",
+"how to reduce shoulder width visually",
+"dresses for inverted triangle body",
+"celebrity inverted triangle shape",
+"what tops suit broad shoulders",
+"how to look proportional inverted triangle",
+"fashion mistakes inverted triangle body",
+"skirts for inverted triangle body",
+"how to soften upper body look",
+"body balance styling tips",
+"best outfits for inverted triangle shape",
+"how to create hip volume visually"
+]
+}
+faceShapes: {
+  page: "faceshapes.html",
+  finder: "faceshapesfinder.html",
+  keywords: [
+    "face shape guide women",
+    "what is my face shape",
+    "how to identify face shape",
+    "face proportions analysis",
+    "jawline cheekbone forehead check",
+    "face shape calculator",
+    "which face shape do I have",
+    "selfie face shape confusion",
+    "why my face looks different in photos",
+    "face symmetry test",
+    "how to measure face shape",
+    "round vs oval face confusion",
+    "square or round face how to know",
+    "am I heart shaped face",
+    "face shape styling guide",
+    "best hairstyle for my face",
+    "face contouring guide",
+    "how to balance facial features",
+    "why my face looks chubby in photos",
+    "why my jaw looks wide in pictures",
+    "face structure analysis female",
+    "how to look better in selfies face shape"
+  ]
+},faceFinder: {
+  page: "faceshapesfinder.html",
+  keywords: [
+    "i don't know my face shape",
+    "confused about face shape",
+    "help me find face type",
+    "which face shape am i",
+    "not sure if round or square face",
+    "am I oval or heart face shape",
+    "face shape confusion help",
+    "quick face shape test",
+    "no idea about jawline type",
+    "what face shape suits me best",
+    "face identity confusion",
+    "beginner face shape guide"
+  ]
+},round: {
+  page: "round.html",
+  keywords: [
+    "round face shape",
+    "chubby cheeks face shape",
+    "soft jawline face",
+    "how to slim round face",
+    "round face hairstyle",
+    "face looks full round cheeks",
+    "double chin appearance round face",
+    "how to contour round face",
+    "round face makeup tips",
+    "best bangs for round face",
+    "how to make face look sharp",
+    "round face slimming tricks",
+    "face looks wide and short",
+    "round face glasses style",
+    "celebrity round face shape",
+    "how to define jawline round face"
+  ]
+},square: {
+  page: "square.html",
+  keywords: [
+    "square face shape",
+    "strong jawline face",
+    "wide jaw face type",
+    "how to soften square face",
+    "square face hairstyle",
+    "angular face structure",
+    "face looks sharp at jaw",
+    "how to reduce jawline appearance",
+    "square face makeup guide",
+    "best bangs square face",
+    "square vs round face difference",
+    "how to make face look soft",
+    "square face contour tips",
+    "jaw looks boxy in photos",
+    "celebrity square face shape",
+    "square face glasses frames"
+  ]
+},oval: {
+  page: "oval.html",
+  keywords: [
+    "oval face shape",
+    "balanced face structure",
+    "perfect face shape oval",
+    "what suits oval face",
+    "oval face hairstyle",
+    "oval face makeup guide",
+    "soft balanced jawline face",
+    "best haircut oval face",
+    "oval face proportions ideal",
+    "celebrity oval face shape",
+    "face looks balanced naturally",
+    "what glasses suit oval face",
+    "oval face styling tips"
+  ]
+},heart: {
+  page: "heart.html",
+  keywords: [
+    "heart face shape",
+    wide forehead narrow chin",
+    "pointed chin face shape",
+    "how to balance heart face",
+    "heart shaped face hairstyle",
+    "best bangs heart face",
+    "how to reduce forehead width",
+    "chin looks small face shape",
+    "heart face makeup tips",
+    "celebrity heart face shape",
+    "what suits heart shaped face",
+    "face wider on top narrow bottom",
+    "jawline balance face shape"
+  ]
+},oblong: {
+  page: "oblong.html",
+  keywords: [
+    "oblong face shape",
+    "long face structure female",
+    "face looks long and narrow",
+    "how to shorten face visually",
+    "oblong face hairstyle",
+    "bangs for long face",
+    "reduce face length appearance",
+    "long jaw face shape",
+    "face looks stretched vertically",
+    "oblong face makeup tips",
+    "best haircut for long face",
+    "how to balance long face",
+    "celebrity oblong face shape"
+  ]
+},diamond: {
+  page: "diamond.html",
+  keywords: [
+    "diamond face shape",
+    "wide cheekbones narrow forehead jaw",
+    "sharp cheekbone face",
+    "how to style diamond face",
+    "diamond face hairstyle",
+    "face widest at cheekbones",
+    "narrow forehead and chin face",
+    "diamond face makeup guide",
+    "how to soften cheekbones face",
+    "diamond face bangs style",
+    "celebrity diamond face shape",
+    "best glasses diamond face",
+    "angular cheekbone face shape"
+  ]
+}
+undertones: {
+  page: "undertones.html",
+  finder: "undertonesfinder.html",
+  keywords: [
+    "what is my skin undertone",
+    "how to find undertone",
+    "cool warm neutral olive skin",
+    "skin tone test jewelry gold silver",
+    "vein test undertone",
+    "what colors suit my skin tone",
+    "why some colors wash me out",
+    "foundation shade matching undertone",
+    "skin looks yellow or pink",
+    "do I have olive undertone",
+    "why gold looks better than silver",
+    "why silver looks better than gold",
+    "color analysis skin tone",
+    "undertone test at home",
+    "fashion color mismatch skin tone",
+    "why black doesn't suit me",
+    "why white washes me out",
+    "best colors for my skin tone",
+    "skin tone confusion guide"
+  ]
+},
+
+undertoneFinder: {
+  page: "undertonesfinder.html",
+  keywords: [
+    "i don't know my undertone",
+    "confused between warm and cool",
+    "am I olive or neutral",
+    "skin tone confusion help",
+    "which colors suit me best",
+    "why nothing suits my skin",
+    "color analysis help me",
+    "undertone quiz quick",
+    "fashion color confusion",
+    "not sure skin tone type"
+  ]
+},cool: {
+  page: "cool.html",
+  keywords: [
+    "cool undertone skin",
+    "pink undertone skin",
+    "blue undertone veins",
+    "silver jewelry suits me",
+    "cool tone makeup",
+    "ashy skin tone",
+    "bluish skin undertone",
+    "cool skin color palette",
+    "winter color palette skin",
+    "jewelry silver better than gold",
+    "cool undertone lipstick shades",
+    "best colors for cool skin",
+    "why gold doesn't suit me",
+    "cool toned outfit ideas",
+    "blue purple pink shades suit me"
+  ]
+},warm: {
+  page: "warm.html",
+  keywords: [
+    "warm undertone skin",
+    "yellow undertone skin",
+    "gold jewelry suits me",
+    "veins look green undertone",
+    "warm skin tone colors",
+    "golden skin tone",
+    "peach undertone skin",
+    "earth tone colors suit me",
+    "warm makeup shades",
+    "autumn color palette skin",
+    "why silver doesn't suit me",
+    "orange red brown suit me",
+    "best colors for warm skin tone",
+    "warm tone outfit ideas",
+    "gold looks better than silver"
+  ]
+},neutral: {
+  page: "neutral.html",
+  keywords: [
+    "neutral undertone skin",
+    "both gold and silver suit me",
+    "balanced undertone skin",
+    "not sure warm or cool skin",
+    "neutral skin tone colors",
+    "mixed undertone face",
+    "foundation neutral shade",
+    "color analysis neutral skin",
+    "best colors neutral undertone",
+    "soft balanced color palette",
+    "neither gold nor silver wins",
+    "neutral makeup tones",
+    "natural skin tone balance"
+  ]
+},olive: {
+  page: "olive.html",
+  keywords: [
+    "olive undertone skin",
+    "greenish undertone skin",
+    "gray green skin tone",
+    "olive skin confusion",
+    "why nothing matches my skin tone",
+    "muted skin undertone",
+    "olive skin color analysis",
+    "foundation looks grey on me",
+    "warm cool mix skin tone",
+    "earthy muted skin tone",
+    "olive tone makeup guide",
+    "best colors for olive skin",
+    "jewelry for olive undertone",
+    "olive skin fashion colors",
+    "why colors look dull on me"
+  ]
+},coolclothes: {
+  page: "coolclothes.html",
+  keywords: [
+    "what clothes suit cool undertone",
+    "cool skin outfit ideas",
+    "best clothing colors for cool skin",
+    "winter palette outfits",
+    "blue pink purple clothes suit me",
+    "cool tone wardrobe guide",
+    "silver aesthetic outfits",
+    "what to wear cool skin tone",
+    "fashion for cool undertone women",
+    "cool tone dressing style"
+  ]
+},warmclothes: {
+  page: "warmclothes.html",
+  keywords: [
+    "what clothes suit warm undertone",
+    "earth tone outfits",
+    "warm skin outfit ideas",
+    "best colors for warm skin wardrobe",
+    "gold aesthetic outfits",
+    "orange brown beige clothes",
+    "warm tone fashion guide",
+    "autumn palette outfits",
+    "what to wear warm skin tone",
+    "warm tone dressing style"
+  ]
+},neutralclothes: {
+  page: "neutralclothes.html",
+  keywords: [
+    "neutral skin outfit ideas",
+    "what clothes suit neutral undertone",
+    "balanced wardrobe colors",
+    "soft muted outfits",
+    "both warm and cool outfits suit me",
+    "neutral tone fashion guide",
+    "minimal aesthetic wardrobe",
+    "what to wear neutral skin tone",
+    "balanced color clothing ideas",
+    "neutral fashion style guide"
+  ]
+},oliveclothes: {
+  page: "oliveclothes.html",
+  keywords: [
+    "olive skin outfit ideas",
+    "what clothes suit olive undertone",
+    "muted earthy outfits",
+    "olive skin fashion guide",
+    "best colors for olive skin wardrobe",
+    "dull colors look good olive skin",
+    "green brown muted clothing",
+    "olive tone dressing style",
+    "fashion for olive undertone women",
+    "what to wear olive skin tone"
+  ]
+}
+mindspace: {
+  page: "mindspace.html",
+  keywords: [
+    "how to reduce anxiety quickly",
+    "overthinking help for women",
+    "mental peace exercises",
+    "how to calm my mind instantly",
+    "stress relief techniques",
+    "I feel mentally exhausted",
+    "how to stop negative thoughts",
+    "self soothing techniques",
+    "breathing exercises for anxiety",
+    "how to sleep peacefully mind racing",
+    "affirmations for self confidence",
+    "how to relax mind and body",
+    "emotional healing techniques",
+    "how to feel mentally light",
+    "panic attack calm down tips",
+    "mindfulness for beginners",
+    "mental health self care routine",
+    "how to stop overthinking at night",
+    "how to feel emotionally stable",
+    "how to improve mental clarity",
+    "guided self talk exercises",
+    "positive thinking techniques",
+    "how to reset my mind after stress",
+    "inner peace techniques",
+    "emotional grounding exercises"
+  ]
+},femmeFatale: {
+  page: "femmefatale.html",
+  keywords: [
+    "how to be independent woman",
+    "self confidence for women",
+    "stop seeking validation from others",
+    "how to focus on myself",
+    "female independence mindset",
+    "how to become mentally strong woman",
+    "self worth and confidence guide",
+    "how to stop people pleasing",
+    "how to be emotionally strong",
+    "build self respect women",
+    "how to love yourself more",
+    "how to stop caring what others think",
+    "becoming confident alone",
+    "women self growth journey",
+    "how to be powerful mentally",
+    "self discipline for women",
+    "how to focus on career not relationships",
+    "how to build identity as woman",
+    "how to stop dependency on attention",
+    "how to become high value mindset",
+    "how to glow up mentally",
+    "self improvement female guide",
+    "how to be emotionally stable woman",
+    "how to detach from toxic people",
+    "how to prioritize myself"
+  ]
+},
+femmeFatale: {
+  page: "femmefatale.html",
+  keywords: [
+    "how to be independent woman",
+    "self confidence for women",
+    "stop seeking validation from others",
+    "how to focus on myself",
+    "female independence mindset",
+    "how to become mentally strong woman",
+    "self worth and confidence guide",
+    "how to stop people pleasing",
+    "how to be emotionally strong",
+    "build self respect women",
+    "how to love yourself more",
+    "how to stop caring what others think",
+    "becoming confident alone",
+    "women self growth journey",
+    "how to be powerful mentally",
+    "self discipline for women",
+    "how to focus on career not relationships",
+    "how to build identity as woman",
+    "how to stop dependency on attention",
+    "how to become high value mindset",
+    "how to glow up mentally",
+    "self improvement female guide",
+    "how to be emotionally stable woman",
+    "how to detach from toxic people",
+    "how to prioritize myself"
+  ]
+},audiobooks: {
+  page: "audiobooks.html",
+  keywords: [
+    "self improvement audiobooks for women",
+    "confidence audiobooks",
+    "sleep affirmations audio",
+    "feminine energy audio guide",
+    "motivation audiobooks for glow up",
+    "subconscious mind reprogramming audio",
+    "manifestation audiobooks",
+    "self love meditation audio",
+    "anxiety relief audio for girls",
+    "mindset transformation audio",
+    "positive thinking audiobooks",
+    "deep sleep affirmations female",
+    "inner healing audio sessions",
+    "law of attraction audiobooks",
+    "focus and discipline audio guide",
+    "emotional healing narration",
+    "personal growth audio guide",
+    "stress relief audio female",
+    "mental clarity audio practice",
+    "confidence building audio sessions"
+  ]
+}periods: {
+  page: "periods.html",
+  keywords: [
+    "period pain relief methods",
+    "irregular periods causes",
+    "why my period is late",
+    "PMS symptoms emotional changes",
+    "menstrual cramps solutions",
+    "heavy bleeding during periods",
+    "period mood swings control",
+    "hormonal imbalance symptoms",
+    "how to reduce period pain naturally",
+    "period hygiene tips",
+    "normal menstrual cycle length",
+    "spotting between periods causes",
+    "period fatigue reasons",
+    "diet during periods",
+    "exercise during menstruation",
+    "back pain during periods",
+    "blood clots during periods normal",
+    "stress and delayed periods",
+    "menstrual cycle explained simply",
+    "period self care routine",
+    "how to stop period cramps fast",
+    "signs of hormonal imbalance women",
+    "period bloating causes",
+    "emotional symptoms before periods",
+    "what is PMS in simple terms"
+  ]
+}pregnancy: {
+  page: "pregnancy.html",
+  keywords: [
+    "early pregnancy signs",
+    "pregnancy symptoms before missed period",
+    "missed period pregnancy test timing",
+    "morning sickness causes",
+    "fatigue during early pregnancy",
+    "implantation symptoms",
+    "pregnancy body changes week by week",
+    "pregnancy anxiety normal or not",
+    "hormonal changes during pregnancy",
+    "breast changes early pregnancy",
+    "frequent urination early pregnancy",
+    "first trimester symptoms",
+    "what to avoid in early pregnancy",
+    "pregnancy nutrition guide",
+    "safe foods during pregnancy",
+    "pregnancy emotional changes",
+    "when to take pregnancy test",
+    "early pregnancy cramps normal",
+    "spotting during early pregnancy",
+    "pregnancy self care routine",
+    "signs of healthy pregnancy",
+    "pregnancy sleep problems",
+    "pregnancy stress management",
+    "what is implantation bleeding",
+    "early pregnancy care tips"
+  ]
+}femmeFatale: {
+  page: "femmefatale.html",
+  keywords: [
+    "how to be independent woman",
+    "self confidence for women",
+    "stop seeking validation from others",
+    "how to focus on myself",
+    "female independence mindset",
+    "how to become mentally strong woman",
+    "self worth and confidence guide",
+    "how to stop people pleasing",
+    "how to be emotionally strong",
+    "build self respect women",
+    "how to love yourself more",
+    "how to stop caring what others think",
+    "becoming confident alone",
+    "women self growth journey",
+    "how to be powerful mentally",
+    "self discipline for women",
+    "how to focus on career not relationships",
+    "how to build identity as woman",
+    "how to stop dependency on attention",
+    "how to become high value mindset",
+    "how to glow up mentally",
+    "self improvement female guide",
+    "how to be emotionally stable woman",
+    "how to detach from toxic people",
+    "how to prioritize myself"
+  ]
+}
+// ===============================
+// ASK FEMME ROUTING MAP (BRAIN)
+// ===============================
+
+const routes = {
+
+  /* ================= BODY SHAPES ================= */
+  "body": "bodyshapesfinder.html",
+  "body shape": "bodyshapesfinder.html",
+  "body shapes": "bodyshapes.html",
+
+  "hourglass": "hourglass.html",
+  "pear": "pear.html",
+  "inverted triangle": "invertedtriangle.html",
+  "apple": "apple.html",
+  "rectangle": "rectangle.html",
+
+  /* ================= FACE SHAPES ================= */
+  "face": "faceshapesfinder.html",
+  "face shape": "faceshapesfinder.html",
+  "face shapes": "faceshapes.html",
+
+  "oval": "oval.html",
+  "square": "square.html",
+  "round": "round.html",
+  "heart": "heart.html",
+  "diamond": "diamond.html",
+  "oblong": "oblong.html",
+
+  /* ================= UNDERTONES ================= */
+  "undertone": "undertonesfinder.html",
+  "skin tone": "undertonesfinder.html",
+  "undertones": "undertones.html",
+
+  "cool": "cool.html",
+  "warm": "warm.html",
+  "neutral": "neutral.html",
+  "olive": "olive.html",
+
+  "cool clothes": "coolclothes.html",
+  "warm clothes": "warmclothes.html",
+  "neutral clothes": "neutralclothes.html",
+  "olive clothes": "oliveclothes.html",
+
+  "signature": "signatureshades.html",
+  "signature style": "signatureshades.html",
+
+  /* ================= FEMME FATALE ================= */
+  "femme fatale": "femmefatale.html",
+
+  /* ================= MIND SPACE ================= */
+  "mind": "mindspace.html",
+  "mindspace": "mindspace.html",
+  "overthinking": "mindspace.html",
+  "stress": "mindspace.html",
+
+  /* ================= BADDIE BINGE ================= */
+  "baddie": "baddiebinge.html",
+  "baddie binge": "baddiebinge.html",
+  "glow up": "baddiebinge.html",
+
+  /* ================= AUDIOBOOKS ================= */
+  "audio": "audiobooks.html",
+  "audiobook": "audiobooks.html",
+  "listen": "audiobooks.html",
+
+  /* ================= LIFE ================= */
+  "pregnancy": "pregnancy.html",
+  "period": "periods.html",
+  "periods": "periods.html"
+};
+
+// ===============================
+// SEARCH + NAVIGATION ENGINE
+// ===============================
+
+function handleSearch(){
+
+  const input = document.getElementById("input").value.toLowerCase().trim();
+
+  if(!input) return;
+
+  let found = false;
+
+  for(let key in routes){
+    if(input.includes(key)){
+      window.location.href = routes[key];
+      found = true;
+      break;
+    }
+  }
+
+  // fallback system
+  if(!found){
+    window.location.href = "faceshapesfinder.html";
+  }
+}
+
+// ===============================
+// BUTTON EVENTS
+// ===============================
+
+document.getElementById("go").addEventListener("click", handleSearch);
+
+document.getElementById("input").addEventListener("keypress", function(e){
+  if(e.key === "Enter"){
+    handleSearch();
+  }
+});
+
+// ===============================
+// MODAL OPEN / CLOSE
+// ===============================
+
+const btn = document.getElementById("askBtn");
+const overlay = document.getElementById("overlay");
+const back = document.getElementById("back");
+
+btn.onclick = () => {
+  overlay.style.display = "flex";
+};
+
+back.onclick = () => {
+  overlay.style.display = "none";
+};
+
+// ===============================
+// RANDOM QUESTION SYSTEM
+// ===============================
+
+const pool = [
+bodyShapeQuestions: [
+  { q: "why do my hips look wide in every jeans I wear", page: "pear.html" },
+  { q: "why does my waist disappear when I sit down", page: "rectangle.html" },
+  { q: "what body shape am I if I look straight but have curves sometimes", page: "bodyshapesfinder.html" },
+  { q: "why do I look different in mirror and camera body shape confusion", page: "bodyshapesfinder.html" },
+  { q: "why do my thighs look bigger than my upper body", page: "pear.html" },
+  { q: "why do pants fit my hips but not waist properly", page: "pear.html" },
+  { q: "why do I look boxy even after weight loss", page: "rectangle.html" },
+  { q: "why is my stomach the only part that looks big", page: "apple.html" },
+  { q: "why do I have no waist shape at all", page: "rectangle.html" },
+  { q: "why do my shoulders look narrow compared to hips", page: "pear.html" },
+  { q: "why do my shoulders look too broad in photos", page: "invertedtriangle.html" },
+  { q: "why does my upper body look bigger than lower body", page: "invertedtriangle.html" },
+  { q: "why do I look fat only in lower body jeans photos", page: "pear.html" },
+  { q: "why do I look flat from front but wide from side", page: "bodyshapesfinder.html" },
+  { q: "why do I feel my body is uneven shape", page: "bodyshapesfinder.html" },
+  { q: "why do I have hip dips and wide hips together", page: "pear.html" },
+  { q: "why do I look short even if I am not short", page: "rectangle.html" },
+  { q: "why does my body look thick in certain clothes", page: "bodyshapesfinder.html" },
+  { q: "why do fitted clothes make me look worse", page: "bodyshapesfinder.html" },
+  { q: "why do loose clothes make me look shapeless", page: "rectangle.html" },
+
+  { q: "why do I look curvy sometimes and straight sometimes", page: "bodyshapesfinder.html" },
+  { q: "what body type do I have I am confused", page: "bodyshapesfinder.html" },
+  { q: "why do my hips look bigger when I gain a little weight", page: "pear.html" },
+  { q: "why does my waist look thick even when I am slim", page: "rectangle.html" },
+  { q: "why do my clothes never sit properly on my body", page: "bodyshapesfinder.html" },
+  { q: "why do I feel my body is not proportionate", page: "bodyshapesfinder.html" },
+  { q: "why do I look good only in certain angles", page: "bodyshapesfinder.html" },
+  { q: "why do my arms look small compared to hips", page: "pear.html" },
+  { q: "why does my upper body look like inverted triangle shape", page: "invertedtriangle.html" },
+  { q: "why do I feel my body is too heavy on bottom", page: "pear.html" },
+
+  { q: "how do I know my real body shape without measuring tape", page: "bodyshapesfinder.html" },
+  { q: "why do I look bulky in photos but not in mirror", page: "bodyshapesfinder.html" },
+  { q: "why do jeans always feel tight on my thighs", page: "pear.html" },
+  { q: "why does my waist look straight from side view", page: "rectangle.html" },
+  { q: "why do I have belly fat even if I am slim everywhere else", page: "apple.html" },
+  { q: "why does my body look wider in certain lighting", page: "bodyshapesfinder.html" },
+  { q: "why do I look bigger in selfies than real life", page: "bodyshapesfinder.html" },
+  { q: "why do my clothes cling only to hips", page: "pear.html" },
+  { q: "why do I feel like my body shape keeps changing", page: "bodyshapesfinder.html" },
+  { q: "why do I not fit into standard body type categories", page: "bodyshapesfinder.html" },
+
+  { q: "why do I look top heavy in dresses", page: "invertedtriangle.html" },
+  { q: "why do I look bottom heavy in dresses", page: "pear.html" },
+  { q: "why do I have no curves at all just straight body", page: "rectangle.html" },
+  { q: "why does my body look different after puberty", page: "bodyshapesfinder.html" },
+  { q: "why do I hate how my body looks in photos", page: "bodyshapesfinder.html" },
+  { q: "why do I feel my hips are too big for my body", page: "pear.html" },
+  { q: "why do I look uneven from shoulders to hips", page: "bodyshapesfinder.html" },
+  { q: "why do I look flat chested but wide hips", page: "pear.html" },
+  { q: "why does my body look thick even when I lose weight", page: "bodyshapesfinder.html" },
+  { q: "why do I feel clothes never flatter my shape", page: "bodyshapesfinder.html" },
+
+  { q: "what body shape is most attractive or normal for me", page: "bodyshapesfinder.html" },
+  { q: "why do I compare my body with others so much", page: "bodyshapesfinder.html" },
+  { q: "why does my body look worse in tight clothes", page: "bodyshapesfinder.html" },
+  { q: "why does my body look better in loose clothes sometimes", page: "bodyshapesfinder.html" },
+  { q: "why do I not understand my own body shape at all", page: "bodyshapesfinder.html" },
+  { q: "why do I look different in gym mirror vs home mirror", page: "bodyshapesfinder.html" },
+  { q: "why does my body look asymmetrical in photos", page: "bodyshapesfinder.html" },
+  { q: "why do I feel my lower body is heavier than upper", page: "pear.html" },
+  { q: "why do I feel my upper body is heavier than lower", page: "invertedtriangle.html" },
+  { q: "why does my body shape confuse me so much", page: "bodyshapesfinder.html" }
+]audiobookQuestions: [
+  { q: "best audiobooks for self confidence and mindset", page: "audiobooks.html" },
+  { q: "audiobooks for overthinking and anxiety relief", page: "audiobooks.html" },
+  { q: "audiobooks to change life and mindset completely", page: "audiobooks.html" },
+  { q: "audiobooks for feminine energy and self love", page: "audiobooks.html" },
+  { q: "audiobooks for discipline and productivity habits", page: "audiobooks.html" },
+  { q: "audiobooks to stop caring what people think", page: "audiobooks.html" },
+  { q: "audiobooks for glow up and self improvement women", page: "audiobooks.html" },
+  { q: "audiobooks for emotional healing after breakup", page: "audiobooks.html" },
+  { q: "audiobooks for building confidence in life", page: "audiobooks.html" },
+  { q: "audiobooks for mindset shift and positive thinking", page: "audiobooks.html" },
+  { q: "audiobooks for anxiety and panic attack calm", page: "audiobooks.html" },
+  { q: "audiobooks for self discipline and focus improvement", page: "audiobooks.html" },
+  { q: "audiobooks to stop negative thoughts and overthinking", page: "audiobooks.html" },
+  { q: "audiobooks for becoming high value woman mindset", page: "audiobooks.html" },
+  { q: "audiobooks for emotional independence and strength", page: "audiobooks.html" },
+  { q: "audiobooks for self worth and confidence boost", page: "audiobooks.html" },
+  { q: "audiobooks for mental peace and calm mind", page: "audiobooks.html" },
+  { q: "audiobooks for productivity and life discipline", page: "audiobooks.html" },
+  { q: "audiobooks for self love and self respect journey", page: "audiobooks.html" },
+  { q: "audiobooks for changing habits and lifestyle", page: "audiobooks.html" },
+
+  { q: "audiobooks for feminine transformation and elegance", page: "audiobooks.html" },
+  { q: "audiobooks for motivation and life restart", page: "audiobooks.html" },
+  { q: "audiobooks for stopping procrastination and laziness", page: "audiobooks.html" },
+  { q: "audiobooks for confidence before social situations", page: "audiobooks.html" },
+  { q: "audiobooks for becoming mentally strong woman", page: "audiobooks.html" },
+  { q: "audiobooks for letting go of toxic people emotionally", page: "audiobooks.html" },
+  { q: "audiobooks for self growth and personality development", page: "audiobooks.html" },
+  { q: "audiobooks for building discipline and consistency habits", page: "audiobooks.html" },
+  { q: "audiobooks for emotional control and stability", page: "audiobooks.html" },
+  { q: "audiobooks for inner peace and mindfulness practice", page: "audiobooks.html" },
+
+  { q: "audiobooks for improving self image and confidence", page: "audiobooks.html" },
+  { q: "audiobooks for overcoming insecurity and fear", page: "audiobooks.html" },
+  { q: "audiobooks for changing mindset from negative to positive", page: "audiobooks.html" },
+  { q: "audiobooks for self discipline morning routine mindset", page: "audiobooks.html" },
+  { q: "audiobooks for mental clarity and focus improvement", page: "audiobooks.html" },
+  { q: "audiobooks for emotional intelligence development", page: "audiobooks.html" },
+  { q: "audiobooks for confidence in relationships and life", page: "audiobooks.html" },
+  { q: "audiobooks for healing emotional pain and stress", page: "audiobooks.html" },
+  { q: "audiobooks for building strong personality woman", page: "audiobooks.html" },
+  { q: "audiobooks for becoming independent and self sufficient", page: "audiobooks.html" },
+
+  { q: "audiobooks for motivation daily routine change life", page: "audiobooks.html" },
+  { q: "audiobooks for stop overthinking everything in life", page: "audiobooks.html" },
+  { q: "audiobooks for confidence glow up transformation mindset", page: "audiobooks.html" },
+  { q: "audiobooks for self improvement habits daily life", page: "audiobooks.html" },
+  { q: "audiobooks for becoming disciplined and consistent person", page: "audiobooks.html" },
+  { q: "audiobooks for stopping comparison with others", page: "audiobooks.html" },
+  { q: "audiobooks for mental detox and clarity", page: "audiobooks.html" },
+  { q: "audiobooks for building self belief and trust", page: "audiobooks.html" },
+  { q: "audiobooks for emotional strength after heartbreak", page: "audiobooks.html" },
+  { q: "audiobooks for life transformation and self growth journey", page: "audiobooks.html" },
+
+  { q: "audiobooks for feminine confidence and aura building", page: "audiobooks.html" },
+  { q: "audiobooks for mindset shift powerful thinking habits", page: "audiobooks.html" },
+  { q: "audiobooks for stress free mind and calm lifestyle", page: "audiobooks.html" },
+  { q: "audiobooks for productivity focus deep work habits", page: "audiobooks.html" },
+  { q: "audiobooks for self respect and boundaries mindset", page: "audiobooks.html" },
+  { q: "audiobooks for emotional healing and letting go past", page: "audiobooks.html" },
+  { q: "audiobooks for becoming confident attractive personality", page: "audiobooks.html" },
+  { q: "audiobooks for building strong mindset and discipline", page: "audiobooks.html" },
+  { q: "audiobooks for anxiety relief and mental calmness", page: "audiobooks.html" },
+  { q: "audiobooks for self growth motivation daily routine", page: "audiobooks.html" }
+]baddieBingeQuestions: [
+  { q: "how to become that girl aesthetic lifestyle routine", page: "baddiebinge.html" },
+  { q: "how to glow up mentally and physically fast", page: "baddiebinge.html" },
+  { q: "how to stop being lazy and start my glow up", page: "baddiebinge.html" },
+  { q: "how to get confident like baddie girls on instagram", page: "baddiebinge.html" },
+  { q: "how to reinvent myself completely in 30 days", page: "baddiebinge.html" },
+  { q: "how to be disciplined every day and not quit", page: "baddiebinge.html" },
+  { q: "how to stop overthinking and act like a baddie", page: "baddiebinge.html" },
+  { q: "how to build attractive feminine energy", page: "baddiebinge.html" },
+  { q: "how to look expensive on a budget girl aesthetic", page: "baddiebinge.html" },
+  { q: "how to fix my life and start over glow up", page: "baddiebinge.html" },
+  { q: "how to stop caring what people think of me glow up", page: "baddiebinge.html" },
+  { q: "how to become mentally strong like a baddie", page: "baddiebinge.html" },
+  { q: "how to build self discipline morning routine aesthetic", page: "baddiebinge.html" },
+  { q: "how to stop procrastination and be productive daily", page: "baddiebinge.html" },
+  { q: "how to act confident even if I am not", page: "baddiebinge.html" },
+  { q: "how to become attractive without makeup glow up", page: "baddiebinge.html" },
+  { q: "how to get main character energy every day", page: "baddiebinge.html" },
+  { q: "how to become emotionally detached and focused", page: "baddiebinge.html" },
+  { q: "how to stop being insecure about appearance", page: "baddiebinge.html" },
+  { q: "how to change personality and become confident woman", page: "baddiebinge.html" },
+
+  { q: "how to stop negative self talk and glow up mindset", page: "baddiebinge.html" },
+  { q: "how to become high value woman lifestyle habits", page: "baddiebinge.html" },
+  { q: "how to stop being emotionally weak and sensitive", page: "baddiebinge.html" },
+  { q: "how to build morning routine for glow up life", page: "baddiebinge.html" },
+  { q: "how to look attractive naturally everyday habits", page: "baddiebinge.html" },
+  { q: "how to become soft feminine but strong mindset", page: "baddiebinge.html" },
+  { q: "how to stop scrolling phone and fix life", page: "baddiebinge.html" },
+  { q: "how to glow up like rich aesthetic girl routine", page: "baddiebinge.html" },
+  { q: "how to become more elegant and graceful woman", page: "baddiebinge.html" },
+  { q: "how to stop comparing myself with others online", page: "baddiebinge.html" },
+
+  { q: "how to create baddie lifestyle habits daily", page: "baddiebinge.html" },
+  { q: "how to become confident in photos and selfies", page: "baddiebinge.html" },
+  { q: "how to stop emotional attachment to people fast", page: "baddiebinge.html" },
+  { q: "how to level up my life mentally and physically", page: "baddiebinge.html" },
+  { q: "how to act like that girl aesthetic routine day", page: "baddiebinge.html" },
+  { q: "how to become productive and disciplined woman", page: "baddiebinge.html" },
+  { q: "how to glow up without spending money", page: "baddiebinge.html" },
+  { q: "how to build self love and confidence habits", page: "baddiebinge.html" },
+  { q: "how to stop being lazy and stay consistent", page: "baddiebinge.html" },
+  { q: "how to become mentally attractive woman mindset", page: "baddiebinge.html" },
+
+  { q: "how to get clean girl aesthetic lifestyle routine", page: "baddiebinge.html" },
+  { q: "how to fix my routine and become organized", page: "baddiebinge.html" },
+  { q: "how to stop wasting time and become productive", page: "baddiebinge.html" },
+  { q: "how to become confident in social situations", page: "baddiebinge.html" },
+  { q: "how to stop being jealous of other girls", page: "baddiebinge.html" },
+  { q: "how to become emotionally independent woman mindset", page: "baddiebinge.html" },
+  { q: "how to glow up after breakup and move on", page: "baddiebinge.html" },
+  { q: "how to become mentally attractive and strong", page: "baddiebinge.html" },
+  { q: "how to create routine that changes life completely", page: "baddiebinge.html" },
+  { q: "how to become that disciplined girl aesthetic", page: "baddiebinge.html" },
+
+  { q: "how to stop feeling insecure and build confidence fast", page: "baddiebinge.html" },
+  { q: "how to become elegant and classy woman habits", page: "baddiebinge.html" },
+  { q: "how to stop wasting emotional energy on people", page: "baddiebinge.html" },
+  { q: "how to glow up mindset body and lifestyle", page: "baddiebinge.html" },
+  { q: "how to become focused and avoid distractions phone", page: "baddiebinge.html" },
+  { q: "how to be more feminine and attractive naturally", page: "baddiebinge.html" },
+  { q: "how to build strong identity as independent woman", page: "baddiebinge.html" },
+  { q: "how to stop self doubt and overthinking life", page: "baddiebinge.html" },
+  { q: "how to become powerful woman mindset transformation", page: "baddiebinge.html" },
+  { q: "how to fix my life step by step glow up guide", page: "baddiebinge.html" }
+]periodQuestions: [
+  { q: "why is my period late but not pregnant", page: "periods.html" },
+  { q: "why do I get cramps before period starts", page: "periods.html" },
+  { q: "what causes irregular periods suddenly", page: "periods.html" },
+  { q: "why is my period pain so severe every month", page: "periods.html" },
+  { q: "how to reduce period cramps instantly at home", page: "periods.html" },
+  { q: "why do I feel mood swings before periods", page: "periods.html" },
+  { q: "is it normal to have brown discharge before period", page: "periods.html" },
+  { q: "why does my period blood color change", page: "periods.html" },
+  { q: "how many days delay in period is normal", page: "periods.html" },
+  { q: "why do I feel bloated before period starts", page: "periods.html" },
+  { q: "can stress delay period cycle", page: "periods.html" },
+  { q: "why do I get headache before periods", page: "periods.html" },
+  { q: "period pain but no bleeding yet", page: "periods.html" },
+  { q: "why do I feel tired during periods", page: "periods.html" },
+  { q: "how to make periods come faster naturally", page: "periods.html" },
+  { q: "why is my period very light this month", page: "periods.html" },
+  { q: "why is my period very heavy suddenly", page: "periods.html" },
+  { q: "what causes missed period other than pregnancy", page: "periods.html" },
+  { q: "why do I feel nausea during periods", page: "periods.html" },
+  { q: "how to stop period cramps at night", page: "periods.html" },
+
+  { q: "why do I get back pain during periods", page: "periods.html" },
+  { q: "is it normal to have clots in period blood", page: "periods.html" },
+  { q: "why do my periods come twice in a month", page: "periods.html" },
+  { q: "what is abnormal period bleeding", page: "periods.html" },
+  { q: "why do I feel emotional before periods", page: "periods.html" },
+  { q: "how to track menstrual cycle easily", page: "periods.html" },
+  { q: "why do I have stomach pain before periods but no blood", page: "periods.html" },
+  { q: "how long should period cramps last", page: "periods.html" },
+  { q: "why do I feel weak during menstruation", page: "periods.html" },
+  { q: "can periods affect mood and anxiety", page: "periods.html" },
+
+  { q: "why do I get pimples before periods", page: "periods.html" },
+  { q: "how to reduce PMS symptoms naturally", page: "periods.html" },
+  { q: "why do I feel hungry before periods", page: "periods.html" },
+  { q: "is spotting normal between periods", page: "periods.html" },
+  { q: "why do I have cramps but period is not coming", page: "periods.html" },
+  { q: "can exercise delay or improve periods", page: "periods.html" },
+  { q: "why does my lower abdomen hurt during periods", page: "periods.html" },
+  { q: "what foods reduce period pain", page: "periods.html" },
+  { q: "why do I feel dizzy during periods", page: "periods.html" },
+  { q: "how to sleep during period cramps", page: "periods.html" },
+
+  { q: "why do I get diarrhea during periods", page: "periods.html" },
+  { q: "is it normal to miss one period cycle", page: "periods.html" },
+  { q: "why do periods become irregular with age", page: "periods.html" },
+  { q: "how to know if period is coming soon signs", page: "periods.html" },
+  { q: "why do I feel pelvic pain during periods", page: "periods.html" },
+  { q: "how to reduce heavy flow during periods", page: "periods.html" },
+  { q: "why do I feel irritated during periods", page: "periods.html" },
+  { q: "can periods cause anxiety symptoms", page: "periods.html" },
+  { q: "why do I feel pressure in lower stomach before period", page: "periods.html" },
+  { q: "how to manage period pain at school or work", page: "periods.html" },
+
+  { q: "why does period pain come and go in waves", page: "periods.html" },
+  { q: "how to stop leg pain during periods", page: "periods.html" },
+  { q: "why do I feel hot and cold during periods", page: "periods.html" },
+  { q: "is it normal to feel no period symptoms", page: "periods.html" },
+  { q: "why do I feel anxious before my period starts", page: "periods.html" },
+  { q: "how to regulate irregular menstrual cycle", page: "periods.html" },
+  { q: "why do I get cramps after period ends", page: "periods.html" },
+  { q: "can weight affect period cycle", page: "periods.html" },
+  { q: "why do I feel sleepy during menstruation days", page: "periods.html" },
+  { q: "how to stop period leakage anxiety", page: "periods.html" },
+
+  { q: "what is normal period cycle length", page: "periods.html" },
+  { q: "why do I feel stomach heaviness before periods", page: "periods.html" },
+  { q: "how to reduce hormonal imbalance affecting periods", page: "periods.html" },
+  { q: "why do I feel depressed during periods", page: "periods.html" },
+  { q: "can lack of sleep delay periods", page: "periods.html" },
+  { q: "why do I get cramps even after periods end", page: "periods.html" },
+  { q: "how to know if period pain is normal or not", page: "periods.html" },
+  { q: "why do I feel bloated during menstruation", page: "periods.html" },
+  { q: "can dehydration affect period pain", page: "periods.html" },
+  { q: "why do I feel body ache during periods", page: "periods.html" }
+]pregnancyQuestions: [
+  { q: "how to know if I am pregnant without test early signs", page: "pregnancy.html" },
+  { q: "missed period am I pregnant or stressed", page: "pregnancy.html" },
+  { q: "early pregnancy symptoms before missed period", page: "pregnancy.html" },
+  { q: "why do I feel nausea in morning suddenly", page: "pregnancy.html" },
+  { q: "can I be pregnant if test is negative but symptoms", page: "pregnancy.html" },
+  { q: "light spotting instead of period am I pregnant", page: "pregnancy.html" },
+  { q: "how many days after intercourse pregnancy symptoms start", page: "pregnancy.html" },
+  { q: "lower stomach pain early pregnancy or period pain", page: "pregnancy.html" },
+  { q: "why am I feeling tired all the time early pregnancy", page: "pregnancy.html" },
+  { q: "breast pain and pregnancy sign or period sign", page: "pregnancy.html" },
+  { q: "frequent urination early pregnancy reason", page: "pregnancy.html" },
+  { q: "can pregnancy happen without penetration", page: "pregnancy.html" },
+  { q: "pregnancy symptoms week 1 and week 2", page: "pregnancy.html" },
+  { q: "how to confirm pregnancy at home naturally", page: "pregnancy.html" },
+  { q: "why do I feel bloated all the time early pregnancy", page: "pregnancy.html" },
+  { q: "white discharge before missed period pregnancy sign", page: "pregnancy.html" },
+  { q: "back pain early pregnancy or period coming", page: "pregnancy.html" },
+  { q: "can stress delay period or pregnancy confusion", page: "pregnancy.html" },
+  { q: "implantation bleeding how to identify", page: "pregnancy.html" },
+  { q: "pregnancy test when to take after missed period", page: "pregnancy.html" },
+
+  { q: "why do I feel dizzy early pregnancy symptoms", page: "pregnancy.html" },
+  { q: "can I feel pregnancy symptoms in 3 days", page: "pregnancy.html" },
+  { q: "cramps but no period am I pregnant", page: "pregnancy.html" },
+  { q: "how accurate is home pregnancy test", page: "pregnancy.html" },
+  { q: "morning sickness without vomiting pregnancy", page: "pregnancy.html" },
+  { q: "how does early pregnancy feel in body", page: "pregnancy.html" },
+  { q: "why do I feel mood swings early pregnancy", page: "pregnancy.html" },
+  { q: "missed period but negative test what does it mean", page: "pregnancy.html" },
+  { q: "can pregnancy happen right after periods", page: "pregnancy.html" },
+  { q: "early pregnancy vs PMS symptoms difference", page: "pregnancy.html" },
+
+  { q: "how to track ovulation and pregnancy chances", page: "pregnancy.html" },
+  { q: "symptoms of pregnancy in first week after conception", page: "pregnancy.html" },
+  { q: "can I get pregnant during safe days", page: "pregnancy.html" },
+  { q: "why do I feel smell sensitivity suddenly", page: "pregnancy.html" },
+  { q: "food cravings early pregnancy reason", page: "pregnancy.html" },
+  { q: "why do I feel weak early pregnancy", page: "pregnancy.html" },
+  { q: "can pregnancy cause constipation early", page: "pregnancy.html" },
+  { q: "is spotting normal in early pregnancy", page: "pregnancy.html" },
+  { q: "how soon can pregnancy symptoms start after sex", page: "pregnancy.html" },
+  { q: "pregnancy symptoms but no missed period yet", page: "pregnancy.html" },
+
+  { q: "can I still get period if I am pregnant", page: "pregnancy.html" },
+  { q: "why do I feel pulling sensation in lower abdomen pregnancy", page: "pregnancy.html" },
+  { q: "how to differentiate gas pain and pregnancy cramps", page: "pregnancy.html" },
+  { q: "can pregnancy cause headache early", page: "pregnancy.html" },
+  { q: "early pregnancy back pain normal or not", page: "pregnancy.html" },
+  { q: "why do I feel sleepy all day pregnancy symptom", page: "pregnancy.html" },
+  { q: "how long does implantation bleeding last", page: "pregnancy.html" },
+  { q: "pregnancy symptoms after 1 week missed period", page: "pregnancy.html" },
+  { q: "can I feel pregnant before test shows positive", page: "pregnancy.html" },
+  { q: "why do I feel breast heaviness early pregnancy", page: "pregnancy.html" },
+
+  { q: "what are hidden signs of early pregnancy", page: "pregnancy.html" },
+  { q: "can I get pregnant if ejaculation outside", page: "pregnancy.html" },
+  { q: "early pregnancy symptoms checklist", page: "pregnancy.html" },
+  { q: "how to know pregnancy without doctor test", page: "pregnancy.html" },
+  { q: "can pregnancy cause emotional changes early", page: "pregnancy.html" },
+  { q: "why do I feel abdominal tightness early pregnancy", page: "pregnancy.html" },
+  { q: "is white discharge normal in early pregnancy", page: "pregnancy.html" },
+  { q: "how to confirm pregnancy fastest way", page: "pregnancy.html" },
+  { q: "can period symptoms and pregnancy feel same", page: "pregnancy.html" },
+  { q: "what happens in first 7 days of pregnancy", page: "pregnancy.html" },
+
+  { q: "how to avoid confusion between period and pregnancy", page: "pregnancy.html" },
+  { q: "why do I feel mild cramps but no period", page: "pregnancy.html" },
+  { q: "can I be pregnant and still have cramps like period", page: "pregnancy.html" },
+  { q: "early pregnancy hormones symptoms body changes", page: "pregnancy.html" },
+  { q: "signs of pregnancy before missed period accurate", page: "pregnancy.html" },
+  { q: "when does pregnancy fatigue start", page: "pregnancy.html" },
+  { q: "can stress delay pregnancy symptoms", page: "pregnancy.html" },
+  { q: "why do I feel weird in stomach early pregnancy", page: "pregnancy.html" },
+  { q: "how to know if implantation happened", page: "pregnancy.html" },
+  { q: "early pregnancy doubts and confusion symptoms", page: "pregnancy.html" }
+]femmeFataleQuestions: [
+  { q: "how to stop needing attention from people", page: "femmefatale.html" },
+  { q: "how to become emotionally independent as a woman", page: "femmefatale.html" },
+  { q: "why do I always seek validation from others", page: "femmefatale.html" },
+  { q: "how to stop being too nice and people pleasing", page: "femmefatale.html" },
+  { q: "how to build self respect as a woman", page: "femmefatale.html" },
+  { q: "how to focus on myself instead of relationships", page: "femmefatale.html" },
+  { q: "how to become mentally strong and confident woman", page: "femmefatale.html" },
+  { q: "why do I depend on others for happiness", page: "femmefatale.html" },
+  { q: "how to stop chasing people who don't value me", page: "femmefatale.html" },
+  { q: "how to be confident alone without anyone", page: "femmefatale.html" },
+  { q: "how to stop overthinking about love and relationships", page: "femmefatale.html" },
+  { q: "how to build a strong identity as a woman", page: "femmefatale.html" },
+  { q: "how to stop emotional dependency on boyfriend", page: "femmefatale.html" },
+  { q: "why do I lose myself in relationships easily", page: "femmefatale.html" },
+  { q: "how to become high value woman mindset", page: "femmefatale.html" },
+  { q: "how to stop begging for attention or replies", page: "femmefatale.html" },
+  { q: "how to be emotionally detached but healthy", page: "femmefatale.html" },
+  { q: "why do I feel insecure about myself all the time", page: "femmefatale.html" },
+  { q: "how to stop comparing myself with other girls", page: "femmefatale.html" },
+  { q: "how to become more self focused and disciplined", page: "femmefatale.html" },
+
+  { q: "how to glow up mentally and emotionally as a woman", page: "femmefatale.html" },
+  { q: "how to stop needing male attention for confidence", page: "femmefatale.html" },
+  { q: "why do I feel jealous easily in relationships", page: "femmefatale.html" },
+  { q: "how to build confidence without validation from anyone", page: "femmefatale.html" },
+  { q: "how to detach from toxic people emotionally", page: "femmefatale.html" },
+  { q: "how to become strong after breakup mentally", page: "femmefatale.html" },
+  { q: "why do I always feel not good enough", page: "femmefatale.html" },
+  { q: "how to stop needing constant reassurance", page: "femmefatale.html" },
+  { q: "how to become emotionally stable woman mindset", page: "femmefatale.html" },
+  { q: "how to focus on career instead of relationship obsession", page: "femmefatale.html" }
+]mindSpaceQuestions: [
+  { q: "why do I feel anxious for no reason at night", page: "mindspace.html" },
+  { q: "how to stop overthinking everything all the time", page: "mindspace.html" },
+  { q: "why does my mind feel so heavy and tired", page: "mindspace.html" },
+  { q: "how to calm my mind when I can't sleep", page: "mindspace.html" },
+  { q: "why do I keep thinking negative thoughts repeatedly", page: "mindspace.html" },
+  { q: "how to stop anxiety in 2 minutes fast", page: "mindspace.html" },
+  { q: "why do I feel mentally exhausted even without work", page: "mindspace.html" },
+  { q: "how to clear my mind from overthinking relationships", page: "mindspace.html" },
+  { q: "why do I feel emotionally drained for no reason", page: "mindspace.html" },
+  { q: "how to stop crying suddenly without reason", page: "mindspace.html" },
+  { q: "why do I feel empty inside even when life is fine", page: "mindspace.html" },
+  { q: "how to deal with intrusive thoughts at night", page: "mindspace.html" },
+  { q: "why do I overthink small conversations so much", page: "mindspace.html" },
+  { q: "how to stop feeling lost in life mentally", page: "mindspace.html" },
+  { q: "why do I feel disconnected from reality sometimes", page: "mindspace.html" },
+  { q: "how to stop comparing myself to others mentally", page: "mindspace.html" },
+  { q: "why do I feel stuck in life and unmotivated", page: "mindspace.html" },
+  { q: "how to calm anxiety without medicine naturally", page: "mindspace.html" },
+  { q: "why do I feel mentally blocked and unable to focus", page: "mindspace.html" },
+  { q: "how to reset my mind after a bad day", page: "mindspace.html" },
+
+  { q: "why do I overthink every mistake I made in past", page: "mindspace.html" },
+  { q: "how to stop caring what people think of me mentally", page: "mindspace.html" },
+  { q: "why do I feel like my mind never stops working", page: "mindspace.html" },
+  { q: "how to stop anxiety attacks before they start", page: "mindspace.html" },
+  { q: "why do I feel mentally overwhelmed easily", page: "mindspace.html" },
+  { q: "how to train my mind to stay positive", page: "mindspace.html" },
+  { q: "why do I feel mentally weak sometimes", page: "mindspace.html" },
+  { q: "how to stop negative self talk permanently", page: "mindspace.html" },
+  { q: "why do I feel like something is wrong but nothing is wrong", page: "mindspace.html" },
+  { q: "how to quiet my mind from racing thoughts", page: "mindspace.html" }
+]undertoneQuestions: [
+  { q: "why does silver jewelry look better on me than gold", page: "cool.html" },
+  { q: "why does gold jewelry suit me more than silver", page: "warm.html" },
+  { q: "what is my skin undertone I am confused", page: "undertonesfinder.html" },
+  { q: "why do some lipsticks make me look dull", page: "undertonesfinder.html" },
+  { q: "why do I look yellow in some lights and pink in others", page: "undertonesfinder.html" },
+  { q: "why does my skin look different in sunlight and indoor light", page: "undertonesfinder.html" },
+  { q: "why do cool colors wash me out", page: "warm.html" },
+  { q: "why do warm colors make me look dark or dull sometimes", page: "cool.html" },
+  { q: "why does white color not suit me sometimes", page: "undertonesfinder.html" },
+  { q: "why do some foundations look grey on my face", page: "cool.html" },
+
+  { q: "how to know my undertone without makeup", page: "undertonesfinder.html" },
+  { q: "why does my skin look different in camera vs mirror undertone issue", page: "undertonesfinder.html" },
+  { q: "why do I not suit both gold and silver equally", page: "neutral.html" },
+  { q: "am I neutral undertone or warm undertone", page: "undertonesfinder.html" },
+  { q: "am I olive skin tone or just tan", page: "olive.html" },
+  { q: "why do earthy tones suit me perfectly", page: "warm.html" },
+  { q: "why do pastel colors wash me out completely", page: "warm.html" },
+  { q: "why do bright neon colors look bad on me", page: "undertonesfinder.html" },
+  { q: "why do black clothes sometimes make me look dull", page: "undertonesfinder.html" },
+  { q: "why does beige look better than white on me", page: "warm.html" },
+
+  { q: "what colors suit my skin tone best", page: "undertonesfinder.html" },
+  { q: "why do I look pale in certain colors", page: "cool.html" },
+  { q: "why do I look orange in some foundation shades", page: "warm.html" },
+  { q: "why does my skin look ashy in makeup", page: "cool.html" },
+  { q: "why do some reds suit me and some don't", page: "undertonesfinder.html" },
+  { q: "why do coral shades look bad on me", page: "cool.html" },
+  { q: "why do pink shades look better than orange lipstick", page: "cool.html" },
+  { q: "why does my face look glowing in certain colors", page: "warm.html" },
+  { q: "why do muted colors suit me more than bright ones", page: "olive.html" },
+  { q: "why do I look better in deep colors than light shades", page: "olive.html" },
+
+  { q: "how to find my signature color palette", page: "undertonesfinder.html" },
+  { q: "what is signature shades for skin tone", page: "signatureshades.html" },
+  { q: "why do certain outfits make me look alive and fresh", page: "signatureshades.html" },
+  { q: "why do some outfits drain my face color completely", page: "undertonesfinder.html" },
+  { q: "how to choose clothes based on skin undertone", page: "signatureshades.html" },
+  { q: "why do I look stylish in some colors without makeup", page: "signatureshades.html" },
+  { q: "why do I look tired in wrong color outfits", page: "undertonesfinder.html" },
+  { q: "why does my skin glow in certain shades only", page: "signatureshades.html" },
+  { q: "why do I always repeat same color outfits that suit me", page: "signatureshades.html" },
+  { q: "why do some colors make me look expensive and polished", page: "signatureshades.html" },
+
+  { q: "what makeup suits my undertone best", page: "undertonesfinder.html" },
+  { q: "why do some blush shades look fake on me", page: "undertonesfinder.html" },
+  { q: "why does contour look grey on my face", page: "cool.html" },
+  { q: "why do warm bronzers look too orange on me", page: "cool.html" },
+  { q: "why does nude lipstick not suit me", page: "undertonesfinder.html" },
+  { q: "why do I look better in rosy makeup than brown makeup", page: "cool.html" },
+  { q: "why does my makeup oxidize and change color", page: "undertonesfinder.html" },
+  { q: "why do foundations never match my neck", page: "undertonesfinder.html" },
+  { q: "why does my skin tone look uneven with makeup", page: "undertonesfinder.html" },
+  { q: "why do I look better with minimal makeup", page: "olive.html" },
+
+  { q: "what nail colors suit my skin undertone", page: "signatureshades.html" },
+  { q: "why do certain nail polishes look weird on me", page: "undertonesfinder.html" },
+  { q: "why do some jewelry colors clash with my skin", page: "undertonesfinder.html" },
+  { q: "why does rose gold suit me more than yellow gold", page: "neutral.html" },
+  { q: "why does white gold suit me more than gold jewelry", page: "cool.html" },
+  { q: "why do oxidized jewelry look better on me", page: "olive.html" },
+  { q: "why does my skin tone look different with different metals", page: "undertonesfinder.html" },
+  { q: "why do I not look good in flashy jewelry colors", page: "olive.html" },
+  { q: "why do muted gold tones suit me better", page: "warm.html" },
+  { q: "why do I suit both gold and silver jewelry sometimes", page: "neutral.html" },
+
+  { q: "why do I look washed out in pastel outfits", page: "cool.html" },
+  { q: "why do deep jewel tones suit me better", page: "olive.html" },
+  { q: "why do dark colors make me look more attractive", page: "olive.html" },
+  { q: "why do soft peach colors not suit my skin", page: "cool.html" },
+  { q: "why do burgundy and wine colors suit me best", page: "signatureshades.html" },
+  { q: "why does my undertone confuse me so much", page: "undertonesfinder.html" },
+  { q: "why do I look different in artificial lighting", page: "undertonesfinder.html" },
+  { q: "why do I look warm in sun and cool indoors", page: "undertonesfinder.html" },
+  { q: "why do I feel I have mixed undertone skin", page: "undertonesfinder.html" },
+  { q: "what is olive undertone exactly and do I have it", page: "olive.html" }
+]faceShapeQuestions: [
+  { q: "why does my jaw look so sharp in photos", page: "square.html" },
+  { q: "why does my face look round in selfies but not mirror", page: "round.html" },
+  { q: "what face shape do I have I am confused", page: "faceshapesfinder.html" },
+  { q: "why does my face look different in every angle", page: "faceshapesfinder.html" },
+  { q: "why is my face wider in pictures than real life", page: "round.html" },
+  { q: "why do I have a strong jawline but soft cheeks", page: "square.html" },
+  { q: "why does my forehead look so big compared to jaw", page: "heart.html" },
+  { q: "why do my cheekbones look very high and sharp", page: "diamond.html" },
+  { q: "why does my face look long and thin in photos", page: "oblong.html" },
+  { q: "why do I look fat only in face area in photos", page: "round.html" },
+  { q: "why does my face look flat from front but sharp from side", page: "faceshapesfinder.html" },
+  { q: "why do I have no jaw definition at all", page: "round.html" },
+  { q: "why does my face look square even when I lose weight", page: "square.html" },
+  { q: "why do I look different when I smile face shape changes", page: "faceshapesfinder.html" },
+  { q: "why does my chin look pointed and sharp", page: "heart.html" },
+  { q: "why does my chin look very small compared to forehead", page: "heart.html" },
+  { q: "why do my cheeks look chubby even if I am slim", page: "round.html" },
+  { q: "why does my face look very angular and sharp always", page: "square.html" },
+  { q: "why do I look old because of my face shape", page: "oblong.html" },
+  { q: "why does my face look short and wide", page: "round.html" },
+
+  { q: "why do I have uneven face proportions", page: "faceshapesfinder.html" },
+  { q: "why does my face look better in one side only", page: "faceshapesfinder.html" },
+  { q: "why does my face look hollow near cheeks", page: "diamond.html" },
+  { q: "why do my cheekbones look very visible in some light", page: "diamond.html" },
+  { q: "why does my face look longer when I tie hair", page: "oblong.html" },
+  { q: "why does my face look round when I keep hair open", page: "round.html" },
+  { q: "why do I look different in camera front and side profile", page: "faceshapesfinder.html" },
+  { q: "why does my jaw look uneven or not symmetrical", page: "square.html" },
+  { q: "why do I have soft jawline but big cheeks", page: "round.html" },
+  { q: "why does my face look narrow and long", page: "oblong.html" },
+
+  { q: "how do I know my real face shape without measuring", page: "faceshapesfinder.html" },
+  { q: "why do I not fit into any face shape category", page: "faceshapesfinder.html" },
+  { q: "why does my face change shape when I gain weight", page: "faceshapesfinder.html" },
+  { q: "why does my face look fat only in photos", page: "round.html" },
+  { q: "why do I look good only in certain angles face shape issue", page: "faceshapesfinder.html" },
+  { q: "why does my face look asymmetrical in selfies", page: "faceshapesfinder.html" },
+  { q: "why does my jaw disappear when I sit down or relax", page: "round.html" },
+  { q: "why does my face look heavy at bottom", page: "square.html" },
+  { q: "why does my face look heavy at top forehead", page: "heart.html" },
+  { q: "why does my face look flat and wide at same time", page: "round.html" },
+
+  { q: "why do I look masculine because of my face shape", page: "square.html" },
+  { q: "why does my face look too soft or baby faced", page: "round.html" },
+  { q: "why does my face look longer when I lose weight", page: "oblong.html" },
+  { q: "why does my face look wider when I gain weight", page: "round.html" },
+  { q: "why do I feel my face is not balanced at all", page: "faceshapesfinder.html" },
+  { q: "why do my eyes look far apart because of face shape", page: "diamond.html" },
+  { q: "why does my forehead dominate my face", page: "heart.html" },
+  { q: "why does my jaw feel too strong compared to my face", page: "square.html" },
+  { q: "why does my face look like inverted triangle shape", page: "heart.html" },
+  { q: "why do I feel my face is too small for my body", page: "faceshapesfinder.html" },
+
+  { q: "what face shape is most attractive for me", page: "faceshapesfinder.html" },
+  { q: "why do I compare my face shape with others", page: "faceshapesfinder.html" },
+  { q: "why does my face look worse in tight hairstyles", page: "square.html" },
+  { q: "why does my face look better with hair open", page: "round.html" },
+  { q: "why do I not understand my face shape at all", page: "faceshapesfinder.html" },
+  { q: "why does my face look different in glasses", page: "faceshapesfinder.html" },
+  { q: "why does my face look longer in ponytail", page: "oblong.html" },
+  { q: "why does my face look wider in middle parting", page: "round.html" },
+  { q: "why do I feel my face shape keeps changing", page: "faceshapesfinder.html" },
+  { q: "why do I hate how my face looks in photos", page: "faceshapesfinder.html" },
+
+  { q: "why does my face look heavy in selfies", page: "round.html" },
+  { q: "why does my face look sharp in side profile only", page: "square.html" },
+  { q: "why do I look different in mirror vs camera face shape confusion", page: "faceshapesfinder.html" },
+  { q: "why does my face look uneven lighting makes it worse", page: "faceshapesfinder.html" },
+  { q: "why does my face look better in certain expressions only", page: "faceshapesfinder.html" },
+  { q: "why does my face look long and tired sometimes", page: "oblong.html" },
+  { q: "why does my face look chubby even when I am slim", page: "round.html" },
+  { q: "why do I feel my face shape is not normal", page: "faceshapesfinder.html" },
+  { q: "why does my jawline disappear in photos", page: "round.html" },
+  { q: "why does my face look uneven from left and right", page: "faceshapesfinder.html" }
+]
+  {text:"Which body shape am I?", link:"bodyshapesfinder.html"},
+  {text:"What is my face shape?", link:"faceshapesfinder.html"},
+  {text:"Find my undertone", link:"undertonesfinder.html"},
+  {text:"What suits my style?", link:"signatureshades.html"},
+  {text:"How do I glow up?", link:"baddiebinge.html"},
+  {text:"Why do I overthink?", link:"mindspace.html"},
+  {text:"Which colors suit me?", link:"undertonesfinder.html"},
+  {text:"What hairstyle suits me?", link:"faceshapesfinder.html"}
+];
+
+// shuffle function (new each open)
+function loadSuggestions(){
+
+  const container = document.getElementById("suggestions");
+  container.innerHTML = "";
+
+  const shuffled = pool.sort(() => 0.5 - Math.random()).slice(0,4);
+
+  shuffled.forEach(item => {
+
+    const div = document.createElement("div");
+    div.className = "sugg";
+    div.innerText = item.text;
+
+    div.onclick = () => {
+      window.location.href = item.link;
+    };
+
+    container.appendChild(div);
+  });
+}
+
+// load suggestions when modal opens
+btn.addEventListener("click", loadSuggestions);
+
+</script><style>
+
+/* ===============================
+   MODAL FADE + SCALE ANIMATION
+=============================== */
+
+#overlay{
+  opacity:0;
+  pointer-events:none;
+  transition:opacity 0.35s ease;
+}
+
+#overlay.active{
+  opacity:1;
+  pointer-events:auto;
+}
+
+/* modal animation */
+#modal{
+  transform:translateY(20px) scale(0.96);
+  opacity:0;
+  transition:all 0.35s ease;
+}
+
+#overlay.active #modal{
+  transform:translateY(0px) scale(1);
+  opacity:1;
+}
+
+/* ===============================
+   BACKDROP BLUR ENHANCEMENT
+=============================== */
+
+#overlay{
+  backdrop-filter: blur(0px);
+}
+
+#overlay.active{
+  backdrop-filter: blur(10px);
+}
+
+/* ===============================
+   BUTTON RIPPLE EFFECT
+=============================== */
+
+.sugg, #go, #back{
+  position:relative;
+  overflow:hidden;
+}
+
+/* ripple */
+.ripple{
+  position:absolute;
+  border-radius:50%;
+  transform:scale(0);
+  animation:rippleAnim 0.6s linear;
+  background:rgba(255,255,255,0.5);
+}
+
+@keyframes rippleAnim{
+  to{
+    transform:scale(4);
+    opacity:0;
+  }
+}
+
+/* ===============================
+   SUGGESTION GLOW ENHANCEMENT
+=============================== */
+
+.sugg{
+  box-shadow:0 0 0 rgba(255,105,180,0);
+  transition:0.3s ease;
+}
+
+.sugg:hover{
+  box-shadow:0 0 18px rgba(255,105,180,0.25);
+}
+
+/* ===============================
+   INPUT FOCUS GLOW
+=============================== */
+
+#input:focus{
+  outline:none;
+  box-shadow:0 0 15px rgba(255,105,180,0.25);
+  border:1px solid rgba(255,105,180,0.4);
+}
+
+/* ===============================
+   FLOATING BUTTON SOFT GLOW
+=============================== */
+
+#askBtn{
+  box-shadow:0 10px 30px rgba(255,105,180,0.35);
+}
+
+#askBtn:hover{
+  filter:brightness(1.05);
+}
+
+/* ===============================
+   MOBILE OPTIMIZATION
+=============================== */
+
+@media (max-width: 480px){
+
+  #modal{
+    width:94%;
+    padding:16px;
+  }
+
+  .sugg{
+    font-size:12px;
+    padding:9px;
+  }
+
+  #input{
+    font-size:13px;
+  }
+}
+
+/* ===============================
+   INPUT PLACEHOLDER ANIMATION
+=============================== */
+
+@keyframes hintFade{
+  0%{opacity:0.4;}
+  50%{opacity:0.9;}
+  100%{opacity:0.4;}
+}
+
+#input::placeholder{
+  animation:hintFade 3s infinite;
+}
+
+</style>
+
+<script>
+
+/* ===============================
+   ACTIVATE MODAL SMOOTH OPEN/CLOSE
+=============================== */
+
+const overlay = document.getElementById("overlay");
+const btn = document.getElementById("askBtn");
+const back = document.getElementById("back");
+
+btn.addEventListener("click", () => {
+  overlay.classList.add("active");
+});
+
+back.addEventListener("click", () => {
+  overlay.classList.remove("active");
+});
+
+/* ===============================
+   RIPPLE EFFECT FUNCTION
+=============================== */
+
+function createRipple(e){
+  const btn = e.currentTarget;
+
+  const circle = document.createElement("span");
+  const diameter = Math.max(btn.clientWidth, btn.clientHeight);
+  const radius = diameter / 2;
+
+  circle.style.width = circle.style.height = `${diameter}px`;
+  circle.style.left = `${e.clientX - btn.offsetLeft - radius}px`;
+  circle.style.top = `${e.clientY - btn.offsetTop - radius}px`;
+  circle.classList.add("ripple");
+
+  const ripple = btn.getElementsByClassName("ripple")[0];
+  if(ripple){
+    ripple.remove();
+  }
+
+  btn.appendChild(circle);
+}
+
+/* attach ripple to buttons */
+document.querySelectorAll(".sugg, #go, #back").forEach(el => {
+  el.addEventListener("click", createRipple);
+});
+
+  </script>
